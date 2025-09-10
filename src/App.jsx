@@ -21,52 +21,14 @@ const App = () => {
     setGraphData(datasets[datasetKey]);
   };
 
-  // Generate random graph
-  const handleGenerateRandom = () => {
-    const nodeCount = Math.floor(Math.random() * 10) + 8; // 8-17 nodes
-    const linkDensity = Math.random() * 0.4 + 0.2; // 0.2-0.6 density
-    const randomData = graphUtils.generateRandomGraph(nodeCount, linkDensity);
-    
-    setCurrentDataset('random');
-    setGraphData({ 
-      ...randomData, 
-      name: `Random Graph (${nodeCount} nodes)` 
-    });
-  };
-
   // Calculate and display graph statistics
-  const stats = graphUtils.getGraphStats(graphData.nodes, graphData.links);
+  const stats = graphUtils.getGraphStats(nodesData.nodes, linksData.links);
 
   return (
     <div className="app">
       {/* Background */}
       <div className="app-background"></div>
       
-      {/* Main content */}
-      <div className="app-content">
-        
-        {/* Dataset selector */}
-        {/* <div className="dataset-selector">
-          <h3>Choose Dataset:</h3>
-          <div className="dataset-buttons">
-            {Object.entries(datasets).map(([key, dataset]) => (
-              <button
-                key={key}
-                className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
-                onClick={() => handleDatasetChange(key)}
-              >
-                {dataset.name}
-              </button>
-            ))}
-            <button
-              className={`dataset-btn random ${currentDataset === 'random' ? 'active' : ''}`}
-              onClick={handleGenerateRandom}
-            >
-              🎲 Generate Random
-            </button>
-          </div>
-        </div> */}
-
         {/* Graph statistics toggle */}
         <div className="stats-toggle">
           <button 
@@ -109,26 +71,14 @@ const App = () => {
             </div>
           </div>
         )}
-
-        {/* Force-directed graph component */}
         <ForceDirectedGraph
           // nodes={graphData.nodes}
           // links={graphData.links}
           // width={800}
           // height={600}
-          nodes={nodesData} links={linksData} width={window.innerWidth} height={window.innerHeight}
+          nodes={nodesData} links={linksData} width={928} height={600} 
         />
-
-        {/* Footer */}
-        <div className="app-footer">
-          <p>
-            Built with React and D3.js • 
-            Current dataset: <strong>{graphData.name || datasets[currentDataset]?.name}</strong>
-          </p>
-        </div>
-        
       </div>
-    </div>
   );
 };
 
