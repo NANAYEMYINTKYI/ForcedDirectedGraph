@@ -1,7 +1,7 @@
 /* ForceDirectedGraph.css */
 
 .force-graph-container {
-  max-width: 1200px;
+  max-width: full-screen;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
   padding: 30px;

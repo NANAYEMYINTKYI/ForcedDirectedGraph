@@ -4,7 +4,7 @@ import { sampleLinks, sampleNodes, networkNodes, networkLinks, socialLinks, soci
 import './App.css'
 import nodesData from './utilities/NodeData.json'
 import linksData from './utilities/LinkData.json'
-
+// Dataset options
 const datasets = {
   sample: { nodes: sampleNodes, links: sampleLinks, name: "Sample Network" },
   mab: {nodes: mabNodes, links: mabLinks, name: "MAB"}
@@ -46,7 +46,7 @@ const App = () => {
       <div className="app-content">
         
         {/* Dataset selector */}
-        <div className="dataset-selector">
+        {/* <div className="dataset-selector">
           <h3>Choose Dataset:</h3>
           <div className="dataset-buttons">
             {Object.entries(datasets).map(([key, dataset]) => (
@@ -65,7 +65,7 @@ const App = () => {
               🎲 Generate Random
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Graph statistics toggle */}
         <div className="stats-toggle">
@@ -112,12 +112,11 @@ const App = () => {
 
         {/* Force-directed graph component */}
         <ForceDirectedGraph
-          nodes={graphData.nodes}
-          links={graphData.links}
-          width={800}
-          height={600}
-          // nodes={nodesData} links={linksData} width={800} height={600} 
-          // export JSON file
+          // nodes={graphData.nodes}
+          // links={graphData.links}
+          // width={800}
+          // height={600}
+          nodes={nodesData} links={linksData} width={window.innerWidth} height={window.innerHeight}
         />
 
         {/* Footer */}

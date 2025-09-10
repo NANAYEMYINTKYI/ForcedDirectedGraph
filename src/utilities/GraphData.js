@@ -3,9 +3,9 @@
 
 // Sample graph data
 export const sampleNodes = [
-  { id: "A", group: 1, size: 20, description: "Central Hub" },
-  { id: "B", group: 1, size: 15, description: "Primary Node" },
-  { id: "C", group: 2, size: 12, description: "Secondary Node" },
+  { id: "A", group: 1, size: 50, description: "Central Hub" },
+  { id: "B", group: 1, size: 25, description: "Primary Node" },
+  { id: "C", group: 2, size: 20, description: "Secondary Node" },
   { id: "D", group: 2, size: 18, description: "Data Processing" },
   { id: "E", group: 3, size: 10, description: "Edge Node" },
   { id: "F", group: 3, size: 14, description: "Analytics" },
@@ -16,7 +16,7 @@ export const sampleNodes = [
   { id: "K", group: 4, size: 9, description: "Satellite" },
   { id: "L", group: 4, size: 12, description: "Storage" }
 ];
-
+// max:50 medium:25 
 export const sampleLinks = [
   { source: "A", target: "B", strength: 1 },
   { source: "A", target: "C", strength: 0.8 },

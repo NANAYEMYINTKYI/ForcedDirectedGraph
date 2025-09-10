@@ -4,8 +4,8 @@ import './ForcedDirectedGraph.css'
 const ForceDirectedGraph = ({ 
   nodes = initialNodes, 
   links = initialLinks,
-  width = 928,
-  height = 680 
+  width = window.innerWidth,
+  height = window.innerHeight
 }) => {
   // Refs
   const svgRef = useRef();
@@ -260,13 +260,13 @@ const ForceDirectedGraph = ({
   return (
     <div className="force-graph-container">
       {/* Header */}
-      <div className="header">
+      {/* <div className="header">
         <h1>🌐 Force-Directed Graph</h1>
         <p className="subtitle">Interactive network visualization with physics simulation</p>
-      </div>
+      </div> */}
 
       {/* Controls */}
-      <div className="controls">
+      {/* <div className="controls">
         <div className="control-group">
           <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
           <input
@@ -312,7 +312,7 @@ const ForceDirectedGraph = ({
         <button onClick={togglePause} className="control-button">
           {isPaused ? '▶️ Resume' : '⏸️ Pause'}
         </button>
-      </div>
+      </div> */}
 
       {/* Graph */}
       <div className="graph-container">
@@ -345,13 +345,13 @@ const ForceDirectedGraph = ({
       </div>
 
       {/* Info Panel */}
-      <div className="info-panel">
+      {/* <div className="info-panel">
         <strong>Instructions:</strong>
         • Drag nodes to reposition them
         • Hover over nodes for details
         • Adjust controls to change physics behavior
         • Click reset to randomize positions
-      </div>
+      </div> */}
     </div>
   );
 };
