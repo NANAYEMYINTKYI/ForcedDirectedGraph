@@ -1,14 +1,13 @@
 /* ForceDirectedGraph.css */
 
 .force-graph-container {
-  max-width: full-screen;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI';
 }
 
 /* Header Styles */

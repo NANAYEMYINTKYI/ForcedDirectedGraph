@@ -266,7 +266,7 @@ const ForceDirectedGraph = ({
       </div> */}
 
       {/* Controls */}
-      {/* <div className="controls">
+      <div className="controls">
         <div className="control-group">
           <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
           <input
@@ -305,14 +305,14 @@ const ForceDirectedGraph = ({
           />
         </div>
         
-        <button onClick={resetSimulation} className="control-button">
+        {/* <button onClick={resetSimulation} className="control-button">
           🔄 Reset
         </button>
         
         <button onClick={togglePause} className="control-button">
           {isPaused ? '▶️ Resume' : '⏸️ Pause'}
-        </button>
-      </div> */}
+        </button> */}
+      </div>
 
       {/* Graph */}
       <div className="graph-container">
@@ -322,6 +322,7 @@ const ForceDirectedGraph = ({
           height={height}
           className="graph-svg"
         />
+
         
         {/* Tooltip */}
         {tooltip.visible && (
