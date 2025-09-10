@@ -1,13 +1,13 @@
 import { useState } from "react";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
-import { sampleLinks, sampleNodes, networkNodes, networkLinks, socialLinks, socialNodes, graphUtils } from "./utilities/GraphData";
+import { sampleLinks, sampleNodes, networkNodes, networkLinks, socialLinks, socialNodes, graphUtils, mabLinks, mabNodes } from "./utilities/GraphData";
 import './App.css'
+import nodesData from './utilities/NodeData.json'
+import linksData from './utilities/LinkData.json'
 
-// Dataset options
 const datasets = {
   sample: { nodes: sampleNodes, links: sampleLinks, name: "Sample Network" },
-  network: { nodes: networkNodes, links: networkLinks, name: "Network Topology" },
-  social: { nodes: socialNodes, links: socialLinks, name: "Social Network" }
+  mab: {nodes: mabNodes, links: mabLinks, name: "MAB"}
 };
 
 const App = () => {
@@ -111,11 +111,13 @@ const App = () => {
         )}
 
         {/* Force-directed graph component */}
-        <ForceDirectedGraph 
+        <ForceDirectedGraph
           nodes={graphData.nodes}
           links={graphData.links}
           width={800}
           height={600}
+          // nodes={nodesData} links={linksData} width={800} height={600} 
+          // export JSON file
         />
 
         {/* Footer */}

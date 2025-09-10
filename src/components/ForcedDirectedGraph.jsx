@@ -1,41 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
-
-// Sample data - you can move this to a separate data file
-const initialNodes = [
-  { id: "A", group: 1, size: 20, description: "Central Hub" },
-  { id: "B", group: 1, size: 15, description: "Primary Node" },
-  { id: "C", group: 2, size: 12, description: "Secondary Node" },
-  { id: "D", group: 2, size: 18, description: "Data Processing" },
-  { id: "E", group: 3, size: 10, description: "Edge Node" },
-  { id: "F", group: 3, size: 14, description: "Analytics" },
-  { id: "G", group: 1, size: 16, description: "Core System" },
-  { id: "H", group: 2, size: 11, description: "Monitoring" },
-  { id: "I", group: 3, size: 13, description: "Backup" },
-  { id: "J", group: 1, size: 17, description: "Gateway" },
-  { id: "K", group: 4, size: 9, description: "Satellite" },
-  { id: "L", group: 4, size: 12, description: "Storage" }
-];
-
-const initialLinks = [
-  { source: "A", target: "B", strength: 1 },
-  { source: "A", target: "C", strength: 0.8 },
-  { source: "A", target: "D", strength: 1.2 },
-  { source: "B", target: "E", strength: 0.6 },
-  { source: "B", target: "G", strength: 1 },
-  { source: "C", target: "F", strength: 0.7 },
-  { source: "D", target: "H", strength: 0.9 },
-  { source: "E", target: "I", strength: 0.5 },
-  { source: "F", target: "J", strength: 0.8 },
-  { source: "G", target: "J", strength: 1.1 },
-  { source: "H", target: "I", strength: 0.6 },
-  { source: "I", target: "K", strength: 0.4 },
-  { source: "J", target: "L", strength: 0.7 },
-  { source: "K", target: "L", strength: 0.5 },
-  { source: "A", target: "J", strength: 1.3 }
-];
-
 const ForceDirectedGraph = ({ 
   nodes = initialNodes, 
   links = initialLinks,
