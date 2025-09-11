@@ -23,8 +23,8 @@ const ForceDirectedGraph = ({
 
   // Color scale
   const colorScale = d3.scaleOrdinal()
-    .domain([1, 2, 3, 4])
-    .range(["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4"]);
+    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    .range(["#cb6bffff", "#6e4ecdff", "#4594d1ff", "#96cea2ff", "#e6ff6bff", "#cd9a4eff", "#d14545ff", "#676a68ff", "#c8c8c8ff"]);
 
   // Drag functions
   const dragstarted = useCallback((event, d) => {
