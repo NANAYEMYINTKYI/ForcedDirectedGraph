@@ -1,52 +1,16 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
-
-// Sample data - you can move this to a separate data file
-const initialNodes = [
-  { id: "A", group: 1, size: 20, description: "Central Hub" },
-  { id: "B", group: 1, size: 15, description: "Primary Node" },
-  { id: "C", group: 2, size: 12, description: "Secondary Node" },
-  { id: "D", group: 2, size: 18, description: "Data Processing" },
-  { id: "E", group: 3, size: 10, description: "Edge Node" },
-  { id: "F", group: 3, size: 14, description: "Analytics" },
-  { id: "G", group: 1, size: 16, description: "Core System" },
-  { id: "H", group: 2, size: 11, description: "Monitoring" },
-  { id: "I", group: 3, size: 13, description: "Backup" },
-  { id: "J", group: 1, size: 17, description: "Gateway" },
-  { id: "K", group: 4, size: 9, description: "Satellite" },
-  { id: "L", group: 4, size: 12, description: "Storage" }
-];
-
-const initialLinks = [
-  { source: "A", target: "B", strength: 1 },
-  { source: "A", target: "C", strength: 0.8 },
-  { source: "A", target: "D", strength: 1.2 },
-  { source: "B", target: "E", strength: 0.6 },
-  { source: "B", target: "G", strength: 1 },
-  { source: "C", target: "F", strength: 0.7 },
-  { source: "D", target: "H", strength: 0.9 },
-  { source: "E", target: "I", strength: 0.5 },
-  { source: "F", target: "J", strength: 0.8 },
-  { source: "G", target: "J", strength: 1.1 },
-  { source: "H", target: "I", strength: 0.6 },
-  { source: "I", target: "K", strength: 0.4 },
-  { source: "J", target: "L", strength: 0.7 },
-  { source: "K", target: "L", strength: 0.5 },
-  { source: "A", target: "J", strength: 1.3 }
-];
-
 const ForceDirectedGraph = ({ 
   nodes = initialNodes, 
   links = initialLinks,
-  width = 800,
-  height = 600 
+  width = 928,
+  height = 680 
 }) => {
   // Refs
   const svgRef = useRef();
   const simulationRef = useRef();
   const tooltipRef = useRef();
-
   // State
   const [chargeStrength, setChargeStrength] = useState(100);
   const [linkStrength, setLinkStrength] = useState(1);
@@ -61,12 +25,14 @@ const ForceDirectedGraph = ({
 
   // Drag functions
   const dragstarted = useCallback((event, d) => {
+    console.log('Drag started:', d.id)
     if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
   }, []);
 
   const dragged = useCallback((event, d) => {
+    console.log('Dragging:', d.id, event.x, event.y);
     d.fx = event.x;
     d.fy = event.y;
   }, []);
@@ -76,45 +42,59 @@ const ForceDirectedGraph = ({
     d.fx = null;
     d.fy = null;
   }, []);
-
+  // const [tooltipTimeout, setTooltipTimeout] = useState(null);
   // Tooltip functions
-  const showTooltip = useCallback((event, d) => {
-    const rect = svgRef.current.getBoundingClientRect();
-    setTooltip({
-      visible: true,
-      x: event.clientX - rect.left + 10,
-      y: event.clientY - rect.top - 10,
-      content: `
-        <strong>${d.id}</strong><br/>
-        Group: ${d.group}<br/>
-        Size: ${d.size}<br/>
-        ${d.description}
-      `
-    });
-  }, []);
+  // const showTooltip = useCallback((event, d) => {
+  //   // if (!svgRef.current) return;
+  //   const rect = svgRef.current.getBoundingClientRect();
+  //   console.log("tooltip")
+  //   setTooltip({
+  //     visible: true,
+  //     x: event.clientX - rect.left + 10,
+  //     y: event.clientY - rect.top - 10,
+  //     content: `
+  //       <strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`
+  //     });
+  // }, []);
 
-  const hideTooltip = useCallback(() => {
-    setTooltip({ visible: false, x: 0, y: 0, content: '' });
-  }, []);
+  // const hideTooltip = useCallback(() => {
+  //   setTooltip({ visible: false, x: 0, y: 0, content: '' });
+  // }, []);
 
   // Initialize and update graph
   useEffect(() => {
+    if (!svgRef.current || !nodes || !links) return;
     const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove(); // Clear previous content
-
+    svg.selectAll("*").remove(); // Clear previous content 
+    if (!tooltipRef.current) {
+      tooltipRef.current = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("pointer-events", "none")
+        .style("opacity", 0)
+        .style("background", "rgba(0,0,0,0.8)")
+        .style("color", "#fff")
+        .style("padding", "6px 8px")
+        .style("border-radius", "4px")
+        .style("font-size", "12px")
+        .style("z-index", 1000);
+    }
     // Create groups
     const linkGroup = svg.append("g").attr("class", "links");
     const nodeGroup = svg.append("g").attr("class", "nodes");
+    // const nodesCopy = nodes.map(d => ({...d}));
+    // const linksCopy = links.map(d => ({...d}));
 
     // Create simulation
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
+      // .force("link", d3.forceLink(links).id(d => d.id))
       .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
       .force("collision", d3.forceCollide().radius(d => d.size + 5));
 
     simulationRef.current = simulation;
-
     // Create links
     const link = linkGroup.selectAll("line")
       .data(links)
@@ -124,33 +104,82 @@ const ForceDirectedGraph = ({
       .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
 
     // Create nodes
-    const node = nodeGroup.selectAll("circle")
+    const node = nodeGroup.selectAll("g")
       .data(nodes)
-      .join("circle")
-      .attr("r", d => d.size)
-      .attr("fill", d => colorScale(d.group))
-      .attr("stroke", "#fff")
-      .attr("stroke-width", 2)
-      .style("cursor", "pointer")
+      .join ("g")
       .call(d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
-        .on("end", dragended))
-      .on("mouseover", showTooltip)
-      .on("mouseout", hideTooltip);
-
-    // Create labels
-    const label = nodeGroup.selectAll("text")
-      .data(nodes)
-      .join("text")
-      .text(d => d.id)
-      .attr("font-size", 12)
-      .attr("font-weight", "bold")
-      .attr("text-anchor", "middle")
-      .attr("dy", 4)
-      .attr("fill", "#333")
-      .style("pointer-events", "none")
-      .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
+        .on("end", dragended)
+      )
+      node.append("circle")
+        .attr("r", d => d.size)
+        .attr("fill", d => colorScale(d.group))
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 2)
+        .style("cursor", "pointer")
+        .on("mouseenter", (event, d) => {
+          tooltipRef.current
+            .style("opacity", 1)
+            .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
+        })
+        .on("mousemove", (event) => {
+          tooltipRef.current
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY + 10) + "px");
+        })
+        .on("mouseleave", () => {
+          tooltipRef.current.style("opacity", 0);
+        });
+      node.append("text")
+        .text(d => d.id)
+        .attr("font-size", 12)
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "middle")
+        .attr("dy", 4)
+        .attr("fill", "#333")
+        .style("pointer-events", "none")
+        .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
+        
+    // const node = nodeGroup.selectAll("circle")
+    //   .data(nodes)
+    //   .join("circle")
+    //   .attr("r", d => d.size)
+    //   .attr("fill", d => colorScale(d.group))
+    //   .attr("stroke", "#fff")
+    //   .attr("stroke-width", 2)
+    //   .style("cursor", "pointer")
+    //   .call(d3.drag()
+    //     .on("start", dragstarted)
+    //     .on("drag", dragged)
+    //     .on("end", dragended))
+    //   // .on("mouseover", showTooltip)
+    //   // .on("mouseleave", hideTooltip);
+    //   .on("mouseenter", (event, d) => {
+    //     tooltipRef.current
+    //       .style("opacity", 1)
+    //       .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
+    //   })
+    //   .on("mousemove", (event) => {
+    //     tooltipRef.current
+    //       .style("left", (event.pageX + 10) + "px")
+    //       .style("top", (event.pageY + 10) + "px");
+    //   })
+    //   .on("mouseleave", () => {
+    //     tooltipRef.current.style("opacity", 0);
+    //   });
+    // // Create labels
+    // const label = nodeGroup.selectAll("text")
+    //   .data(nodes)
+    //   .join("text")
+    //   .text(d => d.id)
+    //   .attr("font-size", 12)
+    //   .attr("font-weight", "bold")
+    //   .attr("text-anchor", "middle")
+    //   .attr("dy", 4)
+    //   .attr("fill", "#333")
+    //   .style("pointer-events", "none")
+    //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
 
     // Update positions on tick
     simulation.on("tick", () => {
@@ -160,20 +189,21 @@ const ForceDirectedGraph = ({
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
 
-      node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
+      // node
+      //   .attr("cx", d => d.x)
+      //   .attr("cy", d => d.y);
+      // label
+      //   .attr("x", d => d.x)
+      //   .attr("y", d => d.y);
+      node.attr("transform", d => `translate(${d.x},${d.y})`);
 
-      label
-        .attr("x", d => d.x)
-        .attr("y", d => d.y);
     });
 
-    // Cleanup function
     return () => {
       simulation.stop();
     };
-  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, showTooltip, hideTooltip]);
+  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended]);
+  // [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, showTooltip, hideTooltip]);
 
   // Control functions
   const resetSimulation = useCallback(() => {
@@ -308,7 +338,7 @@ const ForceDirectedGraph = ({
               fontSize: '12px',
               pointerEvents: 'none',
               zIndex: 1000
-            }}
+            }} 
             dangerouslySetInnerHTML={{ __html: tooltip.content }}
           />
         )}
