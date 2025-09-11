@@ -70,8 +70,8 @@ const ForceDirectedGraph = ({
     const nodeGroup = svg.append("g").attr("class", "nodes");
     // Create simulation
     const simulation = d3.forceSimulation(nodes)
-      // .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
-      // .force("charge", d3.forceManyBody().strength(-chargeStrength))
+      .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
+      .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
       .force("collision", d3.forceCollide().radius(d => d.size + 5));
     simulationRef.current = simulation;
@@ -79,7 +79,7 @@ const ForceDirectedGraph = ({
     const link = linkGroup.selectAll("line")
       .data(links)
       .join("line")
-      .attr("stroke", "#999")
+      .attr("stroke", d => d.color || "#999")
       .attr("stroke-opacity", 0.6)
       .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
 
@@ -136,6 +136,7 @@ const ForceDirectedGraph = ({
         .attr("y", d=> (-25))
         .attr("height", d=> d.size)
         .attr("width", d=> d.size)
+        // .attr("clip-path", `url(#${d.img})`);
         .attr("clip-path", `url(#${ahwoo})`);
         console.log("where is ahwoo")
     // Update positions on tick
