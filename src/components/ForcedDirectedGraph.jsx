@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 // import linkdata from './../utilities/LinkData.json'
 // import nodedata from './../utilities/NodeData.json'
-// import ahwoo from './../utilities/ahwoo.jpg'
+import ahwoo from './../data/ahwoo.jpg'
 import './ForcedDirectedGraph.css'
 const ForceDirectedGraph = ({ 
   nodes = linkdata, 
@@ -93,17 +93,30 @@ const ForceDirectedGraph = ({
         .on("end", dragended)
       )
       node.append("clipPath")
-        .attr("id", d => d.img)
+        .attr("id", "clip-img")
         .append("circle")
-        .attr("r", d => d.size)
-        .attr("cx", 0)
-        .attr("cy", 0);
-        console.log("ahwoo")
-        
+        .attr("r", 20)
+        .attr("cx", 60)
+        .attr("cy", 60);
+
+      node.append("image")
+      // .attr("xlink:href", d => d.image)
+        .attr("href", ahwoo)
+        .attr("x", 40)    // cx - r
+        .attr("y", 40)    // cy - r
+        // .attr("height", d=> d.size)
+        // .attr("width", d=> d.size)
+        .attr("width", 40)
+        .attr("height", 40)
+        .attr("clip-path", "url(#clip-img)");
+
       node.append("circle")
-        // .attr("r", d => d.size)
+       // .attr("r", d => d.size)
         // .attr("fill", d => colorScale(d.group))
-        .attr("fill", "red")
+        .attr("cx", 60)
+        .attr("cy", 60)
+        .attr("r", 20)
+        .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
@@ -120,6 +133,30 @@ const ForceDirectedGraph = ({
         .on("mouseleave", () => {
           tooltipRef.current.style("opacity", 0);
         });
+
+      // node.append("circle")
+      //   // .attr("r", d => d.size)
+      //   // .attr("fill", d => colorScale(d.group))
+      //   .attr('cx', 60)
+      //   .attr('cy', 60)
+      //   .attr('r', 20)
+      //   .style('fill', ahwoo)
+      //   .attr("stroke", "steelblue")
+      //   .attr("stroke-width", 2)
+      //   .style("cursor", "pointer")
+      //   .on("mouseenter", (event, d) => {
+      //     tooltipRef.current
+      //       .style("opacity", 1)
+      //       .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
+      //   })
+      //   .on("mousemove", (event) => {
+      //     tooltipRef.current
+      //       .style("left", (event.pageX + 10) + "px")
+      //       .style("top", (event.pageY + 10) + "px");
+      //   })
+      //   .on("mouseleave", () => {
+      //     tooltipRef.current.style("opacity", 0);
+      //   });
       // node.append("text")
       //   .text(d => d.id)
       //   .attr("font-size", 12)
@@ -129,16 +166,17 @@ const ForceDirectedGraph = ({
       //   .attr("fill", "#333")
       //   .style("pointer-events", "none")
       //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
-      node.append("svg:image")
-        .attr("xlink:href", d => d.image)
-        // .attr("xlink:href", ahwoo)
-        .attr("x", d=>(-25))
-        .attr("y", d=> (-25))
-        .attr("height", d=> d.size)
-        .attr("width", d=> d.size)
-        // .attr("clip-path", `url(#${d.img})`);
-        .attr("clip-path", `url(#${d.id})`);
-        console.log("where is ahwoo")
+      // node.append("svg:image")
+      //   .attr("xlink:href", ahwoo)
+      //   // .attr("xlink:href", d => d.image)
+      //   // .attr("xlink:href", ahwoo)
+      //   .attr("x", d=>(-25))
+      //   .attr("y", d=> (-25))
+      //   .attr("height", d=> d.size)
+      //   .attr("width", d=> d.size)
+      //   // .attr("clip-path", `url(#${d.img})`);
+      //   .attr("clip-path", `url(#${ahwoo})`);
+      //   console.log("where is ahwoo")
     // Update positions on tick
     simulation.on("tick", () => {
       link
