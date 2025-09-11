@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
-import linkdata from './../utilities/LinkData.json'
-import nodedata from './../utilities/NodeData.json'
-import ahwoo from './../utilities/ahwoo.jpg'
+// import linkdata from './../utilities/LinkData.json'
+// import nodedata from './../utilities/NodeData.json'
+// import ahwoo from './../utilities/ahwoo.jpg'
 import './ForcedDirectedGraph.css'
 const ForceDirectedGraph = ({ 
   nodes = linkdata, 
@@ -93,7 +93,7 @@ const ForceDirectedGraph = ({
         .on("end", dragended)
       )
       node.append("clipPath")
-        .attr("id", ahwoo)
+        .attr("id", d => d.img)
         .append("circle")
         .attr("r", d => d.size)
         .attr("cx", 0)
@@ -130,14 +130,14 @@ const ForceDirectedGraph = ({
       //   .style("pointer-events", "none")
       //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
       node.append("svg:image")
-        //.attr("xlink:href", d => d.image)
-        .attr("xlink:href", ahwoo)
+        .attr("xlink:href", d => d.image)
+        // .attr("xlink:href", ahwoo)
         .attr("x", d=>(-25))
         .attr("y", d=> (-25))
         .attr("height", d=> d.size)
         .attr("width", d=> d.size)
         // .attr("clip-path", `url(#${d.img})`);
-        .attr("clip-path", `url(#${ahwoo})`);
+        .attr("clip-path", `url(#${d.id})`);
         console.log("where is ahwoo")
     // Update positions on tick
     simulation.on("tick", () => {
