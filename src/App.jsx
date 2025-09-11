@@ -2,12 +2,12 @@ import { useState } from "react";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import { sampleLinks, sampleNodes, networkNodes, networkLinks, socialLinks, socialNodes, graphUtils, mabLinks, mabNodes } from "./utilities/GraphData";
 import './App.css'
-import nodesData from './utilities/NodeData.json'
-import linksData from './utilities/LinkData.json'
+import nodesData from './data/NodeData.json'
+import linksData from './data/LinkData.json'
 
 const datasets = {
   sample: { nodes: sampleNodes, links: sampleLinks, name: "Sample Network" },
-  mab: {nodes: mabNodes, links: mabLinks, name: "MAB"}
+  mab: {nodes: nodesData, links: linksData, name: "MAB"}
 };
 
 const App = () => {
