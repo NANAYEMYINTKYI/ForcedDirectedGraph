@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 // import linkdata from './../utilities/LinkData.json'
 // import nodedata from './../utilities/NodeData.json'
-import ahwoo from './../data/ahwoo.jpg'
 import './ForcedDirectedGraph.css'
 const ForceDirectedGraph = ({ 
   nodes = linkdata, 
@@ -66,8 +65,18 @@ const ForceDirectedGraph = ({
         .style("z-index", 1000);
     }
     // Create groups
-    const linkGroup = svg.append("g").attr("class", "links");
-    const nodeGroup = svg.append("g").attr("class", "nodes");
+    const g=svg.append("g").attr("class","graph-group");
+    
+    const zoomHandler = (event) => {
+      g.attr("transform", event.transform);
+    };
+    const zoom = d3.zoom()
+      .scaleExtent([0.1, 8]) // Sets min and max zoom levels
+      .on("zoom", zoomHandler);
+     svg.call(zoom);
+     
+    const linkGroup = g.append("g").attr("class", "links");
+    const nodeGroup = g.append("g").attr("class", "nodes");
     // Create simulation
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
@@ -96,14 +105,14 @@ const ForceDirectedGraph = ({
         .attr("id", "clip-img")
         .append("circle")
         .attr("r", 20)
-        .attr("cx", 60)
-        .attr("cy", 60);
+        // .attr("cx", 60)
+        // .attr("cy", 60);
 
       node.append("image")
       // .attr("xlink:href", d => d.image)
-        .attr("href", ahwoo)
-        .attr("x", 40)    // cx - r
-        .attr("y", 40)    // cy - r
+        .attr("href", "https://avatars.githubusercontent.com/u/104527737?s=400&u=3f0e4f3a5a5f5e2f1e6e8e4f4f4f4f4f4f4f4f&v=4")
+        .attr("x", -20)    // cx - r
+        .attr("y", -20)    // cy - r
         // .attr("height", d=> d.size)
         // .attr("width", d=> d.size)
         .attr("width", 40)
@@ -113,8 +122,6 @@ const ForceDirectedGraph = ({
       node.append("circle")
        // .attr("r", d => d.size)
         // .attr("fill", d => colorScale(d.group))
-        .attr("cx", 60)
-        .attr("cy", 60)
         .attr("r", 20)
         .attr("fill", "none")
         .attr("stroke", "steelblue")
@@ -307,8 +314,9 @@ const ForceDirectedGraph = ({
       <div className="graph-container">
         <svg
           ref={svgRef}
-          width={width}
-          height={height}
+          // width={width}
+          // height={height}
+          viewBox={`0 0 ${width} ${height}`} // Add this line
           className="graph-svg"
         />
 
