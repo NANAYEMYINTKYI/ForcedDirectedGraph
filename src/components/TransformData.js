@@ -85,7 +85,7 @@ rawData.forEach((item) => {
       image: item["Images.1"],
       url: item.URL,
       size: 24,
-      continent: setGroup(item.Location, true),
+      group: setGroup(item.Location, true),
     };
   }
 });
@@ -96,7 +96,7 @@ rawData.forEach((item) => {
     nodeMap[item.Location] = {
       id: item.Location,
       size: 24,
-      continent: setGroup(item.Location),
+      group: setGroup(item.Location),
     };
   }
 });
