@@ -7,7 +7,7 @@ import linksData from './data/LinkData.json'
 
 const datasets = {
   sample: { nodes: sampleNodes, links: sampleLinks, name: "Sample Network" },
-  mab: {nodes: mabNodes, links: mabLinks, name: "MAB"}
+  mab: {nodes: nodesData, links: linksData, name: "MAB"}
 };
 
 const App = () => {

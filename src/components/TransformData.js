@@ -104,10 +104,10 @@ rawData.forEach((item) => {
 // Count occurrences
 links.forEach((link) => {
   if (nodeMap[link.source]) {
-    nodeMap[link.source].Size = Math.min(nodeMap[link.source].Size + 1, 50);
+    nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 1, 50);
   }
   if (nodeMap[link.target]) {
-    nodeMap[link.target].Size = Math.min(nodeMap[link.target].Size + 1, 50);
+    nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 1, 50);
   }
 });
 
