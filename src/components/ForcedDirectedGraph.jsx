@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 // import linkdata from './../utilities/LinkData.json'
 // import nodedata from './../utilities/NodeData.json'
+import pic from './pic.jpg'
 import './ForcedDirectedGraph.css'
 const ForceDirectedGraph = ({ 
   nodes = linkdata, 
@@ -101,29 +102,29 @@ const ForceDirectedGraph = ({
         .on("drag", dragged)
         .on("end", dragended)
       )
-      node.append("clipPath")
-        .attr("id", "clip-img")
-        .append("circle")
-        .attr("r", 20)
-        // .attr("cx", 60)
-        // .attr("cy", 60);
+      // node.append("clipPath")
+      //   .attr("id", "clip-img")
+      //   .append("circle")
+      //   .attr("r", 20)
+      //   // .attr("cx", 60)
+      //   // .attr("cy", 60);
 
-      node.append("image")
-      // .attr("xlink:href", d => d.image)
-        .attr("href", "https://avatars.githubusercontent.com/u/104527737?s=400&u=3f0e4f3a5a5f5e2f1e6e8e4f4f4f4f4f4f4f4f&v=4")
-        .attr("x", -20)    // cx - r
-        .attr("y", -20)    // cy - r
-        // .attr("height", d=> d.size)
-        // .attr("width", d=> d.size)
-        .attr("width", 40)
-        .attr("height", 40)
-        .attr("clip-path", "url(#clip-img)");
+      // node.append("image")
+      // // .attr("xlink:href", d => d.image)
+      //   .attr("href", pic)
+      //   .attr("x", -20)    // cx - r
+      //   .attr("y", -20)    // cy - r
+      //   // .attr("height", d=> d.size)
+      //   // .attr("width", d=> d.size)
+      //   .attr("width", 40)
+      //   .attr("height", 40)
+      //   .attr("clip-path", "url(#clip-img)");
 
       node.append("circle")
-       // .attr("r", d => d.size)
-        // .attr("fill", d => colorScale(d.group))
-        .attr("r", 20)
-        .attr("fill", "none")
+        .attr("r", d => d.size ) // Adjust radius based on id length
+        .attr("fill", d => colorScale(d.group))
+        // .attr("r", 20)
+        // .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
@@ -141,50 +142,15 @@ const ForceDirectedGraph = ({
           tooltipRef.current.style("opacity", 0);
         });
 
-      // node.append("circle")
-      //   // .attr("r", d => d.size)
-      //   // .attr("fill", d => colorScale(d.group))
-      //   .attr('cx', 60)
-      //   .attr('cy', 60)
-      //   .attr('r', 20)
-      //   .style('fill', ahwoo)
-      //   .attr("stroke", "steelblue")
-      //   .attr("stroke-width", 2)
-      //   .style("cursor", "pointer")
-      //   .on("mouseenter", (event, d) => {
-      //     tooltipRef.current
-      //       .style("opacity", 1)
-      //       .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
-      //   })
-      //   .on("mousemove", (event) => {
-      //     tooltipRef.current
-      //       .style("left", (event.pageX + 10) + "px")
-      //       .style("top", (event.pageY + 10) + "px");
-      //   })
-      //   .on("mouseleave", () => {
-      //     tooltipRef.current.style("opacity", 0);
-      //   });
-      // node.append("text")
-      //   .text(d => d.id)
-      //   .attr("font-size", 12)
-      //   .attr("font-weight", "bold")
-      //   .attr("text-anchor", "middle")
-      //   .attr("dy", 4)
-      //   .attr("fill", "#333")
-      //   .style("pointer-events", "none")
-      //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
-      // node.append("svg:image")
-      //   .attr("xlink:href", ahwoo)
-      //   // .attr("xlink:href", d => d.image)
-      //   // .attr("xlink:href", ahwoo)
-      //   .attr("x", d=>(-25))
-      //   .attr("y", d=> (-25))
-      //   .attr("height", d=> d.size)
-      //   .attr("width", d=> d.size)
-      //   // .attr("clip-path", `url(#${d.img})`);
-      //   .attr("clip-path", `url(#${ahwoo})`);
-      //   console.log("where is ahwoo")
-    // Update positions on tick
+      node.append("text")
+        .text(d => d.id)
+        .attr("font-size", 12)
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "middle")
+        .attr("dy", 4)
+        .attr("fill", "#333")
+        .style("pointer-events", "none")
+        .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
     simulation.on("tick", () => {
       link
         .attr("x1", d => d.source.x)
@@ -240,7 +206,7 @@ const ForceDirectedGraph = ({
     setLinkStrength(value);
     if (simulationRef.current) {
       simulationRef.current.force("link", d3.forceLink(links).id(d => d.id).strength(value));
-      simulationRef.current.alpha(0.3).restart();
+      simulationRef.current.alpha(0.5).restart();
     }
   }, [links]);
 

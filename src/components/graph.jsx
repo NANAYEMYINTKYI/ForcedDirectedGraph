@@ -1,117 +1,136 @@
-import React, { useEffect, useRef,useCallback } from 'react';
-import * as d3 from 'd3';
+import React, { useState, useEffect, useRef } from "react";
+import * as d3 from "d3";
+import "./ForcedDirectedGraph.css";
 
-import linkdata from '../data/linkdata.json';
-import nodedata from '../data/nodedata.json';
-import './ForcedDirectedGraph.css';
-
-const Graph = () => {
+/**
+ * ForceDirectedGraph
+ * @param {Array} nodes - Array of node objects with at least { id }
+ * @param {Array} links - Array of link objects with { source, target }
+ * @param {number} width - SVG width
+ * @param {number} height - SVG height
+ * @param {number} batchSize - Number of nodes added per step
+ * @param {number} intervalMs - Delay between batches in milliseconds
+ */
+const ForceDirectedGraph = ({
+  nodes,
+  links,
+  width = window.innerWidth,
+  height = window.innerHeight,
+  batchSize = 5,
+  intervalMs = 250
+}) => {
   const svgRef = useRef();
   const simulationRef = useRef();
-  
-  const width = 928;
-  const height = 600;
-  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  const [visible, setVisible] = useState({ nodes: [], links: [] });
 
-  // Prepare data - create copies to avoid mutating original data
-  const links = linkdata.links.map(d => ({ ...d }));
-  const nodes = nodedata.nodes.map(d => ({ ...d }));
+  // Helper: map links to actual node references
+  const mapLinks = (nodesSubset, allLinks) => {
+    const nodeById = new Map(nodesSubset.map((n) => [n.id, n]));
+    return allLinks
+      .filter(
+        (l) => nodeById.has(l.source) && nodeById.has(l.target)
+      )
+      .map((l) => ({
+        ...l,
+        source: nodeById.get(l.source),
+        target: nodeById.get(l.target)
+      }));
+  };
 
-  // Drag functions
-  const dragstarted = useCallback((event) => {
-    if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
-    event.subject.fx = event.subject.x;
-    event.subject.fy = event.subject.y;
-  }, []);
-
-  const dragged = useCallback((event) => {
-    event.subject.fx = event.x;
-    event.subject.fy = event.y;
-  }, []);
-
-  const dragended = useCallback((event) => {
-    if (!event.active) simulationRef.current.alphaTarget(0);
-    event.subject.fx = null;
-    event.subject.fy = null;
-  }, []);
-
-  // Tick function
-  const ticked = useCallback(() => {
-    const svg = d3.select(svgRef.current);
-    
-    svg.selectAll('.link')
-      .attr("x1", d => d.source.x)
-      .attr("y1", d => d.source.y)
-      .attr("x2", d => d.target.x)
-      .attr("y2", d => d.target.y);
-
-    svg.selectAll('.node')
-      .attr("cx", d => d.x)
-      .attr("cy", d => d.y);
-  }, []);
-
+  // Progressive reveal of nodes and links
   useEffect(() => {
-    const svg = d3.select(svgRef.current)
-      .attr("width", width)
-      .attr("height", height);
+    if (!nodes || !links) return;
+    let i = 0;
+    const timer = setInterval(() => {
+      i += batchSize;
+      const currentNodes = nodes.slice(0, i);
+      const currentLinks = mapLinks(currentNodes, links);
+      setVisible({ nodes: currentNodes, links: currentLinks });
 
-    // Clear any existing content
+      if (i >= nodes.length) {
+        clearInterval(timer);
+      }
+    }, intervalMs);
+
+    return () => clearInterval(timer);
+  }, [nodes, links, batchSize, intervalMs]);
+
+  // Render graph whenever visible data changes
+  useEffect(() => {
+    const { nodes: visNodes, links: visLinks } = visible;
+    if (!svgRef.current || visNodes.length === 0) return;
+
+    // Clear old content
+    const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
 
-    // Create simulation
-    const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id))
-      .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, height / 2))
-      .on("tick", ticked);
+    // Main group for zoom/pan
+    const g = svg.append("g")
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
+    // Zoom behavior
+    svg.call(
+      d3.zoom().on("zoom", (event) => g.attr("transform", event.transform))
+    );
 
-    // Store simulation reference for drag handlers
-    simulationRef.current = simulation;
-
-    // Add a line for each link
-    const link = svg.append("g")
+    // Links
+    const link = g
+      .append("g")
       .attr("stroke", "#999")
       .attr("stroke-opacity", 0.6)
-      .selectAll(".link")
-      .data(links)
-      .join("line")
-      .attr("class", "link")
-      .attr("stroke-width", d => Math.sqrt(d.value));
+      .selectAll("line")
+      .data(visLinks)
+      .join("line");
 
-    // Add a circle for each node
-    const node = svg.append("g")
-      .attr("stroke", "#fff")
-      .attr("stroke-width", 1.5)
-      .selectAll(".node")
-      .data(nodes)
+    // Nodes
+    const node = g
+      .append("g")
+      .selectAll("circle")
+      .data(visNodes)
       .join("circle")
-      .attr("class", "node")
-      .attr("r", 5)
-      .attr("fill", d => color(d.group));
+      .attr("r", 15)
+      .attr("fill", "steelblue")
+      .style("cursor", "pointer")
+      .call(
+        d3.drag()
+          .on("start", (event, d) => {
+            if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+          })
+          .on("drag", (event, d) => {
+            d.fx = event.x;
+            d.fy = event.y;
+          })
+          .on("end", (event, d) => {
+            if (!event.active) simulationRef.current.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+          })
+      );
 
-    // Add titles to nodes
-    node.append("title")
-      .text(d => d.id);
+    // Simulation
+    const simulation = d3
+      .forceSimulation(visNodes)
+      .force("link", d3.forceLink(visLinks).id((d) => d.id).distance(100))
+      .force("charge", d3.forceManyBody().strength(-200))
+      .force("center", d3.forceCenter(width / 2, height / 2));
 
-    // Add drag behavior
-    node.call(d3.drag()
-      .on("start", dragstarted)
-      .on("drag", dragged)
-      .on("end", dragended));
+    simulationRef.current = simulation;
 
-    // Cleanup function to stop simulation when component unmounts
-    return () => {
-      if (simulationRef.current) {
-        simulationRef.current.stop();
-      }
-    };
-  }, []); // Empty dependency array means this runs once on mount
+    simulation.on("tick", () => {
+      link
+        .attr("x1", (d) => d.source.x)
+        .attr("y1", (d) => d.source.y)
+        .attr("x2", (d) => d.target.x)
+        .attr("y2", (d) => d.target.y);
 
-  return (
-    <div className="force-directed-graph">
-      <svg ref={svgRef}></svg>
-    </div>
-  );
+      node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+    });
+
+    return () => simulation.stop();
+  }, [visible, width, height]);
+
+  return <svg ref={svgRef} width={width} height={height}></svg>;
 };
 
-export default Graph;
+export default ForceDirectedGraph;

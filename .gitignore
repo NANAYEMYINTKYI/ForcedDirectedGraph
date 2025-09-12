@@ -15,8 +15,10 @@ dist-ssr
 vite.config.js
 LinkData.json
 NodeData.json
-ahwoo.jpg
-
+pic.jpg
+graph.css
+graph.jsx
+mab2023Data.json
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
