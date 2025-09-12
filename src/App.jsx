@@ -2,6 +2,7 @@ import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import './App.css'
 import nodesData from './data/NodeData.json'
 import linksData from './data/LinkData.json'
+import Graph from "./components/graph"
 // const datasets = {
 //   sample: { nodes: sampleNodes, links: sampleLinks, name: "Sample Network" },
 //   mab: {nodes: nodesData, links: linksData, name: "MAB"}
@@ -15,6 +16,9 @@ const App = () => {
         <ForceDirectedGraph
           nodes={nodesData} links={linksData} width={928} height={600} 
         />
+        {/* <Graph
+          nodes={nodesData} links={linksData} width={928} height={600} 
+        /> */}
       </div>
   );
 };
