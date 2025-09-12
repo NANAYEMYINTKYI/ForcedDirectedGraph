@@ -29,6 +29,7 @@ const App = () => {
         <ForceDirectedGraph
           nodes={nodesData} links={linksData} width={928} height={600} 
         />
+        
       </div>
   );
   // return (
