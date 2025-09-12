@@ -79,10 +79,20 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
-      .force("charge", d3.forceManyBody().strength(-chargeStrength))
+
+      .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
+      .force("charge", d3.forceManyBody().strength(-chargeStrength*2))
       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
-      .force("collision", d3.forceCollide().radius(d => d.size + 5));
+      .force("collision", d3.forceCollide().radius(d => d.size*4/3))
+      .force("y", d3.forceY(height/2))
+      .force("x", d3.forceX(width/2));
+      
+
+//       .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
+//       .force("charge", d3.forceManyBody().strength(-chargeStrength))
+//       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
+//       .force("collision", d3.forceCollide().radius(d => d.size + 5));
+
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
@@ -108,6 +118,7 @@ const ForceDirectedGraph = ({
         // .attr("cx", 60)
         // .attr("cy", 60);
 
+
       node.append("image")
       // .attr("xlink:href", d => d.image)
         .attr("href", "https://avatars.githubusercontent.com/u/104527737?s=400&u=3f0e4f3a5a5f5e2f1e6e8e4f4f4f4f4f4f4f4f&v=4")
@@ -122,6 +133,7 @@ const ForceDirectedGraph = ({
       node.append("circle")
        // .attr("r", d => d.size)
         // .attr("fill", d => colorScale(d.group))
+
         .attr("r", 20)
         .attr("fill", "none")
         .attr("stroke", "steelblue")
@@ -140,6 +152,7 @@ const ForceDirectedGraph = ({
         .on("mouseleave", () => {
           tooltipRef.current.style("opacity", 0);
         });
+
 
       // node.append("circle")
       //   // .attr("r", d => d.size)
@@ -173,6 +186,7 @@ const ForceDirectedGraph = ({
       //   .attr("fill", "#333")
       //   .style("pointer-events", "none")
       //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
+
       // node.append("svg:image")
       //   .attr("xlink:href", ahwoo)
       //   // .attr("xlink:href", d => d.image)

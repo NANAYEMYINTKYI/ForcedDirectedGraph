@@ -2650,545 +2650,183 @@
     "group": 9
   },
   {
-    "id": "Germany, Darmstadt",
-    "size": 25,
+    "id": "Germany",
+    "size": 49,
     "group": 3
   },
   {
-    "id": "Brazil, Sao Paulo",
-    "size": 29,
+    "id": "Brazil",
+    "size": 31,
     "group": 5
   },
   {
-    "id": "United Kingdom, London",
-    "size": 34,
+    "id": "United Kingdom",
+    "size": 36,
     "group": 3
   },
   {
-    "id": "Russia, Moscow",
-    "size": 26,
-    "group": 3
-  },
-  {
-    "id": "Spain, MADRID",
+    "id": "Russia",
     "size": 28,
     "group": 3
   },
   {
-    "id": "United States of America, Norway, Trondheim",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Germany, Weimar",
-    "size": 30,
+    "id": "Spain",
+    "size": 39,
     "group": 3
   },
   {
-    "id": "China, Lu'an, Anhui",
+    "id": "United States of America",
+    "size": 41,
+    "group": 4
+  },
+  {
+    "id": "China",
+    "size": 43,
+    "group": 2
+  },
+  {
+    "id": "Qatar",
     "size": 25,
     "group": 2
   },
   {
-    "id": "Qatar, Doha",
-    "size": 25,
+    "id": "South Korea",
+    "size": 38,
     "group": 2
   },
   {
-    "id": "China, Beijing",
+    "id": "Australia",
+    "size": 44
+  },
+  {
+    "id": "Belgium",
     "size": 28,
-    "group": 2
-  },
-  {
-    "id": "Spain, ASTURIAS",
-    "size": 25,
     "group": 3
   },
   {
-    "id": "South Korea, Seoul",
-    "size": 31,
-    "group": 2
+    "id": "Ukraine",
+    "size": 42,
+    "group": 3
   },
   {
-    "id": "Australia, Sydney",
-    "size": 29
-  },
-  {
-    "id": "China, Guangzhou",
+    "id": "Kazakhstan",
     "size": 25,
     "group": 2
   },
   {
-    "id": "Belgium, Leuven",
-    "size": 25,
+    "id": "France",
+    "size": 36,
     "group": 3
   },
   {
-    "id": "Ukraine, Kiev",
-    "size": 27,
+    "id": "Austria",
+    "size": 37,
     "group": 3
   },
   {
-    "id": "Ukraine, Dnipro",
-    "size": 31,
-    "group": 3
-  },
-  {
-    "id": "Kazakhstan, Astana",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Ukraine, Odesa",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "South Korea, Pyeongchang",
-    "size": 26,
-    "group": 2
-  },
-  {
-    "id": "France, Paris",
-    "size": 29,
-    "group": 3
-  },
-  {
-    "id": "Austria, Vienna",
-    "size": 30,
-    "group": 3
-  },
-  {
-    "id": "United States of America, Washington, D.C.",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "United Kingdom, Hull",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Singapore, Singapore",
+    "id": "Singapore",
     "size": 27,
     "group": 2
   },
   {
-    "id": "China, Shenzhen",
+    "id": "Japan",
     "size": 26,
     "group": 2
   },
   {
-    "id": "United States of America, New York City",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "United States of America, Philadelphia",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Japan, Tokyo",
-    "size": 26,
-    "group": 2
-  },
-  {
-    "id": "United States of America, San Francisco",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "South Korea, Yeosu",
-    "size": 26,
-    "group": 2
-  },
-  {
-    "id": "Denmark, Aarhus",
-    "size": 30,
+    "id": "Denmark",
+    "size": 35,
     "group": 3
   },
   {
-    "id": "China, Shanghai",
-    "size": 28,
-    "group": 2
-  },
-  {
-    "id": "China, Sanya",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Spain, Singapore, Bilbao, Singapore",
+    "id": "Iceland",
     "size": 25,
     "group": 3
   },
   {
-    "id": "United Kingdom, London and Nottingham",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Iceland, Reykjavik",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Angola, Luanda",
+    "id": "Angola",
     "size": 25,
     "group": 1
   },
   {
-    "id": "China, Wuhan",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Canada, Toronto",
-    "size": 27,
+    "id": "Canada",
+    "size": 37,
     "group": 4
   },
   {
-    "id": "Germany, Frankfurt",
-    "size": 27,
+    "id": "Netherlands",
+    "size": 37,
     "group": 3
   },
   {
-    "id": "Netherlands, Rotterdam",
-    "size": 29,
-    "group": 3
-  },
-  {
-    "id": "Switzerland, Zurich",
-    "size": 27,
-    "group": 3
-  },
-  {
-    "id": "United States of America, New York",
-    "size": 27,
-    "group": 4
-  },
-  {
-    "id": "Switzerland, Basel",
-    "size": 26,
-    "group": 3
-  },
-  {
-    "id": "Indonesia, Jakarta",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Malaysia, BUTTERWORTH, PENANG",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Finland, Helsinki",
+    "id": "Switzerland",
     "size": 30,
     "group": 3
   },
   {
-    "id": "Australia,",
-    "size": 26
-  },
-  {
-    "id": "China, Macau",
-    "size": 26,
+    "id": "Indonesia",
+    "size": 25,
     "group": 2
   },
   {
-    "id": "Germany, Berlin",
-    "size": 27,
-    "group": 3
-  },
-  {
-    "id": "Russia, South Korea, Nikola-Lenivets and Seoul",
+    "id": "Malaysia",
     "size": 25,
+    "group": 2
+  },
+  {
+    "id": "Finland",
+    "size": 31,
     "group": 3
   },
   {
-    "id": "Germany, Hamburg",
+    "id": "Taiwan",
     "size": 28,
-    "group": 3
-  },
-  {
-    "id": "South Korea, Gyeomggi-do",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Denmark, Kolding",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Finland, Oulu",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Taiwan, Kaohsiung",
-    "size": 25,
     "group": 8
   },
   {
-    "id": "South Korea, Cheonan",
+    "id": "India",
     "size": 25,
     "group": 2
   },
   {
-    "id": "India, Ahmedabad",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Austria, Linz",
-    "size": 27,
-    "group": 3
-  },
-  {
-    "id": "Spain, Sweden, Hungary, Finland, Switzerland,",
+    "id": "Belarus",
     "size": 25,
     "group": 3
   },
   {
-    "id": "United States of America, Jackson, Wyoming",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "France, Strasbourg, Orlí©ans, Mulhouse, Reims, etc..",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Germany, Leipzig",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Canada, Montreal",
-    "size": 29,
-    "group": 4
-  },
-  {
-    "id": "Denmark, Roskilde",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Germany, Falkenberg / Elster",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Australia, Uluru",
-    "size": 25
-  },
-  {
-    "id": "Belarus, Minsk",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Peru, Lima",
+    "id": "Peru",
     "size": 25,
     "group": 5
   },
   {
-    "id": "Spain, Cordoba",
+    "id": "Norway",
     "size": 25,
     "group": 3
   },
   {
-    "id": "Belgium, Brussels",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Norway, United Kingdom, New Zealand, Australia, exhibited in Oslo/Geneva/Bristol/Vlissingen/Bremen/Cologne",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Austria, Graz",
-    "size": 27,
-    "group": 3
-  },
-  {
-    "id": "Germany,",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Turkey, ISTANBUL",
+    "id": "Turkey",
     "size": 27,
     "group": 2
   },
   {
-    "id": "Italy, Milan",
-    "size": 25,
+    "id": "Italy",
+    "size": 27,
     "group": 3
   },
   {
-    "id": "France, Lille",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Netherlands, Amsterdam",
-    "size": 28,
-    "group": 3
-  },
-  {
-    "id": "South Korea, Daegu",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Kenya, Nairobi",
+    "id": "Kenya",
     "size": 25,
     "group": 1
   },
   {
-    "id": "United States of America, Reading, Pennsylvania",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Netherlands, Eindhoven",
+    "id": "Iran",
     "size": 26,
-    "group": 3
-  },
-  {
-    "id": "Russia, Sochi",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Germany, Tornesch",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "United States of America, Los Angeles",
-    "size": 26,
-    "group": 4
-  },
-  {
-    "id": "United States of America,",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Denmark, Hellerup",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Belgium, Wetteren",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "China, Chengdu",
-    "size": 25,
     "group": 2
   },
   {
-    "id": "United States of America, San Jose",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "France, St Etienne",
-    "size": 26,
-    "group": 3
-  },
-  {
-    "id": "Germany, Düsseldorf",
+    "id": "Sweden",
     "size": 25,
     "group": 3
-  },
-  {
-    "id": "Spain, Santa Cruz de Tenerife",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Spain, Logroí±o",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "United States of America, San Diego",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "United States of America, San Jose, California",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Iran, Mashhad",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Germany, Böblingen",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Australia, Brisbane",
-    "size": 26
-  },
-  {
-    "id": "Sweden, Gothenburg",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Switzerland, GENEVA",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Italy, Roma",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Taiwan, Taipei",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Spain, Almerí­a",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Ukraine, Kyiv",
-    "size": 29,
-    "group": 3
-  },
-  {
-    "id": "Ukraine, Mariupol",
-    "size": 26,
-    "group": 3
-  },
-  {
-    "id": "Spain, Bilbao",
-    "size": 26,
-    "group": 3
-  },
-  {
-    "id": "Brazil, Sao Paulo, Belo Horizonte, Rio de Janeiro and Sí£o Josí© dos Campos",
-    "size": 25,
-    "group": 5
   },
   {
     "id": "Kyiv",
@@ -3196,184 +2834,34 @@
     "group": 8
   },
   {
-    "id": "Greece, Athens",
+    "id": "Greece",
     "size": 25,
     "group": 3
   },
   {
-    "id": "Romania, Bucharest",
+    "id": "Romania",
     "size": 25,
     "group": 3
   },
   {
-    "id": "Canada, Calgary",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Iran, Tehran",
+    "id": "United Arab Emirates",
     "size": 25,
     "group": 2
   },
   {
-    "id": "United Arab Emirates, Dubai",
+    "id": "Bahrain",
     "size": 25,
     "group": 2
   },
   {
-    "id": "Germany, Bremerhaven",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Germany, Frankfurt am Main",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Bahrain, Sakhir",
+    "id": "Hong Kong",
     "size": 25,
     "group": 2
   },
   {
-    "id": "Spain, Barcelona",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Spain, Seville",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Australia, Melbourne",
-    "size": 30
-  },
-  {
-    "id": "Netherlands, Groningen",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Hong Kong, Hong Kong",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Netherlands, Den Haag",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Australia, Canada, Brisbane",
-    "size": 25
-  },
-  {
-    "id": "United States of America, Orlando",
+    "id": "Mexico",
     "size": 25,
     "group": 4
-  },
-  {
-    "id": "Mexico, Mexico City",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Brazil, Germany, United States of America,",
-    "size": 25,
-    "group": 5
-  },
-  {
-    "id": "Taiwan, Taichung",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "China, shenyang",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Taiwan, Hsinchu",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Austria, Belgium, Germany, Spain, United Kingdom, Linz, Austria; Madrid, Spain; Brussels, Belgium; Hagen, Germany; Liverpool, UK",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "France, Le Havre",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "France, Toulouse",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Australia, Buranda, Brisbane",
-    "size": 25
-  },
-  {
-    "id": "Canada, Ottawa",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Canada, Kitchener",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Denmark, Aarhus & Aalborg",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "France, Poitiers",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Australia, Perth",
-    "size": 25
-  },
-  {
-    "id": "China, Netherlands, Poland, Opened in Beijing, Tianjin, Dalian, Rotterdam, Krakow",
-    "size": 25,
-    "group": 2
-  },
-  {
-    "id": "Australia, Melbourne, Ararat, Gwangju",
-    "size": 25
-  },
-  {
-    "id": "Denmark, Haslev",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Canada, United Kingdom, Montreal",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Canada, United Kingdom, 1. Montreal, CA / 2. Barnsley, UK",
-    "size": 25,
-    "group": 4
-  },
-  {
-    "id": "Italy, Rome",
-    "size": 25,
-    "group": 3
-  },
-  {
-    "id": "Belgium, Netherlands, Leuven, Genk, Houthalen-Helchteren, Peer, Antwerpen, Heist-op-den-Berg, Gent, Amsterdam",
-    "size": 25,
-    "group": 3
   },
   {
     "id": "Berlin",
@@ -3381,7 +2869,7 @@
     "group": 8
   },
   {
-    "id": "Kosovo, Prishtina",
+    "id": "Kosovo",
     "size": 25,
     "group": 8
   }
