@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
+// import linkdata from './../utilities/LinkData.json'
+// import nodedata from './../utilities/NodeData.json'
 import './ForcedDirectedGraph.css'
 const ForceDirectedGraph = ({ 
-  nodes = initialNodes, 
-  links = initialLinks,
-  width = 928,
-  height = 680 
+  nodes = linkdata, 
+  links = nodedata,
+  width = 300,
+  height = 400
 }) => {
   // Refs
   const svgRef = useRef();
@@ -42,24 +44,6 @@ const ForceDirectedGraph = ({
     d.fx = null;
     d.fy = null;
   }, []);
-  // const [tooltipTimeout, setTooltipTimeout] = useState(null);
-  // Tooltip functions
-  // const showTooltip = useCallback((event, d) => {
-  //   // if (!svgRef.current) return;
-  //   const rect = svgRef.current.getBoundingClientRect();
-  //   console.log("tooltip")
-  //   setTooltip({
-  //     visible: true,
-  //     x: event.clientX - rect.left + 10,
-  //     y: event.clientY - rect.top - 10,
-  //     content: `
-  //       <strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`
-  //     });
-  // }, []);
-
-  // const hideTooltip = useCallback(() => {
-  //   setTooltip({ visible: false, x: 0, y: 0, content: '' });
-  // }, []);
 
   // Initialize and update graph
   useEffect(() => {
@@ -81,13 +65,21 @@ const ForceDirectedGraph = ({
         .style("z-index", 1000);
     }
     // Create groups
-    const linkGroup = svg.append("g").attr("class", "links");
-    const nodeGroup = svg.append("g").attr("class", "nodes");
-    // const nodesCopy = nodes.map(d => ({...d}));
-    // const linksCopy = links.map(d => ({...d}));
-
+    const g=svg.append("g").attr("class","graph-group");
+    
+    const zoomHandler = (event) => {
+      g.attr("transform", event.transform);
+    };
+    const zoom = d3.zoom()
+      .scaleExtent([0.1, 8]) // Sets min and max zoom levels
+      .on("zoom", zoomHandler);
+     svg.call(zoom);
+     
+    const linkGroup = g.append("g").attr("class", "links");
+    const nodeGroup = g.append("g").attr("class", "nodes");
     // Create simulation
     const simulation = d3.forceSimulation(nodes)
+
       .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
       .force("charge", d3.forceManyBody().strength(-chargeStrength*2))
       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
@@ -95,12 +87,18 @@ const ForceDirectedGraph = ({
       .force("y", d3.forceY(height/2))
       .force("x", d3.forceX(width/2));
       
+
+//       .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
+//       .force("charge", d3.forceManyBody().strength(-chargeStrength))
+//       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
+//       .force("collision", d3.forceCollide().radius(d => d.size + 5));
+
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
       .data(links)
       .join("line")
-      .attr("stroke", "#999")
+      .attr("stroke", d => d.color || "#999")
       .attr("stroke-opacity", 0.6)
       .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
 
@@ -120,20 +118,22 @@ const ForceDirectedGraph = ({
         // .attr("cx", 60)
         // .attr("cy", 60);
 
-      // node.append("image")
-      // // .attr("xlink:href", d => d.image)
-      //   .attr("href", d => d.image)
-      //   .attr("x", -20)    // cx - r
-      //   .attr("y", -20)    // cy - r
-      //   // .attr("height", d=> d.size)
-      //   // .attr("width", d=> d.size)
-      //   .attr("width", 40)
-      //   .attr("height", 40)
-      //   .attr("clip-path", "url(#clip-img)");
+
+      node.append("image")
+      // .attr("xlink:href", d => d.image)
+        .attr("href", "https://avatars.githubusercontent.com/u/104527737?s=400&u=3f0e4f3a5a5f5e2f1e6e8e4f4f4f4f4f4f4f4f&v=4")
+        .attr("x", -20)    // cx - r
+        .attr("y", -20)    // cy - r
+        // .attr("height", d=> d.size)
+        // .attr("width", d=> d.size)
+        .attr("width", 40)
+        .attr("height", 40)
+        .attr("clip-path", "url(#clip-img)");
 
       node.append("circle")
-        .attr("r", d => d.size)
-        .attr("fill", d => colorScale(d.group))
+       // .attr("r", d => d.size)
+        // .attr("fill", d => colorScale(d.group))
+
         .attr("r", 20)
         .attr("fill", "none")
         .attr("stroke", "steelblue")
@@ -152,6 +152,7 @@ const ForceDirectedGraph = ({
         .on("mouseleave", () => {
           tooltipRef.current.style("opacity", 0);
         });
+
 
       // node.append("circle")
       //   // .attr("r", d => d.size)
@@ -176,22 +177,15 @@ const ForceDirectedGraph = ({
       //   .on("mouseleave", () => {
       //     tooltipRef.current.style("opacity", 0);
       //   });
-      node.append("text")
-        .text(d => d.id)
-        .attr("font-size", 12)
-        .attr("font-weight", "bold")
-        .attr("text-anchor", "middle")
-        .attr("dy", 4)
-        .attr("fill", "#333")
-        .style("pointer-events", "none")
-        .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
-        .selectAll("tspan")
-        .data(d => d.id.split(" "))   // split by spaces
-        .enter()
-        .append("tspan")
-        .attr("x", 0)
-        .attr("dy", (d, i) => i === 0 ? 0 : 14) // 14px line height
-        // .text(d => d);;
+      // node.append("text")
+      //   .text(d => d.id)
+      //   .attr("font-size", 12)
+      //   .attr("font-weight", "bold")
+      //   .attr("text-anchor", "middle")
+      //   .attr("dy", 4)
+      //   .attr("fill", "#333")
+      //   .style("pointer-events", "none")
+      //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
 
       // node.append("svg:image")
       //   .attr("xlink:href", ahwoo)
@@ -211,13 +205,6 @@ const ForceDirectedGraph = ({
         .attr("y1", d => d.source.y)
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
-
-      // node
-      //   .attr("cx", d => d.x)
-      //   .attr("cy", d => d.y);
-      // label
-      //   .attr("x", d => d.x)
-      //   .attr("y", d => d.y);
       node.attr("transform", d => `translate(${d.x},${d.y})`);
 
     });
@@ -283,10 +270,10 @@ const ForceDirectedGraph = ({
   return (
     <div className="force-graph-container">
       {/* Header */}
-      <div className="header">
+      {/* <div className="header">
         <h1>🌐 Force-Directed Graph</h1>
         <p className="subtitle">Interactive network visualization with physics simulation</p>
-      </div>
+      </div> */}
 
       {/* Controls */}
       <div className="controls">
@@ -328,23 +315,25 @@ const ForceDirectedGraph = ({
           />
         </div>
         
-        <button onClick={resetSimulation} className="control-button">
+        {/* <button onClick={resetSimulation} className="control-button">
           🔄 Reset
         </button>
         
         <button onClick={togglePause} className="control-button">
           {isPaused ? '▶️ Resume' : '⏸️ Pause'}
-        </button>
+        </button> */}
       </div>
 
       {/* Graph */}
       <div className="graph-container">
         <svg
           ref={svgRef}
-          width={width}
-          height={height}
+          // width={width}
+          // height={height}
+          viewBox={`0 0 ${width} ${height}`} // Add this line
           className="graph-svg"
         />
+
         
         {/* Tooltip */}
         {tooltip.visible && (
@@ -365,15 +354,6 @@ const ForceDirectedGraph = ({
             dangerouslySetInnerHTML={{ __html: tooltip.content }}
           />
         )}
-      </div>
-
-      {/* Info Panel */}
-      <div className="info-panel">
-        <strong>Instructions:</strong>
-        • Drag nodes to reposition them
-        • Hover over nodes for details
-        • Adjust controls to change physics behavior
-        • Click reset to randomize positions
       </div>
     </div>
   );

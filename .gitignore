@@ -15,6 +15,7 @@ dist-ssr
 vite.config.js
 LinkData.json
 NodeData.json
+ahwoo.jpg
 
 # Editor directories and files
 .vscode/*
