@@ -52,10 +52,10 @@ function setGroup(location, isproject = false) {
 
 // node → connectionNode
 let links = rawData
-  .filter(d => d.Title && d.Location)
+  .filter(d => d.Title && d.Location.split(",")[0].trim())
   .map(d => ({
     source: d.Title,
-    target: d.Location,
+    target: d.Location.split(",")[0].trim(),
     strength: 1
   }));
 
@@ -92,9 +92,9 @@ rawData.forEach((item) => {
 
 // Add connectionNode
 rawData.forEach((item) => {
-  if (!nodeMap[item.Location]) {
-    nodeMap[item.Location] = {
-      id: item.Location,
+  if (!nodeMap[item.Location.split(",")[0].trim()]) {
+    nodeMap[item.Location.split(",")[0].trim()] = {
+      id: item.Location.split(",")[0].trim(),
       size: 24,
       group: setGroup(item.Location),
     };

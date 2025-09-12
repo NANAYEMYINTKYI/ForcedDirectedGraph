@@ -88,12 +88,13 @@ const ForceDirectedGraph = ({
 
     // Create simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
-      // .force("link", d3.forceLink(links).id(d => d.id))
-      .force("charge", d3.forceManyBody().strength(-chargeStrength))
+      .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
+      .force("charge", d3.forceManyBody().strength(-chargeStrength*2))
       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
-      .force("collision", d3.forceCollide().radius(d => d.size + 5));
-
+      .force("collision", d3.forceCollide().radius(d => d.size*4/3))
+      .force("y", d3.forceY(height/2))
+      .force("x", d3.forceX(width/2));
+      
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
@@ -112,10 +113,30 @@ const ForceDirectedGraph = ({
         .on("drag", dragged)
         .on("end", dragended)
       )
+      node.append("clipPath")
+        .attr("id", "clip-img")
+        .append("circle")
+        .attr("r", 20)
+        // .attr("cx", 60)
+        // .attr("cy", 60);
+
+      // node.append("image")
+      // // .attr("xlink:href", d => d.image)
+      //   .attr("href", d => d.image)
+      //   .attr("x", -20)    // cx - r
+      //   .attr("y", -20)    // cy - r
+      //   // .attr("height", d=> d.size)
+      //   // .attr("width", d=> d.size)
+      //   .attr("width", 40)
+      //   .attr("height", 40)
+      //   .attr("clip-path", "url(#clip-img)");
+
       node.append("circle")
         .attr("r", d => d.size)
         .attr("fill", d => colorScale(d.group))
-        .attr("stroke", "#fff")
+        .attr("r", 20)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
         .on("mouseenter", (event, d) => {
@@ -131,6 +152,30 @@ const ForceDirectedGraph = ({
         .on("mouseleave", () => {
           tooltipRef.current.style("opacity", 0);
         });
+
+      // node.append("circle")
+      //   // .attr("r", d => d.size)
+      //   // .attr("fill", d => colorScale(d.group))
+      //   .attr('cx', 60)
+      //   .attr('cy', 60)
+      //   .attr('r', 20)
+      //   .style('fill', ahwoo)
+      //   .attr("stroke", "steelblue")
+      //   .attr("stroke-width", 2)
+      //   .style("cursor", "pointer")
+      //   .on("mouseenter", (event, d) => {
+      //     tooltipRef.current
+      //       .style("opacity", 1)
+      //       .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
+      //   })
+      //   .on("mousemove", (event) => {
+      //     tooltipRef.current
+      //       .style("left", (event.pageX + 10) + "px")
+      //       .style("top", (event.pageY + 10) + "px");
+      //   })
+      //   .on("mouseleave", () => {
+      //     tooltipRef.current.style("opacity", 0);
+      //   });
       node.append("text")
         .text(d => d.id)
         .attr("font-size", 12)
@@ -139,48 +184,26 @@ const ForceDirectedGraph = ({
         .attr("dy", 4)
         .attr("fill", "#333")
         .style("pointer-events", "none")
-        .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
-        
-    // const node = nodeGroup.selectAll("circle")
-    //   .data(nodes)
-    //   .join("circle")
-    //   .attr("r", d => d.size)
-    //   .attr("fill", d => colorScale(d.group))
-    //   .attr("stroke", "#fff")
-    //   .attr("stroke-width", 2)
-    //   .style("cursor", "pointer")
-    //   .call(d3.drag()
-    //     .on("start", dragstarted)
-    //     .on("drag", dragged)
-    //     .on("end", dragended))
-    //   // .on("mouseover", showTooltip)
-    //   // .on("mouseleave", hideTooltip);
-    //   .on("mouseenter", (event, d) => {
-    //     tooltipRef.current
-    //       .style("opacity", 1)
-    //       .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
-    //   })
-    //   .on("mousemove", (event) => {
-    //     tooltipRef.current
-    //       .style("left", (event.pageX + 10) + "px")
-    //       .style("top", (event.pageY + 10) + "px");
-    //   })
-    //   .on("mouseleave", () => {
-    //     tooltipRef.current.style("opacity", 0);
-    //   });
-    // // Create labels
-    // const label = nodeGroup.selectAll("text")
-    //   .data(nodes)
-    //   .join("text")
-    //   .text(d => d.id)
-    //   .attr("font-size", 12)
-    //   .attr("font-weight", "bold")
-    //   .attr("text-anchor", "middle")
-    //   .attr("dy", 4)
-    //   .attr("fill", "#333")
-    //   .style("pointer-events", "none")
-    //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)");
+        .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
+        .selectAll("tspan")
+        .data(d => d.id.split(" "))   // split by spaces
+        .enter()
+        .append("tspan")
+        .attr("x", 0)
+        .attr("dy", (d, i) => i === 0 ? 0 : 14) // 14px line height
+        // .text(d => d);;
 
+      // node.append("svg:image")
+      //   .attr("xlink:href", ahwoo)
+      //   // .attr("xlink:href", d => d.image)
+      //   // .attr("xlink:href", ahwoo)
+      //   .attr("x", d=>(-25))
+      //   .attr("y", d=> (-25))
+      //   .attr("height", d=> d.size)
+      //   .attr("width", d=> d.size)
+      //   // .attr("clip-path", `url(#${d.img})`);
+      //   .attr("clip-path", `url(#${ahwoo})`);
+      //   console.log("where is ahwoo")
     // Update positions on tick
     simulation.on("tick", () => {
       link
