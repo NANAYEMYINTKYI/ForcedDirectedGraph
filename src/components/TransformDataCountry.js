@@ -6,7 +6,6 @@ import countryToContinent from 'country-json/src/country-by-continent.json' with
 import rawData from './../data/mab2023Data.json' with { type: 'json' };
 // node = Title // Focus Node
 // connectionNode = Location // Node for connection
-// nodeEdge = Year // What edge told
 // Group 1-7 = Continent
 // Group 8 = Unknown
 // Group 9 = Project
@@ -59,21 +58,7 @@ let links = rawData
     strength: 1
   }));
 
-// node → node links for same data
-for (let i = 0; i < rawData.length; i++) {
-  for (let j = i + 1; j < rawData.length; j++) {
-    if (rawData[i].Year && rawData[i].Year === rawData[j].Year) {
-      links.push({
-        source: rawData[i].Title,
-        target: rawData[j].Title,
-        strength: 2
-      });
-    }
-  }
-}
-
 let nodeMap = {};
-
 // Add nodes
 rawData.forEach((item) => {
   if (!nodeMap[item.Title]) {
@@ -86,6 +71,7 @@ rawData.forEach((item) => {
       url: item.URL,
       size: 24,
       group: setGroup(item.Location, true),
+      file: item.URL.split("/")[5].trim() + ".jpg"
     };
   }
 });
@@ -114,7 +100,7 @@ links.forEach((link) => {
 const nodes = Object.values(nodeMap);
 
 // Save Output
-fs.writeFileSync("./../data/LinkData.json", JSON.stringify(links, null, 2));
-fs.writeFileSync("./../data/NodeData.json", JSON.stringify(nodes, null, 2));
+fs.writeFileSync("./../data/CountryLink.json", JSON.stringify(links, null, 2));
+fs.writeFileSync("./../data/CountryNode.json", JSON.stringify(nodes, null, 2));
 
 // console.log("✅ links.json and nodes.json generated!");

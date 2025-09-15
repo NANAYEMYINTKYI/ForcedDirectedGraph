@@ -1,8 +1,8 @@
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import Graph from "./components/graph";
 import './App.css'
-import nodesData from './data/NodeData.json'
-import linksData from './data/LinkData.json'
+import nodesData from './data/YearNode.json'
+import linksData from './data/YearLink.json'
 // import nodesData from '../public/data/NodeData.json'
 // import linksData from '../public/data/LinkData.json'
 import { useEffect, useState } from "react";
