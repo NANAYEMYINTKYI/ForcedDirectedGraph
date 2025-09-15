@@ -1,6 +1,6 @@
 .force-graph-container {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,8 +9,8 @@
 }
 
 .graph-svg {
-  width: 100vw;
-  height: 100vh;
+  width: 90vw;
+  height: 85vh;
   border: 1px solid #ccc;
   background: white;
   cursor: grab;

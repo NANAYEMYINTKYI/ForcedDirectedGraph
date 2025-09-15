@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 // import linkdata from './../utilities/LinkData.json'
 // import nodedata from './../utilities/NodeData.json'
-import pic from './pic.jpg'
 import './ForcedDirectedGraph.css'
+
+// this is forced-directed graoh component
 const ForceDirectedGraph = ({ 
   nodes = linkdata, 
   links = nodedata,
-  width = 300,
+  width = 928,
   height = 400
 }) => {
   // Refs
@@ -55,11 +56,11 @@ const ForceDirectedGraph = ({
       .style("stroke", "steelblue");
   }, []);
 
-  // Initialize and update graph
+  // Initialize and update graph when dependen
   useEffect(() => {
-    if (!svgRef.current || !nodes || !links) return;
-    const svg = d3.select(svgRef.current);
+    const svg = d3.select(svgRef.current); // select the current node and link into svg 
     svg.selectAll("*").remove(); // Clear previous content 
+    // tooltip appear by checking current tooltip 
     if (!tooltipRef.current) {
       tooltipRef.current = d3.select("body")
         .append("div")
@@ -76,8 +77,7 @@ const ForceDirectedGraph = ({
     }
     // Create groups
     const g=svg.append("g").attr("class","graph-group");
-    const defs = svg.append("defs");
-
+    // set zoom behavior
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
     };
@@ -88,23 +88,15 @@ const ForceDirectedGraph = ({
      
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
-    // Create simulation
+    // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
-
       .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
-      .force("charge", d3.forceManyBody().strength(-chargeStrength*2))
-      .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
-      .force("collision", d3.forceCollide().radius(d => d.size*4/3))
-      .force("y", d3.forceY(height/2))
-      .force("x", d3.forceX(width/2))
-      .alphaDecay(0.1);
-      
-
-//       .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
-//       .force("charge", d3.forceManyBody().strength(-chargeStrength))
-//       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength))
-//       .force("collision", d3.forceCollide().radius(d => d.size + 5));
-
+      .force("charge", d3.forceManyBody().strength(-chargeStrength*2)) // simulate gravity attrction
+      .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength)) // update new centering force
+      .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision
+      .force("y", d3.forceY(height/1.5))
+      .force("x", d3.forceX(width/1.5))
+      .alphaDecay(0.1); 
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
@@ -124,6 +116,7 @@ const ForceDirectedGraph = ({
         .on("drag", dragged)
         .on("end", dragended)
       )
+      // clipath image 
       // node.append("clipPath")
       //   .attr("id", "clip-img")
       //   .append("circle")
@@ -148,6 +141,7 @@ const ForceDirectedGraph = ({
       //   .attr("height", 40)
       //   .attr("clip-path", "url(#clip-img)");
 
+      // crate circle
       node.append("circle")
         .attr("r", d => d.size)
         .attr("fill", d => colorScale(d.group))
@@ -157,10 +151,12 @@ const ForceDirectedGraph = ({
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
         .on("mouseenter", (event, d) => {
+          // tootip reference and design 
           tooltipRef.current
             .style("opacity", 1)
             .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
         })
+        // mousemove update position in mousemove
         .on("mousemove", (event) => {
           tooltipRef.current
             .style("left", (event.pageX + 10) + "px")
@@ -170,6 +166,7 @@ const ForceDirectedGraph = ({
           tooltipRef.current.style("opacity", 0);
         });
 
+      // Append text into node
       node.append("text")
         // .text(d => d.id)
         .attr("font-size", 12)
@@ -182,6 +179,7 @@ const ForceDirectedGraph = ({
         .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
          .attr("clip-path", "url(#circleClip)");
 
+        // Aligh text in node to be center
       node.append("foreignObject")
         .attr("x", -40)
         .attr("y", -20)
@@ -195,17 +193,6 @@ const ForceDirectedGraph = ({
         .style("word-wrap", "break-word")
         .text(d => d.id)
 
-      // node.append("svg:image")
-      //   .attr("xlink:href", ahwoo)
-      //   // .attr("xlink:href", d => d.image)
-      //   // .attr("xlink:href", ahwoo)
-      //   .attr("x", d=>(-25))
-      //   .attr("y", d=> (-25))
-      //   .attr("height", d=> d.size)
-      //   .attr("width", d=> d.size)
-      //   // .attr("clip-path", `url(#${d.img})`);
-      //   .attr("clip-path", `url(#${ahwoo})`);
-      //   console.log("where is ahwoo")
     // Update positions on tick
     simulation.on("tick", () => {
       link
@@ -221,33 +208,8 @@ const ForceDirectedGraph = ({
       simulation.stop();
     };
   }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended]);
-  // [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, showTooltip, hideTooltip]);
 
-  // Control functions
-  const resetSimulation = useCallback(() => {
-    nodes.forEach(node => {
-      node.fx = null;
-      node.fy = null;
-    });
-    if (simulationRef.current) {
-      simulationRef.current.alpha(1).restart();
-    }
-  }, [nodes]);
-
-  const togglePause = useCallback(() => {
-    setIsPaused(prev => {
-      const newPaused = !prev;
-      if (simulationRef.current) {
-        if (newPaused) {
-          simulationRef.current.stop();
-        } else {
-          simulationRef.current.restart();
-        }
-      }
-      return newPaused;
-    });
-  }, []);
-
+  // Handle repulsion
   const handleChargeChange = useCallback((e) => {
     const value = parseInt(e.target.value);
     setChargeStrength(value);
@@ -256,7 +218,7 @@ const ForceDirectedGraph = ({
       simulationRef.current.alpha(0.3).restart();
     }
   }, []);
-
+  // handle link strength
   const handleLinkStrengthChange = useCallback((e) => {
     const value = parseFloat(e.target.value);
     setLinkStrength(value);
@@ -265,7 +227,7 @@ const ForceDirectedGraph = ({
       simulationRef.current.alpha(0.5).restart();
     }
   }, [links]);
-
+  // handle node center change
   const handleCenterStrengthChange = useCallback((e) => {
     const value = parseFloat(e.target.value);
     setCenterStrength(value);
@@ -278,11 +240,9 @@ const ForceDirectedGraph = ({
   return (
     <div className="force-graph-container">
       {/* Header */}
-      {/* <div className="header">
+      <div className="header">
         <h1>🌐 Force-Directed Graph</h1>
-        <p className="subtitle">Interactive network visualization with physics simulation</p>
-      </div> */}
-
+      </div>
       {/* Controls */}
       <div className="controls">
         <div className="control-group">
@@ -296,7 +256,7 @@ const ForceDirectedGraph = ({
             onChange={handleChargeChange}
           />
         </div>
-        
+
         <div className="control-group">
           <label htmlFor="link-strength">Link Strength: {linkStrength}</label>
           <input
@@ -322,27 +282,17 @@ const ForceDirectedGraph = ({
             onChange={handleCenterStrengthChange}
           />
         </div>
-        
-        {/* <button onClick={resetSimulation} className="control-button">
-          🔄 Reset
-        </button>
-        
-        <button onClick={togglePause} className="control-button">
-          {isPaused ? '▶️ Resume' : '⏸️ Pause'}
-        </button> */}
       </div>
 
       {/* Graph */}
       <div className="graph-container">
         <svg
           ref={svgRef}
-          // width={width}
-          // height={height}
-          viewBox={`0 0 ${width} ${height}`} // Add this line
+          width={width}
+          height={height}
+          viewBox={`0 0 ${width} ${height}`} 
           className="graph-svg"
         />
-
-        
         {/* Tooltip */}
         {tooltip.visible && (
           <div

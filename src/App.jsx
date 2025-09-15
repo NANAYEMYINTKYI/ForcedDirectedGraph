@@ -27,7 +27,7 @@ const App = () => {
       {/* Background */}
       <div className="app-background"></div>
         <ForceDirectedGraph
-          nodes={nodesData} links={linksData} width={928} height={600} 
+          nodes={nodesData} links={linksData} width={928} height={400} 
         />
         
       </div>
