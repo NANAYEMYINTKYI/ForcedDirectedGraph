@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 // import linkdata from './../utilities/LinkData.json'
 // import nodedata from './../utilities/NodeData.json'
-import pic from './pic.jpg'
+// import pic from './pic.jpg'
 import './ForcedDirectedGraph.css'
 const ForceDirectedGraph = ({ 
   nodes = linkdata, 
