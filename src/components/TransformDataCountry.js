@@ -59,7 +59,6 @@ let links = rawData
   }));
 
 let nodeMap = {};
-let file = 0;
 // Add nodes
 rawData.forEach((item) => {
   if (!nodeMap[item.Title]) {
@@ -72,9 +71,8 @@ rawData.forEach((item) => {
       url: item.URL,
       size: 24,
       group: setGroup(item.Location, true),
-      file: file + ".jpg"
+      file: item.URL.split("/")[5].trim() + ".jpg"
     };
-    file++
   }
 });
 
