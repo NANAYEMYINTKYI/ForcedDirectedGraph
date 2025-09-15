@@ -31,7 +31,7 @@ rawData.forEach((item) => {
       image: item["Images.1"],
       url: item.URL,
       size: 24,
-      // group: setGroup(item.Location, true),
+      group: 9,
       file: file + ".jpg"
     };
     file++
@@ -44,7 +44,7 @@ rawData.forEach((item) => {
     nodeMap[item.Year] = {
       id: item.Year,
       size: 24,
-      // group: setGroup(item.Location),
+      group: 1,
     };
   }
 });

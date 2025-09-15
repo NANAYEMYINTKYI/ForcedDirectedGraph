@@ -1,103 +1,128 @@
 [
   {
     "id": "1999",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "2000",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "2001",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "2003",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "2004",
-    "size": 27
+    "size": 27,
+    "group": 1
   },
   {
     "id": "2005",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "2006",
-    "size": 27
+    "size": 27,
+    "group": 1
   },
   {
     "id": "2007",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "2008",
-    "size": 28
+    "size": 28,
+    "group": 1
   },
   {
     "id": "2009",
-    "size": 28
+    "size": 28,
+    "group": 1
   },
   {
     "id": "2010",
-    "size": 32
+    "size": 32,
+    "group": 1
   },
   {
     "id": "2011",
-    "size": 33
+    "size": 33,
+    "group": 1
   },
   {
     "id": "2012",
-    "size": 40
+    "size": 40,
+    "group": 1
   },
   {
     "id": "2013",
-    "size": 39
+    "size": 39,
+    "group": 1
   },
   {
     "id": "2014",
-    "size": 46
+    "size": 46,
+    "group": 1
   },
   {
     "id": "2015",
-    "size": 34
+    "size": 34,
+    "group": 1
   },
   {
     "id": "2016",
-    "size": 33
+    "size": 33,
+    "group": 1
   },
   {
     "id": "2017",
-    "size": 47
+    "size": 47,
+    "group": 1
   },
   {
     "id": "2018",
-    "size": 50
+    "size": 50,
+    "group": 1
   },
   {
     "id": "2019",
-    "size": 50
+    "size": 50,
+    "group": 1
   },
   {
     "id": "2020",
-    "size": 50
+    "size": 50,
+    "group": 1
   },
   {
     "id": "2021",
-    "size": 45
+    "size": 45,
+    "group": 1
   },
   {
     "id": "2022",
-    "size": 35
+    "size": 35,
+    "group": 1
   },
   {
     "id": "2023",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "202021",
-    "size": 25
+    "size": 25,
+    "group": 1
   },
   {
     "id": "Merck Light Cloud",
@@ -107,6 +132,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/10/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/10",
     "size": 25,
+    "group": 9,
     "file": "0.jpg"
   },
   {
@@ -117,6 +143,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/17/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/17",
     "size": 25,
+    "group": 9,
     "file": "1.jpg"
   },
   {
@@ -127,6 +154,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/18/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/18",
     "size": 25,
+    "group": 9,
     "file": "2.jpg"
   },
   {
@@ -137,6 +165,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/19/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/19",
     "size": 25,
+    "group": 9,
     "file": "3.jpg"
   },
   {
@@ -147,6 +176,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/29/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/29",
     "size": 25,
+    "group": 9,
     "file": "4.jpg"
   },
   {
@@ -157,6 +187,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/30/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/30",
     "size": 25,
+    "group": 9,
     "file": "5.jpg"
   },
   {
@@ -167,6 +198,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/34/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/34",
     "size": 25,
+    "group": 9,
     "file": "6.jpg"
   },
   {
@@ -177,6 +209,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/39/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/39",
     "size": 25,
+    "group": 9,
     "file": "7.jpg"
   },
   {
@@ -187,6 +220,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/40/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/40",
     "size": 25,
+    "group": 9,
     "file": "8.jpg"
   },
   {
@@ -197,6 +231,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/43/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/43",
     "size": 25,
+    "group": 9,
     "file": "9.jpg"
   },
   {
@@ -207,6 +242,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/48/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/48",
     "size": 25,
+    "group": 9,
     "file": "10.jpg"
   },
   {
@@ -217,6 +253,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/50/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/50",
     "size": 25,
+    "group": 9,
     "file": "11.jpg"
   },
   {
@@ -227,6 +264,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/51/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/51",
     "size": 25,
+    "group": 9,
     "file": "12.jpg"
   },
   {
@@ -237,6 +275,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/52/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/52",
     "size": 25,
+    "group": 9,
     "file": "13.jpg"
   },
   {
@@ -247,6 +286,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/54/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/54",
     "size": 25,
+    "group": 9,
     "file": "14.jpg"
   },
   {
@@ -257,6 +297,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/55/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/55",
     "size": 25,
+    "group": 9,
     "file": "15.jpg"
   },
   {
@@ -267,6 +308,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/56/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/56",
     "size": 25,
+    "group": 9,
     "file": "16.jpg"
   },
   {
@@ -277,6 +319,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/57/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/57",
     "size": 25,
+    "group": 9,
     "file": "17.jpg"
   },
   {
@@ -287,6 +330,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/58/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/58",
     "size": 25,
+    "group": 9,
     "file": "18.jpg"
   },
   {
@@ -297,6 +341,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/59/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/59",
     "size": 25,
+    "group": 9,
     "file": "19.jpg"
   },
   {
@@ -307,6 +352,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/60/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/60",
     "size": 25,
+    "group": 9,
     "file": "20.jpg"
   },
   {
@@ -317,6 +363,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/61/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/61",
     "size": 25,
+    "group": 9,
     "file": "21.jpg"
   },
   {
@@ -327,6 +374,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/62/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/62",
     "size": 25,
+    "group": 9,
     "file": "22.jpg"
   },
   {
@@ -337,6 +385,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/63/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/63",
     "size": 25,
+    "group": 9,
     "file": "23.jpg"
   },
   {
@@ -347,6 +396,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/65/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/65",
     "size": 25,
+    "group": 9,
     "file": "24.jpg"
   },
   {
@@ -357,6 +407,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/66/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/66",
     "size": 25,
+    "group": 9,
     "file": "25.jpg"
   },
   {
@@ -367,6 +418,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/67/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/67",
     "size": 25,
+    "group": 9,
     "file": "26.jpg"
   },
   {
@@ -377,6 +429,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/70/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/70",
     "size": 25,
+    "group": 9,
     "file": "27.jpg"
   },
   {
@@ -387,6 +440,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/71/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/71",
     "size": 25,
+    "group": 9,
     "file": "28.jpg"
   },
   {
@@ -397,6 +451,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/73/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/73",
     "size": 25,
+    "group": 9,
     "file": "29.jpg"
   },
   {
@@ -407,6 +462,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/77/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/77",
     "size": 25,
+    "group": 9,
     "file": "30.jpg"
   },
   {
@@ -417,6 +473,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/78/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/78",
     "size": 25,
+    "group": 9,
     "file": "31.jpg"
   },
   {
@@ -427,6 +484,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/81/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/81",
     "size": 25,
+    "group": 9,
     "file": "32.jpg"
   },
   {
@@ -437,6 +495,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/82/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/82",
     "size": 25,
+    "group": 9,
     "file": "33.jpg"
   },
   {
@@ -447,6 +506,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/83/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/83",
     "size": 25,
+    "group": 9,
     "file": "34.jpg"
   },
   {
@@ -457,6 +517,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/95/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/95",
     "size": 25,
+    "group": 9,
     "file": "35.jpg"
   },
   {
@@ -467,6 +528,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/96/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/96",
     "size": 25,
+    "group": 9,
     "file": "36.jpg"
   },
   {
@@ -477,6 +539,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/97/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/97",
     "size": 25,
+    "group": 9,
     "file": "37.jpg"
   },
   {
@@ -487,6 +550,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/98/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/98",
     "size": 25,
+    "group": 9,
     "file": "38.jpg"
   },
   {
@@ -497,6 +561,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/99/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/99",
     "size": 25,
+    "group": 9,
     "file": "39.jpg"
   },
   {
@@ -507,6 +572,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/100/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/100",
     "size": 25,
+    "group": 9,
     "file": "40.jpg"
   },
   {
@@ -517,6 +583,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/101/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/101",
     "size": 25,
+    "group": 9,
     "file": "41.jpg"
   },
   {
@@ -527,6 +594,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/102/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/102",
     "size": 25,
+    "group": 9,
     "file": "42.jpg"
   },
   {
@@ -537,6 +605,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/103/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/103",
     "size": 25,
+    "group": 9,
     "file": "43.jpg"
   },
   {
@@ -547,6 +616,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/104/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/104",
     "size": 25,
+    "group": 9,
     "file": "44.jpg"
   },
   {
@@ -557,6 +627,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/105/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/105",
     "size": 25,
+    "group": 9,
     "file": "45.jpg"
   },
   {
@@ -567,6 +638,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/106/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/106",
     "size": 25,
+    "group": 9,
     "file": "46.jpg"
   },
   {
@@ -577,6 +649,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/107/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/107",
     "size": 25,
+    "group": 9,
     "file": "47.jpg"
   },
   {
@@ -587,6 +660,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/108/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/108",
     "size": 25,
+    "group": 9,
     "file": "48.jpg"
   },
   {
@@ -597,6 +671,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/109/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/109",
     "size": 25,
+    "group": 9,
     "file": "49.jpg"
   },
   {
@@ -607,6 +682,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/110/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/110",
     "size": 25,
+    "group": 9,
     "file": "50.jpg"
   },
   {
@@ -617,6 +693,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/111/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/111",
     "size": 25,
+    "group": 9,
     "file": "51.jpg"
   },
   {
@@ -627,6 +704,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/112/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/112",
     "size": 26,
+    "group": 9,
     "file": "52.jpg"
   },
   {
@@ -637,6 +715,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/113/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/113",
     "size": 25,
+    "group": 9,
     "file": "53.jpg"
   },
   {
@@ -647,6 +726,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/114/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/114",
     "size": 25,
+    "group": 9,
     "file": "54.jpg"
   },
   {
@@ -657,6 +737,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/115/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/115",
     "size": 25,
+    "group": 9,
     "file": "55.jpg"
   },
   {
@@ -667,6 +748,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/116/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/116",
     "size": 25,
+    "group": 9,
     "file": "56.jpg"
   },
   {
@@ -677,6 +759,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/117/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/117",
     "size": 25,
+    "group": 9,
     "file": "57.jpg"
   },
   {
@@ -687,6 +770,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/119/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/119",
     "size": 25,
+    "group": 9,
     "file": "58.jpg"
   },
   {
@@ -697,6 +781,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/120/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/120",
     "size": 25,
+    "group": 9,
     "file": "59.jpg"
   },
   {
@@ -707,6 +792,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/121/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/121",
     "size": 25,
+    "group": 9,
     "file": "60.jpg"
   },
   {
@@ -717,6 +803,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/122/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/122",
     "size": 25,
+    "group": 9,
     "file": "61.jpg"
   },
   {
@@ -727,6 +814,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/123/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/123",
     "size": 25,
+    "group": 9,
     "file": "62.jpg"
   },
   {
@@ -737,6 +825,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/124/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/124",
     "size": 25,
+    "group": 9,
     "file": "63.jpg"
   },
   {
@@ -747,6 +836,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/125/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/125",
     "size": 25,
+    "group": 9,
     "file": "64.jpg"
   },
   {
@@ -757,6 +847,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/126/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/126",
     "size": 25,
+    "group": 9,
     "file": "65.jpg"
   },
   {
@@ -767,6 +858,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/127/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/127",
     "size": 25,
+    "group": 9,
     "file": "66.jpg"
   },
   {
@@ -777,6 +869,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/128/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/128",
     "size": 25,
+    "group": 9,
     "file": "67.jpg"
   },
   {
@@ -787,6 +880,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/130/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/130",
     "size": 25,
+    "group": 9,
     "file": "68.jpg"
   },
   {
@@ -797,6 +891,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/131/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/131",
     "size": 25,
+    "group": 9,
     "file": "69.jpg"
   },
   {
@@ -807,6 +902,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/132/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/132",
     "size": 25,
+    "group": 9,
     "file": "70.jpg"
   },
   {
@@ -817,6 +913,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/133/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/133",
     "size": 25,
+    "group": 9,
     "file": "71.jpg"
   },
   {
@@ -827,6 +924,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/134/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/134",
     "size": 25,
+    "group": 9,
     "file": "72.jpg"
   },
   {
@@ -837,6 +935,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/135/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/135",
     "size": 25,
+    "group": 9,
     "file": "73.jpg"
   },
   {
@@ -847,6 +946,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/136/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/136",
     "size": 25,
+    "group": 9,
     "file": "74.jpg"
   },
   {
@@ -857,6 +957,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/137/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/137",
     "size": 25,
+    "group": 9,
     "file": "75.jpg"
   },
   {
@@ -867,6 +968,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/138/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/138",
     "size": 25,
+    "group": 9,
     "file": "76.jpg"
   },
   {
@@ -877,6 +979,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/139/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/139",
     "size": 25,
+    "group": 9,
     "file": "77.jpg"
   },
   {
@@ -887,6 +990,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/140/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/140",
     "size": 25,
+    "group": 9,
     "file": "78.jpg"
   },
   {
@@ -897,6 +1001,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/141/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/141",
     "size": 25,
+    "group": 9,
     "file": "79.jpg"
   },
   {
@@ -907,6 +1012,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/142/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/142",
     "size": 25,
+    "group": 9,
     "file": "80.jpg"
   },
   {
@@ -917,6 +1023,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/143/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/143",
     "size": 25,
+    "group": 9,
     "file": "81.jpg"
   },
   {
@@ -927,6 +1034,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/145/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/145",
     "size": 25,
+    "group": 9,
     "file": "82.jpg"
   },
   {
@@ -937,6 +1045,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/146/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/146",
     "size": 25,
+    "group": 9,
     "file": "83.jpg"
   },
   {
@@ -947,6 +1056,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/147/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/147",
     "size": 25,
+    "group": 9,
     "file": "84.jpg"
   },
   {
@@ -957,6 +1067,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/148/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/148",
     "size": 25,
+    "group": 9,
     "file": "85.jpg"
   },
   {
@@ -967,6 +1078,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/149/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/149",
     "size": 25,
+    "group": 9,
     "file": "86.jpg"
   },
   {
@@ -977,6 +1089,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/150/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/150",
     "size": 25,
+    "group": 9,
     "file": "87.jpg"
   },
   {
@@ -987,6 +1100,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/151/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/151",
     "size": 25,
+    "group": 9,
     "file": "88.jpg"
   },
   {
@@ -997,6 +1111,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/153/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/153",
     "size": 25,
+    "group": 9,
     "file": "89.jpg"
   },
   {
@@ -1007,6 +1122,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/154/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/154",
     "size": 25,
+    "group": 9,
     "file": "90.jpg"
   },
   {
@@ -1017,6 +1133,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/157/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/157",
     "size": 25,
+    "group": 9,
     "file": "91.jpg"
   },
   {
@@ -1027,6 +1144,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/158/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/158",
     "size": 25,
+    "group": 9,
     "file": "92.jpg"
   },
   {
@@ -1037,6 +1155,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/160/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/160",
     "size": 25,
+    "group": 9,
     "file": "93.jpg"
   },
   {
@@ -1047,6 +1166,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/161/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/161",
     "size": 25,
+    "group": 9,
     "file": "94.jpg"
   },
   {
@@ -1057,6 +1177,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/163/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/163",
     "size": 25,
+    "group": 9,
     "file": "95.jpg"
   },
   {
@@ -1067,6 +1188,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/169/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/169",
     "size": 25,
+    "group": 9,
     "file": "96.jpg"
   },
   {
@@ -1077,6 +1199,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/170/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/170",
     "size": 25,
+    "group": 9,
     "file": "97.jpg"
   },
   {
@@ -1087,6 +1210,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/171/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/171",
     "size": 25,
+    "group": 9,
     "file": "98.jpg"
   },
   {
@@ -1097,6 +1221,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/172/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/172",
     "size": 25,
+    "group": 9,
     "file": "99.jpg"
   },
   {
@@ -1107,6 +1232,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/173/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/173",
     "size": 25,
+    "group": 9,
     "file": "100.jpg"
   },
   {
@@ -1117,6 +1243,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/174/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/174",
     "size": 25,
+    "group": 9,
     "file": "101.jpg"
   },
   {
@@ -1127,6 +1254,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/175/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/175",
     "size": 25,
+    "group": 9,
     "file": "102.jpg"
   },
   {
@@ -1137,6 +1265,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/177/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/177",
     "size": 25,
+    "group": 9,
     "file": "103.jpg"
   },
   {
@@ -1147,6 +1276,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/178/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/178",
     "size": 25,
+    "group": 9,
     "file": "104.jpg"
   },
   {
@@ -1157,6 +1287,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/179/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/179",
     "size": 25,
+    "group": 9,
     "file": "105.jpg"
   },
   {
@@ -1167,6 +1298,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/180/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/180",
     "size": 25,
+    "group": 9,
     "file": "106.jpg"
   },
   {
@@ -1177,6 +1309,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/181/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/181",
     "size": 25,
+    "group": 9,
     "file": "107.jpg"
   },
   {
@@ -1187,6 +1320,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/182/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/182",
     "size": 25,
+    "group": 9,
     "file": "108.jpg"
   },
   {
@@ -1197,6 +1331,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/183/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/183",
     "size": 25,
+    "group": 9,
     "file": "109.jpg"
   },
   {
@@ -1207,6 +1342,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/184/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/184",
     "size": 25,
+    "group": 9,
     "file": "110.jpg"
   },
   {
@@ -1217,6 +1353,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/185/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/185",
     "size": 25,
+    "group": 9,
     "file": "111.jpg"
   },
   {
@@ -1227,6 +1364,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/186/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/186",
     "size": 25,
+    "group": 9,
     "file": "112.jpg"
   },
   {
@@ -1237,6 +1375,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/187/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/187",
     "size": 25,
+    "group": 9,
     "file": "113.jpg"
   },
   {
@@ -1247,6 +1386,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/188/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/188",
     "size": 25,
+    "group": 9,
     "file": "114.jpg"
   },
   {
@@ -1257,6 +1397,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/189/3_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/189",
     "size": 25,
+    "group": 9,
     "file": "115.jpg"
   },
   {
@@ -1267,6 +1408,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/190/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/190",
     "size": 25,
+    "group": 9,
     "file": "116.jpg"
   },
   {
@@ -1277,6 +1419,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/191/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/191",
     "size": 25,
+    "group": 9,
     "file": "117.jpg"
   },
   {
@@ -1287,6 +1430,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/193/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/193",
     "size": 25,
+    "group": 9,
     "file": "118.jpg"
   },
   {
@@ -1297,6 +1441,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/194/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/194",
     "size": 25,
+    "group": 9,
     "file": "119.jpg"
   },
   {
@@ -1307,6 +1452,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/195/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/195",
     "size": 25,
+    "group": 9,
     "file": "120.jpg"
   },
   {
@@ -1317,6 +1463,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/196/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/196",
     "size": 25,
+    "group": 9,
     "file": "121.jpg"
   },
   {
@@ -1327,6 +1474,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/198/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/198",
     "size": 25,
+    "group": 9,
     "file": "122.jpg"
   },
   {
@@ -1337,6 +1485,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/199/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/199",
     "size": 25,
+    "group": 9,
     "file": "123.jpg"
   },
   {
@@ -1347,6 +1496,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/200/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/200",
     "size": 25,
+    "group": 9,
     "file": "124.jpg"
   },
   {
@@ -1357,6 +1507,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/201/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/201",
     "size": 25,
+    "group": 9,
     "file": "125.jpg"
   },
   {
@@ -1367,6 +1518,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/202/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/202",
     "size": 25,
+    "group": 9,
     "file": "126.jpg"
   },
   {
@@ -1377,6 +1529,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/203/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/203",
     "size": 25,
+    "group": 9,
     "file": "127.jpg"
   },
   {
@@ -1387,6 +1540,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/204/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/204",
     "size": 25,
+    "group": 9,
     "file": "128.jpg"
   },
   {
@@ -1397,6 +1551,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/205/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/205",
     "size": 25,
+    "group": 9,
     "file": "129.jpg"
   },
   {
@@ -1407,6 +1562,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/206/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/206",
     "size": 25,
+    "group": 9,
     "file": "130.jpg"
   },
   {
@@ -1417,6 +1573,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/210/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/210",
     "size": 25,
+    "group": 9,
     "file": "131.jpg"
   },
   {
@@ -1427,6 +1584,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/212/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/212",
     "size": 26,
+    "group": 9,
     "file": "132.jpg"
   },
   {
@@ -1437,6 +1595,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/214/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/214",
     "size": 25,
+    "group": 9,
     "file": "133.jpg"
   },
   {
@@ -1447,6 +1606,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/223/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/223",
     "size": 25,
+    "group": 9,
     "file": "134.jpg"
   },
   {
@@ -1457,6 +1617,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/225/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/225",
     "size": 25,
+    "group": 9,
     "file": "135.jpg"
   },
   {
@@ -1467,6 +1628,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/229/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/229",
     "size": 25,
+    "group": 9,
     "file": "136.jpg"
   },
   {
@@ -1477,6 +1639,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/230/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/230",
     "size": 25,
+    "group": 9,
     "file": "137.jpg"
   },
   {
@@ -1487,6 +1650,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/232/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/232",
     "size": 25,
+    "group": 9,
     "file": "138.jpg"
   },
   {
@@ -1497,6 +1661,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/233/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/233",
     "size": 25,
+    "group": 9,
     "file": "139.jpg"
   },
   {
@@ -1507,6 +1672,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/235/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/235",
     "size": 25,
+    "group": 9,
     "file": "140.jpg"
   },
   {
@@ -1517,6 +1683,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/236/5_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/236",
     "size": 25,
+    "group": 9,
     "file": "141.jpg"
   },
   {
@@ -1527,6 +1694,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/237/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/237",
     "size": 25,
+    "group": 9,
     "file": "142.jpg"
   },
   {
@@ -1537,6 +1705,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/238/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/238",
     "size": 25,
+    "group": 9,
     "file": "143.jpg"
   },
   {
@@ -1547,6 +1716,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/239/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/239",
     "size": 25,
+    "group": 9,
     "file": "144.jpg"
   },
   {
@@ -1557,6 +1727,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/240/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/240",
     "size": 25,
+    "group": 9,
     "file": "145.jpg"
   },
   {
@@ -1567,6 +1738,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/241/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/241",
     "size": 25,
+    "group": 9,
     "file": "146.jpg"
   },
   {
@@ -1577,6 +1749,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/242/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/242",
     "size": 25,
+    "group": 9,
     "file": "147.jpg"
   },
   {
@@ -1587,6 +1760,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/243/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/243",
     "size": 25,
+    "group": 9,
     "file": "148.jpg"
   },
   {
@@ -1597,6 +1771,7 @@
     "image": "",
     "url": "https://awards.mediaarchitecture.org/mab/project/245",
     "size": 25,
+    "group": 9,
     "file": "149.jpg"
   },
   {
@@ -1607,6 +1782,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/247/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/247",
     "size": 25,
+    "group": 9,
     "file": "150.jpg"
   },
   {
@@ -1617,6 +1793,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/249/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/249",
     "size": 25,
+    "group": 9,
     "file": "151.jpg"
   },
   {
@@ -1627,6 +1804,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/250/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/250",
     "size": 25,
+    "group": 9,
     "file": "152.jpg"
   },
   {
@@ -1637,6 +1815,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/252/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/252",
     "size": 25,
+    "group": 9,
     "file": "153.jpg"
   },
   {
@@ -1647,6 +1826,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/253/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/253",
     "size": 25,
+    "group": 9,
     "file": "154.jpg"
   },
   {
@@ -1657,6 +1837,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/254/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/254",
     "size": 25,
+    "group": 9,
     "file": "155.jpg"
   },
   {
@@ -1667,6 +1848,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/255/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/255",
     "size": 25,
+    "group": 9,
     "file": "156.jpg"
   },
   {
@@ -1677,6 +1859,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/258/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/258",
     "size": 26,
+    "group": 9,
     "file": "157.jpg"
   },
   {
@@ -1687,6 +1870,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/259/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/259",
     "size": 25,
+    "group": 9,
     "file": "158.jpg"
   },
   {
@@ -1697,6 +1881,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/261/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/261",
     "size": 25,
+    "group": 9,
     "file": "159.jpg"
   },
   {
@@ -1707,6 +1892,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/262/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/262",
     "size": 25,
+    "group": 9,
     "file": "160.jpg"
   },
   {
@@ -1717,6 +1903,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/264/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/264",
     "size": 25,
+    "group": 9,
     "file": "161.jpg"
   },
   {
@@ -1727,6 +1914,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/265/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/265",
     "size": 25,
+    "group": 9,
     "file": "162.jpg"
   },
   {
@@ -1737,6 +1925,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/267/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/267",
     "size": 25,
+    "group": 9,
     "file": "163.jpg"
   },
   {
@@ -1747,6 +1936,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/272/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/272",
     "size": 25,
+    "group": 9,
     "file": "164.jpg"
   },
   {
@@ -1757,6 +1947,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/273/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/273",
     "size": 25,
+    "group": 9,
     "file": "165.jpg"
   },
   {
@@ -1767,6 +1958,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/276/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/276",
     "size": 25,
+    "group": 9,
     "file": "166.jpg"
   },
   {
@@ -1777,6 +1969,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/277/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/277",
     "size": 25,
+    "group": 9,
     "file": "167.jpg"
   },
   {
@@ -1787,6 +1980,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/278/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/278",
     "size": 25,
+    "group": 9,
     "file": "168.jpg"
   },
   {
@@ -1797,6 +1991,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/281/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/281",
     "size": 25,
+    "group": 9,
     "file": "169.jpg"
   },
   {
@@ -1807,6 +2002,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/282/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/282",
     "size": 25,
+    "group": 9,
     "file": "170.jpg"
   },
   {
@@ -1817,6 +2013,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/283/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/283",
     "size": 25,
+    "group": 9,
     "file": "171.jpg"
   },
   {
@@ -1827,6 +2024,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/284/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/284",
     "size": 25,
+    "group": 9,
     "file": "172.jpg"
   },
   {
@@ -1837,6 +2035,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/285/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/285",
     "size": 25,
+    "group": 9,
     "file": "173.jpg"
   },
   {
@@ -1847,6 +2046,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/286/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/286",
     "size": 25,
+    "group": 9,
     "file": "174.jpg"
   },
   {
@@ -1857,6 +2057,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/287/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/287",
     "size": 25,
+    "group": 9,
     "file": "175.jpg"
   },
   {
@@ -1867,6 +2068,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/288/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/288",
     "size": 25,
+    "group": 9,
     "file": "176.jpg"
   },
   {
@@ -1877,6 +2079,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/290/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/290",
     "size": 25,
+    "group": 9,
     "file": "177.jpg"
   },
   {
@@ -1887,6 +2090,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/294/6_big_0Ou4Ic7.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/294",
     "size": 25,
+    "group": 9,
     "file": "178.jpg"
   },
   {
@@ -1897,6 +2101,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/295/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/295",
     "size": 25,
+    "group": 9,
     "file": "179.jpg"
   },
   {
@@ -1907,6 +2112,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/296/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/296",
     "size": 25,
+    "group": 9,
     "file": "180.jpg"
   },
   {
@@ -1917,6 +2123,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/297/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/297",
     "size": 25,
+    "group": 9,
     "file": "181.jpg"
   },
   {
@@ -1927,6 +2134,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/298/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/298",
     "size": 25,
+    "group": 9,
     "file": "182.jpg"
   },
   {
@@ -1937,6 +2145,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/299/3_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/299",
     "size": 25,
+    "group": 9,
     "file": "183.jpg"
   },
   {
@@ -1947,6 +2156,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/300/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/300",
     "size": 25,
+    "group": 9,
     "file": "184.jpg"
   },
   {
@@ -1957,6 +2167,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/301/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/301",
     "size": 25,
+    "group": 9,
     "file": "185.jpg"
   },
   {
@@ -1967,6 +2178,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/302/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/302",
     "size": 25,
+    "group": 9,
     "file": "186.jpg"
   },
   {
@@ -1977,6 +2189,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/304/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/304",
     "size": 25,
+    "group": 9,
     "file": "187.jpg"
   },
   {
@@ -1987,6 +2200,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/305/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/305",
     "size": 25,
+    "group": 9,
     "file": "188.jpg"
   },
   {
@@ -1997,6 +2211,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/308/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/308",
     "size": 25,
+    "group": 9,
     "file": "189.jpg"
   },
   {
@@ -2007,6 +2222,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/311/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/311",
     "size": 25,
+    "group": 9,
     "file": "190.jpg"
   },
   {
@@ -2017,6 +2233,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/313/2_big_KaN64mi.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/313",
     "size": 25,
+    "group": 9,
     "file": "191.jpg"
   },
   {
@@ -2027,6 +2244,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/314/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/314",
     "size": 25,
+    "group": 9,
     "file": "192.jpg"
   },
   {
@@ -2037,6 +2255,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/315/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/315",
     "size": 25,
+    "group": 9,
     "file": "193.jpg"
   },
   {
@@ -2047,6 +2266,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/316/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/316",
     "size": 25,
+    "group": 9,
     "file": "194.jpg"
   },
   {
@@ -2057,6 +2277,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/317/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/317",
     "size": 25,
+    "group": 9,
     "file": "195.jpg"
   },
   {
@@ -2067,6 +2288,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/318/5_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/318",
     "size": 25,
+    "group": 9,
     "file": "196.jpg"
   },
   {
@@ -2077,6 +2299,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/322/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/322",
     "size": 25,
+    "group": 9,
     "file": "197.jpg"
   },
   {
@@ -2087,6 +2310,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/323/4_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/323",
     "size": 25,
+    "group": 9,
     "file": "198.jpg"
   },
   {
@@ -2097,6 +2321,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/326/4_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/326",
     "size": 25,
+    "group": 9,
     "file": "199.jpg"
   },
   {
@@ -2107,6 +2332,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/327/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/327",
     "size": 25,
+    "group": 9,
     "file": "200.jpg"
   },
   {
@@ -2117,6 +2343,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/328/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/328",
     "size": 25,
+    "group": 9,
     "file": "201.jpg"
   },
   {
@@ -2127,6 +2354,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/331/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/331",
     "size": 25,
+    "group": 9,
     "file": "202.jpg"
   },
   {
@@ -2137,6 +2365,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/332/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/332",
     "size": 25,
+    "group": 9,
     "file": "203.jpg"
   },
   {
@@ -2147,6 +2376,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/335/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/335",
     "size": 25,
+    "group": 9,
     "file": "204.jpg"
   },
   {
@@ -2157,6 +2387,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/337/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/337",
     "size": 25,
+    "group": 9,
     "file": "205.jpg"
   },
   {
@@ -2167,6 +2398,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/349/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/349",
     "size": 25,
+    "group": 9,
     "file": "206.jpg"
   },
   {
@@ -2177,6 +2409,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/355/5_big_uTnK7Z6.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/355",
     "size": 25,
+    "group": 9,
     "file": "207.jpg"
   },
   {
@@ -2187,6 +2420,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/363/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/363",
     "size": 25,
+    "group": 9,
     "file": "208.jpg"
   },
   {
@@ -2197,6 +2431,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/364/3_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/364",
     "size": 25,
+    "group": 9,
     "file": "209.jpg"
   },
   {
@@ -2207,6 +2442,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/376/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/376",
     "size": 25,
+    "group": 9,
     "file": "210.jpg"
   },
   {
@@ -2217,6 +2453,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/385/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/385",
     "size": 25,
+    "group": 9,
     "file": "211.jpg"
   },
   {
@@ -2227,6 +2464,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/386/7_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/386",
     "size": 25,
+    "group": 9,
     "file": "212.jpg"
   },
   {
@@ -2237,6 +2475,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/387/6_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/387",
     "size": 25,
+    "group": 9,
     "file": "213.jpg"
   },
   {
@@ -2247,6 +2486,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/390/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/390",
     "size": 25,
+    "group": 9,
     "file": "214.jpg"
   },
   {
@@ -2257,6 +2497,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/392/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/392",
     "size": 25,
+    "group": 9,
     "file": "215.jpg"
   },
   {
@@ -2267,6 +2508,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/393/2_big_cW30unP.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/393",
     "size": 25,
+    "group": 9,
     "file": "216.jpg"
   },
   {
@@ -2277,6 +2519,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/396/4_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/396",
     "size": 25,
+    "group": 9,
     "file": "217.jpg"
   },
   {
@@ -2287,6 +2530,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/405/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/405",
     "size": 25,
+    "group": 9,
     "file": "218.jpg"
   },
   {
@@ -2297,6 +2541,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/407/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/407",
     "size": 25,
+    "group": 9,
     "file": "219.jpg"
   },
   {
@@ -2307,6 +2552,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/408/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/408",
     "size": 25,
+    "group": 9,
     "file": "220.jpg"
   },
   {
@@ -2317,6 +2563,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/246/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/246",
     "size": 25,
+    "group": 9,
     "file": "221.jpg"
   },
   {
@@ -2327,6 +2574,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/271/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/271",
     "size": 25,
+    "group": 9,
     "file": "222.jpg"
   },
   {
@@ -2337,6 +2585,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/303/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/303",
     "size": 25,
+    "group": 9,
     "file": "223.jpg"
   },
   {
@@ -2347,6 +2596,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/307/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/307",
     "size": 25,
+    "group": 9,
     "file": "224.jpg"
   },
   {
@@ -2357,6 +2607,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/333/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/333",
     "size": 25,
+    "group": 9,
     "file": "225.jpg"
   },
   {
@@ -2367,6 +2618,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/377/7_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/377",
     "size": 25,
+    "group": 9,
     "file": "226.jpg"
   },
   {
@@ -2377,6 +2629,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/12/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/12",
     "size": 25,
+    "group": 9,
     "file": "227.jpg"
   },
   {
@@ -2387,6 +2640,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/27/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/27",
     "size": 25,
+    "group": 9,
     "file": "228.jpg"
   },
   {
@@ -2397,6 +2651,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/49/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/49",
     "size": 25,
+    "group": 9,
     "file": "229.jpg"
   },
   {
@@ -2407,6 +2662,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/222/6_big_NTNs49z.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/222",
     "size": 25,
+    "group": 9,
     "file": "230.jpg"
   },
   {
@@ -2417,6 +2673,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/248/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/248",
     "size": 25,
+    "group": 9,
     "file": "231.jpg"
   },
   {
@@ -2427,6 +2684,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/11/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/11",
     "size": 25,
+    "group": 9,
     "file": "232.jpg"
   },
   {
@@ -2437,6 +2695,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/14/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/14",
     "size": 25,
+    "group": 9,
     "file": "233.jpg"
   },
   {
@@ -2447,6 +2706,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/15/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/15",
     "size": 25,
+    "group": 9,
     "file": "234.jpg"
   },
   {
@@ -2457,6 +2717,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/21/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/21",
     "size": 25,
+    "group": 9,
     "file": "235.jpg"
   },
   {
@@ -2467,6 +2728,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/28/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/28",
     "size": 25,
+    "group": 9,
     "file": "236.jpg"
   },
   {
@@ -2477,6 +2739,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/33/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/33",
     "size": 25,
+    "group": 9,
     "file": "237.jpg"
   },
   {
@@ -2487,6 +2750,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/35/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/35",
     "size": 25,
+    "group": 9,
     "file": "238.jpg"
   },
   {
@@ -2497,6 +2761,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/38/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/38",
     "size": 25,
+    "group": 9,
     "file": "239.jpg"
   },
   {
@@ -2507,6 +2772,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/41/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/41",
     "size": 25,
+    "group": 9,
     "file": "240.jpg"
   },
   {
@@ -2517,6 +2783,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/45/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/45",
     "size": 25,
+    "group": 9,
     "file": "241.jpg"
   },
   {
@@ -2527,6 +2794,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/46/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/46",
     "size": 25,
+    "group": 9,
     "file": "242.jpg"
   },
   {
@@ -2537,6 +2805,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/47/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/47",
     "size": 25,
+    "group": 9,
     "file": "243.jpg"
   },
   {
@@ -2547,6 +2816,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/53/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/53",
     "size": 25,
+    "group": 9,
     "file": "244.jpg"
   },
   {
@@ -2557,6 +2827,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/68/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/68",
     "size": 25,
+    "group": 9,
     "file": "245.jpg"
   },
   {
@@ -2567,6 +2838,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/69/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/69",
     "size": 25,
+    "group": 9,
     "file": "246.jpg"
   },
   {
@@ -2577,6 +2849,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/74/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/74",
     "size": 25,
+    "group": 9,
     "file": "247.jpg"
   },
   {
@@ -2587,6 +2860,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/75/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/75",
     "size": 25,
+    "group": 9,
     "file": "248.jpg"
   },
   {
@@ -2597,6 +2871,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/76/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/76",
     "size": 25,
+    "group": 9,
     "file": "249.jpg"
   },
   {
@@ -2607,6 +2882,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/213/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/213",
     "size": 25,
+    "group": 9,
     "file": "250.jpg"
   },
   {
@@ -2617,6 +2893,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/224/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/224",
     "size": 25,
+    "group": 9,
     "file": "251.jpg"
   },
   {
@@ -2627,6 +2904,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/244/4_big_lVAC2PV.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/244",
     "size": 25,
+    "group": 9,
     "file": "252.jpg"
   },
   {
@@ -2637,6 +2915,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/260/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/260",
     "size": 25,
+    "group": 9,
     "file": "253.jpg"
   },
   {
@@ -2647,6 +2926,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/275/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/275",
     "size": 25,
+    "group": 9,
     "file": "254.jpg"
   },
   {
@@ -2657,6 +2937,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/291/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/291",
     "size": 25,
+    "group": 9,
     "file": "255.jpg"
   },
   {
@@ -2667,6 +2948,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/292/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/292",
     "size": 25,
+    "group": 9,
     "file": "256.jpg"
   },
   {
@@ -2677,6 +2959,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/293/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/293",
     "size": 25,
+    "group": 9,
     "file": "257.jpg"
   },
   {
@@ -2687,6 +2970,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/306/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/306",
     "size": 25,
+    "group": 9,
     "file": "258.jpg"
   },
   {
@@ -2697,6 +2981,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/310/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/310",
     "size": 25,
+    "group": 9,
     "file": "259.jpg"
   },
   {
@@ -2707,6 +2992,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/312/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/312",
     "size": 25,
+    "group": 9,
     "file": "260.jpg"
   },
   {
@@ -2717,6 +3003,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/321/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/321",
     "size": 25,
+    "group": 9,
     "file": "261.jpg"
   },
   {
@@ -2727,6 +3014,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/334/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/334",
     "size": 25,
+    "group": 9,
     "file": "262.jpg"
   },
   {
@@ -2737,6 +3025,7 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/338/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/338",
     "size": 24,
+    "group": 9,
     "file": "263.jpg"
   },
   {
@@ -2747,10 +3036,12 @@
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/361/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/361",
     "size": 25,
+    "group": 9,
     "file": "264.jpg"
   },
   {
     "id": "",
-    "size": 24
+    "size": 24,
+    "group": 1
   }
 ]
