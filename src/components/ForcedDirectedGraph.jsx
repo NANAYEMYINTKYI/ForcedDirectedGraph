@@ -6,10 +6,13 @@ import './ForcedDirectedGraph.css'
 
 // this is forced-directed graoh component
 const ForceDirectedGraph = ({ 
-  nodes = linkdata, 
-  links = nodedata,
-  width = 928,
-  height = 400
+  datasets,
+  currentDataset,
+  handleDatasetChange,
+  nodes,
+  links,
+  width,
+  height
 }) => {
   // Refs
   const svgRef = useRef();
@@ -244,6 +247,20 @@ const ForceDirectedGraph = ({
         <h1>🌐 Force-Directed Graph</h1>
       </div>
       {/* Controls */}
+      <div className="dataset-selector">
+          <h3>Choose Dataset:</h3>
+          <div className="dataset-buttons">
+            {Object.entries(datasets).map(([key, dataset]) => (
+              <button
+                key={key}
+                className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
+                onClick={() => handleDatasetChange(key)}
+              >
+                {dataset.name}
+              </button>
+            ))}
+          </div>
+      </div>
       <div className="controls">
         <div className="control-group">
           <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>

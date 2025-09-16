@@ -1,3 +1,4 @@
+// This used for maping node and link not append it in to G
 import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import "./ForcedDirectedGraph.css";
