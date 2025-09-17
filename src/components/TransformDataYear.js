@@ -1,7 +1,7 @@
 import fs from "fs";
 
 // ----- Customize Data Section-----
-import rawData from './../data/mab2023Data.json' with { type: 'json' };
+import rawData from './../data/mabData.json' with { type: 'json' };
 // node = Title // Focus Node
 // connectionNode = Year // Node for connection
 // Group 1-7 = Continent
@@ -31,7 +31,7 @@ rawData.forEach((item) => {
       url: item.URL,
       size: 24,
       group: 9,
-      file: item.URL.split("/")[5].trim() + ".jpg"
+      file: item.URL.split("/")[5] + ".jpg"
     };
   }
 });
