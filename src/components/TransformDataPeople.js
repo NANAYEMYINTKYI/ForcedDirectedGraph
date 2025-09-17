@@ -140,4 +140,3 @@ fs.writeFileSync("./../data/PeopleLink.json", JSON.stringify(links, null, 2));
 fs.writeFileSync("./../data/PeopleNode.json", JSON.stringify(nodes, null, 2));
 
 // console.log("✅ links.json and nodes.json generated!");
-
