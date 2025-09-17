@@ -19,7 +19,10 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
+.app-content{
+  min-height: 100vh;
+  height: 100vh;
+}
 /* Background */
 
 @keyframes spin {

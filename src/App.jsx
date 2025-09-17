@@ -4,16 +4,20 @@ import countrylink from '../src/data/CountryLink.json';
 import countrynode from '../src/data/CountryNode.json';
 import yearlink from '../src/data/YearLink.json';
 import yearnode from '../src/data/YearNode.json';
+import peoplenode from '../src/data/PeopleNode.json';
+import peoplelink from '../src/data/PeopleLink.json';
+import mabdata from '../src/data/mabData.json';
 import './App.css'
 
 
 const datasets ={
   country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
-  year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"}
+  year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
+  people: {nodes:peoplenode, links:peoplelink, name: "Social graph by People"}
 };
 
 const App = () => {
-  const [currentDataset, setCurrentDataset] = useState('country');
+  const [currentDataset, setCurrentDataset] = useState('people');
   const graphData = datasets[currentDataset];
   // Handle dataset change
   const handleDatasetChange = (datasetsKey) => {

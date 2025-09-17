@@ -9,8 +9,9 @@
 }
 
 .graph-svg {
+  justify-content: center ;
   width: 90vw;
-  height: 85vh;
+  height: 80vh;
   border: 1px solid #ccc;
   background: white;
   cursor: grab;

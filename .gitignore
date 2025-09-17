@@ -19,6 +19,9 @@ pic.jpg
 graph.css
 graph.jsx
 mab2023Data.json
+mabdata.json
+peoplelink.json
+peoplenode.json
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
