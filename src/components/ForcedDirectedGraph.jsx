@@ -90,12 +90,12 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
+      .force("y", d3.forceY(height/1.5))
+      .force("x", d3.forceX(width/1.5))
       .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
       .force("charge", d3.forceManyBody().strength(-chargeStrength*2)) // simulate gravity attrction
       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision
-      .force("y", d3.forceY(height/1.5))
-      .force("x", d3.forceX(width/1.5))
       .alphaDecay(0.1); 
     simulationRef.current = simulation;
     // Create links
@@ -239,10 +239,6 @@ const ForceDirectedGraph = ({
 
   return (
     <div className="force-graph-container">
-      {/* Header */}
-      <div className="header">
-        <h1>🌐 Force-Directed Graph</h1>
-      </div>
       {/* Controls */}
       <div className="controls">
         <div className="control-group">

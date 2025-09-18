@@ -47,25 +47,7 @@ export function PeopleData(rawData) {
 
     title.Contributors = contributors.join(", ");
   });
-
-  rawData.forEach(title => {
-    const contributors = [];
   
-    contributorFields.forEach(field => {
-        if (title[field]
-            && title[field].trim() !== ""
-            && title[field].trim().toLowerCase() !== "n/a"
-            && title[field].trim().toLowerCase() !== "none"
-            && title[field].trim().toLowerCase() !== "na") {
-                const cleaned = title[field].trim().replace(/\s*\([^)]*\)/g, "");
-                contributors.push(cleaned);
-            }
-            delete title[field];
-        });
-
-        title.Contributors = contributors.join(", ");
-    });
-
     // node → connectionNode
     const seenLinks = new Set();
 

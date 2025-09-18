@@ -9,10 +9,6 @@ const marks = [
   {
     value: 2023,
     label: '2023',
-  },
-  {
-    value: 2024,
-    label: '202021',
   }
 ];
 
@@ -24,6 +20,7 @@ const RangeSlider = ({ value, onChange, label, width = 300 }) => {
   return (
     <Box sx={{ width }}>
       <Slider
+        size="small"
         getAriaLabel={() => label}
         value={value}
         onChange={onChange}
@@ -31,7 +28,13 @@ const RangeSlider = ({ value, onChange, label, width = 300 }) => {
         getAriaValueText={valuetext}
         marks={marks}
         min={1999}
-        max={2024}
+        max={2023}
+      style = {{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 5,
+        }}
       />
     </Box>
   );

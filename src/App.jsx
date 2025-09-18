@@ -19,8 +19,8 @@ const App = () => {
     const [startYear, endYear] = yearRange;
     return rawData.filter(data => {
       let dataYear = parseInt(data.Year);
-      if (dataYear === 202021){
-        dataYear = 2024
+      if (dataYear > 10000){
+        dataYear = dataYear % 10000;
       }
       return dataYear >= startYear && dataYear <= endYear;
     });
@@ -33,20 +33,35 @@ const App = () => {
   };
 
   return (
-    <div className="app" style = {{height: "100vh"}}>
+    <div className="app" style={{height: '100vh'}}>
       {/* Background */}
       <div className="app-background">
+      {/* Header */}
+      <div className="header" 
+      style = {{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center', 
+        marginTop: '50px'
+        }}>
+        <h1>🌐 Force-Directed Graph</h1>
       </div>
-        <ForceDirectedGraph
-          nodes={nodes} links={links} width={928} height={400} 
-        />
-        <div style={{ margin: '20px' }}>
+        <div style={{
+        display: 'flex',
+        justifyContent: 'center', 
+        gap: "15px" 
+        }}>
+        <p style={{ fontWeight: '600', margin: '2.5px' }}>Select Year Range:</p>
           <Slidebar
             value={yearRange}
             onChange={handleRangeChange}
             label="Select year range"
-            width={1500}
+            width={500}
           />
+      </div>
+        <ForceDirectedGraph
+          nodes={nodes} links={links} width={928} height={400} 
+        />
         </div>
       </div>
   );
