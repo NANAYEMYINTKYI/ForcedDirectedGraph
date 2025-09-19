@@ -31,28 +31,6 @@
   font-weight: 600;
 }
 
-.dataset-selector {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  text-align: center;
-}
-
-.dataset-selector h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.2em;
-}
-
-.dataset-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .dataset-btn {
   background: linear-gradient(45deg, #f8f9fa, #e9ecef);
   border: 2px solid #dee2e6;

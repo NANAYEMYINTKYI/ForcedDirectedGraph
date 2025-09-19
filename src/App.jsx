@@ -1,19 +1,28 @@
 import {useState, useEffect, useMemo } from "react";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
-import Graph from "./components/graph";
 import Timeline from './components/Timeline';
-import './App.css'
-// import nodesData from './data/PeopleNode.json'
-// import linksData from './data/PeopleLink.json'
-// import nodesData from '../public/data/NodeData.json'
-// import linksData from '../public/data/LinkData.json'
-import React,{ useMemo, useEffect, useState } from "react";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
+import { CountryData } from "./components/TransformDataCountryFunction";
 import rawData from './data/mabData.json';
+import countrylink from '../src/data/CountryLink.json';
+import countrynode from '../src/data/CountryNode.json';
+import yearlink from '../src/data/YearLink.json';
+import yearnode from '../src/data/YearNode.json';
+import peoplenode from '../src/data/PeopleNode.json';
+import peoplelink from '../src/data/PeopleLink.json';
+import './App.css'
 
+
+const datasets ={
+  country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
+  year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
+  people: {nodes:peoplenode, links:peoplelink, name: "Social graph by People"}
+};
 
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
+
+  const [processedDatasets, setProcessedDatasets] = useState({});
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -26,28 +35,59 @@ const App = () => {
       return dataYear >= startYear && dataYear <= endYear;
     });
   }, [yearRange]);
+  
+  const { nodes, links } = CountryData(rawData);
 
-  const { nodes, links } = PeopleData(FilterData);
+const datasets ={
+  country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
+  year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
+  people: {nodes:nodes, links:links, name: "Social graph by People"}
+};
+
+  const [currentDataset, setCurrentDataset] = useState('people');
+  const graphData = datasets[currentDataset];
 
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
   };
+   // Handle dataset change
+  const handleDatasetChange = (key) => setCurrentDataset(key);
 
-  return (
-    <div className="app" style={{height: '100vh'}}>
-      {/* Background */}
-      <div className="app-background">
+ return (
+    <div className="app">
       {/* Header */}
+      <div className="header">
+        <h1>🌐 Force-Directed Graph</h1>
+      </div>
+      {/* Background */}
+      <div className="app-background"></div>
+       {/* Header */}
       <div className="header" 
-      style = {{
+        style = {{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center', 
         marginTop: '50px'
         }}>
-        <h1>🌐 Force-Directed Graph</h1>
       </div>
-        <div style={{
+            {/* Controls */}
+      <div className="dataset-selector">
+          <h3>Choose Dataset:</h3>
+          <div className="dataset-buttons">
+            {Object.entries(datasets).map(([key, dataset]) => (
+              <button
+                key={key}
+                className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
+                onClick={() => handleDatasetChange(key)}
+              >
+                {dataset.name}
+              </button>
+            ))}
+          </div>
+      </div>
+         <div className="app-content">
+            {/* Timeline */}
+            <div style={{
         display: 'flex',
         justifyContent: 'center', 
         gap: "15px" 
@@ -60,112 +100,26 @@ const App = () => {
             width={500}
           />
       </div>
-        <ForceDirectedGraph
+        
+          {/* Force-directed graph component */}
+          <ForceDirectedGraph 
+            datasets={datasets}
+            currentDataset={currentDataset}
+            handleDatasetChange={handleDatasetChange}
+            nodes={graphData.nodes}
+            links={graphData.links}
+            // nodes={filteredNodes}
+            // links={filteredLinks}
+            width={800}
+            height={600}
+          />
+          {/* <ForceDirectedGraph
           nodes={nodes} links={links} width={928} height={400} 
-        />
-        </div>
+        /> */}
+        </div>        
       </div>
   );
-// import countrylink from '../src/data/CountryLink.json';
-// import countrynode from '../src/data/CountryNode.json';
-// import yearlink from '../src/data/YearLink.json';
-// import yearnode from '../src/data/YearNode.json';
-// import peoplenode from '../src/data/PeopleNode.json';
-// import peoplelink from '../src/data/PeopleLink.json';
-// import mabdata from '../src/data/mabData.json';
-// import './App.css'
-// const datasets ={
-//   country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
-//   year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
-//   people: {nodes:peoplenode, links:peoplelink, name: "Social graph by People"}
-// };
-
-// const App = () => {
-//   const [currentDataset, setCurrentDataset] = useState('people');
-//   const graphData = datasets[currentDataset];
-//   // const [processedDatasets, setProcessedDatasets] = useState({});
-//    // Handle dataset change
-//   const handleDatasetChange = (key) => setCurrentDataset(key);
-
-//   return (
-//     <div className="app">
-//       {/* Header */}
-//       <div className="header">
-//         <h1>🌐 Force-Directed Graph</h1>
-//       </div>
-//       {/* Background */}
-//       <div className="app-background"></div>
-//          <div className="app-content">
-        
-//           {/* Force-directed graph component */}
-//           <ForceDirectedGraph 
-//             datasets={datasets}
-//             currentDataset={currentDataset}
-//             handleDatasetChange={handleDatasetChange}
-//             nodes={graphData.nodes}
-//             links={graphData.links}
-//             // nodes={filteredNodes}
-//             // links={filteredLinks}
-//             width={800}
-//             height={600}
-//           />
-//           {/* <ForceDirectedGraph
-//           nodes={nodesData} links={linksData} width={928} height={400} 
-//         /> */}
-//         </div>        
-//       </div>
-//   );
   
 };
 
 export default App;
-// ---- No use ----
-// const App = () => {
-//   // Calculate and display graph statistics
-// //   const [nodes,setnodes]=useState(null);
-// //   const [links,setlinks]=useState(null);
-
-// // useEffect(() => {
-// //     Promise.all([
-// //       fetch("./data/NodeData.json").then((res) => res.json()),
-// //       fetch("./data/LinkData.json").then((res) => res.json())
-// //     ]).then(([n, l]) => {
-// //       setnodes(n);
-// //       setlinks(l);
-// //     });
-// //   }, []);
-
-// let FilterData;
-// let year = null;
-
-// if (year !== null){
-//   FilterData = rawData.filter(data => data.Year === year.toString());
-// } else {
-//   FilterData = rawData;
-// }
-
-// const App = () => {
-//   const { nodes, links } = PeopleData(FilterData);
-//   const [range, setRange] = useState([0, 100]);
-//   const handleRangeChange = (event, newValue) => {
-//     setRange(newValue);
-//   };
-
-
-// //   // return (
-// //   //   <div className="app">
-// //   //     {nodes && links ? (
-// //   //       <Graph
-// //   //         nodes={nodes}
-// //   //         links={links}
-// //   //         width={window.innerWidth}
-// //   //         height={window.innerHeight}
-// //   //         batchSize={4}     // nodes per step
-// //   //         intervalMs={300}  // delay between steps
-// //   //       />
-// //   //     ) : (
-// //   //       <p>Loading graph...</p>
-// //   //     )}
-// //   //   </div>
-// //   // );
-  

@@ -13,7 +13,7 @@ Object.keys(imageslist).forEach((path) => {
   image[fileName] = imageslist[path].default || imageslist[path];
 });
 
-// this is forced-directed graoh component
+// this is forced-directed graph component
 const ForceDirectedGraph = ({ 
   datasets,
   currentDataset,
@@ -28,10 +28,10 @@ const ForceDirectedGraph = ({
   const simulationRef = useRef();
   const tooltipRef = useRef();
   // State
-  const [chargeStrength, setChargeStrength] = useState(300);
+  const [chargeStrength, setChargeStrength] = useState(700);
   const [linkStrength, setLinkStrength] = useState(0.01);
   const [centerStrength, setCenterStrength] = useState(0.3);
-  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
+  const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
 
   // Color scale
   const colorScale = d3.scaleOrdinal()
@@ -68,7 +68,7 @@ const ForceDirectedGraph = ({
   }, []);
 
   
-  // Initialize and update graph when dependen
+  // Initialize and update graph when dependent
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg 
     svg.selectAll("*").remove(); // Clear previous content 
@@ -108,24 +108,13 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
-
-//       .force("y", d3.forceY(height/1.5))
-//       .force("x", d3.forceX(width/1.5))
-//       .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
-//       .force("charge", d3.forceManyBody().strength(-chargeStrength*2)) // simulate gravity attrction
-//       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength)) // update new centering force
-//       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision
-//       .alphaDecay(0.1); 
-
       .force("y", d3.forceY(height))
       .force("x", d3.forceX(width))
-      .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5)) // Attraction
+      .force("link", d3.forceLink(links).id(d => d.id).strength(0.2)) // Attraction
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
-      // .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
+      .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
-      // .force("y", d3.forceY(height/1.5))
-      // .force("x", d3.forceX(width/1.5))
-      .alphaDecay(0.1) 
+      .alphaDecay(0.05) 
 
     simulationRef.current = simulation;
     // Create links
@@ -153,7 +142,7 @@ const ForceDirectedGraph = ({
         .append("circle")
         .attr("r", d => d.size)
 
-      // crate circle
+      // create circle
       node.append("circle")
         .attr("r", d => d.size)
         .attr("fill", d => colorScale(d.group))
@@ -305,21 +294,6 @@ const ForceDirectedGraph = ({
 
   return (
     <div className="force-graph-container">
-      {/* Controls */}
-      <div className="dataset-selector">
-          <h3>Choose Dataset:</h3>
-          <div className="dataset-buttons">
-            {Object.entries(datasets).map(([key, dataset]) => (
-              <button
-                key={key}
-                className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
-                onClick={() => handleDatasetChange(key)}
-              >
-                {dataset.name}
-              </button>
-            ))}
-          </div>
-      </div>
       <div className="controls">
         <div className="control-group">
           <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
