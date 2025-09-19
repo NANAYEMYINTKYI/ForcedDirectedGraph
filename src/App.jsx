@@ -1,4 +1,4 @@
-import {useState, useEffect, useMemo } from "react";
+import {useState, useEffect, useMemo, useCallback } from "react";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import Timeline from './components/Timeline';
 import { PeopleData } from "./components/TransformDataPeopleFunction";
@@ -10,6 +10,7 @@ import yearlink from '../src/data/YearLink.json';
 import yearnode from '../src/data/YearNode.json';
 import peoplenode from '../src/data/PeopleNode.json';
 import peoplelink from '../src/data/PeopleLink.json';
+import TagManager from "./components/TagManager";
 import './App.css'
 
 
@@ -38,20 +39,39 @@ const App = () => {
   
   const { nodes, links } = CountryData(rawData);
 
-const datasets ={
-  country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
-  year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
-  people: {nodes:nodes, links:links, name: "Social graph by People"}
-};
+  // const datasets ={
+  //   country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
+  //   year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
+  //   people: { nodes: peoplenode, links: peoplelink, name: "Social graph by People" }
+  // };
 
   const [currentDataset, setCurrentDataset] = useState('people');
+  const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const graphData = datasets[currentDataset];
 
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
   };
    // Handle dataset change
-  const handleDatasetChange = (key) => setCurrentDataset(key);
+    const handleDatasetChange = useCallback((key) => {
+    setCurrentDataset(key);
+    }, []);
+    // Handle filtered data from TagManager
+    const handleFilterChange = useCallback((data) => {
+      setFilteredData(data);
+    }, []);
+
+    // Memoize the graph props to prevent unnecessary re-renders
+      const graphProps = useMemo(() => ({
+        datasets,
+        currentDataset,
+        handleDatasetChange,
+        nodes: filteredData.nodes,
+        links: filteredData.links,
+        width: 800,
+        height: 600
+      }), [currentDataset, filteredData.nodes, filteredData.links]);
+    
 
  return (
     <div className="app">
@@ -99,10 +119,19 @@ const datasets ={
             label="Select year range"
             width={500}
           />
+        {/* Tag filter component */}
+                  <TagManager 
+                    datasets={datasets}
+                    currentDataset={currentDataset}
+                    mabData={rawData}
+                    onFilterChange={handleFilterChange}
+                    showCounts={true}
+                  />
+          
       </div>
         
           {/* Force-directed graph component */}
-          <ForceDirectedGraph 
+          {/* <ForceDirectedGraph 
             datasets={datasets}
             currentDataset={currentDataset}
             handleDatasetChange={handleDatasetChange}
@@ -112,7 +141,9 @@ const datasets ={
             // links={filteredLinks}
             width={800}
             height={600}
-          />
+          /> */}
+            {/* Force-directed graph component */}
+                  <ForceDirectedGraph {...graphProps} />
           {/* <ForceDirectedGraph
           nodes={nodes} links={links} width={928} height={400} 
         /> */}

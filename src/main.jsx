@@ -6,6 +6,6 @@ import App_Tag from './App_Tag.jsx'
 
 ReactDom.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    < App_Tag/>
+    < App/>
   </React.StrictMode>
 )
