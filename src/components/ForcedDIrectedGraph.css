@@ -16,10 +16,11 @@
   background: white;
   cursor: grab;
 }
-
-.header{
-  margin-bottom: 10px;
+.graph-group{
+  width: 90vw;
+  height: 80vh;
 }
+
 .controls {
   display: flex;
   gap: 20px;
