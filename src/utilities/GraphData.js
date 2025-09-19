@@ -2,7 +2,7 @@
 // graphData.js - Data and utility functions for the force-directed graph
 // Utility functions for data processing
 export const nodes = import("../data/NodeData.json");
-export const links = import('../data/LinkData.json')
+export const links = import('../data/LinkData.json');
 export const graphUtils = {
   
   // Validate graph data structure

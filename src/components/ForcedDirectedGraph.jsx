@@ -15,10 +15,13 @@ Object.keys(imageslist).forEach((path) => {
 
 // this is forced-directed graoh component
 const ForceDirectedGraph = ({ 
-  nodes = linkdata, 
-  links = nodedata,
-  width = 928,
-  height = 400
+  datasets,
+  currentDataset,
+  handleDatasetChange,
+  nodes,
+  links,
+  width,
+  height
 }) => {
   // Refs
   const svgRef = useRef();
@@ -26,9 +29,8 @@ const ForceDirectedGraph = ({
   const tooltipRef = useRef();
   // State
   const [chargeStrength, setChargeStrength] = useState(300);
-  const [linkStrength, setLinkStrength] = useState(1);
+  const [linkStrength, setLinkStrength] = useState(0.01);
   const [centerStrength, setCenterStrength] = useState(0.3);
-  const [isPaused, setIsPaused] = useState(false);
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
 
   // Color scale
@@ -65,6 +67,7 @@ const ForceDirectedGraph = ({
       .style("stroke", "steelblue");
   }, []);
 
+  
   // Initialize and update graph when dependen
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg 
@@ -91,21 +94,39 @@ const ForceDirectedGraph = ({
       g.attr("transform", event.transform);
     };
     const zoom = d3.zoom()
-      .scaleExtent([0.1, 8]) // Sets min and max zoom levels
+      .scaleExtent([0.01, 30]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
-     svg.call(zoom);
-     
+    svg.call(zoom);
+
+    // set the initial zoom/translate when entering
+    const initialTransform = d3.zoomIdentity.translate(900,425).scale(0.2); 
+
+    svg.call(zoom.transform, initialTransform); // apply starting transform
+    g.attr("transform", initialTransform);      // also set g’s transform
+
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("y", d3.forceY(height/1.5))
-      .force("x", d3.forceX(width/1.5))
-      .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
-      .force("charge", d3.forceManyBody().strength(-chargeStrength*2)) // simulate gravity attrction
-      .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength)) // update new centering force
-      .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision
-      .alphaDecay(0.1); 
+
+//       .force("y", d3.forceY(height/1.5))
+//       .force("x", d3.forceX(width/1.5))
+//       .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5))
+//       .force("charge", d3.forceManyBody().strength(-chargeStrength*2)) // simulate gravity attrction
+//       .force("center", d3.forceCenter(width / 2, height / 2).strength(centerStrength)) // update new centering force
+//       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision
+//       .alphaDecay(0.1); 
+
+      .force("y", d3.forceY(height))
+      .force("x", d3.forceX(width))
+      .force("link", d3.forceLink(links).id(d => d.id))//.strength(d => d.strength/5)) // Attraction
+      .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
+      // .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
+      .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
+      // .force("y", d3.forceY(height/1.5))
+      // .force("x", d3.forceX(width/1.5))
+      .alphaDecay(0.1) 
+
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
@@ -245,6 +266,7 @@ const ForceDirectedGraph = ({
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
       node.attr("transform", d => `translate(${d.x},${d.y})`);
+      
 
     });
 
@@ -259,7 +281,7 @@ const ForceDirectedGraph = ({
     setChargeStrength(value);
     if (simulationRef.current) {
       simulationRef.current.force("charge", d3.forceManyBody().strength(-value));
-      simulationRef.current.alpha(0.3).restart();
+      simulationRef.current.alpha(0.3).restart;
     }
   }, []);
   // handle link strength
@@ -267,7 +289,7 @@ const ForceDirectedGraph = ({
     const value = parseFloat(e.target.value);
     setLinkStrength(value);
     if (simulationRef.current) {
-      simulationRef.current.force("link", d3.forceLink(links).id(d => d.id).strength(value));
+      simulationRef.current.force("link", d3.forceLink(links).id(d => d.id).strength(-value));
       simulationRef.current.alpha(0.5).restart();
     }
   }, [links]);
@@ -284,6 +306,20 @@ const ForceDirectedGraph = ({
   return (
     <div className="force-graph-container">
       {/* Controls */}
+      <div className="dataset-selector">
+          <h3>Choose Dataset:</h3>
+          <div className="dataset-buttons">
+            {Object.entries(datasets).map(([key, dataset]) => (
+              <button
+                key={key}
+                className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
+                onClick={() => handleDatasetChange(key)}
+              >
+                {dataset.name}
+              </button>
+            ))}
+          </div>
+      </div>
       <div className="controls">
         <div className="control-group">
           <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
@@ -291,19 +327,19 @@ const ForceDirectedGraph = ({
             type="range"
             id="charge-strength"
             min="10"
-            max="300"
+            max="500"
             value={chargeStrength}
             onChange={handleChargeChange}
           />
         </div>
 
         <div className="control-group">
-          <label htmlFor="link-strength">Link Strength: {linkStrength}</label>
+          <label htmlFor="link-strength">Attraction: {linkStrength}</label>
           <input
             type="range"
             id="link-strength"
-            min="0.1"
-            max="2"
+            min="0.01"
+            max="20"
             step="0.1"
             value={linkStrength}
             onChange={handleLinkStrengthChange}
@@ -316,7 +352,7 @@ const ForceDirectedGraph = ({
             type="range"
             id="center-strength"
             min="0"
-            max="1"
+            max="1000"
             step="0.1"
             value={centerStrength}
             onChange={handleCenterStrengthChange}
@@ -330,7 +366,7 @@ const ForceDirectedGraph = ({
           ref={svgRef}
           width={width}
           height={height}
-          viewBox={`0 0 ${width} ${height}`} 
+          // viewBox={`0 0 ${width} ${height}`} 
           className="graph-svg"
         />
         {/* Tooltip */}
