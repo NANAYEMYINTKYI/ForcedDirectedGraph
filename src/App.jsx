@@ -1,6 +1,6 @@
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import Graph from "./components/graph";
-import Slidebar from './components/Slidebar';
+import Timeline from './components/Timeline';
 import './App.css'
 // import nodesData from './data/PeopleNode.json'
 // import linksData from './data/PeopleLink.json'
@@ -52,7 +52,7 @@ const App = () => {
         gap: "15px" 
         }}>
         <p style={{ fontWeight: '600', margin: '2.5px' }}>Select Year Range:</p>
-          <Slidebar
+          <Timeline
             value={yearRange}
             onChange={handleRangeChange}
             label="Select year range"
