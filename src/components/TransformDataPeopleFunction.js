@@ -32,33 +32,42 @@ const contributorFields = [
 
 export function PeopleData(rawData) {
   // Clean contributors
-  rawData.forEach(title => {
+rawData.forEach(title => {
   const contributors = [];
 
   contributorFields.forEach(field => {
+    let value = title[field];
+
     if (
-      title[field] &&
-      title[field].trim() !== "" &&
-      !["n/a", "none", "na"].includes(title[field].trim().toLowerCase())
+      value &&
+      value.trim() !== "" &&
+      !["n/a", "none", "na"].includes(value.trim().toLowerCase())
     ) {
-      let cleaned = title[field].trim();
+      // Clean parentheses
+      let cleaned = value.trim().replace(/\s*\([^)]*\)/g, "");
 
-      // Remove anything in parentheses
-      cleaned = cleaned.replace(/\s*\([^)]*\)/g, "");
+      // Skip if contains .com or .net
+      if (cleaned.includes(".com") || cleaned.includes(".net")) return;
 
-      // Replace / | & ; with commas
-      cleaned = cleaned.replace(/[\/|&;]/g, ",");
+      // Remove &amp
+      cleaned = cleaned.replace(/amp/g, "");
+      cleaned = cleaned.replace(/AV&C/g, "");
 
-      // Remove anything containing .com or .net
-      if (!/\.com|\.net/i.test(cleaned)) {
-        contributors.push(cleaned);
-      }
+      // Replace /, \, & (not comma) with |
+      cleaned = cleaned.replace(/, (?=(?!inc|ltd|llc|corp|co)[a-z])/gi, "|");
+      cleaned = cleaned.replace(/[\/\\&;]/g, "|");
+
+      contributors.push(cleaned);
     }
+
     delete title[field];
   });
 
-  title.Contributors = contributors.join(", ");
+  title.Contributors = contributors.join("| ");
 });
+
+
+
 
   // rawData.forEach(title => {
   //   const contributors = [];
@@ -75,7 +84,7 @@ export function PeopleData(rawData) {
   //     delete title[field];
   //   });
 
-  //   title.Contributors = contributors.join(", ");
+  //   title.Contributors = contributors.join("| ");
   // });
   
     // node → connectionNode
@@ -84,7 +93,7 @@ export function PeopleData(rawData) {
     let links = rawData 
     .filter(d => d.Title && d.Contributors) 
     .flatMap(d => d.Contributors 
-        .split(",") 
+        .split("|") 
         .map(c => c.trim()) 
         .filter(c => c) 
         .map(c => { 
@@ -124,7 +133,7 @@ export function PeopleData(rawData) {
     rawData.forEach((item) => {
     if (!item.Contributors) return;
     item.Contributors
-        .split(",")
+        .split("|")
         .map(name => name.trim())
         .filter(name => name)
         .forEach(contributor => {

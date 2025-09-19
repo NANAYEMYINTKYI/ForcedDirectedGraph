@@ -144,7 +144,7 @@ const ForceDirectedGraph = ({
       
       node.each(function(d) {
         const current = d3.select(this);
-        if (d.image) {
+        if (d.file) {
           // If image exists, append image
           current.append("image")
           .attr("href", d => image[d.file])
@@ -195,31 +195,30 @@ const ForceDirectedGraph = ({
 
         // Aligh text in node to be center
       node.append("foreignObject")
+        .each(function(d) {
+          const current = d3.select(this);
+          if (d.file) {
+            current.attr("y", d.size + 5)
+            .style("font-size", "12px")
+          } else {
+            current.attr("y", -50)
+            .style("font-size", "8px")
+          }})
         .attr("x", d => -d.size*1)
-        .attr("y", -20)
         .attr("width", d => d.size*2)   // box width
         .attr("height", 100)  // box height
         .append("xhtml:div")
-        .style("font-size", "8px")
+        .style("display", "flex")
+        .style("flex-direction", "column")
+        .style("justify-content", d => d.file ? "flex-start" : "center")
+        .style("width", "100%")
+        .style("height", "100%")
         .style("font-weight", "bold")
         .style("text-align", "center")
         .style("color", "#333")
         .style("word-wrap", "break-word")
         .text(d => d.id)
-
-      // node.append("foreignObject")
-      //   .attr("x", -40)
-      //   .attr("y", -20)
-      //   .attr("width", 80)   // box width
-      //   .attr("height", 50)  // box height
-      //   .append("xhtml:div")
-      //   .style("font-size", "12px")
-      //   .style("font-weight", "bold")
-      //   .style("text-align", "center")
-      //   .style("color", "#333")
-      //   .style("word-wrap", "break-word")
-      //   .text(d => d.id)
-
+        
     // Update positions on tick
     simulation.on("tick", () => {
       link
