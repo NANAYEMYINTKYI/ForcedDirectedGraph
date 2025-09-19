@@ -107,7 +107,7 @@ const ForceDirectedGraph = ({
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
       // .force("y", d3.forceY(height/1.5))
       // .force("x", d3.forceX(width/1.5))
-      .alphaDecay(0.1); 
+      .alphaDecay(0.1) 
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
@@ -212,6 +212,7 @@ const ForceDirectedGraph = ({
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
       node.attr("transform", d => `translate(${d.x},${d.y})`);
+      
 
     });
 
