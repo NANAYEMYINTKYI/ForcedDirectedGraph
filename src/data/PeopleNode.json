@@ -1,47 +1,46 @@
 [
   {
-    "id": "56",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "MERCK LIGHT CLOUD",
-    "year": "2018",
+    "year": 2018,
     "location": "Germany, Darmstadt",
     "description": "A light and sound installation reacting in ever new patterns to the physical presence of visitors",
+    "tag": "['#Germany', '#2018', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/10/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/10",
-    "size": 32,
+    "size": 30,
     "group": 9,
     "file": "10.jpg"
   },
   {
     "id": "+++ (READ +³)",
-    "year": "2018",
+    "year": 2018,
     "location": "Brazil, Sao Paulo",
     "description": "+++ (read +³) is a LED audiovisual sculpture that synthesizes the urban crosses: mobility through the city layers, city data and electromagnetic waves fluxes closely related to the fabric and rhythm of the metropolis.",
+    "tag": "['#Brazil', '#2018', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/17/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/17",
-    "size": 31,
+    "size": 32,
     "group": 9,
     "file": "17.jpg"
   },
   {
     "id": "HALO",
-    "year": "2018",
+    "year": 2018,
     "location": "United Kingdom, London",
     "description": "99 robotic mirrors track the sun to draw a circle of light suspended in a mist of water above the Edmond J Safra Courtyard at Somerset House, continuously sculpting a form which exists between material and immaterial.",
+    "tag": "['#United Kingdom', '#2018', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/18/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/18",
-    "size": 34,
+    "size": 35,
     "group": 9,
     "file": "18.jpg"
   },
   {
     "id": "LIGHT CUBE",
-    "year": "2017",
+    "year": 2017,
     "location": "Russia, Moscow",
     "description": "In point of fact, the LIGHT CUBE is a city landmark with dynamic constantly changing light content.",
+    "tag": "['#Russia', '#2017', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/19/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/19",
     "size": 30,
@@ -50,9 +49,10 @@
   },
   {
     "id": "NSOMNIUM",
-    "year": "2018",
+    "year": 2018,
     "location": "Spain, MADRID",
     "description": "Generative light experience",
+    "tag": "['#Spain', '#2018', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/29/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/29",
     "size": 26,
@@ -61,9 +61,10 @@
   },
   {
     "id": "ZOOM BLUE DOT",
-    "year": "2018",
+    "year": 2018,
     "location": "United States of America, Norway, Trondheim",
     "description": "Zoom Bue Dot",
+    "tag": "['#United States of America', '#Norway', '#2018', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/30/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/30",
     "size": 27,
@@ -72,9 +73,10 @@
   },
   {
     "id": "INSIDE OUT",
-    "year": "2018",
+    "year": 2018,
     "location": "Germany, Weimar",
     "description": "Concept of a media facade",
+    "tag": "['#Germany', '#2018', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/34/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/34",
     "size": 35,
@@ -83,9 +85,10 @@
   },
   {
     "id": "OSMANTHUS THEME PARK IN JINZHAI ANHUI",
-    "year": "2018",
+    "year": 2018,
     "location": "China, Lu'an, Anhui",
-    "description": "Public art is activated by the \"\"Moon\"\"",
+    "description": "Public art is activated by the \"Moon",
+    "tag": "['#China', '#2018', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/39/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/39",
     "size": 29,
@@ -94,31 +97,34 @@
   },
   {
     "id": "SOLAR SHIMMER",
-    "year": "2017",
+    "year": 2017,
     "location": "Qatar, Doha",
-    "description": "\"\"\"Solar Shimmer\"\": a kinetic",
-    "image": "['#Qatar', '#2017', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
-    "url": "https://awards.b-cdn.net/site_media/media/jurysys/media/40/0_big.jpg",
-    "size": 27,
+    "description": "Solar Shimmer\": a kinetic, light-emitting media screen made from reused waste and powered by the sun",
+    "tag": "['#Qatar', '#2017', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/40/0_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/40",
+    "size": 26,
     "group": 9,
-    "file": "jurysys.jpg"
+    "file": "40.jpg"
   },
   {
     "id": "BEIJING TOPWIN CENTER",
-    "year": "2016",
+    "year": 2016,
     "location": "China, Beijing",
     "description": "Towering over Beijing city, centering of charming night",
+    "tag": "['#China', '#2016', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/43/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/43",
-    "size": 39,
+    "size": 36,
     "group": 9,
     "file": "43.jpg"
   },
   {
     "id": "IMMERSION",
-    "year": "2018",
+    "year": 2018,
     "location": "Spain, ASTURIAS",
     "description": "360Âº of art and illusion",
+    "tag": "['#Spain', '#2018', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/48/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/48",
     "size": 26,
@@ -127,9 +133,10 @@
   },
   {
     "id": "ARCHITECTURE INFINITE PROLIFERATING GEOMETRY",
-    "year": "2018",
+    "year": 2018,
     "location": "South Korea, Seoul",
     "description": "Architectural media art installatioon, commissioned for the 80th anniversary of National Museum of Modern and Contemporary Art Museum, Deoksugung",
+    "tag": "['#South Korea', '#2018', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/50/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/50",
     "size": 32,
@@ -138,9 +145,10 @@
   },
   {
     "id": "WAVELENGTH",
-    "year": "2018",
+    "year": 2018,
     "location": "Australia, Sydney",
     "description": "The illuminated installation casts soft, moving light and images across the surrounding precinct, bringing the vibrant, warm energy from within the building into the surrounding envirionment.",
+    "tag": "['#Australia', '#2018', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/51/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/51",
     "size": 31,
@@ -149,20 +157,22 @@
   },
   {
     "id": "GRCB BANK – TIME TELLS A LUMINOUS STORY",
-    "year": "2018",
+    "year": 2018,
     "location": "China, Guangzhou",
     "description": "Time Tells a Luminous Story' by DEM Global Designed for GRCB, Guangzhou, China",
+    "tag": "['#China', '#2018', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/52/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/52",
-    "size": 28,
+    "size": 30,
     "group": 9,
     "file": "52.jpg"
   },
   {
     "id": "MUURMELAAR",
-    "year": "2018",
+    "year": 2018,
     "location": "Belgium, Leuven",
     "description": "MUURmelaar: an Interactive Facade with Architectural Value",
+    "tag": "['#Belgium', '#2018', '#Spatial media art', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/54/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/54",
     "size": 31,
@@ -171,64 +181,70 @@
   },
   {
     "id": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "year": "2019",
+    "year": 2019,
     "location": "Ukraine, Kiev",
-    "description": "\"The residential complex called \"\"Signature\"\" is the first large-scale building in Ukraine that uses a difficult parametric architecture. We associated the structure of the facade with the neural connections",
-    "image": "a special curvilinear profile was developed that bends in both horizontal and vertical planes. This solution is completely integrated into the architecture of our building. On the facade of the shopping part of the complex",
-    "url": "there are windows of irregular shapes for which we develop special louvered screens. These screens will be translucent",
-    "size": 41,
+    "description": "The residential complex called \"Signature\" is the first large-scale building in Ukraine that uses a difficult parametric architecture. We associated the structure of the facade with the neural connections, which we brought to life as moving light neural impulses. To fix the light sources, a special curvilinear profile was developed that bends in both horizontal and vertical planes. This solution is completely integrated into the architecture of our building. On the facade of the shopping part of the complex, there are windows of irregular shapes for which we develop special louvered screens. These screens will be translucent, but from a certain distance, the video content will be visible on them.",
+    "tag": "['#Ukraine', '#2019', '#Animated Architecture']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/55/0_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/55",
+    "size": 33,
     "group": 9,
-    "file": "undefined.jpg"
+    "file": "55.jpg"
   },
   {
     "id": "MULTIFUNCTIONAL COMPLEX “CASCADE PLAZA”",
-    "year": "2014",
+    "year": 2014,
     "location": "Ukraine, Dnipro",
-    "description": "For the illumination of the multifunctional complex \"\"Cascade Plaza\"",
-    "image": "colors can be tuned in themes of public holidays or any other events.\"",
-    "url": "['#Ukraine', '#2014', '#Animated Architecture']",
-    "size": 34,
+    "description": "For the illumination of the multifunctional complex \"Cascade Plaza\", we used spotlights with bifocal lenses that provides the same brightness perception of the light points both in direct closeness to the facade (from the adjoined boulevard) and from the distance of 2-3 km (from the opposite bank of the Dnipro river). The lighting constantly changes shades due to a big amount of the programmed patterns. In case of necessity, colors can be tuned in themes of public holidays or any other events.",
+    "tag": "['#Ukraine', '#2014', '#Animated Architecture']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/56/0_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/56",
+    "size": 30,
     "group": 9,
-    "file": "undefined.jpg"
+    "file": "56.jpg"
   },
   {
     "id": "THE SHOPPING CENTER “KUBOMETR”",
-    "year": "2016",
+    "year": 2016,
     "location": "Ukraine, Dnipro",
-    "description": "\"Assembled from modular sea containers",
-    "image": "which was made in place of the future capital building. After some time \"\"Kubometr\"\" will change its location but now it is a metaphor of movement and transformation which are unavoidable in life. The future history of this project was implemented in a light conception: multimedia waves roll by a side plane creating an effect of movement for the energy saved in containers.\"",
-    "url": "['#Ukraine', '#2016', '#Animated Architecture']",
-    "size": 31,
+    "description": "Assembled from modular sea containers, the shopping center \"Kubometr\" is a relatively temporary building, which was made in place of the future capital building. After some time \"Kubometr\" will change its location but now it is a metaphor of movement and transformation which are unavoidable in life. The future history of this project was implemented in a light conception: multimedia waves roll by a side plane creating an effect of movement for the energy saved in containers.",
+    "tag": "['#Ukraine', '#2016', '#Animated Architecture']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/57/0_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/57",
+    "size": 29,
     "group": 9,
-    "file": "undefined.jpg"
+    "file": "57.jpg"
   },
   {
     "id": "UK PAVILION LIGHT SCULPTURE AND PANORAMA",
-    "year": "2017",
+    "year": 2017,
     "location": "Kazakhstan, Astana",
     "description": "An interactive installation representing the timeless connection between human civilization and our environment",
+    "tag": "['#Kazakhstan', '#2017', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/58/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/58",
-    "size": 35,
+    "size": 31,
     "group": 9,
     "file": "58.jpg"
   },
   {
-    "id": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
-    "year": "2018",
+    "id": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
+    "year": 2018,
     "location": "Ukraine, Odesa",
     "description": "In the atrium of the big private clinic, there is a mounted media sculpture that symbolizes cells in which life pulsates. The sculpture is made from the carcass in which the stainless steel particles are placed. Five lighting scenes were laid into the concept. The illumination is coherent with the biological rhythms of a human being. That's why we developed the content made in colors that correspond with one or another time of the day and have a positive influence on the activity of body systems.",
+    "tag": "['#Ukraine', '#2018', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/59/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/59",
-    "size": 32,
+    "size": 31,
     "group": 9,
     "file": "59.jpg"
   },
   {
     "id": "HYUNDAI PAVILION FIELD OF STARS",
-    "year": "2018",
+    "year": 2018,
     "location": "South Korea, Pyeongchang",
     "description": "A glittering field of stars in front of the darkest building on earth",
+    "tag": "['#South Korea', '#2018', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/60/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/60",
     "size": 31,
@@ -237,20 +253,22 @@
   },
   {
     "id": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "year": "2017",
+    "year": 2017,
     "location": "France, Paris",
-    "description": "\"Interactive Media Structure \"\"The Pulse of Life\"\" was created for the Paris Design Week in Paris (2017) in collaboration with the Architectural Bureau \"\"Decor Kuznetsov\"\". The spatial interactive media sculpture was created to resemble the image of a human's heart. Recyclables used as a material were wastes from the footwear production. We combined different principles of lighting: an internal light from colored multi-channel lamps under different angles",
-    "image": "and a 3d-mapping projection. Using 3d-mapping and internal lamps the sculpture became a stencil for interesting shadows. All the installation was tied to a single media server and accompanied by the audio content",
-    "url": "which recreated the heartbeat on the background of meditative music. In addition",
-    "size": 36,
+    "description": "Interactive Media Structure \"The Pulse of Life\" was created for the Paris Design Week in Paris (2017) in collaboration with the Architectural Bureau \"Decor Kuznetsov\". The spatial interactive media sculpture was created to resemble the image of a human's heart. Recyclables used as a material were wastes from the footwear production. We combined different principles of lighting: an internal light from colored multi-channel lamps under different angles, a controllable outer light, and a 3d-mapping projection. Using 3d-mapping and internal lamps the sculpture became a stencil for interesting shadows. All the installation was tied to a single media server and accompanied by the audio content, which recreated the heartbeat on the background of meditative music. In addition, the sculpture was interactive. Kinetic sensors, which reacted to human movement, were placed around it.",
+    "tag": "['#France', '#2017', '#Spatial media art']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/61/1_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/61",
+    "size": 28,
     "group": 9,
-    "file": "undefined.jpg"
+    "file": "61.jpg"
   },
   {
     "id": "HYUNDAI PAVILION INTERACTIVE WATER INSTALLATION",
-    "year": "2018",
+    "year": 2018,
     "location": "South Korea, Pyeongchang",
     "description": "An interactive choreography of water droplets",
+    "tag": "['#South Korea', '#2018', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/62/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/62",
     "size": 31,
@@ -259,42 +277,46 @@
   },
   {
     "id": "SHOPPING CENTER “PASSAGE”",
-    "year": "2011",
+    "year": 2011,
     "location": "Ukraine, Dnipro",
-    "description": "\"The first large-scale interactive facade in Ukraine. The structure of the facade is almost windowless and consists of niches around the perimeter of all the building on all the three floors. Each niche",
-    "image": "is a \"\"pixel\"\" in a pattern",
-    "url": "but the pattern itself has low resolution while the pixels are big. That created a certain difficulty in creating content. As a result",
-    "size": 36,
+    "description": "The first large-scale interactive facade in Ukraine. The structure of the facade is almost windowless and consists of niches around the perimeter of all the building on all the three floors. Each niche, in fact, is a \"pixel\" in a pattern, but the pattern itself has low resolution while the pixels are big. That created a certain difficulty in creating content. As a result, the illumination of the shopping center \"Passage\" can be considered a pixel art of low resolution.",
+    "tag": "['#Ukraine', '#2011', '#Animated Architecture']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/63/1_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/63",
+    "size": 30,
     "group": 9,
-    "file": "undefined.jpg"
+    "file": "63.jpg"
   },
   {
     "id": "RESIDENTIAL COMPLEX “TETRIS HALL”",
-    "year": "2016",
+    "year": 2016,
     "location": "Ukraine, Kiev",
-    "description": "\"The facade of the residential complex \"\"Tetris Hall\"\" has multiple layers of fenestration of multiple sizes. We bound lighting to the biggest windows to dispense the minimal amounts of lamps and not to cover all the facade. Under the lamps",
-    "image": "['#Ukraine', '#2016', '#Animated Architecture']",
-    "url": "https://awards.b-cdn.net/site_media/media/jurysys/media/65/1_big.jpg",
-    "size": 31,
+    "description": "The facade of the residential complex \"Tetris Hall\" has multiple layers of fenestration of multiple sizes. We bound lighting to the biggest windows to dispense the minimal amounts of lamps and not to cover all the facade. Under the lamps, the special content was developed whose plot is falling figures of Tetris that transform the building. The content implies a diverse change of shades including lighting support of events and festivals.",
+    "tag": "['#Ukraine', '#2016', '#Animated Architecture']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/65/1_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/65",
+    "size": 30,
     "group": 9,
-    "file": "jurysys.jpg"
+    "file": "65.jpg"
   },
   {
     "id": "RESTAURANT “NORMAL”",
-    "year": "2018",
+    "year": 2018,
     "location": "Ukraine, Kiev",
-    "description": "\"\"\"Normal\"\" is a restaurant in Kyiv",
-    "image": "however",
-    "url": "the dynamics are added with more active color palette",
-    "size": 35,
+    "description": "Normal\" is a restaurant in Kyiv, Ukraine. The concept of this place aims at changing the atmosphere in it depending on the restaurant schedule. The daylight scene is static and uses neutral tones; in the evening, however, the dynamics are added with more active color palette, and then it adds red in a nightclub mode, while the graffiti get supplemented by the content of different activity degrees to match the emotional state of one or another time of the day. 3D-mapping technology is used for animation of the graffiti. More than 30 variations of projections change themselves by special timings in consistency with common scenes of lighting. The backlight of the bar counter and the construction of scene and corridor are also dynamic and diverse. All of the lighting devices are controlled by a single specially designed system.",
+    "tag": "['#Ukraine', '#2018', '#Spatial media art']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/66/1_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/66",
+    "size": 30,
     "group": 9,
-    "file": "undefined.jpg"
+    "file": "66.jpg"
   },
   {
     "id": "RESIDENTIAL COMPLEX “CHICAGO CENTRAL HOUSE”",
-    "year": "2019",
+    "year": 2019,
     "location": "Ukraine, Dnipro",
     "description": "A cube on the facade of Chicago Central House will become the first massive media sculpture in Ukraine and Europe that will show the invisible rhythm of the city on its screen using digital content. The sculpture itself will be a 5x5 meter cube placed into a glass shell. The facade itself will also be dynamically lit, and the illumination will interact with the illumination of the media sculpture. For example, if along all the height of the facade, there will be an imitation of a waterfall, the cube will turn into a giant aquarium from which the water will fall loudly. For all the variations of scenarios, the audio content will be developed.",
+    "tag": "['#Ukraine', '#2019', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/67/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/67",
     "size": 31,
@@ -303,9 +325,10 @@
   },
   {
     "id": "ZEITKUGELN",
-    "year": "2016",
+    "year": 2016,
     "location": "Austria, Vienna",
     "description": "A mediaart installation with everyday utitlity",
+    "tag": "['#Austria', '#2016', '#Spatial media art', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/70/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/70",
     "size": 30,
@@ -314,20 +337,22 @@
   },
   {
     "id": "TERRELL PLACE",
-    "year": "2016",
+    "year": 2016,
     "location": "United States of America, Washington, D.C.",
     "description": "Walls That Move With You: Washington, D.C.'s Terrell Place has 1,700-square-feet of Motion-Activated LED Displays That Respond to Your Presence",
+    "tag": "['#United States of America', '#2016', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/71/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/71",
-    "size": 36,
+    "size": 37,
     "group": 9,
     "file": "71.jpg"
   },
   {
     "id": "THE INFINITY ROOM",
-    "year": "2017",
+    "year": 2017,
     "location": "Germany, Weimar",
     "description": "360Âº Virtual Reality Animation",
+    "tag": "['#Germany', '#2017', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/73/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/73",
     "size": 25,
@@ -336,9 +361,10 @@
   },
   {
     "id": "WHERE DO WE GO FROM HERE?",
-    "year": "2017",
+    "year": 2017,
     "location": "United Kingdom, Hull",
     "description": "Where Do We Go From Here?",
+    "tag": "['#United Kingdom', '#2017', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/77/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/77",
     "size": 31,
@@ -346,43 +372,47 @@
     "file": "77.jpg"
   },
   {
-    "id": "CHANGI AIRPORT'S TERMINAL 4 \"\"THEATRE OF EXPERIENCE\"\"",
-    "year": "2017",
+    "id": "CHANGI AIRPORT'S TERMINAL 4 \"THEATRE OF EXPERIENCE",
+    "year": 2017,
     "location": "Singapore, Singapore",
     "description": "Theatre of experience",
+    "tag": "['#Singapore', '#2017', '#Spatial media art', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/78/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/78",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "78.jpg"
   },
   {
     "id": "ONE SHENZHEN BAY",
-    "year": "2018",
+    "year": 2018,
     "location": "China, Shenzhen",
     "description": "One Shenzhen Bay | Ecological Environment Makes the Beauty of Arts",
+    "tag": "['#China', '#2018', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/81/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/81",
-    "size": 42,
+    "size": 43,
     "group": 9,
     "file": "81.jpg"
   },
   {
     "id": "FIREFLY",
-    "year": "2017",
+    "year": 2017,
     "location": "France, Paris",
     "description": "Fireflies in Paris",
+    "tag": "['#France', '#2017', '#Branded Architecture', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/82/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/82",
-    "size": 33,
+    "size": 34,
     "group": 9,
     "file": "82.jpg"
   },
   {
     "id": "RALPH LAUREN 50TH ANNIVERSARY REFLECTION",
-    "year": "2018",
+    "year": 2018,
     "location": "United States of America, New York City",
     "description": "Ralph Lauren 50th Anniversary Reflection",
+    "tag": "['#United States of America', '#2018', '#Branded Architecture', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/83/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/83",
     "size": 30,
@@ -391,9 +421,10 @@
   },
   {
     "id": "CYCLEPHILLY",
-    "year": "2014",
+    "year": 2014,
     "location": "United States of America, Philadelphia",
     "description": "Smartphone app and complimentary backend and public website.",
+    "tag": "['#United States of America', '#2014', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/95/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/95",
     "size": 38,
@@ -402,20 +433,22 @@
   },
   {
     "id": "THE CHANEL GINZA TOWER",
-    "year": "2004",
+    "year": 2004,
     "location": "Japan, Tokyo",
     "description": "A branded building",
+    "tag": "['#Japan', '#2004', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/96/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/96",
-    "size": 30,
+    "size": 28,
     "group": 9,
     "file": "96.jpg"
   },
   {
     "id": "USA 221",
-    "year": "2013",
+    "year": 2013,
     "location": "United States of America, San Francisco",
     "description": "221 Main Street",
+    "tag": "['#United States of America', '#2013', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/97/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/97",
     "size": 27,
@@ -424,9 +457,10 @@
   },
   {
     "id": "WILKIE EDGE - AAMP, SINGAPORE 2009",
-    "year": "2009",
+    "year": 2009,
     "location": "Singapore, Singapore",
     "description": "Architectural Advertising Amplifier",
+    "tag": "['#Singapore', '#2009', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/98/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/98",
     "size": 27,
@@ -435,42 +469,46 @@
   },
   {
     "id": "GS CALTEX PAVILION",
-    "year": "2012",
+    "year": 2012,
     "location": "South Korea, Yeosu",
     "description": "Symbol of energy - dynamic ensemble",
+    "tag": "['#South Korea', '#2012', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/99/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/99",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "99.jpg"
   },
   {
     "id": "DIA LIGHTS / URBAN CANVAS",
-    "year": "2013",
+    "year": 2013,
     "location": "Denmark, Aarhus",
     "description": "Dynamic media faíçade in the heart of Copenhagen",
+    "tag": "['#Denmark', '#2013', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/100/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/100",
-    "size": 30,
+    "size": 31,
     "group": 9,
     "file": "100.jpg"
   },
   {
     "id": "DENMARK PAVILION, EXPO",
-    "year": "2010",
+    "year": 2010,
     "location": "China, Shanghai",
     "description": "Double-spiral architecture",
+    "tag": "['#China', '#2010', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/101/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/101",
-    "size": 33,
+    "size": 34,
     "group": 9,
     "file": "101.jpg"
   },
   {
     "id": "THA PAPER WAVE",
-    "year": "2014",
+    "year": 2014,
     "location": "France, Paris",
     "description": "kinetic paper installation",
+    "tag": "['#France', '#2014', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/102/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/102",
     "size": 26,
@@ -479,20 +517,22 @@
   },
   {
     "id": "UEC ILUMA - CRYSTAL MESH",
-    "year": "2009",
+    "year": 2009,
     "location": "Singapore, Singapore",
     "description": "Crystal Mesh - Ornamental and granulated light and media faíçade",
+    "tag": "['#Singapore', '#2009', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/103/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/103",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "103.jpg"
   },
   {
     "id": "SANYA PHOENIX ISLAND",
-    "year": "2012",
+    "year": 2012,
     "location": "China, Sanya",
     "description": "Island installation brings bay to life.",
+    "tag": "['#China', '#2012', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/105/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/105",
     "size": 31,
@@ -501,9 +541,10 @@
   },
   {
     "id": "BIRLOKI SYSTEM",
-    "year": "2014",
+    "year": 2014,
     "location": "Spain, Singapore, Bilbao, Singapore",
     "description": "An interactive urban space booster",
+    "tag": "['#Spain', '#Singapore', '#2014', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/106/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/106",
     "size": 28,
@@ -512,20 +553,22 @@
   },
   {
     "id": "SCREENS IN THE WILD",
-    "year": "2013",
+    "year": 2013,
     "location": "United Kingdom, London and Nottingham",
     "description": "Screens in the Wild: connecting communities",
+    "tag": "['#United Kingdom', '#2013', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/107/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/107",
-    "size": 33,
+    "size": 29,
     "group": 9,
     "file": "107.jpg"
   },
   {
     "id": "HARPA",
-    "year": "2011",
+    "year": 2011,
     "location": "Iceland, Reykjavik",
     "description": "Harpa - Reykjavik Concert Hall and Conference Centre",
+    "tag": "['#Iceland', '#2011', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/108/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/108",
     "size": 30,
@@ -534,9 +577,10 @@
   },
   {
     "id": "PORTABLE/DEFLATABLE LED MATRIX",
-    "year": "2009",
+    "year": 2009,
     "location": "Austria, Vienna",
     "description": "Transported by a single person",
+    "tag": "['#Austria', '#2009', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/109/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/109",
     "size": 25,
@@ -545,64 +589,70 @@
   },
   {
     "id": "LUANDA SPORTS PAVILION",
-    "year": "2013",
+    "year": 2013,
     "location": "Angola, Luanda",
-    "description": "A Pavilion with a \"\"chameleon skin\"\" light faíçade.",
+    "description": "A Pavilion with a \"chameleon skin\" light faíçade.",
+    "tag": "['#Angola', '#2013', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/110/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/110",
-    "size": 34,
+    "size": 32,
     "group": 9,
     "file": "110.jpg"
   },
   {
     "id": "WALK OF STARS",
-    "year": "2014",
+    "year": 2014,
     "location": "China, Wuhan",
     "description": "Walk of Stars - An Interactive Walkway",
+    "tag": "['#China', '#2014', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/111/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/111",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "111.jpg"
   },
   {
     "id": "IN THE AIR, TONIGHT",
-    "year": "2016",
+    "year": 2016,
     "location": "Canada, Toronto",
     "description": "Interactive architecture installation aimed at encouraging a larger discussion on the topic of homelessness in Toronto",
+    "tag": "['#Canada', '#2016', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/112/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/112",
-    "size": 35,
+    "size": 36,
     "group": 9,
     "file": "112.jpg"
   },
   {
     "id": "LIVING SCULPTURE",
-    "year": "2012",
+    "year": 2012,
     "location": "Germany, Frankfurt",
     "description": "Light floating in the air - OLED based movable triangular aluminium frames",
+    "tag": "['#Germany', '#2012', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/113/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/113",
-    "size": 27,
+    "size": 29,
     "group": 9,
     "file": "113.jpg"
   },
   {
     "id": "KPN TOWER",
-    "year": "2000",
+    "year": 2000,
     "location": "Netherlands, Rotterdam",
     "description": "Skyscraper on an island",
+    "tag": "['#Netherlands', '#2000', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/114/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/114",
-    "size": 27,
+    "size": 28,
     "group": 9,
     "file": "114.jpg"
   },
   {
     "id": "OUR MEETING PLACES",
-    "year": "2014",
+    "year": 2014,
     "location": "Germany, Weimar",
     "description": "Interactive visual representations of social and spatial relations",
+    "tag": "['#Germany', '#2014', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/115/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/115",
     "size": 25,
@@ -611,9 +661,10 @@
   },
   {
     "id": "THE WORLD’S LARGEST TIME PIECE",
-    "year": "2005",
+    "year": 2005,
     "location": "Switzerland, Zurich",
     "description": "A different kind of christmas lights",
+    "tag": "['#Switzerland', '#2005', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/116/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/116",
     "size": 30,
@@ -622,9 +673,10 @@
   },
   {
     "id": "MORGAN STANLEY - TIMES SQUARE HEADQUARTERS",
-    "year": "2015",
+    "year": 2015,
     "location": "United States of America, New York",
     "description": "Morgan Stanley's Times Square Spectacular",
+    "tag": "['#United States of America', '#2015', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/117/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/117",
     "size": 25,
@@ -633,9 +685,10 @@
   },
   {
     "id": "FEDERATION SQUARE",
-    "year": "2002",
+    "year": 2002,
     "location": "Australia, Melbourne",
     "description": "Melbourneâ€™s gateway to the world",
+    "tag": "['#Australia', '#2002', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/118/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/118",
     "size": 28,
@@ -644,9 +697,10 @@
   },
   {
     "id": "XINDIE",
-    "year": "2013",
+    "year": 2013,
     "location": "South Korea, Seoul",
     "description": "Urban Creature Born for Indie Music",
+    "tag": "['#South Korea', '#2013', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/119/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/119",
     "size": 32,
@@ -655,9 +709,10 @@
   },
   {
     "id": "LED FRIEZE OF THE NEW BUILDING OF THE KUNSTMUSEUM BASEL",
-    "year": "2016",
+    "year": 2016,
     "location": "Switzerland, Basel",
     "description": "Presumably the first shadow display in the world",
+    "tag": "['#Switzerland', '#2016', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/120/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/120",
     "size": 31,
@@ -666,9 +721,10 @@
   },
   {
     "id": "TAMAN ANGGREK",
-    "year": "2011",
+    "year": 2011,
     "location": "Indonesia, Jakarta",
     "description": "The world's longest architecturally-integrated LED media faíçade.",
+    "tag": "['#Indonesia', '#2011', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/121/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/121",
     "size": 29,
@@ -677,31 +733,34 @@
   },
   {
     "id": "STAR",
-    "year": "2015",
+    "year": 2015,
     "location": "Malaysia, BUTTERWORTH, PENANG",
     "description": "Birth of a Star",
+    "tag": "['#Malaysia', '#2015', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/122/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/122",
-    "size": 29,
+    "size": 31,
     "group": 9,
     "file": "122.jpg"
   },
   {
     "id": "HYPERSURFACE ARCHITECTURE [REDUX]",
-    "year": "2012",
+    "year": 2012,
     "location": "Australia,",
     "description": "Non-standard media faíçades with a gradient from low to high resolution",
+    "tag": "['#Australia', '#2012', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/124/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/124",
-    "size": 30,
+    "size": 31,
     "group": 9,
     "file": "124.jpg"
   },
   {
     "id": "CITY OF DREAMS",
-    "year": "2009",
+    "year": 2009,
     "location": "China, Macau",
     "description": "StandardVision",
+    "tag": "['#China', '#2009', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/125/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/125",
     "size": 27,
@@ -710,20 +769,22 @@
   },
   {
     "id": "BLINKENLIGHTS",
-    "year": "2001",
+    "year": 2001,
     "location": "Germany, Berlin",
     "description": "Illuminated windows",
+    "tag": "['#Germany', '#2001', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/126/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/126",
-    "size": 27,
+    "size": 28,
     "group": 9,
     "file": "126.jpg"
   },
   {
     "id": "POLYMEDIA PIXEL",
-    "year": "2010",
+    "year": 2010,
     "location": "Australia,",
     "description": "Investigating how computer augmented architectural components can catalyse inter-building communication",
+    "tag": "['#Australia', '#2010', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/127/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/127",
     "size": 26,
@@ -732,20 +793,22 @@
   },
   {
     "id": "LIGHT BARRIER",
-    "year": "2014",
+    "year": 2014,
     "location": "Russia, South Korea, Nikola-Lenivets and Seoul",
     "description": "Ligh Barrier",
+    "tag": "['#Russia', '#South Korea', '#2014', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/128/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/128",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "128.jpg"
   },
   {
     "id": "KLUBHAUS ST. PAULI",
-    "year": "2015",
+    "year": 2015,
     "location": "Germany, Hamburg",
     "description": "KLUBHAUS St. Pauli Mediafacade",
+    "tag": "['#Germany', '#2015', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/130/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/130",
     "size": 30,
@@ -754,9 +817,10 @@
   },
   {
     "id": "NAMYANGJU CLEAN CENTER",
-    "year": "2012",
+    "year": 2012,
     "location": "South Korea, Gyeomggi-do",
     "description": "None",
+    "tag": "['#South Korea', '#2012', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/131/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/131",
     "size": 28,
@@ -765,20 +829,22 @@
   },
   {
     "id": "THE SENTIMENT COCOON",
-    "year": "2015",
+    "year": 2015,
     "location": "United Kingdom, London",
     "description": "The Sentiment Cocoon",
+    "tag": "['#United Kingdom', '#2015', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/132/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/132",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "132.jpg"
   },
   {
     "id": "INTEFERENCE",
-    "year": "2014",
+    "year": 2014,
     "location": "Denmark, Kolding",
     "description": "Interactive light tunnel",
+    "tag": "['#Denmark', '#2014', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/133/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/133",
     "size": 38,
@@ -787,9 +853,10 @@
   },
   {
     "id": "URBAN ECHOES",
-    "year": "2013",
+    "year": 2013,
     "location": "Finland, Oulu",
     "description": "Communicative and interactive park lighting",
+    "tag": "['#Finland', '#2013', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/134/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/134",
     "size": 32,
@@ -798,9 +865,10 @@
   },
   {
     "id": "STAR PLACE",
-    "year": "2008",
+    "year": 2008,
     "location": "Taiwan, Kaohsiung",
     "description": "Fluent forms",
+    "tag": "['#Taiwan', '#2008', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/135/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/135",
     "size": 28,
@@ -809,9 +877,10 @@
   },
   {
     "id": "GALLERIA CENTERCITY",
-    "year": "2010",
+    "year": 2010,
     "location": "South Korea, Cheonan",
     "description": "Department store media faíçade",
+    "tag": "['#South Korea', '#2010', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/136/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/136",
     "size": 28,
@@ -820,9 +889,10 @@
   },
   {
     "id": "DIGITAL FOUNTAIN",
-    "year": "2011",
+    "year": 2011,
     "location": "United Kingdom, London",
     "description": "Digital Fountain",
+    "tag": "['#United Kingdom', '#2011', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/137/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/137",
     "size": 29,
@@ -831,9 +901,10 @@
   },
   {
     "id": "MONDEAL SQUARE",
-    "year": "2014",
+    "year": 2014,
     "location": "India, Ahmedabad",
     "description": "Enjoy your Breeze!",
+    "tag": "['#India', '#2014', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/138/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/138",
     "size": 29,
@@ -842,9 +913,10 @@
   },
   {
     "id": "AEC - ARS ELECTRONICA CENTER",
-    "year": "2008",
+    "year": 2008,
     "location": "Austria, Linz",
     "description": "Ars Electronica Center",
+    "tag": "['#Austria', '#2008', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/139/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/139",
     "size": 30,
@@ -853,20 +925,22 @@
   },
   {
     "id": "FLOATING ISLAND",
-    "year": "2011",
+    "year": 2011,
     "location": "South Korea, Seoul",
     "description": "3 floating lantern islands on the Han River",
+    "tag": "['#South Korea', '#2011', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/140/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/140",
-    "size": 26,
+    "size": 28,
     "group": 9,
     "file": "140.jpg"
   },
   {
     "id": "DISTRIBUTED PROJECTION STRUCTURE 2004",
-    "year": "2004",
+    "year": 2004,
     "location": "Spain, Sweden, Hungary, Finland, Switzerland,",
     "description": "Distributed Projection Structure 2004",
+    "tag": "['#Spain', '#Sweden', '#Hungary', '#Finland', '#Switzerland', '#2004', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/142/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/142",
     "size": 36,
@@ -875,20 +949,22 @@
   },
   {
     "id": "FILAMENT MIND",
-    "year": "2013",
+    "year": 2013,
     "location": "United States of America, Jackson, Wyoming",
     "description": "Luminous Community 'Connectome'",
+    "tag": "['#United States of America', '#2013', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/143/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/143",
-    "size": 32,
+    "size": 33,
     "group": 9,
     "file": "143.jpg"
   },
   {
     "id": "PIPETTE",
-    "year": "2014",
+    "year": 2014,
     "location": "United Kingdom, London",
     "description": "A tapestry of light",
+    "tag": "['#United Kingdom', '#2014', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/145/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/145",
     "size": 28,
@@ -897,9 +973,10 @@
   },
   {
     "id": "CITY LIGHTS ORCHESTRA",
-    "year": "2015",
+    "year": 2015,
     "location": "France, Strasbourg, Orlí©ans, Mulhouse, Reims, etc..",
     "description": "a participative visual symphony for city windows",
+    "tag": "['#France', '#2015', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/146/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/146",
     "size": 25,
@@ -908,20 +985,22 @@
   },
   {
     "id": "SPINE",
-    "year": "2012",
+    "year": 2012,
     "location": "Denmark, Aarhus",
     "description": "Spatial mechanical interactive installation",
+    "tag": "['#Denmark', '#2012', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/147/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/147",
-    "size": 27,
+    "size": 28,
     "group": 9,
     "file": "147.jpg"
   },
   {
     "id": "CITY BUG REPORT",
-    "year": "2012",
+    "year": 2012,
     "location": "Denmark, Aarhus",
     "description": "City hall tower with media faíçade",
+    "tag": "['#Denmark', '#2012', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/148/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/148",
     "size": 27,
@@ -930,9 +1009,10 @@
   },
   {
     "id": "MENDELSSOHN EFFEKTORIUM",
-    "year": "2014",
+    "year": 2014,
     "location": "Germany, Leipzig",
     "description": "Virtual orchestra for the Mendelssohn-Bartholdy Museum Leipzig",
+    "tag": "['#Germany', '#2014', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/149/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/149",
     "size": 29,
@@ -941,20 +1021,22 @@
   },
   {
     "id": "LE CIRCUIT DE BACHELARD",
-    "year": "2014",
+    "year": 2014,
     "location": "Canada, Montreal",
     "description": "A symbol of the duality between reason and imagination",
+    "tag": "['#Canada', '#2014', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/150/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/150",
-    "size": 27,
+    "size": 28,
     "group": 9,
     "file": "150.jpg"
   },
   {
     "id": "PHOTOPHORE",
-    "year": "2012",
+    "year": 2012,
     "location": "Germany, Frankfurt",
     "description": "Photophore - Smart light interaction",
+    "tag": "['#Germany', '#2012', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/151/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/151",
     "size": 32,
@@ -963,9 +1045,10 @@
   },
   {
     "id": "BOXLEDS",
-    "year": "2010",
+    "year": 2010,
     "location": "Austria, Vienna",
     "description": "Boxes that blink",
+    "tag": "['#Austria', '#2010', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/154/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/154",
     "size": 26,
@@ -974,9 +1057,10 @@
   },
   {
     "id": "ORKHESTRA, ORCHESTRATING THE DEPTH OF LIGHT",
-    "year": "2014",
+    "year": 2014,
     "location": "Germany, Frankfurt",
     "description": "None",
+    "tag": "['#Germany', '#2014', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/157/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/157",
     "size": 31,
@@ -985,9 +1069,10 @@
   },
   {
     "id": "AUGMENTED URBAN REALITY",
-    "year": "2014",
+    "year": 2014,
     "location": "United Kingdom, London",
     "description": "Augmented Urban Reality: Arts Trail 2014",
+    "tag": "['#United Kingdom', '#2014', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/158/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/158",
     "size": 25,
@@ -996,9 +1081,10 @@
   },
   {
     "id": "TRAIN STATION FALKENBERG",
-    "year": "2013",
+    "year": 2013,
     "location": "Germany, Falkenberg / Elster",
     "description": "Train station Falkenberg",
+    "tag": "['#Germany', '#2013', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/160/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/160",
     "size": 37,
@@ -1007,9 +1093,10 @@
   },
   {
     "id": "SHANGHAI WORLD FINANCIAL CENTER (SWFC)",
-    "year": "2013",
+    "year": 2013,
     "location": "China, Shanghai",
     "description": "World's highest dynamic media faíçade.",
+    "tag": "['#China', '#2013', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/161/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/161",
     "size": 31,
@@ -1018,20 +1105,22 @@
   },
   {
     "id": "NATIONAL LIBRARY",
-    "year": "2006",
+    "year": 2006,
     "location": "Belarus, Minsk",
     "description": "A library inside a sparkling diamond",
+    "tag": "['#Belarus', '#2006', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/169/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/169",
-    "size": 43,
+    "size": 36,
     "group": 9,
     "file": "169.jpg"
   },
   {
     "id": "AFFINITY : INTERACTIVE ART INSTALLATION",
-    "year": "2014",
+    "year": 2014,
     "location": "Peru, Lima",
     "description": "BCP Affinity is an interactive three dimensional faíçade installation on the Banco de Crí©dito building in Lima, Peru.",
+    "tag": "['#Peru', '#2014', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/170/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/170",
     "size": 32,
@@ -1040,31 +1129,34 @@
   },
   {
     "id": "URBAN ALPHABETS",
-    "year": "2012",
+    "year": 2012,
     "location": "Finland, Helsinki",
     "description": "Urban Alphabets - Experience the city differently",
+    "tag": "['#Finland', '#2012', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/171/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/171",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "171.jpg"
   },
   {
     "id": "C4 ESPACIO DE CREACIÓN ARTÍSTICA CONTEMPORÁNEA",
-    "year": "2012",
+    "year": 2012,
     "location": "Spain, Cordoba",
     "description": "C4 - Building faíçade with an integrated light and media installation",
+    "tag": "['#Spain', '#2012', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/172/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/172",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "172.jpg"
   },
   {
     "id": "MARNIX 2000",
-    "year": "1999",
+    "year": 1999,
     "location": "Belgium, Brussels",
     "description": "Interactive Matrix",
+    "tag": "['#Belgium', '#1999', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/175/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/175",
     "size": 27,
@@ -1073,20 +1165,22 @@
   },
   {
     "id": "SUBMERGENCE",
-    "year": "2013",
+    "year": 2013,
     "location": "Norway, United Kingdom, New Zealand, Australia, exhibited in Oslo/Geneva/Bristol/Vlissingen/Bremen/Cologne",
     "description": "Submergence, an immersive, walkthrough art installation",
+    "tag": "['#Norway', '#United Kingdom', '#New Zealand', '#Australia', '#2013', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/177/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/177",
-    "size": 30,
+    "size": 31,
     "group": 9,
     "file": "177.jpg"
   },
   {
     "id": "KUNSTHAUS - BIX",
-    "year": "2003",
+    "year": 2003,
     "location": "Austria, Graz",
     "description": "BIX - Communicative Display Skin for the Kunsthaus Graz",
+    "tag": "['#Austria', '#2003', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/178/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/178",
     "size": 29,
@@ -1095,9 +1189,10 @@
   },
   {
     "id": "HUMAN BEEING",
-    "year": "2014",
+    "year": 2014,
     "location": "Finland, Helsinki",
     "description": "Big Bees on Big Buldings",
+    "tag": "['#Finland', '#2014', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/179/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/179",
     "size": 27,
@@ -1106,9 +1201,10 @@
   },
   {
     "id": "FLARE FAÇADE",
-    "year": "2008",
+    "year": 2008,
     "location": "Germany,",
     "description": "FLARE creates a dynamic faíçade",
+    "tag": "['#Germany', '#2008', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/180/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/180",
     "size": 25,
@@ -1117,9 +1213,10 @@
   },
   {
     "id": "YTN CENTER",
-    "year": "2013",
+    "year": 2013,
     "location": "South Korea, Seoul",
     "description": "Merging media faíçade with ecological planning",
+    "tag": "['#South Korea', '#2013', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/181/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/181",
     "size": 28,
@@ -1128,9 +1225,10 @@
   },
   {
     "id": "AUGMENTED STRUCTURES V1.1",
-    "year": "2011",
+    "year": 2011,
     "location": "Turkey, ISTANBUL",
     "description": "Augmented Structures v1.1 : Acoustic Formations / Istiklal Street",
+    "tag": "['#Turkey', '#2011', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/182/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/182",
     "size": 31,
@@ -1139,9 +1237,10 @@
   },
   {
     "id": "FLUIDIC",
-    "year": "2013",
+    "year": 2013,
     "location": "Italy, Milan",
     "description": "FLUIDIC - Sculpture in Motion",
+    "tag": "['#Italy', '#2013', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/183/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/183",
     "size": 28,
@@ -1150,9 +1249,10 @@
   },
   {
     "id": "LOTUS DOME",
-    "year": "2012",
+    "year": 2012,
     "location": "France, Lille",
     "description": "Lotus Dome, hundreds of hightech responsive flowers",
+    "tag": "['#France', '#2012', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/184/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/184",
     "size": 25,
@@ -1161,20 +1261,22 @@
   },
   {
     "id": "THE ARC RIVER CULTURE PAVILION",
-    "year": "2012",
+    "year": 2012,
     "location": "South Korea, Daegu",
     "description": "The convergence of landscape, nature and technology",
+    "tag": "['#South Korea', '#2012', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/186/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/186",
-    "size": 36,
+    "size": 37,
     "group": 9,
     "file": "186.jpg"
   },
   {
     "id": "MEGAPHONE",
-    "year": "2013",
+    "year": 2013,
     "location": "Canada, Montreal",
     "description": "Large-scale urban installation using voice recognition and projections",
+    "tag": "['#Canada', '#2013', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/187/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/187",
     "size": 32,
@@ -1183,9 +1285,10 @@
   },
   {
     "id": "KINETIC FAÇADE - THEME PAVILION",
-    "year": "2012",
+    "year": 2012,
     "location": "South Korea, Yeosu",
     "description": "Kinetic faíçade based on biomimetic principle",
+    "tag": "['#South Korea', '#2012', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/188/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/188",
     "size": 31,
@@ -1194,42 +1297,46 @@
   },
   {
     "id": "DIGITALMATATUS",
-    "year": "2014",
+    "year": 2014,
     "location": "Kenya, Nairobi",
     "description": "Mapping Nairobi's Public Transport System",
+    "tag": "['#Kenya', '#2014', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/189/3_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/189",
-    "size": 31,
+    "size": 29,
     "group": 9,
     "file": "189.jpg"
   },
   {
     "id": "THOUGHT PROCESS",
-    "year": "2008",
+    "year": 2008,
     "location": "United States of America, Reading, Pennsylvania",
-    "description": "Colored lights continually \"\"draw\"\" across the faíçade of the GoggleWorks Center for the Arts.",
+    "description": "Colored lights continually \"draw\" across the faíçade of the GoggleWorks Center for the Arts.",
+    "tag": "['#United States of America', '#2008', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/190/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/190",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "190.jpg"
   },
   {
     "id": "CONTROL NO CONTROL",
-    "year": "2013",
+    "year": 2013,
     "location": "Netherlands, Eindhoven",
     "description": "CONTROL NO CONTROL is an interactive LED sculpture.",
+    "tag": "['#Netherlands', '#2013', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/191/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/191",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "191.jpg"
   },
   {
     "id": "WATER LIGHT GRAFFITI",
-    "year": "2012",
+    "year": 2012,
     "location": "France, Paris",
     "description": "A wall of thousands of LEDs illuminated by water contact",
+    "tag": "['#France', '#2012', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/193/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/193",
     "size": 27,
@@ -1238,9 +1345,10 @@
   },
   {
     "id": "NINETY SIX",
-    "year": "2014",
+    "year": 2014,
     "location": "Austria, Linz",
     "description": "None",
+    "tag": "['#Austria', '#2014', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/194/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/194",
     "size": 29,
@@ -1249,9 +1357,10 @@
   },
   {
     "id": "MEGAFACES",
-    "year": "2014",
+    "year": 2014,
     "location": "Russia, Sochi",
     "description": "Digital Mount Rushmore",
+    "tag": "['#Russia', '#2014', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/195/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/195",
     "size": 27,
@@ -1260,9 +1369,10 @@
   },
   {
     "id": "SPAXELS",
-    "year": "2015",
+    "year": 2015,
     "location": "Germany, Tornesch",
     "description": "Spaxels",
+    "tag": "['#Germany', '#2015', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/196/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/196",
     "size": 26,
@@ -1271,9 +1381,10 @@
   },
   {
     "id": "KLUBHAUS ST.PAULI - MEDIAFAÇADE LIFT",
-    "year": "2015",
+    "year": 2015,
     "location": "Germany, Hamburg",
     "description": "Unique media faíçade elevator",
+    "tag": "['#Germany', '#2015', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/198/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/198",
     "size": 27,
@@ -1282,31 +1393,34 @@
   },
   {
     "id": "DISCOVERY WALL",
-    "year": "2014",
+    "year": 2014,
     "location": "United States of America, New York",
     "description": "Discovery Wall",
+    "tag": "['#United States of America', '#2014', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/199/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/199",
-    "size": 31,
+    "size": 28,
     "group": 9,
     "file": "199.jpg"
   },
   {
     "id": "LUMMOBLOCKS",
-    "year": "2010",
+    "year": 2010,
     "location": "Spain, MADRID",
     "description": "Large scale interactive Tetris for public space",
+    "tag": "['#Spain', '#2010', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/200/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/200",
-    "size": 32,
+    "size": 33,
     "group": 9,
     "file": "200.jpg"
   },
   {
     "id": "GALLERIA STORE",
-    "year": "2004",
+    "year": 2004,
     "location": "South Korea, Seoul",
     "description": "A new faíçade for the Galleria department store",
+    "tag": "['#South Korea', '#2004', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/201/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/201",
     "size": 28,
@@ -1315,9 +1429,10 @@
   },
   {
     "id": "LAX - TOM BRADLEY INTERNATIONAL TERMINAL",
-    "year": "2013",
+    "year": 2013,
     "location": "United States of America, Los Angeles",
-    "description": "Daktronics Video Displays to Help LAX \"\"Transform the Travel Experience\"\"",
+    "description": "Daktronics Video Displays to Help LAX \"Transform the Travel Experience",
+    "tag": "['#United States of America', '#2013', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/203/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/203",
     "size": 24,
@@ -1326,20 +1441,22 @@
   },
   {
     "id": "FLYFIRE",
-    "year": "2010",
+    "year": 2010,
     "location": "United States of America,",
-    "description": "\"Remote controlled \"\"micro helicopters\"\" generate unique",
-    "image": "['#United States of America', '#2010', '#Future trends & prototypes']",
-    "url": "https://awards.b-cdn.net/site_media/media/jurysys/media/204/1_big.jpg",
-    "size": 25,
+    "description": "Remote controlled \"micro helicopters\" generate unique, free-form display",
+    "tag": "['#United States of America', '#2010', '#Future trends & prototypes']",
+    "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/204/1_big.jpg",
+    "url": "https://awards.mediaarchitecture.org/mab/project/204",
+    "size": 24,
     "group": 9,
-    "file": "jurysys.jpg"
+    "file": "204.jpg"
   },
   {
     "id": "SAXO REACTIVE CEILING",
-    "year": "2011",
+    "year": 2011,
     "location": "Denmark, Hellerup",
     "description": "Martin LED Reactive Ceiling at Saxo Bank Headquarters",
+    "tag": "['#Denmark', '#2011', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/206/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/206",
     "size": 30,
@@ -1348,31 +1465,34 @@
   },
   {
     "id": "SEESTADT.BOT",
-    "year": "2018",
+    "year": 2018,
     "location": "Austria, Vienna",
     "description": "Seestadt.bot--your virtual buddy in Seestadt",
+    "tag": "['#Austria', '#2018', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/210/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/210",
-    "size": 27,
+    "size": 28,
     "group": 9,
     "file": "210.jpg"
   },
   {
     "id": "ARCHIVE DREAMING",
-    "year": "2017",
+    "year": 2017,
     "location": "Turkey, ISTANBUL",
     "description": "Data-Driven Immersive Space",
+    "tag": "['#Turkey', '#2017', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/212/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/212",
-    "size": 33,
+    "size": 35,
     "group": 9,
     "file": "212.jpg"
   },
   {
     "id": "THE DASH WALL",
-    "year": "2018",
+    "year": 2018,
     "location": "Australia, Sydney",
     "description": "Fully-programmale low-resolution media facade for digital placemaking, learning and research on display",
+    "tag": "['#Australia', '#2018', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/214/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/214",
     "size": 26,
@@ -1381,9 +1501,10 @@
   },
   {
     "id": "ILIGHT",
-    "year": "2015",
+    "year": 2015,
     "location": "Belgium, Wetteren",
     "description": "Interactive Built Prototype",
+    "tag": "['#Belgium', '#2015', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/223/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/223",
     "size": 30,
@@ -1392,9 +1513,10 @@
   },
   {
     "id": "WORLD COLLIDER",
-    "year": "2020",
+    "year": 2020,
     "location": "Netherlands, Amsterdam",
     "description": "Urban research project that uses augmented reality as a medium to collide different worlds.",
+    "tag": "['#Netherlands', '#2020', '#Spatial media art', '#Participatory Media Architecture and Infrastructures', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/225/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/225",
     "size": 26,
@@ -1403,9 +1525,10 @@
   },
   {
     "id": "UNIFUN TIANFU CHENGDU",
-    "year": "2020",
+    "year": 2020,
     "location": "China, Chengdu",
     "description": "Press Play on the Rubik's Cube",
+    "tag": "['#China', '#2020', '#Branded Architecture', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/229/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/229",
     "size": 37,
@@ -1414,20 +1537,22 @@
   },
   {
     "id": "SONIC RUNWAY",
-    "year": "2017",
+    "year": 2017,
     "location": "United States of America, San Jose",
     "description": "Audio-reactive light-art installation visualizing the speed of sound",
+    "tag": "['#United States of America', '#2017', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/230/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/230",
-    "size": 33,
+    "size": 35,
     "group": 9,
     "file": "230.jpg"
   },
   {
     "id": "URBAN LIGHTS CONTACT",
-    "year": "2017",
+    "year": 2017,
     "location": "France, St Etienne",
     "description": "immersive interactive sound and light installation in the public space with buiding, body and skin from the public",
+    "tag": "['#France', '#2017', '#Spatial media art', '#Participatory Media Architecture and Infrastructures', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/232/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/232",
     "size": 27,
@@ -1436,9 +1561,10 @@
   },
   {
     "id": "SYNERGIES",
-    "year": "2018",
+    "year": 2018,
     "location": "France, St Etienne",
     "description": "Interactive and participative mapping",
+    "tag": "['#France', '#2018', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/233/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/233",
     "size": 26,
@@ -1447,9 +1573,10 @@
   },
   {
     "id": "UPTOWN UNDERGROUND",
-    "year": "2019",
+    "year": 2019,
     "location": "United States of America, New York",
     "description": "A geographically accurate view of the cityscape above a moving subway train, projected onto its ceiling, as it moves under New York City",
+    "tag": "['#United States of America', '#2019', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/235/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/235",
     "size": 32,
@@ -1458,42 +1585,46 @@
   },
   {
     "id": "THE LABYRINTH",
-    "year": "2020",
+    "year": 2020,
     "location": "Germany, Düsseldorf",
     "description": "An artistic and immersive experience of massive proportions for visitors to become immersed in a parallel universe.",
+    "tag": "['#Germany', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/236/5_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/236",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "236.jpg"
   },
   {
     "id": "ROSA CENTER SHOPPING MALL",
-    "year": "2020",
+    "year": 2020,
     "location": "Spain, Santa Cruz de Tenerife",
     "description": "Provide a strong visual identity by adding technology integrated to the architecture of the shopping mall building.",
+    "tag": "['#Spain', '#2020', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/237/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/237",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "237.jpg"
   },
   {
     "id": "XII PORCELANOSA ARCHITECTURE AND INTERIOR DESIGN AWARDS",
-    "year": "2020",
+    "year": 2020,
     "location": "Spain, MADRID",
     "description": "Stage and concept design of XII Porcelanosa architecture and interior design awards",
+    "tag": "['#Spain', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/238/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/238",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "238.jpg"
   },
   {
     "id": "SIMPLE SENSORS",
-    "year": "2021",
+    "year": 2021,
     "location": "Netherlands, Amsterdam",
     "description": "Privacy-friendly sensing in the city",
+    "tag": "['#Netherlands', '#2021', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/240/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/240",
     "size": 28,
@@ -1502,9 +1633,10 @@
   },
   {
     "id": "LAN - 4",
-    "year": "2020",
+    "year": 2020,
     "location": "Spain, Logroí±o",
     "description": "Installation",
+    "tag": "['#Spain', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/241/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/241",
     "size": 34,
@@ -1513,9 +1645,10 @@
   },
   {
     "id": "DAZZLE | SAN DIEGO INTERNATIONAL AIRPORT",
-    "year": "2017",
+    "year": 2017,
     "location": "United States of America, San Diego",
     "description": "ZERO ENERGY MEDIATECTURE",
+    "tag": "['#United States of America', '#2017', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/242/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/242",
     "size": 36,
@@ -1524,42 +1657,46 @@
   },
   {
     "id": "ECLOUD | SAN JOSE INTERNATIONAL AIRPORT",
-    "year": "2010",
+    "year": 2010,
     "location": "United States of America, San Jose, California",
     "description": "MAKING WEATHER DATA EMOTIONALLY RESONANT",
+    "tag": "['#United States of America', '#2010', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/243/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/243",
-    "size": 36,
+    "size": 37,
     "group": 9,
     "file": "243.jpg"
   },
   {
     "id": "ANTOPOLIS",
-    "year": "2020",
+    "year": 2020,
     "location": "Austria, Linz",
     "description": "interactive media facade",
+    "tag": "['#Austria', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/246/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/246",
-    "size": 31,
+    "size": 32,
     "group": 9,
     "file": "246.jpg"
   },
   {
     "id": "BUILDING DAWN",
-    "year": "2019",
+    "year": 2019,
     "location": "Germany, Böblingen",
     "description": "facade light art installation",
+    "tag": "['#Germany', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/247/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/247",
-    "size": 28,
+    "size": 30,
     "group": 9,
     "file": "247.jpg"
   },
   {
     "id": "COMMUNITY ENGAGEMENT THROUGH AUGMENTED REALITY - CURIOCITY BRISBANE",
-    "year": "2021",
+    "year": 2021,
     "location": "Australia, Brisbane",
     "description": "Curiocity Brisbane - Future Cities for Future People installation",
+    "tag": "['#Australia', '#2021', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/249/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/249",
     "size": 27,
@@ -1568,9 +1705,10 @@
   },
   {
     "id": "SON ET CULINAIRE",
-    "year": "2020",
+    "year": 2020,
     "location": "United Kingdom, London",
     "description": "an interactive spatial performance",
+    "tag": "['#United Kingdom', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/250/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/250",
     "size": 29,
@@ -1579,20 +1717,22 @@
   },
   {
     "id": "RADISSON BLU SCANDINAVIA",
-    "year": "2019",
+    "year": 2019,
     "location": "Sweden, Gothenburg",
     "description": "Ambient Communicator at the heart of the hotel.",
+    "tag": "['#Sweden', '#2019', '#Branded Architecture', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/252/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/252",
-    "size": 32,
+    "size": 33,
     "group": 9,
     "file": "252.jpg"
   },
   {
     "id": "SHENZHEN PLANNING EXHIBITION",
-    "year": "2020",
+    "year": 2020,
     "location": "China, Shenzhen",
     "description": "The Shenzhen Planning Exhibition shows Shenzhen in all its vitality, characterized as it is and has been by continuous change and growth",
+    "tag": "['#China', '#2020', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/253/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/253",
     "size": 31,
@@ -1601,31 +1741,34 @@
   },
   {
     "id": "AMANDOLIER FAÇADE",
-    "year": "2018",
+    "year": 2018,
     "location": "Switzerland, GENEVA",
     "description": "THE ICONIC AMANDOLIER BUILDING IN GENEVA RE-IMAGINED WITH RESPONSIVE LIGHT ART",
+    "tag": "['#Switzerland', '#2018', '#Spatial media art', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/254/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/254",
-    "size": 32,
+    "size": 33,
     "group": 9,
     "file": "254.jpg"
   },
   {
     "id": "TIETO HQ",
-    "year": "2017",
+    "year": 2017,
     "location": "Finland, Helsinki",
     "description": "Data is Beautiful - Lighting as live data visualisation.",
+    "tag": "['#Finland', '#2017', '#Branded Architecture', '#Spatial media art', '#Participatory Media Architecture and Infrastructures', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/255/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/255",
-    "size": 45,
+    "size": 46,
     "group": 9,
     "file": "255.jpg"
   },
   {
     "id": "SUNSCRIBER",
-    "year": "2021",
+    "year": 2021,
     "location": "Austria, Graz",
     "description": "an 'inscription device' for the BIX Facade of Kunsthaus Graz",
+    "tag": "['#Austria', '#2021', '#Spatial media art', '#Animated Architecture', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/258/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/258",
     "size": 50,
@@ -1634,20 +1777,22 @@
   },
   {
     "id": "PRESERVATION OF SILENCE",
-    "year": "2019",
+    "year": 2019,
     "location": "Russia, Moscow",
     "description": "Special structure to preserve the quiet places in urban environments",
+    "tag": "['#Russia', '#2019', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/259/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/259",
-    "size": 29,
+    "size": 32,
     "group": 9,
     "file": "259.jpg"
   },
   {
     "id": "THE ABODE OF THE OUTSIDE",
-    "year": "2018",
+    "year": 2018,
     "location": "Italy, Roma",
     "description": "altro_studio",
+    "tag": "['#Italy', '#2018', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/261/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/261",
     "size": 26,
@@ -1656,20 +1801,22 @@
   },
   {
     "id": "HEARING FROM YOU",
-    "year": "2021",
+    "year": 2021,
     "location": "Australia, Sydney",
     "description": "Public visualisation of personal messages exchanged during COVID-19 pandemic",
+    "tag": "['#Australia', '#2021', '#Spatial media art', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/262/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/262",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "262.jpg"
   },
   {
     "id": "VARIEGATION INDEX",
-    "year": "2019",
+    "year": 2019,
     "location": "United Kingdom, London",
     "description": "Media art installation taking live photosynthesis data from plants",
+    "tag": "['#United Kingdom', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/264/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/264",
     "size": 26,
@@ -1678,9 +1825,10 @@
   },
   {
     "id": "SHADOW WALL",
-    "year": "2019",
+    "year": 2019,
     "location": "United Kingdom, London",
     "description": "Playful media art installation encouraging people to dance with their shadow",
+    "tag": "['#United Kingdom', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/265/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/265",
     "size": 26,
@@ -1689,9 +1837,10 @@
   },
   {
     "id": "WOODIE",
-    "year": "2019",
+    "year": 2019,
     "location": "Australia, Sydney",
     "description": "An Urban Robot For Hybrid Placemaking",
+    "tag": "['#Australia', '#2019', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/267/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/267",
     "size": 32,
@@ -1700,20 +1849,22 @@
   },
   {
     "id": "HELSINKI OUTLET",
-    "year": "2020",
+    "year": 2020,
     "location": "Finland, Helsinki",
     "description": "Moment Magnet",
+    "tag": "['#Finland', '#2020', '#Branded Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/271/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/271",
-    "size": 36,
+    "size": 37,
     "group": 9,
     "file": "271.jpg"
   },
   {
     "id": "FUTURE VISION LAB",
-    "year": "2020",
+    "year": 2020,
     "location": "Taiwan, Taipei",
     "description": "FUTURE VISION LAB",
+    "tag": "['#Taiwan', '#2020', '#Future trends & prototypes', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/272/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/272",
     "size": 50,
@@ -1722,9 +1873,10 @@
   },
   {
     "id": "AUKIO",
-    "year": "2019",
+    "year": 2019,
     "location": "Finland, Helsinki",
     "description": "Immersive and interactive digital nature experience in the airport",
+    "tag": "['#Finland', '#2019', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/273/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/273",
     "size": 36,
@@ -1733,9 +1885,10 @@
   },
   {
     "id": "MEDIA ARCHITECTURE CLUSTER REAL-SCENE SIMULATION AND DESIGN PROTOTYPE",
-    "year": "2018",
+    "year": 2018,
     "location": "China, Beijing",
     "description": "Media architecture cluster Real-scene simulation and design prototype",
+    "tag": "['#China', '#2018', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/276/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/276",
     "size": 30,
@@ -1744,9 +1897,10 @@
   },
   {
     "id": "VIRTUAL WALLS - TORRECARDENAS",
-    "year": "2018",
+    "year": 2018,
     "location": "Spain, Almerí­a",
     "description": "Digital Architecture",
+    "tag": "['#Spain', '#2018', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/277/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/277",
     "size": 26,
@@ -1755,9 +1909,10 @@
   },
   {
     "id": "SPATIAL ANIMACY",
-    "year": "2021",
+    "year": 2021,
     "location": "Japan, Tokyo",
     "description": "Interactive Kinetic Origami Surface",
+    "tag": "['#Japan', '#2021', '#Spatial media art', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/278/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/278",
     "size": 34,
@@ -1765,10 +1920,11 @@
     "file": "278.jpg"
   },
   {
-    "id": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
-    "year": "2020",
+    "id": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
+    "year": 2020,
     "location": "Ukraine, Kyiv",
     "description": "Interactive Media Sculpture",
+    "tag": "['#Ukraine', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/281/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/281",
     "size": 33,
@@ -1777,9 +1933,10 @@
   },
   {
     "id": "LOOM LIGHT",
-    "year": "2021",
+    "year": 2021,
     "location": "Netherlands, Eindhoven",
     "description": "Loom Light - a dynamic interactive monument in time",
+    "tag": "['#Netherlands', '#2021', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/282/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/282",
     "size": 25,
@@ -1788,9 +1945,10 @@
   },
   {
     "id": "INTERACTIVE APPLICATION DOLPHINS CREATOR",
-    "year": "2020",
+    "year": 2020,
     "location": "Ukraine, Mariupol",
     "description": "Interactive web application that allows you to launch laser dolphins in the city square",
+    "tag": "['#Ukraine', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/283/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/283",
     "size": 32,
@@ -1799,9 +1957,10 @@
   },
   {
     "id": "ARCHITECTURAL AND DECORATIVE LIGHTING OF FREEDOM SQUARE IN MARIUPOL",
-    "year": "2020",
+    "year": 2020,
     "location": "Ukraine, Mariupol",
     "description": "Freedom Square in Mariupol",
+    "tag": "['#Ukraine', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/284/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/284",
     "size": 30,
@@ -1810,9 +1969,10 @@
   },
   {
     "id": "INTERACTIVE SCREEN ON THE BOULEVARD OF ARTS",
-    "year": "2020",
+    "year": 2020,
     "location": "Ukraine, Dnipro",
     "description": "Interactive attraction on the new boulevard in the center of Dnipro city",
+    "tag": "['#Ukraine', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/285/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/285",
     "size": 32,
@@ -1821,9 +1981,10 @@
   },
   {
     "id": "LIGHTING FOR BOULEVARD OF ARTS",
-    "year": "2020",
+    "year": 2020,
     "location": "Ukraine, Dnipro",
     "description": "Pedestrian Boulevard on Korolenko Street in Dnipro",
+    "tag": "['#Ukraine', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/286/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/286",
     "size": 33,
@@ -1832,9 +1993,10 @@
   },
   {
     "id": "REQUIEM",
-    "year": "2020",
+    "year": 2020,
     "location": "Spain, Bilbao",
     "description": "Requiem, an experience of light and sound in honor of the victims of Covid-19.",
+    "tag": "['#Spain', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/287/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/287",
     "size": 25,
@@ -1843,9 +2005,10 @@
   },
   {
     "id": "SP_URBAN ARTE CONECTA",
-    "year": "2020",
+    "year": 2020,
     "location": "Brazil, Sao Paulo, Belo Horizonte, Rio de Janeiro and Sí£o Josí© dos Campos",
     "description": "Collaborative festival of artistic transmission in residencial urban spaces during quarantine.",
+    "tag": "['#Brazil', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/288/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/288",
     "size": 31,
@@ -1854,9 +2017,10 @@
   },
   {
     "id": "MAX CENTER",
-    "year": "2020",
+    "year": 2020,
     "location": "Spain, Bilbao",
     "description": "A digital experience in 3Dimensions",
+    "tag": "['#Spain', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/290/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/290",
     "size": 25,
@@ -1865,31 +2029,34 @@
   },
   {
     "id": "NOVARTIS PAVILLON",
-    "year": "2022",
+    "year": 2022,
     "location": "Switzerland, Basel",
     "description": "Zero-energy media facade",
+    "tag": "['#Switzerland', '#2022', '#Animated Architecture', '#Beyond Commercial Media Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/294/6_big_0Ou4Ic7.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/294",
-    "size": 43,
+    "size": 36,
     "group": 9,
     "file": "294.jpg"
   },
   {
     "id": "LIGHT ART INSTALLATION BEACON",
-    "year": "2019",
+    "year": 2019,
     "location": "Kyiv",
     "description": "Beacon is a light art installation, based on a 60-meter factory pipe in the territory of the former motorcycle factory in Kyiv, where the first innovative park of Ukraine, UNIT.City.",
+    "tag": "['#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/295/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/295",
-    "size": 36,
+    "size": 37,
     "group": 9,
     "file": "295.jpg"
   },
   {
     "id": "ATMOSPHERIC SPACES",
-    "year": "2021",
+    "year": 2021,
     "location": "Germany, Weimar",
     "description": "vessel for distant and imaginary realities",
+    "tag": "['#Germany', '#2021', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/296/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/296",
     "size": 25,
@@ -1898,9 +2065,10 @@
   },
   {
     "id": "STAR HUNTERS",
-    "year": "2019",
+    "year": 2019,
     "location": "Greece, Athens",
     "description": "An urban game to recreate the sky",
+    "tag": "['#Greece', '#2019', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/297/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/297",
     "size": 31,
@@ -1909,20 +2077,22 @@
   },
   {
     "id": "CATHOLIC СHURCH OF ST. NICHOLAS",
-    "year": "2019",
+    "year": 2019,
     "location": "Ukraine, Kyiv",
     "description": "The Catholic church of St. Nicholas in Kyiv is a piece of architectural heritage",
+    "tag": "['#Ukraine', '#2019', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/298/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/298",
-    "size": 34,
+    "size": 35,
     "group": 9,
     "file": "298.jpg"
   },
   {
     "id": "OPTICAL FOOTPRINT",
-    "year": "2021",
+    "year": 2021,
     "location": "Germany, Weimar",
     "description": "Immersive experience in negative after-images",
+    "tag": "['#Germany', '#2021', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/299/3_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/299",
     "size": 27,
@@ -1931,9 +2101,10 @@
   },
   {
     "id": "SPECTATOR AND SPECTACLE",
-    "year": "2021",
+    "year": 2021,
     "location": "France, Paris",
     "description": "Architecture's role as the opposing force",
+    "tag": "['#France', '#2021', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/300/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/300",
     "size": 25,
@@ -1942,9 +2113,10 @@
   },
   {
     "id": "INTERACTIVE MEDIA SCULPTURE THE CUBE",
-    "year": "2019",
+    "year": 2019,
     "location": "Ukraine, Kyiv",
     "description": "The first massive media sculpture in Ukraine and Europe that are show the invisible rhythm of the city on its screen using digital content",
+    "tag": "['#Ukraine', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/301/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/301",
     "size": 31,
@@ -1953,9 +2125,10 @@
   },
   {
     "id": "LIGHTING FOR THE TETRIS HALL RESIDENTIAL COMPLEX",
-    "year": "2019",
+    "year": 2019,
     "location": "Ukraine, Kyiv",
     "description": "Media facades working as one system",
+    "tag": "['#Ukraine', '#2019', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/302/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/302",
     "size": 32,
@@ -1964,31 +2137,34 @@
   },
   {
     "id": "ALL COLORS ARE IN THE LIGHTS",
-    "year": "2019",
+    "year": 2019,
     "location": "Taiwan, Taichung",
     "description": "Extracting and Overlaying Urban Images for Interactive Spatiality",
+    "tag": "['#Taiwan', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/303/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/303",
-    "size": 33,
+    "size": 31,
     "group": 9,
     "file": "303.jpg"
   },
   {
     "id": "THE 4TH STREET SW UNDERPASS ENHANCEMENT PROJECT",
-    "year": "2019",
+    "year": 2019,
     "location": "Canada, Calgary",
     "description": "An inner-city underpass reclaimed for public dialogue",
+    "tag": "['#Canada', '#2019', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/305/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/305",
-    "size": 38,
+    "size": 40,
     "group": 9,
     "file": "305.jpg"
   },
   {
     "id": "GREETINGS FROM EVERYWHERE",
-    "year": "2021",
+    "year": 2021,
     "location": "Ukraine, Kyiv",
     "description": "Interactive laser installation",
+    "tag": "['#Ukraine', '#2021', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/307/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/307",
     "size": 31,
@@ -1997,9 +2173,10 @@
   },
   {
     "id": "DNIPRO LIGHT FLOWER",
-    "year": "2020",
+    "year": 2020,
     "location": "Ukraine, Dnipro",
     "description": "Light-Art Installation in the Industrial Zone in Dnipro",
+    "tag": "['#Ukraine', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/308/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/308",
     "size": 29,
@@ -2008,9 +2185,10 @@
   },
   {
     "id": "HAMAJA",
-    "year": "2020",
+    "year": 2020,
     "location": "Iran, Tehran",
     "description": "Design Your City",
+    "tag": "['#Iran', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/311/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/311",
     "size": 29,
@@ -2019,20 +2197,22 @@
   },
   {
     "id": "THE PEARL DIVERS",
-    "year": "2019",
+    "year": 2019,
     "location": "United Arab Emirates, Dubai",
     "description": "Dancing with your shadow",
+    "tag": "['#United Arab Emirates', '#2019', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/313/2_big_KaN64mi.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/313",
-    "size": 31,
+    "size": 32,
     "group": 9,
     "file": "313.jpg"
   },
   {
     "id": "GROW",
-    "year": "202021",
+    "year": 202021,
     "location": "Netherlands, Rotterdam",
     "description": "Highlighting the beauty of agriculture.",
+    "tag": "['#Netherlands', '#202021', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/314/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/314",
     "size": 27,
@@ -2041,9 +2221,10 @@
   },
   {
     "id": "URBAN SUN",
-    "year": "2021",
+    "year": 2021,
     "location": "Netherlands, Rotterdam",
     "description": "Cleans public spaces of coronavirus to bring well-being.",
+    "tag": "['#Netherlands', '#2021', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/315/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/315",
     "size": 26,
@@ -2052,9 +2233,10 @@
   },
   {
     "id": "LEVENSLICHT",
-    "year": "2020",
+    "year": 2020,
     "location": "Netherlands, Rotterdam",
     "description": "104,000 luminescent stones remember 104,000 Holocaust victims.",
+    "tag": "['#Netherlands', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/316/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/316",
     "size": 25,
@@ -2063,42 +2245,46 @@
   },
   {
     "id": "WINDOW INTO THE SEAS",
-    "year": "2020",
+    "year": 2020,
     "location": "Germany, Bremerhaven",
     "description": "The Ocean in the City",
+    "tag": "['#Germany', '#2020', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/317/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/317",
-    "size": 39,
+    "size": 40,
     "group": 9,
     "file": "317.jpg"
   },
   {
-    "id": "TOUCHING NIGHT SKIES 50°06'44\"\"N 8°40'36\"\"E",
-    "year": "2020",
+    "id": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
+    "year": 2020,
     "location": "Germany, Frankfurt am Main",
     "description": "An immersive public art installation challenging peoples perception of the illumination of public spaces",
+    "tag": "['#Germany', '#2020', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/318/5_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/318",
-    "size": 30,
+    "size": 31,
     "group": 9,
     "file": "318.jpg"
   },
   {
     "id": "THE WEBSTER - NARRATIVE LIGHTING WALL",
-    "year": "2020",
+    "year": 2020,
     "location": "United States of America, Los Angeles",
     "description": "Bringing Light to Art and Fashion",
+    "tag": "['#United States of America', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/322/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/322",
-    "size": 39,
+    "size": 36,
     "group": 9,
     "file": "322.jpg"
   },
   {
     "id": "BAHRAIN INTERNATIONAL CIRCUIT",
-    "year": "2021",
+    "year": 2021,
     "location": "Bahrain, Sakhir",
     "description": "The Speed of Light",
+    "tag": "['#Bahrain', '#2021', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/323/4_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/323",
     "size": 30,
@@ -2107,9 +2293,10 @@
   },
   {
     "id": "LANDSCAPES OF DREAMS",
-    "year": "2019",
+    "year": 2019,
     "location": "Spain, Barcelona",
     "description": "An immersive 360Âº digital plaza",
+    "tag": "['#Spain', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/326/4_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/326",
     "size": 25,
@@ -2118,9 +2305,10 @@
   },
   {
     "id": "INTERACTIVE CLOUD",
-    "year": "2017",
+    "year": 2017,
     "location": "Spain, MADRID",
     "description": "An interactive light sculpture that projects surprising and striking light effects that blend in with the architecture.",
+    "tag": "['#Spain', '#2017', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/327/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/327",
     "size": 25,
@@ -2129,9 +2317,10 @@
   },
   {
     "id": "MAGIC MIRROR",
-    "year": "2019",
+    "year": 2019,
     "location": "Spain, Seville",
     "description": "Digital Art comes to life on this mirror screen",
+    "tag": "['#Spain', '#2019', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/328/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/328",
     "size": 25,
@@ -2140,42 +2329,46 @@
   },
   {
     "id": "THE PIPES",
-    "year": "2019",
+    "year": 2019,
     "location": "Australia, Melbourne",
     "description": "Media architecture contributes beautifully to a sublime public space in RAMUS' installation The Pipes.",
+    "tag": "['#Australia', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/331/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/331",
-    "size": 40,
+    "size": 32,
     "group": 9,
     "file": "331.jpg"
   },
   {
     "id": "STILL LIGHT",
-    "year": "2020",
+    "year": 2020,
     "location": "Australia, Melbourne",
     "description": "Skyscraper appears to move with RAMUS' installation, Still Light.",
+    "tag": "['#Australia', '#2020', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/332/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/332",
-    "size": 41,
+    "size": 29,
     "group": 9,
     "file": "332.jpg"
   },
   {
     "id": "WANDERING CORNERS",
-    "year": "2021",
+    "year": 2021,
     "location": "China, shenyang",
     "description": "Accompany me to the entrance of wandering",
+    "tag": "['#China', '#2021', '#Future trends & prototypes', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/333/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/333",
-    "size": 36,
+    "size": 30,
     "group": 9,
     "file": "333.jpg"
   },
   {
     "id": "PARA SOCIAL",
-    "year": "2020",
+    "year": 2020,
     "location": "Germany, Hamburg",
     "description": "Body no Body - Physical and Social Distance in Pandemic Times",
+    "tag": "['#Germany', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/335/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/335",
     "size": 31,
@@ -2184,9 +2377,10 @@
   },
   {
     "id": "WERVEL [TURMOIL]",
-    "year": "2019",
+    "year": 2019,
     "location": "Netherlands, Groningen",
     "description": "A flowing 20-metre double-sided video led-sculpture on turbulence.",
+    "tag": "['#Netherlands', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/337/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/337",
     "size": 50,
@@ -2195,20 +2389,22 @@
   },
   {
     "id": "GUERRILHA PROJECTIONS AGAINST BOLSONARO",
-    "year": "2021",
+    "year": 2021,
     "location": "Brazil, Sao Paulo",
     "description": "how a single artist from his quarantine apartment shaped the way foreign media saw the Brazilian covid crisis",
+    "tag": "['#Brazil', '#2021', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/349/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/349",
-    "size": 29,
+    "size": 26,
     "group": 9,
     "file": "349.jpg"
   },
   {
     "id": "M+ FACADE",
-    "year": "2021",
+    "year": 2021,
     "location": "Hong Kong, Hong Kong",
     "description": "An iconic curatorial space and evolving digital platform for site-specific artistic commissions and museum collection works.",
+    "tag": "['#Hong Kong', '#2021', '#Spatial media art', '#Animated Architecture', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/355/5_big_uTnK7Z6.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/355",
     "size": 40,
@@ -2217,9 +2413,10 @@
   },
   {
     "id": "PETER JONES & PARTNERS",
-    "year": "2021",
+    "year": 2021,
     "location": "United Kingdom, London",
     "description": "Media facade for a historic retail building",
+    "tag": "['#United Kingdom', '#2021', '#Animated Architecture', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/363/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/363",
     "size": 31,
@@ -2228,9 +2425,10 @@
   },
   {
     "id": "DIGITAL PHYLLOTAXY",
-    "year": "2020",
+    "year": 2020,
     "location": "South Korea, Seoul",
     "description": "Biophilic artwork that transforms over time",
+    "tag": "['#South Korea', '#2020', '#Spatial media art', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/364/3_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/364",
     "size": 28,
@@ -2239,9 +2437,10 @@
   },
   {
     "id": "MACULA",
-    "year": "2022",
+    "year": 2022,
     "location": "Australia, Sydney",
     "description": "Video mapped Spiralling Bamboo tunnel",
+    "tag": "['#Australia', '#2022', '#Equitable and Sustainable Media Architecture', '#Spatial media art', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/376/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/376",
     "size": 31,
@@ -2250,9 +2449,10 @@
   },
   {
     "id": "HIGH SPEED RELATIONS",
-    "year": "2021",
+    "year": 2021,
     "location": "Taiwan, Hsinchu",
     "description": "Fast Landscape and its Spatial Revolution",
+    "tag": "['#Taiwan', '#2021', '#Spatial media art', '#Transmedial Media Architecture', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/377/7_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/377",
     "size": 26,
@@ -2261,9 +2461,10 @@
   },
   {
     "id": "ZIEN",
-    "year": "2022",
+    "year": 2022,
     "location": "Netherlands, Den Haag",
     "description": "A collective visual reminder to stay out of the abstract",
+    "tag": "['#Netherlands', '#2022', '#Equitable and Sustainable Media Architecture', '#Participatory Media Architecture and Infrastructures', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/385/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/385",
     "size": 31,
@@ -2272,9 +2473,10 @@
   },
   {
     "id": "ZOE",
-    "year": "2022",
+    "year": 2022,
     "location": "Netherlands, Rotterdam",
     "description": "A temporary co-existence between reishi mushrooms and a custom-made robotic system.",
+    "tag": "['#Netherlands', '#2022', '#Future trends & prototypes', '#Transmedial Media Architecture', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/386/7_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/386",
     "size": 36,
@@ -2283,9 +2485,10 @@
   },
   {
     "id": "ÉCRAN DE VEILLE / SCREEN SAVOUR",
-    "year": "2022",
+    "year": 2022,
     "location": "Canada, Montreal",
     "description": "A self-surveilling generative feedback installation",
+    "tag": "['#Canada', '#2022', '#Transmedial Media Architecture', '#Spatial media art', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/387/6_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/387",
     "size": 30,
@@ -2294,9 +2497,10 @@
   },
   {
     "id": "CHATTY BENCH FESTIVAL COMMUNITY MEDIA VISUAL PROJECTIONS",
-    "year": "2021",
+    "year": 2021,
     "location": "Australia, Canada, Brisbane",
     "description": "Community stories are front, centre and loud on the walls of Kelvin Grove Urban Village",
+    "tag": "['#Australia', '#Canada', '#2021', '#Equitable and Sustainable Media Architecture', '#Participatory Media Architecture and Infrastructures', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/390/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/390",
     "size": 46,
@@ -2305,9 +2509,10 @@
   },
   {
     "id": "THE CELLULAR FIDELITY",
-    "year": "2022",
+    "year": 2022,
     "location": "Austria, Vienna",
     "description": "Interactive Mixed-Media Installation",
+    "tag": "['#Austria', '#2022', '#Future trends & prototypes', '#Transmedial Media Architecture', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/392/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/392",
     "size": 29,
@@ -2316,20 +2521,22 @@
   },
   {
     "id": "ORLANDO INTERNATIONAL AIRPORT TERMINAL C",
-    "year": "2022",
+    "year": 2022,
     "location": "United States of America, Orlando",
     "description": "Immersive video and interactive content for GOAA Airport in Orlando",
+    "tag": "['#United States of America', '#2022', '#Future trends & prototypes', '#Spatial media art', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/393/2_big_cW30unP.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/393",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "393.jpg"
   },
   {
     "id": "SPATIAL INTIMACY",
-    "year": "2023",
+    "year": 2023,
     "location": "Germany, Weimar",
     "description": "Real-time generative architecture based on emotional response in Virtual Reality",
+    "tag": "['#Germany', '#2023', '#Transmedial Media Architecture', '#Spatial media art', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/396/4_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/396",
     "size": 25,
@@ -2338,20 +2545,22 @@
   },
   {
     "id": "THE EYE OF MEXICO",
-    "year": "2022",
+    "year": 2022,
     "location": "Mexico, Mexico City",
     "description": "A Portal Towards the Future in Mexico City",
+    "tag": "['#Mexico', '#2022', '#Spatial media art', '#Animated Architecture', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/405/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/405",
-    "size": 32,
+    "size": 33,
     "group": 9,
     "file": "405.jpg"
   },
   {
     "id": "«ROOM OF NEGOTIATION»",
-    "year": "2022",
+    "year": 2022,
     "location": "Switzerland, Zurich",
     "description": "Interactive Perspectives on Planning",
+    "tag": "['#Switzerland', '#2022', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/407/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/407",
     "size": 25,
@@ -2360,20 +2569,22 @@
   },
   {
     "id": "LIGHT FALLS",
-    "year": "2022",
+    "year": 2022,
     "location": "Brazil, Germany, United States of America,",
     "description": "light sculpture",
+    "tag": "['#Brazil', '#Germany', '#United States of America', '#2022', '#Animated Architecture', '#Equitable and Sustainable Media Architecture', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/408/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/408",
-    "size": 29,
+    "size": 30,
     "group": 9,
     "file": "408.jpg"
   },
   {
     "id": "STATE GRID PAVILION",
-    "year": "2010",
+    "year": 2010,
     "location": "China, Shanghai",
     "description": "Surrounded by impressions on all six sides",
+    "tag": "['#China', '#2010', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/104/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/104",
     "size": 28,
@@ -2382,20 +2593,22 @@
   },
   {
     "id": "SILO 468 KRUUNUVUORENRANTA",
-    "year": "2012",
+    "year": 2012,
     "location": "Finland, Helsinki",
     "description": "Silo 468 Kruunuvuorenranta",
+    "tag": "['#Finland', '#2012', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/123/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/123",
-    "size": 32,
+    "size": 33,
     "group": 9,
     "file": "123.jpg"
   },
   {
     "id": "NOVA",
-    "year": "2006",
+    "year": 2006,
     "location": "Switzerland, Zurich",
     "description": "An interactive real 3D video LED screen",
+    "tag": "['#Switzerland', '#2006', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/141/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/141",
     "size": 26,
@@ -2404,31 +2617,34 @@
   },
   {
     "id": "THE ENERGY TOWER FAÇADE LIGHTING",
-    "year": "2014",
+    "year": 2014,
     "location": "Denmark, Roskilde",
     "description": "The faíçade lighting of the Energy Tower",
+    "tag": "['#Denmark', '#2014', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/153/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/153",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "153.jpg"
   },
   {
     "id": "FIELD OF LIGHT",
-    "year": "2015",
+    "year": 2015,
     "location": "Australia, Uluru",
     "description": "Field of Light",
+    "tag": "['#Australia', '#2015', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/163/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/163",
-    "size": 31,
+    "size": 32,
     "group": 9,
     "file": "163.jpg"
   },
   {
     "id": "WATERLICHT",
-    "year": "2015",
+    "year": 2015,
     "location": "Netherlands, Amsterdam",
     "description": "WATERLICHT about power and poetry of water",
+    "tag": "['#Netherlands', '#2015', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/185/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/185",
     "size": 25,
@@ -2437,9 +2653,10 @@
   },
   {
     "id": "QUBE",
-    "year": "2011",
+    "year": 2011,
     "location": "Germany, Berlin",
     "description": "products goes architecture",
+    "tag": "['#Germany', '#2011', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/202/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/202",
     "size": 26,
@@ -2448,53 +2665,58 @@
   },
   {
     "id": "THE LUMINOUS PATHWAY IN THE QUARTIER DES SPECTACLES",
-    "year": "2006",
+    "year": 2006,
     "location": "Canada, Montreal",
     "description": "Luminous signage, architectural lighting, projections and temporary installations",
+    "tag": "['#Canada', '#2006', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/205/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/205",
-    "size": 27,
+    "size": 28,
     "group": 9,
     "file": "205.jpg"
   },
   {
     "id": "FALSE POSITIVE",
-    "year": "2016",
+    "year": 2016,
     "location": "Austria, Belgium, Germany, Spain, United Kingdom, Linz, Austria; Madrid, Spain; Brussels, Belgium; Hagen, Germany; Liverpool, UK",
     "description": "FALSE POSITIVE deploys text messaging, stealth infrastructure, street intervention, and data visualization to enact a surveillance conspiracy engaging the public in an intimate, techno-political conversation with the mobile technologies on which they depend.",
+    "tag": "['#Austria', '#Belgium', '#Germany', '#Spain', '#United Kingdom', '#2016', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/12/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/12",
-    "size": 33,
+    "size": 36,
     "group": 9,
     "file": "12.jpg"
   },
   {
     "id": "PLANT A LIGHT",
-    "year": "2017",
+    "year": 2017,
     "location": "Denmark, Aarhus",
     "description": "A glowing tribute to the diversity of nature",
+    "tag": "['#Denmark', '#2017', '#Participatory Media Architecture and Infrastructures', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/27/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/27",
-    "size": 37,
+    "size": 39,
     "group": 9,
     "file": "27.jpg"
   },
   {
     "id": "THE LIGHT HOUSE: 888 COLLINS ST",
-    "year": "2016",
+    "year": 2016,
     "location": "Australia, Melbourne",
     "description": "Ramus wrapped a 15-storey residential building in a luminous, weather-reactive skin. The innovative facade interprets incoming weather data and translates it into beautiful digital visualisations. Light moves and changes colour to represent current and future conditions.",
+    "tag": "['#Australia', '#2016', '#Participatory Media Architecture and Infrastructures', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/49/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/49",
-    "size": 34,
+    "size": 35,
     "group": 9,
     "file": "49.jpg"
   },
   {
     "id": "THE DIGITAL BRICKS",
-    "year": "2021",
+    "year": 2021,
     "location": "Australia, Melbourne",
     "description": "If These Walls Could Talk...",
+    "tag": "['#Australia', '#2021', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/222/6_big_NTNs49z.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/222",
     "size": 39,
@@ -2503,53 +2725,58 @@
   },
   {
     "id": "LA SPRITE",
-    "year": "2019",
+    "year": 2019,
     "location": "France, Le Havre",
     "description": "Artificial supernatural light creature",
+    "tag": "['#France', '#2019', '#Spatial media art', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/248/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/248",
-    "size": 30,
+    "size": 31,
     "group": 9,
     "file": "248.jpg"
   },
   {
     "id": "PASSAGES",
-    "year": "2019",
+    "year": 2019,
     "location": "France, Toulouse",
     "description": "A permanent videoconference network in public spaces. People, dancers or artists can communicate through Passages, in real time and life-sized proportions.",
+    "tag": "['#France', '#2019', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/11/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/11",
-    "size": 34,
+    "size": 31,
     "group": 9,
     "file": "11.jpg"
   },
   {
     "id": "NORTHSIDE BEACONS",
-    "year": "2018",
+    "year": 2018,
     "location": "Denmark, Aarhus",
     "description": "EXPERIENCE-BASED NUDGING",
+    "tag": "['#Denmark', '#2018', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/14/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/14",
-    "size": 33,
+    "size": 34,
     "group": 9,
     "file": "14.jpg"
   },
   {
     "id": "LIGHTSPELL",
-    "year": "2017",
+    "year": 2017,
     "location": "Canada, Toronto",
     "description": "Permanent, interactive, light installation at the new Pioneer Village subway, in Toronto, Canada",
+    "tag": "['#Canada', '#2017', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/15/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/15",
-    "size": 33,
+    "size": 34,
     "group": 9,
     "file": "15.jpg"
   },
   {
     "id": "LIGHTLINES",
-    "year": "2018",
+    "year": 2018,
     "location": "Australia, Buranda, Brisbane",
     "description": "Lightlines: a site-responsive kinetic and lighting artwork",
+    "tag": "['#Australia', '#2018', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/21/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/21",
     "size": 30,
@@ -2558,9 +2785,10 @@
   },
   {
     "id": "KIPNES LANTERN",
-    "year": "2017",
+    "year": 2017,
     "location": "Canada, Ottawa",
     "description": "Rejuvenating Canada's National Arts Centre",
+    "tag": "['#Canada', '#2017', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/28/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/28",
     "size": 33,
@@ -2569,9 +2797,10 @@
   },
   {
     "id": "ARENA",
-    "year": "2018",
+    "year": 2018,
     "location": "Canada, Kitchener",
-    "description": "interactive sound sculpture as \"\"Speakers Corner\"\" for people to express themselves in public spaces",
+    "description": "interactive sound sculpture as \"Speakers Corner\" for people to express themselves in public spaces",
+    "tag": "['#Canada', '#2018', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/33/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/33",
     "size": 34,
@@ -2580,20 +2809,22 @@
   },
   {
     "id": "SALLING LIGHTS",
-    "year": "2017",
+    "year": 2017,
     "location": "Denmark, Aarhus & Aalborg",
     "description": "Interactive media facades",
+    "tag": "['#Denmark', '#2017', '#Branded Architecture', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/35/2_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/35",
-    "size": 31,
+    "size": 32,
     "group": 9,
     "file": "35.jpg"
   },
   {
     "id": "DIGITAL CALLIGRAFFITI",
-    "year": "2017",
+    "year": 2017,
     "location": "Germany, Berlin",
     "description": "Digital Calligraffiti - a responsive urban media art platform for community building",
+    "tag": "['#Germany', '#2017', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/38/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/38",
     "size": 33,
@@ -2602,53 +2833,58 @@
   },
   {
     "id": "MONUMENT REMIX",
-    "year": "2018",
+    "year": 2018,
     "location": "Brazil, Sao Paulo",
     "description": "Using projection mapping to remix a controversial historical monument in to a image to inspire Brazilians in the 21th century",
+    "tag": "['#Brazil', '#2018', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/41/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/41",
-    "size": 44,
+    "size": 38,
     "group": 9,
     "file": "41.jpg"
   },
   {
     "id": "FEDERATION SQUARE DIGITAL CANVAS",
-    "year": "2018",
+    "year": 2018,
     "location": "Australia, Melbourne",
     "description": "Melbourne-based art studio Ramus, sought to transform the traditional media screen into an immersive, expressive canvas.",
+    "tag": "['#Australia', '#2018', '#Participatory Media Architecture and Infrastructures', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/45/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/45",
-    "size": 31,
+    "size": 32,
     "group": 9,
     "file": "45.jpg"
   },
   {
     "id": "WATERLIGHT GRAFFITI",
-    "year": "2012",
+    "year": 2012,
     "location": "France, Poitiers",
     "description": "led wall reacting to the water",
+    "tag": "['#France', '#2012', '#Future trends & prototypes']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/46/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/46",
-    "size": 30,
+    "size": 36,
     "group": 9,
     "file": "46.jpg"
   },
   {
     "id": "YAGAN SQUARE",
-    "year": "2018",
+    "year": 2018,
     "location": "Australia, Perth",
     "description": "Ramus represnts an inclusive, welcoming and active cultural experience through light and media integration, representative of a diversity of the local Perth region and broader Western Australia.",
+    "tag": "['#Australia', '#2018', '#Participatory Media Architecture and Infrastructures', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/47/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/47",
-    "size": 37,
+    "size": 34,
     "group": 9,
     "file": "47.jpg"
   },
   {
     "id": "SMOG FREE PROJECT",
-    "year": "2018",
+    "year": 2018,
     "location": "China, Netherlands, Poland, Opened in Beijing, Tianjin, Dalian, Rotterdam, Krakow",
     "description": "SMOG FREE PROJECT is a series of urban innovations led by Daan Roosegaarde to reduce pollution and provide an inspirational experience of a clean future.",
+    "tag": "['#China', '#Netherlands', '#Poland', '#2018', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/53/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/53",
     "size": 36,
@@ -2657,75 +2893,82 @@
   },
   {
     "id": "DIGITAL NEIGHBOURHOOD",
-    "year": "2017",
+    "year": 2017,
     "location": "Denmark, Aarhus",
     "description": "To involve and enter into a dialogue with citizens in new ways",
+    "tag": "['#Denmark', '#2017', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/68/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/68",
-    "size": 38,
+    "size": 29,
     "group": 9,
     "file": "68.jpg"
   },
   {
-    "id": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
-    "year": "2017",
+    "id": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
+    "year": 2017,
     "location": "Brazil, Sao Paulo",
     "description": "Media art/projection on facade festival take on the task of reclaiming a 3-km long overpass that destroyed urban cohesion of downtown Sao Paulo.",
+    "tag": "['#Brazil', '#2017', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/69/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/69",
-    "size": 36,
+    "size": 38,
     "group": 9,
     "file": "69.jpg"
   },
   {
     "id": "BIOLUMEN",
-    "year": "2018",
+    "year": 2018,
     "location": "Brazil, Sao Paulo",
     "description": "Site-specific permanent installation made of LED, metal and programming software/hardware system. Located under viaduct with the purpose to transform the area into safer and presentable area to passers-by and local community.",
+    "tag": "['#Brazil', '#2018', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/74/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/74",
-    "size": 30,
+    "size": 32,
     "group": 9,
     "file": "74.jpg"
   },
   {
     "id": "YELLOW DUST",
-    "year": "2018",
+    "year": 2018,
     "location": "South Korea, Seoul",
     "description": "Spatial air pollution visualisation that measures and remediates particulate matter concentrations",
+    "tag": "['#South Korea', '#2018', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/75/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/75",
-    "size": 33,
+    "size": 34,
     "group": 9,
     "file": "75.jpg"
   },
   {
     "id": "DRAGON SCALE",
-    "year": "2018",
+    "year": 2018,
     "location": "China, Shanghai",
     "description": "Dragon Scale, Building New Media Integrated Wall",
+    "tag": "['#China', '#2018', '#Future trends & prototypes', '#Animated Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/76/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/76",
-    "size": 30,
+    "size": 31,
     "group": 9,
     "file": "76.jpg"
   },
   {
     "id": "CHATTY BENCH PROJECT: RADICAL MEDIA ARCHITECTURE IN PRECARIOUS TIMES",
-    "year": "2020",
+    "year": 2020,
     "location": "Australia, Brisbane",
     "description": "Situated [Story-Place-Media] Making during COVID-19",
+    "tag": "['#Australia', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/224/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/224",
-    "size": 41,
+    "size": 38,
     "group": 9,
     "file": "224.jpg"
   },
   {
     "id": "SHUTTERCAM",
-    "year": "2021",
+    "year": 2021,
     "location": "Netherlands, Amsterdam",
     "description": "Empowering citizens to block camera lenses; exploring digital rights in public space",
+    "tag": "['#Netherlands', '#2021', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/244/4_big_lVAC2PV.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/244",
     "size": 31,
@@ -2734,9 +2977,10 @@
   },
   {
     "id": "SLEEPERS OF HASLEV",
-    "year": "2020",
+    "year": 2020,
     "location": "Denmark, Haslev",
     "description": "150th anniversary light installation",
+    "tag": "['#Denmark', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/260/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/260",
     "size": 31,
@@ -2745,9 +2989,10 @@
   },
   {
     "id": "WUHAN OPTICS VALLEY SQUARE COMPLEX THEME GROUND SCULPTURE",
-    "year": "2019",
+    "year": 2019,
     "location": "China, Beijing",
-    "description": "Wuhan Optics Valley Square Public Artwork \"\"Milky Way\"\"",
+    "description": "Wuhan Optics Valley Square Public Artwork \"Milky Way",
+    "tag": "['#China', '#2019', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/275/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/275",
     "size": 45,
@@ -2756,20 +3001,22 @@
   },
   {
     "id": "‘LA LUNE EST…’ / ‘THE MOON IS…’",
-    "year": "2020",
+    "year": 2020,
     "location": "Canada, United Kingdom, Montreal",
     "description": "a lunar projection of poetic analogies",
+    "tag": "['#Canada', '#United Kingdom', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/291/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/291",
-    "size": 35,
+    "size": 36,
     "group": 9,
     "file": "291.jpg"
   },
   {
     "id": "‘POÈME D’ÉCRAN’ / ‘SCREEN POEM’",
-    "year": "2020",
+    "year": 2020,
     "location": "Canada, United Kingdom, 1. Montreal, CA / 2. Barnsley, UK",
     "description": "a modular display system for generative micro poetry",
+    "tag": "['#Canada', '#United Kingdom', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/292/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/292",
     "size": 34,
@@ -2778,20 +3025,22 @@
   },
   {
     "id": "[ I MISS YOUR TOUCH ] BY PLUGINHUMAN.",
-    "year": "2020",
+    "year": 2020,
     "location": "Australia, Melbourne",
     "description": "Experience virtual touch",
+    "tag": "['#Australia', '#2020', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/293/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/293",
-    "size": 28,
+    "size": 25,
     "group": 9,
     "file": "293.jpg"
   },
   {
     "id": "INHIBITION",
-    "year": "2020",
+    "year": 2020,
     "location": "United Kingdom, London",
     "description": "An extended reality performance that questions the roles of performers and audiences",
+    "tag": "['#United Kingdom', '#2020', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/306/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/306",
     "size": 30,
@@ -2800,9 +3049,10 @@
   },
   {
     "id": "GIBIGIANA",
-    "year": "2018",
+    "year": 2018,
     "location": "Italy, Rome",
     "description": "Interactive media installation responding to instruments of performers",
+    "tag": "['#Italy', '#2018', '#Spatial media art']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/310/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/310",
     "size": 38,
@@ -2811,20 +3061,22 @@
   },
   {
     "id": "WALK WALK DANCE",
-    "year": "2020",
+    "year": 2020,
     "location": "Canada, Montreal",
     "description": "Enchanting the post-COVID city",
+    "tag": "['#Canada', '#2020', '#Spatial media art', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/312/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/312",
-    "size": 34,
+    "size": 28,
     "group": 9,
     "file": "312.jpg"
   },
   {
     "id": "STADT DER TEMPERAMENTE",
-    "year": "2019",
+    "year": 2019,
     "location": "Austria, Vienna",
     "description": "Scenes from a smart neighbourhood",
+    "tag": "['#Austria', '#2019', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/321/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/321",
     "size": 30,
@@ -2833,12 +3085,13 @@
   },
   {
     "id": "CITIZEN DIALOG KIT",
-    "year": "2019",
+    "year": 2019,
     "location": "Belgium, Netherlands, Leuven, Genk, Houthalen-Helchteren, Peer, Antwerpen, Heist-op-den-Berg, Gent, Amsterdam",
     "description": "Starting Conversation at Places That Matter",
+    "tag": "['#Belgium', '#Netherlands', '#2019', '#Participatory Media Architecture and Infrastructures']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/334/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/334",
-    "size": 33,
+    "size": 43,
     "group": 9,
     "file": "334.jpg"
   },
@@ -2847,6 +3100,7 @@
     "year": "",
     "location": "Berlin",
     "description": "Participatory installation for Human-Robot Interaction (HRI), exploring trust through spatial configuration and consent between humans and robots",
+    "tag": "['#Germany', '#None', '#Future trends & prototypes', '#Participatory Media Architecture and Infrastructures', '#More than Human Architecture']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/338/1_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/338",
     "size": 33,
@@ -2855,12 +3109,13 @@
   },
   {
     "id": "COMMONS SENSE, MANIFESTA 14",
-    "year": "2022",
+    "year": 2022,
     "location": "Kosovo, Prishtina",
     "description": "Design interventions to reshape the public space in Prishtina, Kosovo",
+    "tag": "['#Kosovo', '#2022', '#Equitable and Sustainable Media Architecture', '#Participatory Media Architecture and Infrastructures', '#Nominee']",
     "image": "https://awards.b-cdn.net/site_media/media/jurysys/media/361/0_big.jpg",
     "url": "https://awards.mediaarchitecture.org/mab/project/361",
-    "size": 28,
+    "size": 29,
     "group": 9,
     "file": "361.jpg"
   },
@@ -2885,22 +3140,12 @@
     "group": 8
   },
   {
+    "id": "OLEDWorks",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Kling Klang Klong",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "85 scenes were saved and are activated in different variants in daily operation. Many are interactive. New sounds are composed generatively in reaction to the movement of visitors. Light effects change in response to specific sounds",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "such as the frequency of an audio signal",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and to movement.",
     "size": 25,
     "group": 8
   },
@@ -2935,6 +3180,11 @@
     "group": 8
   },
   {
+    "id": "Verve Cultural",
+    "size": 26,
+    "group": 8
+  },
+  {
     "id": "Ledcom",
     "size": 25,
     "group": 8
@@ -2956,6 +3206,11 @@
   },
   {
     "id": "Hurst Peirce + Malcolm LLP",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Dynamixel",
     "size": 25,
     "group": 8
   },
@@ -3125,11 +3380,6 @@
     "group": 8
   },
   {
-    "id": "https://awards.mediaarchitecture.org/mab/project/40",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Qatar Solar Technologies and Qatar Museums",
     "size": 25,
     "group": 8
@@ -3146,7 +3396,7 @@
   },
   {
     "id": "Ltd",
-    "size": 26,
+    "size": 27,
     "group": 8
   },
   {
@@ -3165,52 +3415,37 @@
     "group": 8
   },
   {
+    "id": "Linear LED luminaires by Shanghai Guang Lian Lighting Co.",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "DMX512 by Shanghai Guang Lian Lighting Co.",
     "size": 25,
     "group": 8
   },
   {
-    "id": "The lighting control system adopts the error correction technology",
+    "id": "Beijing Topwin Center 1",
     "size": 25,
     "group": 8
   },
   {
-    "id": "which solves the problem that the traditional DMX512 technology is easy to be interfered by various complex factors on the spot in the process of data transmission",
+    "id": "Beijing Topwin Center 2",
     "size": 25,
     "group": 8
   },
   {
-    "id": "and improves the stability of the system operation.",
+    "id": "Beijing Topwin Center 3",
     "size": 25,
     "group": 8
   },
   {
-    "id": "Beijing Topwin Center is located in the core of Sanlitun business circle",
+    "id": "Beijing Topwin Center 4",
     "size": 25,
     "group": 8
   },
   {
-    "id": "close to SOHO",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "with Sanlitun Taiguli",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Sanlitun Bar Street across the road. On the one side is the colorful commercial lighting atmosphere",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and the other side is next to the residential housing.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "\"Beijing Topwin Center lies in the heart of Sanlitun. it is largely constructed with glass facades with its \"\"honeycomb diamond\"\" section-like exterior. Tiffany Blue is used as the main color",
+    "id": "Entrance of Beijing Topwin Center",
     "size": 25,
     "group": 8
   },
@@ -3291,7 +3526,7 @@
   },
   {
     "id": "Big Screen Projects",
-    "size": 25,
+    "size": 27,
     "group": 8
   },
   {
@@ -3301,6 +3536,11 @@
   },
   {
     "id": "Demos Chiang and DEM CO.LTD",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Shenzhen Joyway Technology Co.",
     "size": 25,
     "group": 8
   },
@@ -3350,48 +3590,13 @@
     "group": 8
   },
   {
-    "id": "but from a certain distance",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the video content will be visible on them.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "['#Ukraine'",
-    "size": 27,
-    "group": 8
-  },
-  {
-    "id": "'#2019'",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "'#Animated Architecture']",
-    "size": 26,
-    "group": 8
-  },
-  {
-    "id": "https://awards.b-cdn.net/site_media/media/jurysys/media/55/0_big.jpg",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/55",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "LLC «EK« Service »",
     "size": 25,
     "group": 8
   },
   {
     "id": "Kiev",
-    "size": 27,
+    "size": 28,
     "group": 8
   },
   {
@@ -3420,23 +3625,8 @@
     "group": 8
   },
   {
-    "id": "Building in Ukraine that uses a difficult parametric architecture. Constructions - monolithic reinforced concrete frame. In the decoration of the facade are dominated by glass and metal.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Linear Multimedia LED Light Source",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.b-cdn.net/site_media/media/jurysys/media/56/0_big.jpg",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/56",
-    "size": 25,
+    "id": "Expolight",
+    "size": 43,
     "group": 8
   },
   {
@@ -3452,31 +3642,6 @@
   {
     "id": "Dolnik & CO Ltd.",
     "size": 27,
-    "group": 8
-  },
-  {
-    "id": "Expolight",
-    "size": 42,
-    "group": 8
-  },
-  {
-    "id": "The complex is located in the city center",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "adjacent to the popular pedestrian areas.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.b-cdn.net/site_media/media/jurysys/media/57/0_big.jpg",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/57",
-    "size": 25,
     "group": 8
   },
   {
@@ -3505,26 +3670,6 @@
     "group": 8
   },
   {
-    "id": "Visitors were able to interact with the installation by touching the spokes of the yurt. A light touch was enough to make them glow",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "before",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "after a few seconds",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the light faded again. A very subtle light animation linked to the content of the panorama projection ran in idle mode. The panorama projection showed a universal landscape generated entirely by computer.",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Â©Ií±igo Bujedo Aguirre",
     "size": 25,
     "group": 8
@@ -3535,17 +3680,12 @@
     "group": 8
   },
   {
-    "id": "Medical center \"\"ODREX\"",
+    "id": "Medical center \"ODREX\"",
     "size": 25,
     "group": 8
   },
   {
     "id": "Odesa",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Ukraine\"",
     "size": 25,
     "group": 8
   },
@@ -3585,47 +3725,7 @@
     "group": 8
   },
   {
-    "id": "the sculpture was interactive. Kinetic sensors",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "which reacted to human movement",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "were placed around it.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "['#France'",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "'#2017'",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "'#Spatial media art']",
-    "size": 26,
-    "group": 8
-  },
-  {
-    "id": "https://awards.b-cdn.net/site_media/media/jurysys/media/61/1_big.jpg",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/61",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Architectural Bureau \"\"Decor Kuznetsov\"",
+    "id": "Architectural Bureau \"Decor Kuznetsov\"",
     "size": 25,
     "group": 8
   },
@@ -3640,37 +3740,12 @@
     "group": 8
   },
   {
-    "id": "the illumination of the shopping center \"\"Passage\"\" can be considered a pixel art of low resolution.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "'#2011'",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.b-cdn.net/site_media/media/jurysys/media/63/1_big.jpg",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/63",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "AXELROD ESTATE LLC",
     "size": 25,
     "group": 8
   },
   {
-    "id": "Multimedia LED light sources",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/65",
+    "id": "E[polight",
     "size": 25,
     "group": 8
   },
@@ -3685,33 +3760,13 @@
     "group": 8
   },
   {
-    "id": "and then it adds red in a nightclub mode",
+    "id": "YOD Design Lab",
     "size": 25,
     "group": 8
   },
   {
-    "id": "while the graffiti get supplemented by the content of different activity degrees to match the emotional state of one or another time of the day. 3D-mapping technology is used for animation of the graffiti. More than 30 variations of projections change themselves by special timings in consistency with common scenes of lighting. The backlight of the bar counter and the construction of scene and corridor are also dynamic and diverse. All of the lighting devices are controlled by a single specially designed system.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "'#2018'",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.b-cdn.net/site_media/media/jurysys/media/66/1_big.jpg",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/66",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Multimedia LED light sources and 3D-mapping.",
-    "size": 25,
+    "id": "Normal",
+    "size": 26,
     "group": 8
   },
   {
@@ -3721,11 +3776,6 @@
   },
   {
     "id": "Private enterprise Architectural workshop of Yuri Borodkin",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Normal",
     "size": 25,
     "group": 8
   },
@@ -3786,6 +3836,11 @@
   },
   {
     "id": "Diversified Systems",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "VER",
     "size": 25,
     "group": 8
   },
@@ -3875,6 +3930,11 @@
     "group": 8
   },
   {
+    "id": "Nanolumens",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Zhouwen Chen / ParkLand Real Estate Development",
     "size": 25,
     "group": 8
@@ -3940,6 +4000,11 @@
     "group": 8
   },
   {
+    "id": "Osram LED",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Osram e:cue",
     "size": 25,
     "group": 8
@@ -3986,6 +4051,11 @@
   },
   {
     "id": "Lightlife",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Cusomised LED-fixture by Lightlife",
     "size": 25,
     "group": 8
   },
@@ -4115,23 +4185,13 @@
     "group": 8
   },
   {
-    "id": "The Chanel Ginza Tower is located in the heart of the Ginza district in Tokyo",
+    "id": "SGF Associates",
     "size": 25,
     "group": 8
   },
   {
-    "id": "Japan",
-    "size": 27,
-    "group": 8
-  },
-  {
-    "id": "recognized as one of the most luxurious shopping districts in the world.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "The faíçade displays Chanel promo clips and its distinguished double \"\"C\"\" logo.",
-    "size": 25,
+    "id": "Inc.",
+    "size": 26,
     "group": 8
   },
   {
@@ -4175,6 +4235,11 @@
     "group": 8
   },
   {
+    "id": "ALTO l lighting l architectural lighting design laboratory",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "vvvv",
     "size": 27,
     "group": 8
@@ -4196,6 +4261,11 @@
   },
   {
     "id": "Kollision / Transform",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Martin Professional",
     "size": 25,
     "group": 8
   },
@@ -4245,6 +4315,11 @@
     "group": 8
   },
   {
+    "id": "Martin Professional A/S",
+    "size": 26,
+    "group": 8
+  },
+  {
     "id": "Custom software by CAVI / TEKNE Produktion",
     "size": 25,
     "group": 8
@@ -4270,6 +4345,11 @@
     "group": 8
   },
   {
+    "id": "SE Lightmanagement AG",
+    "size": 26,
+    "group": 8
+  },
+  {
     "id": "John Dekron &amp; Erik Levander/ thismedia in collaboration with realities:united",
     "size": 25,
     "group": 8
@@ -4286,7 +4366,7 @@
   },
   {
     "id": "China",
-    "size": 28,
+    "size": 29,
     "group": 8
   },
   {
@@ -4336,26 +4416,6 @@
   },
   {
     "id": "working with East London communities.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "To date the platform supports two experiences: during day time",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "user generated photos are displayed using twitter and Instagram. 8 different hashtags are identified",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "which appear on the screen and allow people to engage with the relevant content. 2) collaborative music experience",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "where people can participate either in the same location or remotely in generating the final outcome .",
     "size": 25,
     "group": 8
   },
@@ -4420,6 +4480,16 @@
     "group": 8
   },
   {
+    "id": "Osvaldo Matos",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Portugal",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "JFS",
     "size": 25,
     "group": 8
@@ -4432,26 +4502,6 @@
   {
     "id": "UK",
     "size": 27,
-    "group": 8
-  },
-  {
-    "id": "Portugal",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "or overlap each other",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "hiding it.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Tubular full colour RGB luminaires with a special lens on each LED to fullfil light distribution uniformity and colour homogeneity.",
-    "size": 25,
     "group": 8
   },
   {
@@ -4471,6 +4521,11 @@
   },
   {
     "id": "Huazhong University of Science and Technology",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Wuhan Metaview Technology Co. Ltd.",
     "size": 25,
     "group": 8
   },
@@ -4521,7 +4576,17 @@
   },
   {
     "id": "Berlin",
-    "size": 26,
+    "size": 27,
+    "group": 8
+  },
+  {
+    "id": "OLED Hardware",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Aachen",
+    "size": 25,
     "group": 8
   },
   {
@@ -4531,6 +4596,11 @@
   },
   {
     "id": "Renzo Piano",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Osram Planon",
     "size": 25,
     "group": 8
   },
@@ -4685,6 +4755,16 @@
     "group": 8
   },
   {
+    "id": "Traxon Technologies",
+    "size": 28,
+    "group": 8
+  },
+  {
+    "id": "Sun Effects",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Custom software: Lighting Design Collective &amp; e:cue",
     "size": 25,
     "group": 8
@@ -4706,6 +4786,11 @@
   },
   {
     "id": "Sally Hsu and Danny Nguyen",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Custom LED hardware - StandardVision",
     "size": 25,
     "group": 8
   },
@@ -4745,12 +4830,12 @@
     "group": 8
   },
   {
-    "id": "Prototype",
-    "size": 25,
+    "id": "University of New South Wales; University of Technology Sydney",
+    "size": 26,
     "group": 8
   },
   {
-    "id": "University of New South Wales; University of Technology Sydney",
+    "id": "Prototype",
     "size": 25,
     "group": 8
   },
@@ -4761,6 +4846,11 @@
   },
   {
     "id": "New York",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Enfis/Cooper Lighting",
     "size": 25,
     "group": 8
   },
@@ -4835,6 +4925,11 @@
     "group": 8
   },
   {
+    "id": "LightstoreXL",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Design City Kolding / Municipality of Kolding",
     "size": 25,
     "group": 8
@@ -4865,6 +4960,21 @@
     "group": 8
   },
   {
+    "id": "Philips",
+    "size": 26,
+    "group": 8
+  },
+  {
+    "id": "Fagerhult",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Valopaa Oy",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "VirtuAUL",
     "size": 25,
     "group": 8
@@ -4881,21 +4991,6 @@
   },
   {
     "id": "Department of Computer Science and Engineering",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the seldom-used park path transformed into an attractive urban space",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "where families had evening promenades",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "people were photographing and doing \"\"cosplay\"\"",
     "size": 25,
     "group": 8
   },
@@ -5010,6 +5105,16 @@
     "group": 8
   },
   {
+    "id": "elfab AG",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Industrial Micro Systems AG",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "aether architecture",
     "size": 25,
     "group": 8
@@ -5040,6 +5145,11 @@
     "group": 8
   },
   {
+    "id": "Minar Illumination",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Madrix Plexus by inoage GmbH",
     "size": 25,
     "group": 8
@@ -5055,17 +5165,7 @@
     "group": 8
   },
   {
-    "id": "\"The main \"\"show\"\" of the project is the live visualization of library searches. The companion display in the lobby cycles through various statistical graphs related to when searches take place",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "what topics are searched",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and what content is checked out.\"",
+    "id": "Jackson Hole Public Art",
     "size": 25,
     "group": 8
   },
@@ -5085,12 +5185,22 @@
     "group": 8
   },
   {
+    "id": "300mm GVA Lighting STR9 fixtures with custom sizes and brackets",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Robert Tu",
     "size": 25,
     "group": 8
   },
   {
     "id": "Speirs &amp; Major",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "The Light Lab",
     "size": 25,
     "group": 8
   },
@@ -5137,6 +5247,11 @@
   {
     "id": "Aarhus University",
     "size": 27,
+    "group": 8
+  },
+  {
+    "id": "AHL Lighting Group",
+    "size": 25,
     "group": 8
   },
   {
@@ -5202,11 +5317,6 @@
   {
     "id": "Ecue",
     "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Traxon Technologies",
-    "size": 26,
     "group": 8
   },
   {
@@ -5285,6 +5395,11 @@
     "group": 8
   },
   {
+    "id": "Japan",
+    "size": 26,
+    "group": 8
+  },
+  {
     "id": "Greenhouse Core",
     "size": 25,
     "group": 8
@@ -5350,6 +5465,11 @@
     "group": 8
   },
   {
+    "id": "Color Kinetics",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "LCE2 FX by e:cue",
     "size": 25,
     "group": 8
@@ -5375,52 +5495,7 @@
     "group": 8
   },
   {
-    "id": "Situated on a busy junction and visible across the city skyline. It stands out as a visual icon contributing to everyone's experience regardless of their distance. The project is a public artwork intervention that contributes to the wider urban fabric. Such key spaces could become a highlight for the extraordinary",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "as well as places for social participation.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "The different shows provide a canvas for emotional expression and experience. The installation gives people magical powers to create situations that are normally reserved for fantasy. The 'Magic Dust' allows you to throw and push luminescent particles through the faíçade with glittering sound effects. While with 'Rain'",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "you can part the shower of light like with an umbrella. 'Sand' is in an organic manipulation of the faíçade",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "where shadow and form drift as dunes",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "followed by the sounds of the wind and shifting sands. 'Stars' provide the remarkable opportunity to dream up your own constellations in the middle of a bright city",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "each star appearing with an accoustic chime. 'Aurora' provides the opportunity to touch ephemeral strands of plasma",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the supernatural becomes tangible together with harmonic resonances. 'Fireworks' provides the opportunity to initiate spontaneous bursts of sparkles and colour",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "whistling rockets rush upwards in the background with explosions in the foreground. 'Ripple' is a melody of piano notes that generates psychedelic oil drops which collide and mix into new compositions. 'Light Orchestra' transforms the building into a musical instrument of violins and cellos",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "allowing the public to compose their own symphony.",
+    "id": "Arquileds",
     "size": 25,
     "group": 8
   },
@@ -5475,7 +5550,12 @@
     "group": 8
   },
   {
-    "id": "Highly visible from city centre.",
+    "id": "eCue",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "eldoLED",
     "size": 25,
     "group": 8
   },
@@ -5501,6 +5581,11 @@
   },
   {
     "id": "anOtherArchitect Berlin in collaboration with Kollision",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Martin LC Seriesâ„¢ LED panels",
     "size": 25,
     "group": 8
   },
@@ -5665,6 +5750,11 @@
     "group": 8
   },
   {
+    "id": "Videoprojection: Christie projectors",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Photon by VYV + X-Agora by Moment Factory",
     "size": 25,
     "group": 8
@@ -5765,22 +5855,17 @@
     "group": 8
   },
   {
-    "id": "The building can be seen from different angles and from various taller buildings in a dense urban environment.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "The sequences display the illusion of colored light drawing across the faíçade.",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "GoggleWorks Center for the Arts",
     "size": 25,
     "group": 8
   },
   {
     "id": "Daniel Iregui",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Powered by X-Agora",
     "size": 25,
     "group": 8
   },
@@ -5801,6 +5886,11 @@
   },
   {
     "id": "Jordan MCrae and Guillaume Stagnaro",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "made in the Artlab of Digitalarti by Antonin Fourneau",
     "size": 25,
     "group": 8
   },
@@ -5885,21 +5975,6 @@
     "group": 8
   },
   {
-    "id": "5 meters width and has a height of 9",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "4 meters. It is located in the \"\"Plaza de las Letras\"\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "a space divided into two levels. The faíçade was opened in February 2010. The size of this square is around 25x30 meters. Lummoblocks was shown continuously from 2010 to 2011 every Friday",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Lummo",
     "size": 26,
     "group": 8
@@ -5930,6 +6005,11 @@
     "group": 8
   },
   {
+    "id": "Xilver Dynamic LED Lighting",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "e:cue",
     "size": 26,
     "group": 8
@@ -5946,11 +6026,6 @@
   },
   {
     "id": "ecue",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://awards.mediaarchitecture.org/mab/project/204",
     "size": 25,
     "group": 8
   },
@@ -5990,6 +6065,11 @@
     "group": 8
   },
   {
+    "id": "Show+ Tell",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Refik Anadol Studio",
     "size": 25,
     "group": 8
@@ -6001,6 +6081,16 @@
   },
   {
     "id": "Asia Culture Centre",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "In 2016 PluginHUMAN began designing The Playground. This work operated as a playful way-finding tool and an activation that helped people to connect with The Asia Cultural Centre's multilayered architectural environment. The project expanded",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "running in two venues in Australia and in South Korea over 2017.",
     "size": 25,
     "group": 8
   },
@@ -6141,21 +6231,31 @@
   },
   {
     "id": "TouchDesigner",
-    "size": 27,
+    "size": 26,
     "group": 8
   },
   {
-    "id": "on special occasions",
+    "id": "Adrien Le Biavant",
     "size": 25,
     "group": 8
   },
   {
-    "id": "performers were invited to \"\"play the Runway\"\". The performer showcased here is opera singer Diva Marisa",
+    "id": "Scott Ashkenaz",
     "size": 25,
     "group": 8
   },
   {
-    "id": "who watches her voice transform into patterns racing away from her as the speed of sound down the Sonic Runway. SECOND VIDEO: Drone footage of the Sonic Runway showcases the length of the installation",
+    "id": "Harriet Trezevant",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "San Jose Office of Cultural Affairs",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Burning Man Project",
     "size": 25,
     "group": 8
   },
@@ -6232,6 +6332,11 @@
   {
     "id": "Tigrelab",
     "size": 26,
+    "group": 8
+  },
+  {
+    "id": "Binzpire",
+    "size": 27,
     "group": 8
   },
   {
@@ -6415,6 +6520,11 @@
     "group": 8
   },
   {
+    "id": "International Rigging",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Daniel Massey",
     "size": 25,
     "group": 8
@@ -6470,12 +6580,17 @@
     "group": 8
   },
   {
+    "id": "The Wild State at Ars Electronica 2020",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Ton&Bild Medien Gmbh",
     "size": 25,
     "group": 8
   },
   {
-    "id": "facade of the \"\"Art association Böblingen\"\"",
+    "id": "facade of the \"Art association Böblingen",
     "size": 25,
     "group": 8
   },
@@ -6486,6 +6601,16 @@
   },
   {
     "id": "studioteilchenwelle",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "custom LED Profile",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "RGBW Leds",
     "size": 25,
     "group": 8
   },
@@ -6555,6 +6680,11 @@
     "group": 8
   },
   {
+    "id": "Invent Design",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Poet by Skandal Technologies",
     "size": 25,
     "group": 8
@@ -6606,6 +6736,11 @@
   },
   {
     "id": "LIGHTING DESIGN COLLECTIVE / UNSTATIC",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "MCI",
     "size": 25,
     "group": 8
   },
@@ -6672,6 +6807,11 @@
   {
     "id": "Victor Soria",
     "size": 26,
+    "group": 8
+  },
+  {
+    "id": "Flexbright Oy",
+    "size": 25,
     "group": 8
   },
   {
@@ -6766,11 +6906,26 @@
   },
   {
     "id": "Ivan Erofeev",
-    "size": 25,
+    "size": 26,
     "group": 8
   },
   {
     "id": "Garage Museum of Contemporary Art and BMW",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Gorky Park",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Moscow",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Russia",
     "size": 25,
     "group": 8
   },
@@ -6797,6 +6952,11 @@
   {
     "id": "Willoughby City Council",
     "size": 26,
+    "group": 8
+  },
+  {
+    "id": "The Willoughby City Council",
+    "size": 25,
     "group": 8
   },
   {
@@ -6861,6 +7021,11 @@
   },
   {
     "id": "Audico Oy",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Schnick Schnack Systems",
     "size": 25,
     "group": 8
   },
@@ -7275,11 +7440,6 @@
     "group": 8
   },
   {
-    "id": "Verve Cultural",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Marí­lia Pascullli",
     "size": 25,
     "group": 8
@@ -7355,41 +7515,6 @@
     "group": 8
   },
   {
-    "id": "allowing the building to enter into a dialogue with the surrounding urban space. It turns the Novartis Pavillon into a luminous icon that is visible from many locations in Basel.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Every day after sunset",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the facade shows the works of three international artists: Daniel Canogar",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Esther Hunziker and Semiconductor. They collaborated with scientists to develop artworks inspired by the shapes and colours of cells and molecules",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "as well as the themes of sustainability and the convergence of art and science. During daytime",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the facade displays moving text",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "using only the white LEDs that face away from the building.",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Laurids Jensen",
     "size": 25,
     "group": 8
@@ -7431,6 +7556,11 @@
   },
   {
     "id": "Darya Koltsova",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "UNIT.City",
     "size": 25,
     "group": 8
   },
@@ -7495,6 +7625,11 @@
     "group": 8
   },
   {
+    "id": "Latin Church in Ukraine",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Arduino",
     "size": 25,
     "group": 8
@@ -7550,17 +7685,7 @@
     "group": 8
   },
   {
-    "id": "while a continuous panoramic perception is sampled into a series of stop-frame images",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "to be compiled later into an animation series that occupies the same time as the actual travel. The aim is to represent a recognizable perception of urban movement",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "while defamiliarizing the visuals in order to isolate and condense the sense of a steady flow of space. In dialogue to the term \"\"moving images\"\"",
+    "id": "photograph of Pi-Tzu Liu",
     "size": 25,
     "group": 8
   },
@@ -7611,6 +7736,11 @@
   },
   {
     "id": "MA",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Ontario",
     "size": 25,
     "group": 8
   },
@@ -7700,6 +7830,11 @@
     "group": 8
   },
   {
+    "id": "CEGA",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Studio Dikini",
     "size": 25,
     "group": 8
@@ -7751,6 +7886,11 @@
   },
   {
     "id": "Xenorama - Marcel Bückner | Tim Heinze | Richard Oeckel | Lorenz Potthast | Moritz Richartz",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "3 x projectors | FRAME: 98 x iguzzini Linealuce Mini 47",
     "size": 25,
     "group": 8
   },
@@ -7815,6 +7955,11 @@
     "group": 8
   },
   {
+    "id": "Flo Service",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Peggy Gooding & Team",
     "size": 25,
     "group": 8
@@ -7870,21 +8015,6 @@
     "group": 8
   },
   {
-    "id": "which creates a very unique physical resolution 1440 x 20.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "The unique immersive-art landmark installation for the luxury clothing store The Webster at the newly renovated Beverly Center in West Hollywood is a fully integrated architectural experience for the store's modern layout. With the goal of producing a new form of public/private high art installation that effortlessly integrates an experiential pedestrian experience with a sophisticated brand",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "The Webster's facade is a testament to how physical commercial spaces can be transformed into immersive environments that reflect the future of high end retail.",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Bahrain International Circuit",
     "size": 25,
     "group": 8
@@ -7916,7 +8046,7 @@
   },
   {
     "id": "Lyons Architecture",
-    "size": 25,
+    "size": 26,
     "group": 8
   },
   {
@@ -7940,42 +8070,7 @@
     "group": 8
   },
   {
-    "id": "The Pipes is the centrepiece of the extensive urban renewal project led by Lyons Architecture. Prahran Square was transformed from an old carpark into 9",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "000m2 of urban parkland. In contrast to almost all other public squares",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "this space is dedicated to the people who move through it.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Introducing The Pipes",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "a digital forest of immersive visuals and soundscapes unique to the environment of Prahran Square",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Melbourne.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "\"28 x 11m galvanised steel poles were designed specifically for The Pipes. 168 LED panels at 6mm pitch we used",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "each panel is 800 x 200mm",
+    "id": "Kane",
     "size": 25,
     "group": 8
   },
@@ -7995,67 +8090,7 @@
     "group": 8
   },
   {
-    "id": "Still Light consists of 1",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "136m of individually mapped LED fixtures and RAMUS' custom-built software platform called CORE. This bespoke control system operates each light fixture and integrates the content into a dynamic self-adjusting schedule that allows the building to respond to the different rhythms of the city. The work is mounted on the inner layer of the faíçade",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "with each light integrated into the frame of the glazing",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "creating a sense of the building itself being a light fixture. When that fixture turns on",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the whole building starts to move",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "or so it seems.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "As a building that operates 24 hours",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "RAMUS considered the change in rhythm that the Melbourne city has from day to day and morning to evening. These movements informed the timing of content",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "which is scheduled to be always-on. The outcome for the surrounding community is soothing",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "as each light movement reflects into the neighbouring laneways and onto architectural surfaces",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "creating a jewel-like effect across the footpaths and streets of the Paris end of Collins St.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Introducing Still Light",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "RAMUS' new media architecture installation that graces all 42-storeys of a new high-rise building.",
+    "id": "Brookfield Multiplex",
     "size": 25,
     "group": 8
   },
@@ -8080,37 +8115,7 @@
     "group": 8
   },
   {
-    "id": "so that the passing vagrant animals can watch quietly",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "comfort their hearts",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and awaken the subconscious of people passing by to love animals. Through sensors and cameras",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Wandering corner in every community is a new media exploration. As the entrance to accompany the vagrants",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "vagrant corner helps every vagrant animal to become a haven for them and even upgraded to a church for animals. Here",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "stray animals are no longer lonely",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and it will become a meeting place for these vagrants.",
+    "id": "aidi Sun",
     "size": 25,
     "group": 8
   },
@@ -8291,21 +8296,6 @@
   },
   {
     "id": "Modul8",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "other people in Brazil also started using projection from their apartment to protest against their government and it became more of a common thing. The building with the projection was just a perfect image to express how people felt about their political situation. Every time I \"\"found\"\" the perfect combination of wording",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "imagens and architecture",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the photos would go viral very quickly. If not",
     "size": 25,
     "group": 8
   },
@@ -8740,7 +8730,7 @@
     "group": 8
   },
   {
-    "id": "Inc.",
+    "id": "SACO",
     "size": 25,
     "group": 8
   },
@@ -8880,6 +8870,11 @@
     "group": 8
   },
   {
+    "id": "SPECTA",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Ouchhh",
     "size": 25,
     "group": 8
@@ -8902,6 +8897,11 @@
   {
     "id": "Douglas Marote and Ihon Yadoya",
     "size": 26,
+    "group": 8
+  },
+  {
+    "id": "WS2815",
+    "size": 25,
     "group": 8
   },
   {
@@ -8950,6 +8950,11 @@
     "group": 8
   },
   {
+    "id": "AHL LED",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "AHL LED Easy Player",
     "size": 25,
     "group": 8
@@ -8970,6 +8975,11 @@
     "group": 8
   },
   {
+    "id": "traxon",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Bruce Munro",
     "size": 25,
     "group": 8
@@ -8981,6 +8991,11 @@
   },
   {
     "id": "BIAD",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Neo-Neon",
     "size": 25,
     "group": 8
   },
@@ -9011,6 +9026,11 @@
   },
   {
     "id": "Quartier des Spectacles partnership",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Martin Professional FlexDOTâ„¢ LED light sources",
     "size": 25,
     "group": 8
   },
@@ -9065,6 +9085,21 @@
     "group": 8
   },
   {
+    "id": "iMAL",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Medialab Prado",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Urbane Künste Ruhr",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "The Greenhouses",
     "size": 25,
     "group": 8
@@ -9095,6 +9130,11 @@
     "group": 8
   },
   {
+    "id": "Martin HARMAN",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Kollision and CAVI",
     "size": 25,
     "group": 8
@@ -9116,6 +9156,11 @@
   },
   {
     "id": "Aarhus 2017 - European Capitol of Culture",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Aarhus 2017 European Capitol of Culture",
     "size": 25,
     "group": 8
   },
@@ -9230,6 +9275,11 @@
     "group": 8
   },
   {
+    "id": "Festival Un Ete Au Havre",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Guillaume Ajavon",
     "size": 25,
     "group": 8
@@ -9250,21 +9300,6 @@
     "group": 8
   },
   {
-    "id": "1 month of communication between the 2 cities. 24/7",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "free",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "all the people passing by can interact.",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Pablo Garcia",
     "size": 25,
     "group": 8
@@ -9275,7 +9310,7 @@
     "group": 8
   },
   {
-    "id": "Deploy 10 Passages across the globe. Make them switch once a day. Develop web radio and digital writing.",
+    "id": "Etoie Dií¨se Company",
     "size": 25,
     "group": 8
   },
@@ -9320,6 +9355,11 @@
     "group": 8
   },
   {
+    "id": "Martin by Harman",
+    "size": 26,
+    "group": 8
+  },
+  {
     "id": "Photo by Allan Toft",
     "size": 25,
     "group": 8
@@ -9335,7 +9375,7 @@
     "group": 8
   },
   {
-    "id": "Martin by Harman",
+    "id": "Northside 2018 / Down the Drain Production",
     "size": 25,
     "group": 8
   },
@@ -9375,7 +9415,12 @@
     "group": 8
   },
   {
-    "id": "not applicable",
+    "id": "TTC",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "York University Toronto",
     "size": 25,
     "group": 8
   },
@@ -9580,7 +9625,7 @@
     "group": 8
   },
   {
-    "id": "\"Brecheret's monument",
+    "id": "Brecheret's monument",
     "size": 25,
     "group": 8
   },
@@ -9590,7 +9635,7 @@
     "group": 8
   },
   {
-    "id": "\"Monumento `as Bandeiras\"\"",
+    "id": "\"Monumento `as Bandeiras",
     "size": 25,
     "group": 8
   },
@@ -9610,37 +9655,12 @@
     "group": 8
   },
   {
-    "id": "The monument was erected in the south-central area of the city in the Praíça Armando Salles de Oliveira",
+    "id": "Pandoras Box Coolux",
     "size": 25,
     "group": 8
   },
   {
-    "id": "opposite the Palácio 9 de Julho",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "headquarters of the Legislative Assembly of the State of Sí£o Paulo. The monument",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "given its size and location",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "has now become an integral part of the landscape of Sí£o Paulo.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Visualfarm is a Sao Paulo based studio that has been one of the pioneers of projection mapping in Brazil",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "using its large technical expertise to push the boundaries of large scale and innovative approaches in the filed. Visualfarm won a Best Outdoor Instalation award in Infoccom Orlando in 2012 as well as a Cannes award for the Christ Statue Projection Mapping insulation in 2011.",
+    "id": "Sergio Cordoba",
     "size": 25,
     "group": 8
   },
@@ -9650,22 +9670,17 @@
     "group": 8
   },
   {
-    "id": "Being less than 5 minutes long",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "we plan to create a second and third act in the same monument",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "for next year edition of the Festival.",
+    "id": "GetNet - Santander Bank",
     "size": 25,
     "group": 8
   },
   {
     "id": "Sao Paulo Light Festival - First Edition",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Sao Paulo Government",
     "size": 25,
     "group": 8
   },
@@ -9700,6 +9715,11 @@
     "group": 8
   },
   {
+    "id": "HanuaLED",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Charles Ayats",
     "size": 25,
     "group": 8
@@ -9711,6 +9731,31 @@
   },
   {
     "id": "Adrien Frappat",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Design week New York",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Light Festival Lyon",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Light Festival Hong Kong",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "CES Las Vegas",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "....",
     "size": 25,
     "group": 8
   },
@@ -9730,37 +9775,17 @@
     "group": 8
   },
   {
-    "id": "narratives",
+    "id": "Light Application",
     "size": 25,
     "group": 8
   },
   {
-    "id": "indigenous and non-indigenous people and culture within the Square. The digital media and lighting experience was delivered in collaboration with the Whadjuk Working Party",
+    "id": "Peter Bennetts",
     "size": 25,
     "group": 8
   },
   {
-    "id": "to provide a place for people to \"\"meet",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "To ensure Ramus undertook a culturally considered approach",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "the curatorial process for content created by cultural and social community groups began by engaging with community representational organizations",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "This was to meaningfully and responsibly engage with diverse communities to generate and curate content that expressed the vision and voices of the people of Perth and Western Australia.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "The curatorial process for educational institutions involved a two-fold engagement process. The first was to establish relationships and collaborate with University connected research institutes and design hubs to generate and re-image content; and the second was an opportunity for Departments and Faculty Heads to develop programs for students to respond to and utilize the innovative platform.",
+    "id": "Doric Group",
     "size": 25,
     "group": 8
   },
@@ -9835,52 +9860,7 @@
     "group": 8
   },
   {
-    "id": "The whole idea with the prototype in Digital neighbourhood",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "is to enable the municipality to move around in the city - from one local area to another. The prototype is therefore mobile and can easily be transported in a car. There is a built in router with a sim-card",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "that makes it independent in regards to the Wifi-situation in the area",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and there is one standard power cable.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "https://vimeo.com/channels/digitalurbanenvironments/286516638",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Interactive Spaces Lab at The Alexandra Institute",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "The project is ongoing",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and has no definite deadline - anew way of communicating with the citizens will always be a case of matter. The city of Aarhus is trying to spread the word about the prototype",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and is also encouraging other cities in Denmark to borrow it in order to qualifying the way it's being used. 4 new prototypes were just developed",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "and they are connected to each other in realtime.",
     "size": 25,
     "group": 8
   },
@@ -9930,6 +9910,16 @@
     "group": 8
   },
   {
+    "id": "Chave do Centro Festival",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "produced by Visualfarm",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "non-permanent project",
     "size": 25,
     "group": 8
@@ -9950,12 +9940,22 @@
     "group": 8
   },
   {
+    "id": "Minimad/ Lumikit x8/custom pixel LED Controller",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "MadMapper",
     "size": 25,
     "group": 8
   },
   {
     "id": "Intel",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Yourmama",
     "size": 25,
     "group": 8
   },
@@ -10000,6 +10000,11 @@
     "group": 8
   },
   {
+    "id": "Seoul Biennale of Architecture and Urbanism 2017",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Raíºl Nieves and Pep Tornabell",
     "size": 25,
     "group": 8
@@ -10026,6 +10031,11 @@
   },
   {
     "id": "Wang Changyang",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "ArtManu",
     "size": 25,
     "group": 8
   },
@@ -10081,21 +10091,6 @@
   },
   {
     "id": "Sam McGeown & Kavita Gonsalves",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "affordable and pervasive media screens: the smartphone. The toolkit is targeted at community organisations and non-profits.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Creating Low-Tech AR for Activism-based Community Storytelling.",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Hardware: Computer and Smartphone Software: Twine and digital storytelling apps such as audio and video recorder on smartphones.",
     "size": 25,
     "group": 8
   },
@@ -10230,32 +10225,32 @@
     "group": 8
   },
   {
-    "id": "capital",
+    "id": "Photographer Long Qiuye",
     "size": 25,
     "group": 8
   },
   {
-    "id": "reflecting the flowing vitality of modern city elements. Secondly",
+    "id": "CAPA",
     "size": 25,
     "group": 8
   },
   {
-    "id": "visually",
+    "id": "The Culture Development Co",
     "size": 25,
     "group": 8
   },
   {
-    "id": "the control system uses the international general DMX512 control mode.The whole lighting effect is divided into three parts: 1. Install a point light source lamp above the cross node of the mesh structure. 2. Install a small projection lamp above the cross node of the mesh structure to illuminate the mesh lines and dye the whole mesh structure. 3. The use of multi-point projection lamps on the banded structure illuminates the whole",
+    "id": "LTP of HIFA",
     "size": 25,
     "group": 8
   },
   {
-    "id": "to match the overall color changes.\"",
+    "id": "Beijing Zhongshenya Carving Co.",
     "size": 25,
     "group": 8
   },
   {
-    "id": "Wuhan referred to as \"\"Han\"\" or \"\"Jiangcheng\"",
+    "id": "LTD",
     "size": 25,
     "group": 8
   },
@@ -10305,6 +10300,11 @@
     "group": 8
   },
   {
+    "id": "CA 1. Barnsley Coillege / Barnsley Council",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "CA 2. Barnsley College / Barnsley Council",
     "size": 25,
     "group": 8
@@ -10321,16 +10321,6 @@
   },
   {
     "id": "CA 2. Barnsley Council",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "I got to hug my friend\"\". Evaluations of participants' experiences have shown that this artwork can help: Reduce anxiety; Reduce feelings of social isolation; Increase personal wellbeing; Help maintain meaningful connections; Generate joy; Provide access to innovative art.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "This artwork is not delivered on a website. [ i miss your touch ] is ephemeral and operates in real-time. Participants access a web platform. The artwork is streamed to each participant via a unique URL in real-time. The video stream is compiled in TouchDesigner using Python and it is manually effected in real-time by PluginHUMAN. The outcome is a live collaboration between the participants and the artists.",
     "size": 25,
     "group": 8
   },
@@ -10445,36 +10435,6 @@
     "group": 8
   },
   {
-    "id": "and the sidewalk is a stage' social distancing isn't just about honoring space; it's also about celebrating it.\"\" Can we use these lines as a starting point to fill the negative space between us with something positive? Naturally",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "we turned to music and dance. Walk Walk Dance was born.\"",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "Walk Walk Dance was designed to promote walking and encourage people to engage freely: some walk next to the lines",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "intrigued by the music; others step on them without stopping; most take a minute or two to explore the melodies; and some start to dance",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "channeling the missing street parties for a moment. The current sanitary crisis has proven how important it is for people who don't know each other to connect in order to make healthy cities. We see our work as a premise for interaction between strangers through joy. We believe in creating joyful public art. Joy allows us to connect more easily with our neighbours",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "building trust. Trust builds strong communities. And strong communities can do anything.",
-    "size": 25,
-    "group": 8
-  },
-  {
     "id": "Aspern 3420 Development AG",
     "size": 25,
     "group": 8
@@ -10545,6 +10505,56 @@
     "group": 8
   },
   {
+    "id": "Initiatives: Civic Lab Leuven",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "H2020 project CLIC",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Stad & Architectuur non-profit in Leuven",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "City of Leuven",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "City of Peer",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "City of Genk",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "City of Ghent",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Municipality of Houthalen-Helchteren",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Municipality of Heist-op-den-Berg",
+    "size": 25,
+    "group": 8
+  },
+  {
+    "id": "Urban Planning Agency BUUR",
+    "size": 25,
+    "group": 8
+  },
+  {
     "id": "Project: Galath3a",
     "size": 25,
     "group": 8
@@ -10560,52 +10570,47 @@
     "group": 8
   },
   {
-    "id": "such as 3D printers and robotic arms",
+    "id": "Berlin Open Lab",
     "size": 25,
     "group": 8
   },
   {
-    "id": "alongside a growing trend of robots for home-use. Work and work-tools reinstated at home raise questions about the changing notions of \"\"work\"\"",
+    "id": "Universití¤t der Künste",
     "size": 25,
     "group": 8
   },
   {
-    "id": "\"\"tools'' and our relationship with it. These shifts alter the urban environment",
+    "id": "Project:GALATH3A is an ongoing design research in woman-machine collaboration",
     "size": 25,
     "group": 8
   },
   {
-    "id": "the initiative focuses on \"\"the act of applying makeup and hacks it because it is synonymous with the notion of \"\"perfection\"\"",
+    "id": "performed at the Berlin Open Lab",
     "size": 25,
     "group": 8
   },
   {
-    "id": "the commoditization of the woman-body and the male gaze\"\". In fact",
+    "id": "Berlin.",
     "size": 25,
     "group": 8
   },
   {
-    "id": "it includes Hi-Res 3D facial scans and digital design of bespoke painting-patterns. The robot arm is taught how to carefully approach humans",
+    "id": "Atdhe Mulla",
     "size": 25,
     "group": 8
   },
   {
-    "id": "including the bazaar",
+    "id": "MIT Senseable City Lab",
     "size": 25,
     "group": 8
   },
   {
-    "id": "was destroyed by Tito after the Second World War. His regime built spacious squares",
+    "id": "CRA-Carlo Ratti Associati",
     "size": 25,
     "group": 8
   },
   {
-    "id": "but not a free civil society to inhabit them. Then came the war",
-    "size": 25,
-    "group": 8
-  },
-  {
-    "id": "\"As a project to realize CRA's Urban Vision",
+    "id": "Manifesta",
     "size": 25,
     "group": 8
   }

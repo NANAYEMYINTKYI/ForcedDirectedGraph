@@ -17,11 +17,13 @@ const contributorFields = [
     "Light design",
     "Technical layout light",
     "Display content/ visuals/ showreel",
+    "Light hardware (LED hardware)",
     "Lighting control software",
     "Interaction design/ programming",
     "Mediacredits",
     "Project co-ordination",
     "Project sponsor/ support",
+    "Host organization",
     "Facade design",
     "Facade construction",
     "Kinetic engineering",
@@ -31,22 +33,50 @@ const contributorFields = [
 export function PeopleData(rawData) {
   // Clean contributors
   rawData.forEach(title => {
-    const contributors = [];
+  const contributors = [];
 
-    contributorFields.forEach(field => {
-      if (
-        title[field] &&
-        title[field].trim() !== "" &&
-        !["n/a", "none", "na"].includes(title[field].trim().toLowerCase())
-      ) {
-        const cleaned = title[field].trim().replace(/\s*\([^)]*\)/g, "");
+  contributorFields.forEach(field => {
+    if (
+      title[field] &&
+      title[field].trim() !== "" &&
+      !["n/a", "none", "na"].includes(title[field].trim().toLowerCase())
+    ) {
+      let cleaned = title[field].trim();
+
+      // Remove anything in parentheses
+      cleaned = cleaned.replace(/\s*\([^)]*\)/g, "");
+
+      // Replace / | & ; with commas
+      cleaned = cleaned.replace(/[\/|&;]/g, ",");
+
+      // Remove anything containing .com or .net
+      if (!/\.com|\.net/i.test(cleaned)) {
         contributors.push(cleaned);
       }
-      delete title[field];
-    });
-
-    title.Contributors = contributors.join(", ");
+    }
+    delete title[field];
   });
+
+  title.Contributors = contributors.join(", ");
+});
+
+  // rawData.forEach(title => {
+  //   const contributors = [];
+
+  //   contributorFields.forEach(field => {
+  //     if (
+  //       title[field] &&
+  //       title[field].trim() !== "" &&
+  //       !["n/a", "none", "na"].includes(title[field].trim().toLowerCase())
+  //     ) {
+  //       const cleaned = title[field].trim().replace(/\s*\([^)]*\)/g, "");
+  //       contributors.push(cleaned);
+  //     }
+  //     delete title[field];
+  //   });
+
+  //   title.Contributors = contributors.join(", ");
+  // });
   
     // node → connectionNode
     const seenLinks = new Set();
@@ -80,9 +110,10 @@ export function PeopleData(rawData) {
         year: item.Year,
         location: item.Location,
         description: item.Description,
+        tag: item.Tag,
         image: item["Images.1"],
         url: item.URL,
-        size: 24,
+        size: 54,
         group: 9,
         file: item.URL.split("/")[5] + ".jpg"
         };
@@ -100,7 +131,7 @@ export function PeopleData(rawData) {
         if (!nodeMap[contributor]) {
             nodeMap[contributor] = {
             id: contributor,
-            size: 24,
+            size: 34,
             group: 8
             };
         }
@@ -110,10 +141,10 @@ export function PeopleData(rawData) {
     // Count occurrences
     links.forEach((link) => {
     if (nodeMap[link.source]) {
-        nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 1, 50);
+        nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 1, 100);
     }
     if (nodeMap[link.target]) {
-        nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 1, 50);
+        nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 1, 100);
     }
     });
 

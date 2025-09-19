@@ -4,6 +4,15 @@ import * as d3 from 'd3';
 // import nodedata from './../utilities/NodeData.json'
 import './ForcedDirectedGraph.css'
 
+// Import all images from a folder
+const imageslist = import.meta.glob('./../data/image/*.{png,jpg,jpeg,svg}', { eager: true });
+
+const image = {};
+Object.keys(imageslist).forEach((path) => {
+  const fileName = path.split('/').pop();
+  image[fileName] = imageslist[path].default || imageslist[path];
+});
+
 // this is forced-directed graoh component
 const ForceDirectedGraph = ({ 
   nodes = linkdata, 
@@ -25,7 +34,7 @@ const ForceDirectedGraph = ({
   // Color scale
   const colorScale = d3.scaleOrdinal()
     .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    .range(["#cb6bffff", "#6e4ecdff", "#4594d1ff", "#96cea2ff", "#e6ff6bff", "#cd9a4eff", "#d14545ff", "#676a68ff", "#c8c8c8ff"]);
+    .range(["#cb6bffff", "#6e4ecdff", "#4594d1ff", "#96cea2ff", "#e6ff6bff", "#cd9a4eff", "#d14545ff", "#c8c8c8ff", "#000000ff"]);
 
   // Drag functions
   const dragstarted = useCallback((event, d) => {
@@ -116,30 +125,12 @@ const ForceDirectedGraph = ({
         .on("drag", dragged)
         .on("end", dragended)
       )
-      // clipath image 
-      // node.append("clipPath")
-      //   .attr("id", "clip-img")
-      //   .append("circle")
-      //   .attr("r", 20)
-      //   // .attr("cx", 60)
-      //   // .attr("cy", 60);
+
+      // Set up clipPath
       node.append("clipPath")
-        .attr("id", "circle-cliip")
+        .attr("id", d => `circle-clip-${d.size}`)  // unique id per node
         .append("circle")
         .attr("r", d => d.size)
-    // .attr("cx", 60)
-    // .attr("cy", 60);
-
-      // node.append("image")
-      // // .attr("xlink:href", d => d.image)
-      //   .attr("href", "https://avatars.githubusercontent.com/u/104527737?s=400&u=3f0e4f3a5a5f5e2f1e6e8e4f4f4f4f4f4f4f4f&v=4")
-      //   .attr("x", -20)    // cx - r
-      //   .attr("y", -20)    // cy - r
-      //   // .attr("height", d=> d.size)
-      //   // .attr("width", d=> d.size)
-      //   .attr("width", 40)
-      //   .attr("height", 40)
-      //   .attr("clip-path", "url(#clip-img)");
 
       // crate circle
       node.append("circle")
@@ -150,6 +141,29 @@ const ForceDirectedGraph = ({
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
+      
+      node.each(function(d) {
+        const current = d3.select(this);
+        if (d.image) {
+          // If image exists, append image
+          current.append("image")
+          .attr("href", d => image[d.file])
+          .attr("x", d => -d.size*1.5)
+          .attr("y", d => -d.size*1.5)
+          .attr("width", d => d.size*3)
+          .attr("height", d => d.size*3)
+          .attr("clip-path", d => `url(#circle-clip-${d.size})`)
+          .style("cursor", "pointer");
+        } else {
+          // Otherwise, append a colored circle
+          current.append("circle")
+          .attr("r", d => d.size)
+          .attr("fill", d => colorScale(d.group))
+          .attr("stroke", "steelblue")
+          .attr("stroke-width", 2)
+          .style("cursor", "pointer");
+        }
+      })
         .on("mouseenter", (event, d) => {
           // tootip reference and design 
           tooltipRef.current
@@ -167,31 +181,44 @@ const ForceDirectedGraph = ({
         });
 
       // Append text into node
-      node.append("text")
-        // .text(d => d.id)
-        .attr("font-size", 12)
-        .attr("font-weight", "bold")
-        .attr("text-anchor", "middle")
-        .attr("x", 4)
-        .attr("dy", 4)
-        .attr("fill", "#333")
-        .style("pointer-events", "none")
-        .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
-         .attr("clip-path", "url(#circleClip)");
+      // node.append("text")
+      //   // .text(d => d.id)
+      //   .attr("font-size", 12)
+      //   .attr("font-weight", "bold")
+      //   .attr("text-anchor", "middle")
+      //   .attr("x", 4)
+      //   .attr("dy", 4)
+      //   .attr("fill", "#333")
+      //   .style("pointer-events", "none")
+      //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
+      //    .attr("clip-path", "url(#circleClip)");
 
         // Aligh text in node to be center
       node.append("foreignObject")
-        .attr("x", -40)
+        .attr("x", d => -d.size*1)
         .attr("y", -20)
-        .attr("width", 80)   // box width
-        .attr("height", 50)  // box height
+        .attr("width", d => d.size*2)   // box width
+        .attr("height", 100)  // box height
         .append("xhtml:div")
-        .style("font-size", "12px")
+        .style("font-size", "8px")
         .style("font-weight", "bold")
         .style("text-align", "center")
         .style("color", "#333")
         .style("word-wrap", "break-word")
         .text(d => d.id)
+
+      // node.append("foreignObject")
+      //   .attr("x", -40)
+      //   .attr("y", -20)
+      //   .attr("width", 80)   // box width
+      //   .attr("height", 50)  // box height
+      //   .append("xhtml:div")
+      //   .style("font-size", "12px")
+      //   .style("font-weight", "bold")
+      //   .style("text-align", "center")
+      //   .style("color", "#333")
+      //   .style("word-wrap", "break-word")
+      //   .text(d => d.id)
 
     // Update positions on tick
     simulation.on("tick", () => {

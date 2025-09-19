@@ -21,22 +21,12 @@
   },
   {
     "source": "MERCK LIGHT CLOUD",
+    "target": "OLEDWorks",
+    "strength": 1
+  },
+  {
+    "source": "MERCK LIGHT CLOUD",
     "target": "Kling Klang Klong",
-    "strength": 1
-  },
-  {
-    "source": "MERCK LIGHT CLOUD",
-    "target": "85 scenes were saved and are activated in different variants in daily operation. Many are interactive. New sounds are composed generatively in reaction to the movement of visitors. Light effects change in response to specific sounds",
-    "strength": 1
-  },
-  {
-    "source": "MERCK LIGHT CLOUD",
-    "target": "such as the frequency of an audio signal",
-    "strength": 1
-  },
-  {
-    "source": "MERCK LIGHT CLOUD",
-    "target": "and to movement.",
     "strength": 1
   },
   {
@@ -71,6 +61,11 @@
   },
   {
     "source": "+++ (READ +³)",
+    "target": "Verve Cultural",
+    "strength": 1
+  },
+  {
+    "source": "+++ (READ +³)",
     "target": "Ledcom",
     "strength": 1
   },
@@ -92,6 +87,11 @@
   {
     "source": "HALO",
     "target": "Hurst Peirce + Malcolm LLP",
+    "strength": 1
+  },
+  {
+    "source": "HALO",
+    "target": "Dynamixel",
     "strength": 1
   },
   {
@@ -261,11 +261,6 @@
   },
   {
     "source": "SOLAR SHIMMER",
-    "target": "https://awards.mediaarchitecture.org/mab/project/40",
-    "strength": 1
-  },
-  {
-    "source": "SOLAR SHIMMER",
     "target": "Qatar Solar Technologies and Qatar Museums",
     "strength": 1
   },
@@ -301,52 +296,37 @@
   },
   {
     "source": "BEIJING TOPWIN CENTER",
+    "target": "Linear LED luminaires by Shanghai Guang Lian Lighting Co.",
+    "strength": 1
+  },
+  {
+    "source": "BEIJING TOPWIN CENTER",
     "target": "DMX512 by Shanghai Guang Lian Lighting Co.",
     "strength": 1
   },
   {
     "source": "BEIJING TOPWIN CENTER",
-    "target": "The lighting control system adopts the error correction technology",
+    "target": "Beijing Topwin Center 1",
     "strength": 1
   },
   {
     "source": "BEIJING TOPWIN CENTER",
-    "target": "which solves the problem that the traditional DMX512 technology is easy to be interfered by various complex factors on the spot in the process of data transmission",
+    "target": "Beijing Topwin Center 2",
     "strength": 1
   },
   {
     "source": "BEIJING TOPWIN CENTER",
-    "target": "and improves the stability of the system operation.",
+    "target": "Beijing Topwin Center 3",
     "strength": 1
   },
   {
     "source": "BEIJING TOPWIN CENTER",
-    "target": "Beijing Topwin Center is located in the core of Sanlitun business circle",
+    "target": "Beijing Topwin Center 4",
     "strength": 1
   },
   {
     "source": "BEIJING TOPWIN CENTER",
-    "target": "close to SOHO",
-    "strength": 1
-  },
-  {
-    "source": "BEIJING TOPWIN CENTER",
-    "target": "with Sanlitun Taiguli",
-    "strength": 1
-  },
-  {
-    "source": "BEIJING TOPWIN CENTER",
-    "target": "Sanlitun Bar Street across the road. On the one side is the colorful commercial lighting atmosphere",
-    "strength": 1
-  },
-  {
-    "source": "BEIJING TOPWIN CENTER",
-    "target": "and the other side is next to the residential housing.",
-    "strength": 1
-  },
-  {
-    "source": "BEIJING TOPWIN CENTER",
-    "target": "\"Beijing Topwin Center lies in the heart of Sanlitun. it is largely constructed with glass facades with its \"\"honeycomb diamond\"\" section-like exterior. Tiffany Blue is used as the main color",
+    "target": "Entrance of Beijing Topwin Center",
     "strength": 1
   },
   {
@@ -446,6 +426,16 @@
   },
   {
     "source": "GRCB BANK – TIME TELLS A LUMINOUS STORY",
+    "target": "Shenzhen Joyway Technology Co.",
+    "strength": 1
+  },
+  {
+    "source": "GRCB BANK – TIME TELLS A LUMINOUS STORY",
+    "target": "Ltd",
+    "strength": 1
+  },
+  {
+    "source": "GRCB BANK – TIME TELLS A LUMINOUS STORY",
     "target": "Summer",
     "strength": 1
   },
@@ -491,41 +481,6 @@
   },
   {
     "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "but from a certain distance",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "the video content will be visible on them.\"",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "['#Ukraine'",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "'#2019'",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "'#Animated Architecture']",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "https://awards.b-cdn.net/site_media/media/jurysys/media/55/0_big.jpg",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "https://awards.mediaarchitecture.org/mab/project/55",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
     "target": "LLC «EK« Service »",
     "strength": 1
   },
@@ -566,22 +521,7 @@
   },
   {
     "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "Building in Ukraine that uses a difficult parametric architecture. Constructions - monolithic reinforced concrete frame. In the decoration of the facade are dominated by glass and metal.",
-    "strength": 1
-  },
-  {
-    "source": "THE RESIDENTIAL COMPLEX “SIGNATURE”",
-    "target": "Linear Multimedia LED Light Source",
-    "strength": 1
-  },
-  {
-    "source": "MULTIFUNCTIONAL COMPLEX “CASCADE PLAZA”",
-    "target": "https://awards.b-cdn.net/site_media/media/jurysys/media/56/0_big.jpg",
-    "strength": 1
-  },
-  {
-    "source": "MULTIFUNCTIONAL COMPLEX “CASCADE PLAZA”",
-    "target": "https://awards.mediaarchitecture.org/mab/project/56",
+    "target": "Expolight",
     "strength": 1
   },
   {
@@ -612,26 +552,6 @@
   {
     "source": "MULTIFUNCTIONAL COMPLEX “CASCADE PLAZA”",
     "target": "Expolight",
-    "strength": 1
-  },
-  {
-    "source": "MULTIFUNCTIONAL COMPLEX “CASCADE PLAZA”",
-    "target": "The complex is located in the city center",
-    "strength": 1
-  },
-  {
-    "source": "MULTIFUNCTIONAL COMPLEX “CASCADE PLAZA”",
-    "target": "adjacent to the popular pedestrian areas.",
-    "strength": 1
-  },
-  {
-    "source": "THE SHOPPING CENTER “KUBOMETR”",
-    "target": "https://awards.b-cdn.net/site_media/media/jurysys/media/57/0_big.jpg",
-    "strength": 1
-  },
-  {
-    "source": "THE SHOPPING CENTER “KUBOMETR”",
-    "target": "https://awards.mediaarchitecture.org/mab/project/57",
     "strength": 1
   },
   {
@@ -686,26 +606,6 @@
   },
   {
     "source": "UK PAVILION LIGHT SCULPTURE AND PANORAMA",
-    "target": "Visitors were able to interact with the installation by touching the spokes of the yurt. A light touch was enough to make them glow",
-    "strength": 1
-  },
-  {
-    "source": "UK PAVILION LIGHT SCULPTURE AND PANORAMA",
-    "target": "before",
-    "strength": 1
-  },
-  {
-    "source": "UK PAVILION LIGHT SCULPTURE AND PANORAMA",
-    "target": "after a few seconds",
-    "strength": 1
-  },
-  {
-    "source": "UK PAVILION LIGHT SCULPTURE AND PANORAMA",
-    "target": "the light faded again. A very subtle light animation linked to the content of the panorama projection ran in idle mode. The panorama projection showed a universal landscape generated entirely by computer.",
-    "strength": 1
-  },
-  {
-    "source": "UK PAVILION LIGHT SCULPTURE AND PANORAMA",
     "target": "Â©Ií±igo Bujedo Aguirre",
     "strength": 1
   },
@@ -715,42 +615,37 @@
     "strength": 1
   },
   {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
-    "target": "Medical center \"\"ODREX\"",
+    "source": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
+    "target": "Medical center \"ODREX\"",
     "strength": 1
   },
   {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
+    "source": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
     "target": "Odesa",
     "strength": 1
   },
   {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
-    "target": "Ukraine\"",
-    "strength": 1
-  },
-  {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
-    "target": "Mikhail Reva",
-    "strength": 1
-  },
-  {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
-    "target": "sculptor",
-    "strength": 1
-  },
-  {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
+    "source": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
     "target": "Ukraine",
     "strength": 1
   },
   {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
+    "source": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
+    "target": "Mikhail Reva",
+    "strength": 1
+  },
+  {
+    "source": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
+    "target": "sculptor",
+    "strength": 1
+  },
+  {
+    "source": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
     "target": "Expolight",
     "strength": 1
   },
   {
-    "source": "MEDIA SCULPTURE \"\"PARTICLES OF LIFE\"\"",
+    "source": "MEDIA SCULPTURE \"PARTICLES OF LIFE",
     "target": "Dnipro",
     "strength": 1
   },
@@ -791,47 +686,7 @@
   },
   {
     "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "the sculpture was interactive. Kinetic sensors",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "which reacted to human movement",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "were placed around it.\"",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "['#France'",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "'#2017'",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "'#Spatial media art']",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "https://awards.b-cdn.net/site_media/media/jurysys/media/61/1_big.jpg",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "https://awards.mediaarchitecture.org/mab/project/61",
-    "strength": 1
-  },
-  {
-    "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "Architectural Bureau \"\"Decor Kuznetsov\"",
+    "target": "Architectural Bureau \"Decor Kuznetsov\"",
     "strength": 1
   },
   {
@@ -841,12 +696,12 @@
   },
   {
     "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "Expolight",
+    "target": "Ukraine",
     "strength": 1
   },
   {
     "source": "INTERACTIVE MEDIA STRUCTURE “PULSE OF LIFE”",
-    "target": "Ukraine",
+    "target": "Expolight",
     "strength": 1
   },
   {
@@ -886,36 +741,6 @@
   },
   {
     "source": "SHOPPING CENTER “PASSAGE”",
-    "target": "the illumination of the shopping center \"\"Passage\"\" can be considered a pixel art of low resolution.\"",
-    "strength": 1
-  },
-  {
-    "source": "SHOPPING CENTER “PASSAGE”",
-    "target": "['#Ukraine'",
-    "strength": 1
-  },
-  {
-    "source": "SHOPPING CENTER “PASSAGE”",
-    "target": "'#2011'",
-    "strength": 1
-  },
-  {
-    "source": "SHOPPING CENTER “PASSAGE”",
-    "target": "'#Animated Architecture']",
-    "strength": 1
-  },
-  {
-    "source": "SHOPPING CENTER “PASSAGE”",
-    "target": "https://awards.b-cdn.net/site_media/media/jurysys/media/63/1_big.jpg",
-    "strength": 1
-  },
-  {
-    "source": "SHOPPING CENTER “PASSAGE”",
-    "target": "https://awards.mediaarchitecture.org/mab/project/63",
-    "strength": 1
-  },
-  {
-    "source": "SHOPPING CENTER “PASSAGE”",
     "target": "AXELROD ESTATE LLC",
     "strength": 1
   },
@@ -941,12 +766,7 @@
   },
   {
     "source": "SHOPPING CENTER “PASSAGE”",
-    "target": "Multimedia LED light sources",
-    "strength": 1
-  },
-  {
-    "source": "RESIDENTIAL COMPLEX “TETRIS HALL”",
-    "target": "https://awards.mediaarchitecture.org/mab/project/65",
+    "target": "E[polight",
     "strength": 1
   },
   {
@@ -981,37 +801,17 @@
   },
   {
     "source": "RESTAURANT “NORMAL”",
-    "target": "and then it adds red in a nightclub mode",
+    "target": "YOD Design Lab",
     "strength": 1
   },
   {
     "source": "RESTAURANT “NORMAL”",
-    "target": "while the graffiti get supplemented by the content of different activity degrees to match the emotional state of one or another time of the day. 3D-mapping technology is used for animation of the graffiti. More than 30 variations of projections change themselves by special timings in consistency with common scenes of lighting. The backlight of the bar counter and the construction of scene and corridor are also dynamic and diverse. All of the lighting devices are controlled by a single specially designed system.\"",
+    "target": "Kiev",
     "strength": 1
   },
   {
     "source": "RESTAURANT “NORMAL”",
-    "target": "['#Ukraine'",
-    "strength": 1
-  },
-  {
-    "source": "RESTAURANT “NORMAL”",
-    "target": "'#2018'",
-    "strength": 1
-  },
-  {
-    "source": "RESTAURANT “NORMAL”",
-    "target": "'#Spatial media art']",
-    "strength": 1
-  },
-  {
-    "source": "RESTAURANT “NORMAL”",
-    "target": "https://awards.b-cdn.net/site_media/media/jurysys/media/66/1_big.jpg",
-    "strength": 1
-  },
-  {
-    "source": "RESTAURANT “NORMAL”",
-    "target": "https://awards.mediaarchitecture.org/mab/project/66",
+    "target": "Ukraine",
     "strength": 1
   },
   {
@@ -1026,12 +826,7 @@
   },
   {
     "source": "RESTAURANT “NORMAL”",
-    "target": "Ukraine",
-    "strength": 1
-  },
-  {
-    "source": "RESTAURANT “NORMAL”",
-    "target": "Multimedia LED light sources and 3D-mapping.",
+    "target": "Normal",
     "strength": 1
   },
   {
@@ -1131,6 +926,11 @@
   },
   {
     "source": "TERRELL PLACE",
+    "target": "VER",
+    "strength": 1
+  },
+  {
+    "source": "TERRELL PLACE",
     "target": "AV&C",
     "strength": 1
   },
@@ -1200,23 +1000,28 @@
     "strength": 1
   },
   {
-    "source": "CHANGI AIRPORT'S TERMINAL 4 \"\"THEATRE OF EXPERIENCE\"\"",
+    "source": "CHANGI AIRPORT'S TERMINAL 4 \"THEATRE OF EXPERIENCE",
     "target": "Changi Airport Group",
     "strength": 1
   },
   {
-    "source": "CHANGI AIRPORT'S TERMINAL 4 \"\"THEATRE OF EXPERIENCE\"\"",
+    "source": "CHANGI AIRPORT'S TERMINAL 4 \"THEATRE OF EXPERIENCE",
     "target": "SAA Architects Pte Ltd // Benoy // AECOM // Beca Carter Hollings & Ferner",
     "strength": 1
   },
   {
-    "source": "CHANGI AIRPORT'S TERMINAL 4 \"\"THEATRE OF EXPERIENCE\"\"",
+    "source": "CHANGI AIRPORT'S TERMINAL 4 \"THEATRE OF EXPERIENCE",
     "target": "Moment Factory // Dick Lee",
     "strength": 1
   },
   {
-    "source": "CHANGI AIRPORT'S TERMINAL 4 \"\"THEATRE OF EXPERIENCE\"\"",
+    "source": "CHANGI AIRPORT'S TERMINAL 4 \"THEATRE OF EXPERIENCE",
     "target": "Moment Factory",
+    "strength": 1
+  },
+  {
+    "source": "CHANGI AIRPORT'S TERMINAL 4 \"THEATRE OF EXPERIENCE",
+    "target": "Nanolumens",
     "strength": 1
   },
   {
@@ -1286,6 +1091,11 @@
   },
   {
     "source": "ONE SHENZHEN BAY",
+    "target": "Osram LED",
+    "strength": 1
+  },
+  {
+    "source": "ONE SHENZHEN BAY",
     "target": "Osram e:cue",
     "strength": 1
   },
@@ -1337,6 +1147,11 @@
   {
     "source": "FIREFLY",
     "target": "Lightlife",
+    "strength": 1
+  },
+  {
+    "source": "FIREFLY",
+    "target": "Cusomised LED-fixture by Lightlife",
     "strength": 1
   },
   {
@@ -1466,22 +1281,12 @@
   },
   {
     "source": "THE CHANEL GINZA TOWER",
-    "target": "The Chanel Ginza Tower is located in the heart of the Ginza district in Tokyo",
+    "target": "SGF Associates",
     "strength": 1
   },
   {
     "source": "THE CHANEL GINZA TOWER",
-    "target": "Japan",
-    "strength": 1
-  },
-  {
-    "source": "THE CHANEL GINZA TOWER",
-    "target": "recognized as one of the most luxurious shopping districts in the world.",
-    "strength": 1
-  },
-  {
-    "source": "THE CHANEL GINZA TOWER",
-    "target": "The faíçade displays Chanel promo clips and its distinguished double \"\"C\"\" logo.",
+    "target": "Inc.",
     "strength": 1
   },
   {
@@ -1531,6 +1336,11 @@
   },
   {
     "source": "GS CALTEX PAVILION",
+    "target": "ALTO l lighting l architectural lighting design laboratory",
+    "strength": 1
+  },
+  {
+    "source": "GS CALTEX PAVILION",
     "target": "vvvv",
     "strength": 1
   },
@@ -1552,6 +1362,11 @@
   {
     "source": "DIA LIGHTS / URBAN CANVAS",
     "target": "Kollision / Transform",
+    "strength": 1
+  },
+  {
+    "source": "DIA LIGHTS / URBAN CANVAS",
+    "target": "Martin Professional",
     "strength": 1
   },
   {
@@ -1601,6 +1416,11 @@
   },
   {
     "source": "DENMARK PAVILION, EXPO",
+    "target": "Martin Professional A/S",
+    "strength": 1
+  },
+  {
+    "source": "DENMARK PAVILION, EXPO",
     "target": "Custom software by CAVI / TEKNE Produktion",
     "strength": 1
   },
@@ -1632,6 +1452,11 @@
   {
     "source": "UEC ILUMA - CRYSTAL MESH",
     "target": "realities:united",
+    "strength": 1
+  },
+  {
+    "source": "UEC ILUMA - CRYSTAL MESH",
+    "target": "SE Lightmanagement AG",
     "strength": 1
   },
   {
@@ -1716,26 +1541,6 @@
   },
   {
     "source": "SCREENS IN THE WILD",
-    "target": "To date the platform supports two experiences: during day time",
-    "strength": 1
-  },
-  {
-    "source": "SCREENS IN THE WILD",
-    "target": "user generated photos are displayed using twitter and Instagram. 8 different hashtags are identified",
-    "strength": 1
-  },
-  {
-    "source": "SCREENS IN THE WILD",
-    "target": "which appear on the screen and allow people to engage with the relevant content. 2) collaborative music experience",
-    "strength": 1
-  },
-  {
-    "source": "SCREENS IN THE WILD",
-    "target": "where people can participate either in the same location or remotely in generating the final outcome .",
-    "strength": 1
-  },
-  {
-    "source": "SCREENS IN THE WILD",
     "target": "UCL",
     "strength": 1
   },
@@ -1796,6 +1601,16 @@
   },
   {
     "source": "LUANDA SPORTS PAVILION",
+    "target": "Osvaldo Matos",
+    "strength": 1
+  },
+  {
+    "source": "LUANDA SPORTS PAVILION",
+    "target": "Portugal",
+    "strength": 1
+  },
+  {
+    "source": "LUANDA SPORTS PAVILION",
     "target": "JFS",
     "strength": 1
   },
@@ -1807,26 +1622,6 @@
   {
     "source": "LUANDA SPORTS PAVILION",
     "target": "UK",
-    "strength": 1
-  },
-  {
-    "source": "LUANDA SPORTS PAVILION",
-    "target": "Portugal",
-    "strength": 1
-  },
-  {
-    "source": "LUANDA SPORTS PAVILION",
-    "target": "or overlap each other",
-    "strength": 1
-  },
-  {
-    "source": "LUANDA SPORTS PAVILION",
-    "target": "hiding it.\"",
-    "strength": 1
-  },
-  {
-    "source": "LUANDA SPORTS PAVILION",
-    "target": "Tubular full colour RGB luminaires with a special lens on each LED to fullfil light distribution uniformity and colour homogeneity.",
     "strength": 1
   },
   {
@@ -1847,6 +1642,11 @@
   {
     "source": "WALK OF STARS",
     "target": "Huazhong University of Science and Technology",
+    "strength": 1
+  },
+  {
+    "source": "WALK OF STARS",
+    "target": "Wuhan Metaview Technology Co. Ltd.",
     "strength": 1
   },
   {
@@ -1900,6 +1700,16 @@
     "strength": 1
   },
   {
+    "source": "LIVING SCULPTURE",
+    "target": "OLED Hardware",
+    "strength": 1
+  },
+  {
+    "source": "LIVING SCULPTURE",
+    "target": "Aachen",
+    "strength": 1
+  },
+  {
     "source": "KPN TOWER",
     "target": "KPN Telekom",
     "strength": 1
@@ -1907,6 +1717,11 @@
   {
     "source": "KPN TOWER",
     "target": "Renzo Piano",
+    "strength": 1
+  },
+  {
+    "source": "KPN TOWER",
+    "target": "Osram Planon",
     "strength": 1
   },
   {
@@ -2091,6 +1906,16 @@
   },
   {
     "source": "STAR",
+    "target": "Traxon Technologies",
+    "strength": 1
+  },
+  {
+    "source": "STAR",
+    "target": "Sun Effects",
+    "strength": 1
+  },
+  {
+    "source": "STAR",
     "target": "Custom software: Lighting Design Collective &amp; e:cue",
     "strength": 1
   },
@@ -2122,6 +1947,11 @@
   {
     "source": "HYPERSURFACE ARCHITECTURE [REDUX]",
     "target": "LLC",
+    "strength": 1
+  },
+  {
+    "source": "HYPERSURFACE ARCHITECTURE [REDUX]",
+    "target": "Custom LED hardware - StandardVision",
     "strength": 1
   },
   {
@@ -2160,6 +1990,11 @@
     "strength": 1
   },
   {
+    "source": "BLINKENLIGHTS",
+    "target": "University of New South Wales; University of Technology Sydney",
+    "strength": 1
+  },
+  {
     "source": "POLYMEDIA PIXEL",
     "target": "Prototype",
     "strength": 1
@@ -2182,6 +2017,11 @@
   {
     "source": "LIGHT BARRIER",
     "target": "New York",
+    "strength": 1
+  },
+  {
+    "source": "LIGHT BARRIER",
+    "target": "Enfis/Cooper Lighting",
     "strength": 1
   },
   {
@@ -2265,6 +2105,11 @@
     "strength": 1
   },
   {
+    "source": "THE SENTIMENT COCOON",
+    "target": "LightstoreXL",
+    "strength": 1
+  },
+  {
     "source": "INTEFERENCE",
     "target": "Design City Kolding / Municipality of Kolding",
     "strength": 1
@@ -2301,6 +2146,21 @@
   },
   {
     "source": "INTEFERENCE",
+    "target": "Philips",
+    "strength": 1
+  },
+  {
+    "source": "INTEFERENCE",
+    "target": "Fagerhult",
+    "strength": 1
+  },
+  {
+    "source": "INTEFERENCE",
+    "target": "Valopaa Oy",
+    "strength": 1
+  },
+  {
+    "source": "INTEFERENCE",
     "target": "VirtuAUL",
     "strength": 1
   },
@@ -2317,21 +2177,6 @@
   {
     "source": "INTEFERENCE",
     "target": "Department of Computer Science and Engineering",
-    "strength": 1
-  },
-  {
-    "source": "INTEFERENCE",
-    "target": "the seldom-used park path transformed into an attractive urban space",
-    "strength": 1
-  },
-  {
-    "source": "INTEFERENCE",
-    "target": "where families had evening promenades",
-    "strength": 1
-  },
-  {
-    "source": "INTEFERENCE",
-    "target": "people were photographing and doing \"\"cosplay\"\"",
     "strength": 1
   },
   {
@@ -2505,6 +2350,16 @@
     "strength": 1
   },
   {
+    "source": "FLOATING ISLAND",
+    "target": "elfab AG",
+    "strength": 1
+  },
+  {
+    "source": "FLOATING ISLAND",
+    "target": "Industrial Micro Systems AG",
+    "strength": 1
+  },
+  {
     "source": "DISTRIBUTED PROJECTION STRUCTURE 2004",
     "target": "aether architecture",
     "strength": 1
@@ -2536,6 +2391,16 @@
   },
   {
     "source": "DISTRIBUTED PROJECTION STRUCTURE 2004",
+    "target": "Minar Illumination",
+    "strength": 1
+  },
+  {
+    "source": "DISTRIBUTED PROJECTION STRUCTURE 2004",
+    "target": "China",
+    "strength": 1
+  },
+  {
+    "source": "DISTRIBUTED PROJECTION STRUCTURE 2004",
     "target": "Madrix Plexus by inoage GmbH",
     "strength": 1
   },
@@ -2551,17 +2416,7 @@
   },
   {
     "source": "DISTRIBUTED PROJECTION STRUCTURE 2004",
-    "target": "\"The main \"\"show\"\" of the project is the live visualization of library searches. The companion display in the lobby cycles through various statistical graphs related to when searches take place",
-    "strength": 1
-  },
-  {
-    "source": "DISTRIBUTED PROJECTION STRUCTURE 2004",
-    "target": "what topics are searched",
-    "strength": 1
-  },
-  {
-    "source": "DISTRIBUTED PROJECTION STRUCTURE 2004",
-    "target": "and what content is checked out.\"",
+    "target": "Jackson Hole Public Art",
     "strength": 1
   },
   {
@@ -2582,6 +2437,11 @@
   {
     "source": "FILAMENT MIND",
     "target": "Diamond Schmitt Architects with Consullux",
+    "strength": 1
+  },
+  {
+    "source": "FILAMENT MIND",
+    "target": "300mm GVA Lighting STR9 fixtures with custom sizes and brackets",
     "strength": 1
   },
   {
@@ -2607,6 +2467,11 @@
   {
     "source": "IN THE AIR, TONIGHT",
     "target": "Speirs &amp; Major",
+    "strength": 1
+  },
+  {
+    "source": "IN THE AIR, TONIGHT",
+    "target": "The Light Lab",
     "strength": 1
   },
   {
@@ -2666,6 +2531,11 @@
   },
   {
     "source": "SPINE",
+    "target": "AHL Lighting Group",
+    "strength": 1
+  },
+  {
+    "source": "SPINE",
     "target": "and Media Architecture Institute",
     "strength": 1
   },
@@ -2717,6 +2587,11 @@
   {
     "source": "LE CIRCUIT DE BACHELARD",
     "target": "Jean Dubois / Ghyslain Gagnon",
+    "strength": 1
+  },
+  {
+    "source": "LE CIRCUIT DE BACHELARD",
+    "target": "Martin Professional A/S",
     "strength": 1
   },
   {
@@ -2931,6 +2806,16 @@
   },
   {
     "source": "NATIONAL LIBRARY",
+    "target": "Color Kinetics",
+    "strength": 1
+  },
+  {
+    "source": "NATIONAL LIBRARY",
+    "target": "Philips",
+    "strength": 1
+  },
+  {
+    "source": "NATIONAL LIBRARY",
     "target": "LCE2 FX by e:cue",
     "strength": 1
   },
@@ -2956,52 +2841,7 @@
   },
   {
     "source": "NATIONAL LIBRARY",
-    "target": "Situated on a busy junction and visible across the city skyline. It stands out as a visual icon contributing to everyone's experience regardless of their distance. The project is a public artwork intervention that contributes to the wider urban fabric. Such key spaces could become a highlight for the extraordinary",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "as well as places for social participation.",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "The different shows provide a canvas for emotional expression and experience. The installation gives people magical powers to create situations that are normally reserved for fantasy. The 'Magic Dust' allows you to throw and push luminescent particles through the faíçade with glittering sound effects. While with 'Rain'",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "you can part the shower of light like with an umbrella. 'Sand' is in an organic manipulation of the faíçade",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "where shadow and form drift as dunes",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "followed by the sounds of the wind and shifting sands. 'Stars' provide the remarkable opportunity to dream up your own constellations in the middle of a bright city",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "each star appearing with an accoustic chime. 'Aurora' provides the opportunity to touch ephemeral strands of plasma",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "the supernatural becomes tangible together with harmonic resonances. 'Fireworks' provides the opportunity to initiate spontaneous bursts of sparkles and colour",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "whistling rockets rush upwards in the background with explosions in the foreground. 'Ripple' is a melody of piano notes that generates psychedelic oil drops which collide and mix into new compositions. 'Light Orchestra' transforms the building into a musical instrument of violins and cellos",
-    "strength": 1
-  },
-  {
-    "source": "NATIONAL LIBRARY",
-    "target": "allowing the public to compose their own symphony.",
+    "target": "Arquileds",
     "strength": 1
   },
   {
@@ -3066,7 +2906,12 @@
   },
   {
     "source": "URBAN ALPHABETS",
-    "target": "Highly visible from city centre.",
+    "target": "eCue",
+    "strength": 1
+  },
+  {
+    "source": "URBAN ALPHABETS",
+    "target": "eldoLED",
     "strength": 1
   },
   {
@@ -3095,6 +2940,11 @@
     "strength": 1
   },
   {
+    "source": "C4 ESPACIO DE CREACIÓN ARTÍSTICA CONTEMPORÁNEA",
+    "target": "Martin LC Seriesâ„¢ LED panels",
+    "strength": 1
+  },
+  {
     "source": "MARNIX 2000",
     "target": "BBL ING",
     "strength": 1
@@ -3117,6 +2967,11 @@
   {
     "source": "SUBMERGENCE",
     "target": "realities:united",
+    "strength": 1
+  },
+  {
+    "source": "SUBMERGENCE",
+    "target": "SE Lightmanagement AG",
     "strength": 1
   },
   {
@@ -3311,6 +3166,11 @@
   },
   {
     "source": "THE ARC RIVER CULTURE PAVILION",
+    "target": "Videoprojection: Christie projectors",
+    "strength": 1
+  },
+  {
+    "source": "THE ARC RIVER CULTURE PAVILION",
     "target": "Photon by VYV + X-Agora by Moment Factory",
     "strength": 1
   },
@@ -3425,16 +3285,6 @@
     "strength": 1
   },
   {
-    "source": "DIGITALMATATUS",
-    "target": "The building can be seen from different angles and from various taller buildings in a dense urban environment.",
-    "strength": 1
-  },
-  {
-    "source": "DIGITALMATATUS",
-    "target": "The sequences display the illusion of colored light drawing across the faíçade.",
-    "strength": 1
-  },
-  {
     "source": "THOUGHT PROCESS",
     "target": "GoggleWorks Center for the Arts",
     "strength": 1
@@ -3447,6 +3297,11 @@
   {
     "source": "THOUGHT PROCESS",
     "target": "Daniel Iregui",
+    "strength": 1
+  },
+  {
+    "source": "THOUGHT PROCESS",
+    "target": "Powered by X-Agora",
     "strength": 1
   },
   {
@@ -3467,6 +3322,11 @@
   {
     "source": "CONTROL NO CONTROL",
     "target": "Jordan MCrae and Guillaume Stagnaro",
+    "strength": 1
+  },
+  {
+    "source": "CONTROL NO CONTROL",
+    "target": "made in the Artlab of Digitalarti by Antonin Fourneau",
     "strength": 1
   },
   {
@@ -3576,21 +3436,6 @@
   },
   {
     "source": "DISCOVERY WALL",
-    "target": "5 meters width and has a height of 9",
-    "strength": 1
-  },
-  {
-    "source": "DISCOVERY WALL",
-    "target": "4 meters. It is located in the \"\"Plaza de las Letras\"\"",
-    "strength": 1
-  },
-  {
-    "source": "DISCOVERY WALL",
-    "target": "a space divided into two levels. The faíçade was opened in February 2010. The size of this square is around 25x30 meters. Lummoblocks was shown continuously from 2010 to 2011 every Friday",
-    "strength": 1
-  },
-  {
-    "source": "DISCOVERY WALL",
     "target": "Lummo",
     "strength": 1
   },
@@ -3631,6 +3476,11 @@
   },
   {
     "source": "LUMMOBLOCKS",
+    "target": "Xilver Dynamic LED Lighting",
+    "strength": 1
+  },
+  {
+    "source": "LUMMOBLOCKS",
     "target": "e:cue",
     "strength": 1
   },
@@ -3652,11 +3502,6 @@
   {
     "source": "GALLERIA STORE",
     "target": "ecue",
-    "strength": 1
-  },
-  {
-    "source": "FLYFIRE",
-    "target": "https://awards.mediaarchitecture.org/mab/project/204",
     "strength": 1
   },
   {
@@ -3705,6 +3550,11 @@
     "strength": 1
   },
   {
+    "source": "SEESTADT.BOT",
+    "target": "Show+ Tell",
+    "strength": 1
+  },
+  {
     "source": "ARCHIVE DREAMING",
     "target": "Refik Anadol Studio",
     "strength": 1
@@ -3717,6 +3567,16 @@
   {
     "source": "ARCHIVE DREAMING",
     "target": "Asia Culture Centre",
+    "strength": 1
+  },
+  {
+    "source": "ARCHIVE DREAMING",
+    "target": "In 2016 PluginHUMAN began designing The Playground. This work operated as a playful way-finding tool and an activation that helped people to connect with The Asia Cultural Centre's multilayered architectural environment. The project expanded",
+    "strength": 1
+  },
+  {
+    "source": "ARCHIVE DREAMING",
+    "target": "running in two venues in Australia and in South Korea over 2017.",
     "strength": 1
   },
   {
@@ -3866,17 +3726,27 @@
   },
   {
     "source": "SONIC RUNWAY",
-    "target": "on special occasions",
+    "target": "Adrien Le Biavant",
     "strength": 1
   },
   {
     "source": "SONIC RUNWAY",
-    "target": "performers were invited to \"\"play the Runway\"\". The performer showcased here is opera singer Diva Marisa",
+    "target": "Scott Ashkenaz",
     "strength": 1
   },
   {
     "source": "SONIC RUNWAY",
-    "target": "who watches her voice transform into patterns racing away from her as the speed of sound down the Sonic Runway. SECOND VIDEO: Drone footage of the Sonic Runway showcases the length of the installation",
+    "target": "Harriet Trezevant",
+    "strength": 1
+  },
+  {
+    "source": "SONIC RUNWAY",
+    "target": "San Jose Office of Cultural Affairs",
+    "strength": 1
+  },
+  {
+    "source": "SONIC RUNWAY",
+    "target": "Burning Man Project",
     "strength": 1
   },
   {
@@ -3966,6 +3836,11 @@
   },
   {
     "source": "THE LABYRINTH",
+    "target": "Binzpire",
+    "strength": 1
+  },
+  {
+    "source": "THE LABYRINTH",
     "target": "Madrix",
     "strength": 1
   },
@@ -3986,6 +3861,11 @@
   },
   {
     "source": "ROSA CENTER SHOPPING MALL",
+    "target": "Binzpire",
+    "strength": 1
+  },
+  {
+    "source": "ROSA CENTER SHOPPING MALL",
     "target": "Madrix",
     "strength": 1
   },
@@ -4002,6 +3882,11 @@
   {
     "source": "XII PORCELANOSA ARCHITECTURE AND INTERIOR DESIGN AWARDS",
     "target": "Tigrelab",
+    "strength": 1
+  },
+  {
+    "source": "XII PORCELANOSA ARCHITECTURE AND INTERIOR DESIGN AWARDS",
+    "target": "Binzpire",
     "strength": 1
   },
   {
@@ -4176,6 +4061,11 @@
   },
   {
     "source": "ECLOUD | SAN JOSE INTERNATIONAL AIRPORT",
+    "target": "International Rigging",
+    "strength": 1
+  },
+  {
+    "source": "ECLOUD | SAN JOSE INTERNATIONAL AIRPORT",
     "target": "Daniel Massey",
     "strength": 1
   },
@@ -4231,12 +4121,17 @@
   },
   {
     "source": "ANTOPOLIS",
+    "target": "The Wild State at Ars Electronica 2020",
+    "strength": 1
+  },
+  {
+    "source": "ANTOPOLIS",
     "target": "Ton&Bild Medien Gmbh",
     "strength": 1
   },
   {
     "source": "BUILDING DAWN",
-    "target": "facade of the \"\"Art association Böblingen\"\"",
+    "target": "facade of the \"Art association Böblingen",
     "strength": 1
   },
   {
@@ -4247,6 +4142,16 @@
   {
     "source": "BUILDING DAWN",
     "target": "studioteilchenwelle",
+    "strength": 1
+  },
+  {
+    "source": "BUILDING DAWN",
+    "target": "custom LED Profile",
+    "strength": 1
+  },
+  {
+    "source": "BUILDING DAWN",
+    "target": "RGBW Leds",
     "strength": 1
   },
   {
@@ -4317,6 +4222,11 @@
   {
     "source": "RADISSON BLU SCANDINAVIA",
     "target": "Skandal Technologies",
+    "strength": 1
+  },
+  {
+    "source": "RADISSON BLU SCANDINAVIA",
+    "target": "Invent Design",
     "strength": 1
   },
   {
@@ -4396,6 +4306,11 @@
   },
   {
     "source": "AMANDOLIER FAÇADE",
+    "target": "MCI",
+    "strength": 1
+  },
+  {
+    "source": "AMANDOLIER FAÇADE",
     "target": "UNSTATIC",
     "strength": 1
   },
@@ -4467,6 +4382,11 @@
   {
     "source": "TIETO HQ",
     "target": "/",
+    "strength": 1
+  },
+  {
+    "source": "TIETO HQ",
+    "target": "Flexbright Oy",
     "strength": 1
   },
   {
@@ -4575,6 +4495,21 @@
     "strength": 1
   },
   {
+    "source": "PRESERVATION OF SILENCE",
+    "target": "Gorky Park",
+    "strength": 1
+  },
+  {
+    "source": "PRESERVATION OF SILENCE",
+    "target": "Moscow",
+    "strength": 1
+  },
+  {
+    "source": "PRESERVATION OF SILENCE",
+    "target": "Russia",
+    "strength": 1
+  },
+  {
     "source": "THE ABODE OF THE OUTSIDE",
     "target": "Anna Rita Emili",
     "strength": 1
@@ -4602,6 +4537,11 @@
   {
     "source": "HEARING FROM YOU",
     "target": "Willoughby City Council",
+    "strength": 1
+  },
+  {
+    "source": "HEARING FROM YOU",
+    "target": "The Willoughby City Council",
     "strength": 1
   },
   {
@@ -4692,6 +4632,11 @@
   {
     "source": "HELSINKI OUTLET",
     "target": "Audico Oy",
+    "strength": 1
+  },
+  {
+    "source": "HELSINKI OUTLET",
+    "target": "Schnick Schnack Systems",
     "strength": 1
   },
   {
@@ -5030,47 +4975,47 @@
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "DTEK Academy",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "a corporate university of DTEK energy company",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "artist - Valerii Kuznetsov",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "Mykola Kabluka",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "Expolight",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "Ukraine",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "Andrii Shurpenkov",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "Savchenko Yevhenii",
     "strength": 1
   },
   {
-    "source": "INTERACTIVE MEDIA SCULPTURE \"\"THE TREE OF KNOWLEDGE\"\"",
+    "source": "INTERACTIVE MEDIA SCULPTURE \"THE TREE OF KNOWLEDGE",
     "target": "Melnikov Oleh",
     "strength": 1
   },
@@ -5331,41 +5276,6 @@
   },
   {
     "source": "NOVARTIS PAVILLON",
-    "target": "allowing the building to enter into a dialogue with the surrounding urban space. It turns the Novartis Pavillon into a luminous icon that is visible from many locations in Basel.\"",
-    "strength": 1
-  },
-  {
-    "source": "NOVARTIS PAVILLON",
-    "target": "Every day after sunset",
-    "strength": 1
-  },
-  {
-    "source": "NOVARTIS PAVILLON",
-    "target": "the facade shows the works of three international artists: Daniel Canogar",
-    "strength": 1
-  },
-  {
-    "source": "NOVARTIS PAVILLON",
-    "target": "Esther Hunziker and Semiconductor. They collaborated with scientists to develop artworks inspired by the shapes and colours of cells and molecules",
-    "strength": 1
-  },
-  {
-    "source": "NOVARTIS PAVILLON",
-    "target": "as well as the themes of sustainability and the convergence of art and science. During daytime",
-    "strength": 1
-  },
-  {
-    "source": "NOVARTIS PAVILLON",
-    "target": "the facade displays moving text",
-    "strength": 1
-  },
-  {
-    "source": "NOVARTIS PAVILLON",
-    "target": "using only the white LEDs that face away from the building.",
-    "strength": 1
-  },
-  {
-    "source": "NOVARTIS PAVILLON",
     "target": "Laurids Jensen",
     "strength": 1
   },
@@ -5432,6 +5342,11 @@
   {
     "source": "LIGHT ART INSTALLATION BEACON",
     "target": "Darya Koltsova",
+    "strength": 1
+  },
+  {
+    "source": "LIGHT ART INSTALLATION BEACON",
+    "target": "UNIT.City",
     "strength": 1
   },
   {
@@ -5522,6 +5437,11 @@
   {
     "source": "CATHOLIC СHURCH OF ST. NICHOLAS",
     "target": "Melnikov Oleh",
+    "strength": 1
+  },
+  {
+    "source": "CATHOLIC СHURCH OF ST. NICHOLAS",
+    "target": "Latin Church in Ukraine",
     "strength": 1
   },
   {
@@ -5651,17 +5571,7 @@
   },
   {
     "source": "ALL COLORS ARE IN THE LIGHTS",
-    "target": "while a continuous panoramic perception is sampled into a series of stop-frame images",
-    "strength": 1
-  },
-  {
-    "source": "ALL COLORS ARE IN THE LIGHTS",
-    "target": "to be compiled later into an animation series that occupies the same time as the actual travel. The aim is to represent a recognizable perception of urban movement",
-    "strength": 1
-  },
-  {
-    "source": "ALL COLORS ARE IN THE LIGHTS",
-    "target": "while defamiliarizing the visuals in order to isolate and condense the sense of a steady flow of space. In dialogue to the term \"\"moving images\"\"",
+    "target": "photograph of Pi-Tzu Liu",
     "strength": 1
   },
   {
@@ -5712,6 +5622,16 @@
   {
     "source": "THE 4TH STREET SW UNDERPASS ENHANCEMENT PROJECT",
     "target": "MA",
+    "strength": 1
+  },
+  {
+    "source": "THE 4TH STREET SW UNDERPASS ENHANCEMENT PROJECT",
+    "target": "Traxon Technologies",
+    "strength": 1
+  },
+  {
+    "source": "THE 4TH STREET SW UNDERPASS ENHANCEMENT PROJECT",
+    "target": "Ontario",
     "strength": 1
   },
   {
@@ -5841,6 +5761,11 @@
   },
   {
     "source": "THE PEARL DIVERS",
+    "target": "CEGA",
+    "strength": 1
+  },
+  {
+    "source": "THE PEARL DIVERS",
     "target": "Studio Dikini",
     "strength": 1
   },
@@ -5916,6 +5841,11 @@
   },
   {
     "source": "WINDOW INTO THE SEAS",
+    "target": "3 x projectors | FRAME: 98 x iguzzini Linealuce Mini 47",
+    "strength": 1
+  },
+  {
+    "source": "WINDOW INTO THE SEAS",
     "target": "Pharos",
     "strength": 1
   },
@@ -5960,33 +5890,38 @@
     "strength": 1
   },
   {
-    "source": "TOUCHING NIGHT SKIES 50°06'44\"\"N 8°40'36\"\"E",
+    "source": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
     "target": "Tobias Ziegler",
     "strength": 1
   },
   {
-    "source": "TOUCHING NIGHT SKIES 50°06'44\"\"N 8°40'36\"\"E",
+    "source": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
     "target": "Christof Grumpelt",
     "strength": 1
   },
   {
-    "source": "TOUCHING NIGHT SKIES 50°06'44\"\"N 8°40'36\"\"E",
+    "source": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
     "target": "Tobias Ziegler - TBSZGLR",
     "strength": 1
   },
   {
-    "source": "TOUCHING NIGHT SKIES 50°06'44\"\"N 8°40'36\"\"E",
+    "source": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
     "target": "TBSZGLR / C. Grumpelt",
     "strength": 1
   },
   {
-    "source": "TOUCHING NIGHT SKIES 50°06'44\"\"N 8°40'36\"\"E",
+    "source": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
     "target": "Luminale e.V.",
     "strength": 1
   },
   {
-    "source": "TOUCHING NIGHT SKIES 50°06'44\"\"N 8°40'36\"\"E",
+    "source": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
     "target": "Messe Frankfurt",
+    "strength": 1
+  },
+  {
+    "source": "TOUCHING NIGHT SKIES 50°06'44\"N 8°40'36\"E",
+    "target": "Flo Service",
     "strength": 1
   },
   {
@@ -6047,21 +5982,6 @@
   {
     "source": "THE WEBSTER - NARRATIVE LIGHTING WALL",
     "target": "StandardVision; Programming Support from Jeremiah Montoya & Team",
-    "strength": 1
-  },
-  {
-    "source": "THE WEBSTER - NARRATIVE LIGHTING WALL",
-    "target": "which creates a very unique physical resolution 1440 x 20.\"",
-    "strength": 1
-  },
-  {
-    "source": "THE WEBSTER - NARRATIVE LIGHTING WALL",
-    "target": "The unique immersive-art landmark installation for the luxury clothing store The Webster at the newly renovated Beverly Center in West Hollywood is a fully integrated architectural experience for the store's modern layout. With the goal of producing a new form of public/private high art installation that effortlessly integrates an experiential pedestrian experience with a sophisticated brand",
-    "strength": 1
-  },
-  {
-    "source": "THE WEBSTER - NARRATIVE LIGHTING WALL",
-    "target": "The Webster's facade is a testament to how physical commercial spaces can be transformed into immersive environments that reflect the future of high end retail.",
     "strength": 1
   },
   {
@@ -6146,47 +6066,7 @@
   },
   {
     "source": "THE PIPES",
-    "target": "The Pipes is the centrepiece of the extensive urban renewal project led by Lyons Architecture. Prahran Square was transformed from an old carpark into 9",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "000m2 of urban parkland. In contrast to almost all other public squares",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "this space is dedicated to the people who move through it.",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "Introducing The Pipes",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "a digital forest of immersive visuals and soundscapes unique to the environment of Prahran Square",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "Melbourne.",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "\"28 x 11m galvanised steel poles were designed specifically for The Pipes. 168 LED panels at 6mm pitch we used",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "each panel is 800 x 200mm",
-    "strength": 1
-  },
-  {
-    "source": "THE PIPES",
-    "target": "56",
+    "target": "Kane",
     "strength": 1
   },
   {
@@ -6211,67 +6091,7 @@
   },
   {
     "source": "STILL LIGHT",
-    "target": "Still Light consists of 1",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "136m of individually mapped LED fixtures and RAMUS' custom-built software platform called CORE. This bespoke control system operates each light fixture and integrates the content into a dynamic self-adjusting schedule that allows the building to respond to the different rhythms of the city. The work is mounted on the inner layer of the faíçade",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "with each light integrated into the frame of the glazing",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "creating a sense of the building itself being a light fixture. When that fixture turns on",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "the whole building starts to move",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "or so it seems.",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "As a building that operates 24 hours",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "RAMUS considered the change in rhythm that the Melbourne city has from day to day and morning to evening. These movements informed the timing of content",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "which is scheduled to be always-on. The outcome for the surrounding community is soothing",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "as each light movement reflects into the neighbouring laneways and onto architectural surfaces",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "creating a jewel-like effect across the footpaths and streets of the Paris end of Collins St.",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "Introducing Still Light",
-    "strength": 1
-  },
-  {
-    "source": "STILL LIGHT",
-    "target": "RAMUS' new media architecture installation that graces all 42-storeys of a new high-rise building.",
+    "target": "Brookfield Multiplex",
     "strength": 1
   },
   {
@@ -6301,37 +6121,7 @@
   },
   {
     "source": "WANDERING CORNERS",
-    "target": "so that the passing vagrant animals can watch quietly",
-    "strength": 1
-  },
-  {
-    "source": "WANDERING CORNERS",
-    "target": "comfort their hearts",
-    "strength": 1
-  },
-  {
-    "source": "WANDERING CORNERS",
-    "target": "and awaken the subconscious of people passing by to love animals. Through sensors and cameras",
-    "strength": 1
-  },
-  {
-    "source": "WANDERING CORNERS",
-    "target": "Wandering corner in every community is a new media exploration. As the entrance to accompany the vagrants",
-    "strength": 1
-  },
-  {
-    "source": "WANDERING CORNERS",
-    "target": "vagrant corner helps every vagrant animal to become a haven for them and even upgraded to a church for animals. Here",
-    "strength": 1
-  },
-  {
-    "source": "WANDERING CORNERS",
-    "target": "stray animals are no longer lonely",
-    "strength": 1
-  },
-  {
-    "source": "WANDERING CORNERS",
-    "target": "and it will become a meeting place for these vagrants.",
+    "target": "aidi Sun",
     "strength": 1
   },
   {
@@ -6512,21 +6302,6 @@
   {
     "source": "GUERRILHA PROJECTIONS AGAINST BOLSONARO",
     "target": "Modul8",
-    "strength": 1
-  },
-  {
-    "source": "GUERRILHA PROJECTIONS AGAINST BOLSONARO",
-    "target": "other people in Brazil also started using projection from their apartment to protest against their government and it became more of a common thing. The building with the projection was just a perfect image to express how people felt about their political situation. Every time I \"\"found\"\" the perfect combination of wording",
-    "strength": 1
-  },
-  {
-    "source": "GUERRILHA PROJECTIONS AGAINST BOLSONARO",
-    "target": "imagens and architecture",
-    "strength": 1
-  },
-  {
-    "source": "GUERRILHA PROJECTIONS AGAINST BOLSONARO",
-    "target": "the photos would go viral very quickly. If not",
     "strength": 1
   },
   {
@@ -6995,6 +6770,11 @@
     "strength": 1
   },
   {
+    "source": "ORLANDO INTERNATIONAL AIRPORT TERMINAL C",
+    "target": "SACO",
+    "strength": 1
+  },
+  {
     "source": "SUNSCRIBER",
     "target": "City of Graz Kunsthaus Graz AG",
     "strength": 1
@@ -7131,6 +6911,11 @@
   },
   {
     "source": "THE EYE OF MEXICO",
+    "target": "SPECTA",
+    "strength": 1
+  },
+  {
+    "source": "THE EYE OF MEXICO",
     "target": "Ouchhh",
     "strength": 1
   },
@@ -7152,6 +6937,11 @@
   {
     "source": "LIGHT FALLS",
     "target": "Douglas Marote and Ihon Yadoya",
+    "strength": 1
+  },
+  {
+    "source": "LIGHT FALLS",
+    "target": "WS2815",
     "strength": 1
   },
   {
@@ -7221,6 +7011,11 @@
   },
   {
     "source": "SILO 468 KRUUNUVUORENRANTA",
+    "target": "AHL LED",
+    "strength": 1
+  },
+  {
+    "source": "SILO 468 KRUUNUVUORENRANTA",
     "target": "AHL LED Easy Player",
     "strength": 1
   },
@@ -7251,6 +7046,11 @@
   },
   {
     "source": "THE ENERGY TOWER FAÇADE LIGHTING",
+    "target": "traxon",
+    "strength": 1
+  },
+  {
+    "source": "THE ENERGY TOWER FAÇADE LIGHTING",
     "target": "e:cue",
     "strength": 1
   },
@@ -7267,6 +7067,11 @@
   {
     "source": "FIELD OF LIGHT",
     "target": "BIAD",
+    "strength": 1
+  },
+  {
+    "source": "FIELD OF LIGHT",
+    "target": "Neo-Neon",
     "strength": 1
   },
   {
@@ -7312,6 +7117,11 @@
   {
     "source": "THE LUMINOUS PATHWAY IN THE QUARTIER DES SPECTACLES",
     "target": "Kollision",
+    "strength": 1
+  },
+  {
+    "source": "THE LUMINOUS PATHWAY IN THE QUARTIER DES SPECTACLES",
+    "target": "Martin Professional FlexDOTâ„¢ LED light sources",
     "strength": 1
   },
   {
@@ -7365,6 +7175,21 @@
     "strength": 1
   },
   {
+    "source": "FALSE POSITIVE",
+    "target": "iMAL",
+    "strength": 1
+  },
+  {
+    "source": "FALSE POSITIVE",
+    "target": "Medialab Prado",
+    "strength": 1
+  },
+  {
+    "source": "FALSE POSITIVE",
+    "target": "Urbane Künste Ruhr",
+    "strength": 1
+  },
+  {
     "source": "PLANT A LIGHT",
     "target": "Aarhus University",
     "strength": 1
@@ -7401,6 +7226,11 @@
   },
   {
     "source": "PLANT A LIGHT",
+    "target": "Martin HARMAN",
+    "strength": 1
+  },
+  {
+    "source": "PLANT A LIGHT",
     "target": "Kollision",
     "strength": 1
   },
@@ -7430,6 +7260,11 @@
     "strength": 1
   },
   {
+    "source": "PLANT A LIGHT",
+    "target": "Aarhus 2017 European Capitol of Culture",
+    "strength": 1
+  },
+  {
     "source": "THE LIGHT HOUSE: 888 COLLINS ST",
     "target": "Lendlease",
     "strength": 1
@@ -7447,6 +7282,11 @@
   {
     "source": "THE LIGHT HOUSE: 888 COLLINS ST",
     "target": "Van Der Meer Consulting",
+    "strength": 1
+  },
+  {
+    "source": "THE LIGHT HOUSE: 888 COLLINS ST",
+    "target": "Big Screen Projects",
     "strength": 1
   },
   {
@@ -7585,6 +7425,11 @@
     "strength": 1
   },
   {
+    "source": "LA SPRITE",
+    "target": "Festival Un Ete Au Havre",
+    "strength": 1
+  },
+  {
     "source": "PASSAGES",
     "target": "Guillaume Ajavon",
     "strength": 1
@@ -7606,21 +7451,6 @@
   },
   {
     "source": "PASSAGES",
-    "target": "1 month of communication between the 2 cities. 24/7",
-    "strength": 1
-  },
-  {
-    "source": "PASSAGES",
-    "target": "free",
-    "strength": 1
-  },
-  {
-    "source": "PASSAGES",
-    "target": "all the people passing by can interact.",
-    "strength": 1
-  },
-  {
-    "source": "PASSAGES",
     "target": "Pablo Garcia",
     "strength": 1
   },
@@ -7631,7 +7461,7 @@
   },
   {
     "source": "PASSAGES",
-    "target": "Deploy 10 Passages across the globe. Make them switch once a day. Develop web radio and digital writing.",
+    "target": "Etoie Dií¨se Company",
     "strength": 1
   },
   {
@@ -7691,6 +7521,11 @@
   },
   {
     "source": "NORTHSIDE BEACONS",
+    "target": "Martin by Harman",
+    "strength": 1
+  },
+  {
+    "source": "NORTHSIDE BEACONS",
     "target": "Photo by Allan Toft",
     "strength": 1
   },
@@ -7706,7 +7541,7 @@
   },
   {
     "source": "NORTHSIDE BEACONS",
-    "target": "Martin by Harman",
+    "target": "Northside 2018 / Down the Drain Production",
     "strength": 1
   },
   {
@@ -7751,7 +7586,12 @@
   },
   {
     "source": "LIGHTSPELL",
-    "target": "not applicable",
+    "target": "TTC",
+    "strength": 1
+  },
+  {
+    "source": "LIGHTSPELL",
+    "target": "York University Toronto",
     "strength": 1
   },
   {
@@ -7896,6 +7736,11 @@
   },
   {
     "source": "SALLING LIGHTS",
+    "target": "Martin by Harman",
+    "strength": 1
+  },
+  {
+    "source": "SALLING LIGHTS",
     "target": "KOLLISION MAP",
     "strength": 1
   },
@@ -7966,7 +7811,7 @@
   },
   {
     "source": "MONUMENT REMIX",
-    "target": "\"Brecheret's monument",
+    "target": "Brecheret's monument",
     "strength": 1
   },
   {
@@ -7976,7 +7821,7 @@
   },
   {
     "source": "MONUMENT REMIX",
-    "target": "\"Monumento `as Bandeiras\"\"",
+    "target": "\"Monumento `as Bandeiras",
     "strength": 1
   },
   {
@@ -8001,37 +7846,12 @@
   },
   {
     "source": "MONUMENT REMIX",
-    "target": "The monument was erected in the south-central area of the city in the Praíça Armando Salles de Oliveira",
+    "target": "Pandoras Box Coolux",
     "strength": 1
   },
   {
     "source": "MONUMENT REMIX",
-    "target": "opposite the Palácio 9 de Julho",
-    "strength": 1
-  },
-  {
-    "source": "MONUMENT REMIX",
-    "target": "headquarters of the Legislative Assembly of the State of Sí£o Paulo. The monument",
-    "strength": 1
-  },
-  {
-    "source": "MONUMENT REMIX",
-    "target": "given its size and location",
-    "strength": 1
-  },
-  {
-    "source": "MONUMENT REMIX",
-    "target": "has now become an integral part of the landscape of Sí£o Paulo.",
-    "strength": 1
-  },
-  {
-    "source": "MONUMENT REMIX",
-    "target": "Visualfarm is a Sao Paulo based studio that has been one of the pioneers of projection mapping in Brazil",
-    "strength": 1
-  },
-  {
-    "source": "MONUMENT REMIX",
-    "target": "using its large technical expertise to push the boundaries of large scale and innovative approaches in the filed. Visualfarm won a Best Outdoor Instalation award in Infoccom Orlando in 2012 as well as a Cannes award for the Christ Statue Projection Mapping insulation in 2011.",
+    "target": "Sergio Cordoba",
     "strength": 1
   },
   {
@@ -8041,22 +7861,17 @@
   },
   {
     "source": "MONUMENT REMIX",
-    "target": "Being less than 5 minutes long",
-    "strength": 1
-  },
-  {
-    "source": "MONUMENT REMIX",
-    "target": "we plan to create a second and third act in the same monument",
-    "strength": 1
-  },
-  {
-    "source": "MONUMENT REMIX",
-    "target": "for next year edition of the Festival.",
+    "target": "GetNet - Santander Bank",
     "strength": 1
   },
   {
     "source": "MONUMENT REMIX",
     "target": "Sao Paulo Light Festival - First Edition",
+    "strength": 1
+  },
+  {
+    "source": "MONUMENT REMIX",
+    "target": "Sao Paulo Government",
     "strength": 1
   },
   {
@@ -8077,6 +7892,11 @@
   {
     "source": "FEDERATION SQUARE DIGITAL CANVAS",
     "target": "Lambert & Rehbein",
+    "strength": 1
+  },
+  {
+    "source": "FEDERATION SQUARE DIGITAL CANVAS",
+    "target": "Big Screen Projects",
     "strength": 1
   },
   {
@@ -8111,6 +7931,11 @@
   },
   {
     "source": "WATERLIGHT GRAFFITI",
+    "target": "HanuaLED",
+    "strength": 1
+  },
+  {
+    "source": "WATERLIGHT GRAFFITI",
     "target": "Charles Ayats",
     "strength": 1
   },
@@ -8122,6 +7947,31 @@
   {
     "source": "WATERLIGHT GRAFFITI",
     "target": "Adrien Frappat",
+    "strength": 1
+  },
+  {
+    "source": "WATERLIGHT GRAFFITI",
+    "target": "Design week New York",
+    "strength": 1
+  },
+  {
+    "source": "WATERLIGHT GRAFFITI",
+    "target": "Light Festival Lyon",
+    "strength": 1
+  },
+  {
+    "source": "WATERLIGHT GRAFFITI",
+    "target": "Light Festival Hong Kong",
+    "strength": 1
+  },
+  {
+    "source": "WATERLIGHT GRAFFITI",
+    "target": "CES Las Vegas",
+    "strength": 1
+  },
+  {
+    "source": "WATERLIGHT GRAFFITI",
+    "target": "....",
     "strength": 1
   },
   {
@@ -8146,6 +7996,11 @@
   },
   {
     "source": "YAGAN SQUARE",
+    "target": "Light Application",
+    "strength": 1
+  },
+  {
+    "source": "YAGAN SQUARE",
     "target": "Ramus and Iion",
     "strength": 1
   },
@@ -8156,37 +8011,17 @@
   },
   {
     "source": "YAGAN SQUARE",
-    "target": "narratives",
+    "target": "Peter Bennetts",
     "strength": 1
   },
   {
     "source": "YAGAN SQUARE",
-    "target": "indigenous and non-indigenous people and culture within the Square. The digital media and lighting experience was delivered in collaboration with the Whadjuk Working Party",
+    "target": "Lyons Architecture",
     "strength": 1
   },
   {
     "source": "YAGAN SQUARE",
-    "target": "to provide a place for people to \"\"meet",
-    "strength": 1
-  },
-  {
-    "source": "YAGAN SQUARE",
-    "target": "To ensure Ramus undertook a culturally considered approach",
-    "strength": 1
-  },
-  {
-    "source": "YAGAN SQUARE",
-    "target": "the curatorial process for content created by cultural and social community groups began by engaging with community representational organizations",
-    "strength": 1
-  },
-  {
-    "source": "YAGAN SQUARE",
-    "target": "This was to meaningfully and responsibly engage with diverse communities to generate and curate content that expressed the vision and voices of the people of Perth and Western Australia.",
-    "strength": 1
-  },
-  {
-    "source": "YAGAN SQUARE",
-    "target": "The curatorial process for educational institutions involved a two-fold engagement process. The first was to establish relationships and collaborate with University connected research institutes and design hubs to generate and re-image content; and the second was an opportunity for Departments and Faculty Heads to develop programs for students to respond to and utilize the innovative platform.",
+    "target": "Doric Group",
     "strength": 1
   },
   {
@@ -8271,111 +8106,76 @@
   },
   {
     "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "The whole idea with the prototype in Digital neighbourhood",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "is to enable the municipality to move around in the city - from one local area to another. The prototype is therefore mobile and can easily be transported in a car. There is a built in router with a sim-card",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "that makes it independent in regards to the Wifi-situation in the area",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "and there is one standard power cable.",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "https://vimeo.com/channels/digitalurbanenvironments/286516638",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
     "target": "Interactive Spaces Lab at The Alexandra Institute",
     "strength": 1
   },
   {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "The project is ongoing",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "and has no definite deadline - anew way of communicating with the citizens will always be a case of matter. The city of Aarhus is trying to spread the word about the prototype",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "and is also encouraging other cities in Denmark to borrow it in order to qualifying the way it's being used. 4 new prototypes were just developed",
-    "strength": 1
-  },
-  {
-    "source": "DIGITAL NEIGHBOURHOOD",
-    "target": "and they are connected to each other in realtime.",
-    "strength": 1
-  },
-  {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Visualfarm",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Alexis Anastasiou",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Roberta Carvalho",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "VJ Vigas and Felipe Mororzini",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Thales Augusto",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Pandoras Box Coolux Media server and Resolume",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Miguel Adianio e Sergio Cordoba",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Joao Vitor Grassi",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "visualfarm diagram",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "Cleber Portaro",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "EPSON",
     "strength": 1
   },
   {
-    "source": "CHAVE DO CENTRO OR \"\"THE KEY TO DOWNTOWN\"\"",
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
+    "target": "Chave do Centro Festival",
+    "strength": 1
+  },
+  {
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
+    "target": "produced by Visualfarm",
+    "strength": 1
+  },
+  {
+    "source": "CHAVE DO CENTRO OR \"THE KEY TO DOWNTOWN",
     "target": "non-permanent project",
     "strength": 1
   },
@@ -8396,6 +8196,11 @@
   },
   {
     "source": "BIOLUMEN",
+    "target": "Minimad/ Lumikit x8/custom pixel LED Controller",
+    "strength": 1
+  },
+  {
+    "source": "BIOLUMEN",
     "target": "MadMapper",
     "strength": 1
   },
@@ -8407,6 +8212,11 @@
   {
     "source": "BIOLUMEN",
     "target": "Intel",
+    "strength": 1
+  },
+  {
+    "source": "BIOLUMEN",
+    "target": "Yourmama",
     "strength": 1
   },
   {
@@ -8451,6 +8261,11 @@
   },
   {
     "source": "YELLOW DUST",
+    "target": "Seoul Biennale of Architecture and Urbanism 2017",
+    "strength": 1
+  },
+  {
+    "source": "YELLOW DUST",
     "target": "Raíºl Nieves and Pep Tornabell",
     "strength": 1
   },
@@ -8482,6 +8297,11 @@
   {
     "source": "DRAGON SCALE",
     "target": "Wang Changyang",
+    "strength": 1
+  },
+  {
+    "source": "DRAGON SCALE",
+    "target": "ArtManu",
     "strength": 1
   },
   {
@@ -8552,21 +8372,6 @@
   {
     "source": "CHATTY BENCH PROJECT: RADICAL MEDIA ARCHITECTURE IN PRECARIOUS TIMES",
     "target": "Sam McGeown & Kavita Gonsalves",
-    "strength": 1
-  },
-  {
-    "source": "CHATTY BENCH PROJECT: RADICAL MEDIA ARCHITECTURE IN PRECARIOUS TIMES",
-    "target": "affordable and pervasive media screens: the smartphone. The toolkit is targeted at community organisations and non-profits.\"",
-    "strength": 1
-  },
-  {
-    "source": "CHATTY BENCH PROJECT: RADICAL MEDIA ARCHITECTURE IN PRECARIOUS TIMES",
-    "target": "Creating Low-Tech AR for Activism-based Community Storytelling.",
-    "strength": 1
-  },
-  {
-    "source": "CHATTY BENCH PROJECT: RADICAL MEDIA ARCHITECTURE IN PRECARIOUS TIMES",
-    "target": "Hardware: Computer and Smartphone Software: Twine and digital storytelling apps such as audio and video recorder on smartphones.",
     "strength": 1
   },
   {
@@ -8716,32 +8521,32 @@
   },
   {
     "source": "WUHAN OPTICS VALLEY SQUARE COMPLEX THEME GROUND SCULPTURE",
-    "target": "capital",
+    "target": "Photographer Long Qiuye",
     "strength": 1
   },
   {
     "source": "WUHAN OPTICS VALLEY SQUARE COMPLEX THEME GROUND SCULPTURE",
-    "target": "reflecting the flowing vitality of modern city elements. Secondly",
+    "target": "CAPA",
     "strength": 1
   },
   {
     "source": "WUHAN OPTICS VALLEY SQUARE COMPLEX THEME GROUND SCULPTURE",
-    "target": "visually",
+    "target": "The Culture Development Co",
     "strength": 1
   },
   {
     "source": "WUHAN OPTICS VALLEY SQUARE COMPLEX THEME GROUND SCULPTURE",
-    "target": "the control system uses the international general DMX512 control mode.The whole lighting effect is divided into three parts: 1. Install a point light source lamp above the cross node of the mesh structure. 2. Install a small projection lamp above the cross node of the mesh structure to illuminate the mesh lines and dye the whole mesh structure. 3. The use of multi-point projection lamps on the banded structure illuminates the whole",
+    "target": "LTP of HIFA",
     "strength": 1
   },
   {
     "source": "WUHAN OPTICS VALLEY SQUARE COMPLEX THEME GROUND SCULPTURE",
-    "target": "to match the overall color changes.\"",
+    "target": "Beijing Zhongshenya Carving Co.",
     "strength": 1
   },
   {
     "source": "WUHAN OPTICS VALLEY SQUARE COMPLEX THEME GROUND SCULPTURE",
-    "target": "Wuhan referred to as \"\"Han\"\" or \"\"Jiangcheng\"",
+    "target": "LTD",
     "strength": 1
   },
   {
@@ -8800,6 +8605,11 @@
     "strength": 1
   },
   {
+    "source": "‘LA LUNE EST…’ / ‘THE MOON IS…’",
+    "target": "CA 1. Barnsley Coillege / Barnsley Council",
+    "strength": 1
+  },
+  {
     "source": "‘POÈME D’ÉCRAN’ / ‘SCREEN POEM’",
     "target": "1. Maison de la Culture Maisonneuve",
     "strength": 1
@@ -8852,21 +8662,6 @@
   {
     "source": "[ I MISS YOUR TOUCH ] BY PLUGINHUMAN.",
     "target": "PluginHUMAN",
-    "strength": 1
-  },
-  {
-    "source": "[ I MISS YOUR TOUCH ] BY PLUGINHUMAN.",
-    "target": "I got to hug my friend\"\". Evaluations of participants' experiences have shown that this artwork can help: Reduce anxiety; Reduce feelings of social isolation; Increase personal wellbeing; Help maintain meaningful connections; Generate joy; Provide access to innovative art.\"",
-    "strength": 1
-  },
-  {
-    "source": "[ I MISS YOUR TOUCH ] BY PLUGINHUMAN.",
-    "target": "This artwork is not delivered on a website. [ i miss your touch ] is ephemeral and operates in real-time. Participants access a web platform. The artwork is streamed to each participant via a unique URL in real-time. The video stream is compiled in TouchDesigner using Python and it is manually effected in real-time by PluginHUMAN. The outcome is a live collaboration between the participants and the artists.",
-    "strength": 1
-  },
-  {
-    "source": "[ I MISS YOUR TOUCH ] BY PLUGINHUMAN.",
-    "target": "TouchDesigner",
     "strength": 1
   },
   {
@@ -8990,36 +8785,6 @@
     "strength": 1
   },
   {
-    "source": "WALK WALK DANCE",
-    "target": "and the sidewalk is a stage' social distancing isn't just about honoring space; it's also about celebrating it.\"\" Can we use these lines as a starting point to fill the negative space between us with something positive? Naturally",
-    "strength": 1
-  },
-  {
-    "source": "WALK WALK DANCE",
-    "target": "we turned to music and dance. Walk Walk Dance was born.\"",
-    "strength": 1
-  },
-  {
-    "source": "WALK WALK DANCE",
-    "target": "Walk Walk Dance was designed to promote walking and encourage people to engage freely: some walk next to the lines",
-    "strength": 1
-  },
-  {
-    "source": "WALK WALK DANCE",
-    "target": "intrigued by the music; others step on them without stopping; most take a minute or two to explore the melodies; and some start to dance",
-    "strength": 1
-  },
-  {
-    "source": "WALK WALK DANCE",
-    "target": "channeling the missing street parties for a moment. The current sanitary crisis has proven how important it is for people who don't know each other to connect in order to make healthy cities. We see our work as a premise for interaction between strangers through joy. We believe in creating joyful public art. Joy allows us to connect more easily with our neighbours",
-    "strength": 1
-  },
-  {
-    "source": "WALK WALK DANCE",
-    "target": "building trust. Trust builds strong communities. And strong communities can do anything.",
-    "strength": 1
-  },
-  {
     "source": "STADT DER TEMPERAMENTE",
     "target": "Aspern 3420 Development AG",
     "strength": 1
@@ -9095,6 +8860,56 @@
     "strength": 1
   },
   {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "Initiatives: Civic Lab Leuven",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "H2020 project CLIC",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "Stad & Architectuur non-profit in Leuven",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "City of Leuven",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "City of Peer",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "City of Genk",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "City of Ghent",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "Municipality of Houthalen-Helchteren",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "Municipality of Heist-op-den-Berg",
+    "strength": 1
+  },
+  {
+    "source": "CITIZEN DIALOG KIT",
+    "target": "Urban Planning Agency BUUR",
+    "strength": 1
+  },
+  {
     "source": "PROJECT: GALATH3A",
     "target": "Project: Galath3a",
     "strength": 1
@@ -9111,52 +8926,57 @@
   },
   {
     "source": "PROJECT: GALATH3A",
-    "target": "such as 3D printers and robotic arms",
+    "target": "Berlin Open Lab",
     "strength": 1
   },
   {
     "source": "PROJECT: GALATH3A",
-    "target": "alongside a growing trend of robots for home-use. Work and work-tools reinstated at home raise questions about the changing notions of \"\"work\"\"",
+    "target": "Universití¤t der Künste",
     "strength": 1
   },
   {
     "source": "PROJECT: GALATH3A",
-    "target": "\"\"tools'' and our relationship with it. These shifts alter the urban environment",
+    "target": "Berlin",
     "strength": 1
   },
   {
     "source": "PROJECT: GALATH3A",
-    "target": "the initiative focuses on \"\"the act of applying makeup and hacks it because it is synonymous with the notion of \"\"perfection\"\"",
+    "target": "Project:GALATH3A is an ongoing design research in woman-machine collaboration",
     "strength": 1
   },
   {
     "source": "PROJECT: GALATH3A",
-    "target": "the commoditization of the woman-body and the male gaze\"\". In fact",
+    "target": "performed at the Berlin Open Lab",
     "strength": 1
   },
   {
     "source": "PROJECT: GALATH3A",
-    "target": "it includes Hi-Res 3D facial scans and digital design of bespoke painting-patterns. The robot arm is taught how to carefully approach humans",
+    "target": "Berlin.",
     "strength": 1
   },
   {
     "source": "COMMONS SENSE, MANIFESTA 14",
-    "target": "including the bazaar",
+    "target": "Atdhe Mulla",
     "strength": 1
   },
   {
     "source": "COMMONS SENSE, MANIFESTA 14",
-    "target": "was destroyed by Tito after the Second World War. His regime built spacious squares",
+    "target": "Ivan Erofeev",
     "strength": 1
   },
   {
     "source": "COMMONS SENSE, MANIFESTA 14",
-    "target": "but not a free civil society to inhabit them. Then came the war",
+    "target": "MIT Senseable City Lab",
     "strength": 1
   },
   {
     "source": "COMMONS SENSE, MANIFESTA 14",
-    "target": "\"As a project to realize CRA's Urban Vision",
+    "target": "CRA-Carlo Ratti Associati",
+    "strength": 1
+  },
+  {
+    "source": "COMMONS SENSE, MANIFESTA 14",
+    "target": "Manifesta",
     "strength": 1
   }
 ]

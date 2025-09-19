@@ -20,14 +20,17 @@ const contributorFields = [
     "Light design",
     "Technical layout light",
     "Display content/ visuals/ showreel",
+    "Light hardware (LED hardware)",
     "Lighting control software",
     "Interaction design/ programming",
     "Mediacredits",
     "Project co-ordination",
     "Project sponsor/ support",
+    "Host organization",
     "Facade design",
     "Facade construction",
-    "Kinetic engineering"
+    "Kinetic engineering",
+    "Contributors"
 ];
 
 // Merge fields
@@ -95,6 +98,7 @@ rawData.forEach((item) => {
       year: item.Year,
       location: item.Location,
       description: item.Description,
+      tag: item.Tag,
       image: item["Images.1"],
       url: item.URL,
       size: 24,
