@@ -3,7 +3,7 @@ import countryToContinent from 'country-json/src/country-by-continent.json' with
 
 
 // ----- Customize Data Section-----
-import rawData from '../data/mab2023Data.json' with { type: 'json' };
+import rawData from '../data/mabData.json' with { type: 'json' };
 // node = Title // Focus Node
 // connectionNode = Location // Node for connection
 // nodeEdge = Year // What edge told
@@ -85,7 +85,7 @@ rawData.forEach((item) => {
       url: item.URL,
       size: 24,
       group: setGroup(item.Location, true),
-      file: item.URL.split("/")[5].trim() + ".jpg"
+      file: item.URL.split("/")[5] + ".jpg"
     };
   }
 });

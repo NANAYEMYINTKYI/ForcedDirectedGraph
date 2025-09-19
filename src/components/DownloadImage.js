@@ -1,6 +1,6 @@
 import fs from "fs";
 import fetch from "node-fetch";
-import jsonData from "./../data/NodeData.json" with { type: "json" };
+import jsonData from "./../data/PeopleNode.json" with { type: "json" };
 
 async function downloadImage(url, filename) {
   const response = await fetch(url);
