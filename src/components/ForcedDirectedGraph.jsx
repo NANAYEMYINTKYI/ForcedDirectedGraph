@@ -167,8 +167,26 @@ const ForceDirectedGraph = ({
         .on("mouseenter", (event, d) => {
           // tootip reference and design 
           tooltipRef.current
-            .style("opacity", 1)
-            .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
+          // Two conditions
+          if (d.group === 9) {
+            tooltipRef.current
+              .style("opacity", 1)
+              .html(`
+                <strong>${d.id}</strong><br/>
+                Year: ${d.year}<br/>
+                Location: ${d.location}<br/>
+                Description: ${d.description}<br/>
+                Tag: ${d.tag}
+              `);
+          } else {
+            tooltipRef.current
+              .style("opacity", 1)
+              .html(`
+                <strong>${d.id}</strong>
+              `);
+          }
+            // .style("opacity", 1)
+            // .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
         })
         // mousemove update position in mousemove
         .on("mousemove", (event) => {

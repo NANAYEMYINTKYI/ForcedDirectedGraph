@@ -41,7 +41,7 @@ rawData.forEach(title => {
     if (
       value &&
       value.trim() !== "" &&
-      !["n/a", "none", "na"].includes(value.trim().toLowerCase())
+      !["n/a", "none", "na", "/"].includes(value.trim().toLowerCase())
     ) {
       // Clean parentheses
       let cleaned = value.trim().replace(/\s*\([^)]*\)/g, "");
@@ -54,8 +54,8 @@ rawData.forEach(title => {
       cleaned = cleaned.replace(/AV&C/g, "");
 
       // Replace /, \, & (not comma) with |
-      cleaned = cleaned.replace(/, (?=(?!inc|ltd|llc|corp|co)[a-z])/gi, "|");
-      cleaned = cleaned.replace(/[\/\\&;]/g, "|");
+      cleaned = cleaned.replace(/, (?=(?!inc|ltd|llc|corp|co))/gi, "|");
+      cleaned = cleaned.replace(/[\\&;]/g, "|");
 
       contributors.push(cleaned);
     }
