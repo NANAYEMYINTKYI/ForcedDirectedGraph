@@ -13,13 +13,6 @@ import peoplelink from '../src/data/PeopleLink.json';
 import TagManager from "./components/TagManager";
 import './App.css'
 
-
-const datasets ={
-  country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
-  year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
-  people: {nodes:peoplenode, links:peoplelink, name: "Social graph by People"}
-};
-
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
 
@@ -37,13 +30,13 @@ const App = () => {
     });
   }, [yearRange]);
   
-  const { nodes, links } = CountryData(rawData);
+  const { nodes, links } = PeopleData(FilterData);
 
-  // const datasets ={
-  //   country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
-  //   year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
-  //   people: { nodes: peoplenode, links: peoplelink, name: "Social graph by People" }
-  // };
+  const datasets ={
+    country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
+    year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
+    people: { nodes: peoplenode, links: peoplelink, name: "Social graph by People" }
+  };
 
   const [currentDataset, setCurrentDataset] = useState('people');
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
@@ -52,26 +45,6 @@ const App = () => {
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
   };
-   // Handle dataset change
-    const handleDatasetChange = useCallback((key) => {
-    setCurrentDataset(key);
-    }, []);
-    // Handle filtered data from TagManager
-    const handleFilterChange = useCallback((data) => {
-      setFilteredData(data);
-    }, []);
-
-    // Memoize the graph props to prevent unnecessary re-renders
-      const graphProps = useMemo(() => ({
-        datasets,
-        currentDataset,
-        handleDatasetChange,
-        nodes: filteredData.nodes,
-        links: filteredData.links,
-        width: 800,
-        height: 600
-      }), [currentDataset, filteredData.nodes, filteredData.links]);
-    
 
  return (
     <div className="app">
@@ -87,7 +60,7 @@ const App = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center', 
-        marginTop: '50px'
+        marginTop: '0px'
         }}>
       </div>
             {/* Controls */}
@@ -119,14 +92,6 @@ const App = () => {
             label="Select year range"
             width={500}
           />
-        {/* Tag filter component */}
-                  <TagManager 
-                    datasets={datasets}
-                    currentDataset={currentDataset}
-                    mabData={rawData}
-                    onFilterChange={handleFilterChange}
-                    showCounts={true}
-                  />
           
       </div>
         
@@ -142,11 +107,10 @@ const App = () => {
             width={800}
             height={600}
           /> */}
-            {/* Force-directed graph component */}
-                  <ForceDirectedGraph {...graphProps} />
-          {/* <ForceDirectedGraph
+      
+          <ForceDirectedGraph
           nodes={nodes} links={links} width={928} height={400} 
-        /> */}
+        />
         </div>        
       </div>
   );
