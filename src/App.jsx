@@ -13,9 +13,14 @@ import peoplelink from '../src/data/PeopleLink.json';
 import TagManager from "./components/TagManager";
 import './App.css'
 
+  // const datasets ={
+  //   country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
+  //   // year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
+  //   people: { nodes: peoplenode, links: peoplelink, name: "Social graph by People" }
+  // };
+
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
-
   const [processedDatasets, setProcessedDatasets] = useState({});
 
   // Filter data where Year is between start and end year
@@ -30,91 +35,79 @@ const App = () => {
     });
   }, [yearRange]);
   
-  const { nodes, links } = PeopleData(FilterData);
-
-  const datasets ={
-    country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
-    year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
-    people: { nodes: peoplenode, links: peoplelink, name: "Social graph by People" }
-  };
-
+  const datasets = useMemo(() => {
+    return {
+      country: {
+        ...CountryData(FilterData),
+        name: "Social Graph By Country"
+      },
+      people: {
+        ...PeopleData(FilterData),
+        name: "Social Graph By People"
+      }
+    };
+  }, [FilterData]);
+  
   const [currentDataset, setCurrentDataset] = useState('people');
-  const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
+  // const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const graphData = datasets[currentDataset];
 
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
   };
 
- return (
+  const handleDatasetChange = (key) => setCurrentDataset(key);
+ 
+  return (
     <div className="app">
       {/* Header */}
       <div className="header">
         <h1>🌐 Force-Directed Graph</h1>
       </div>
-      {/* Background */}
-      <div className="app-background"></div>
-       {/* Header */}
-      <div className="header" 
-        style = {{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center', 
-        marginTop: '0px'
-        }}>
-      </div>
-            {/* Controls */}
+      {/* Controls */}
       <div className="dataset-selector">
-          <h3>Choose Dataset:</h3>
-          <div className="dataset-buttons">
-            {Object.entries(datasets).map(([key, dataset]) => (
-              <button
-                key={key}
-                className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
-                onClick={() => handleDatasetChange(key)}
-              >
-                {dataset.name}
-              </button>
-            ))}
-          </div>
+        <h3>Choose Dataset:</h3>
+        <div className="dataset-buttons">
+          {Object.entries(datasets).map(([key, dataset]) => (
+            <button
+              key={key}
+              className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
+              onClick={() => handleDatasetChange(key)}
+            >
+              {dataset.name}
+            </button>
+          ))}
+        </div>
       </div>
-         <div className="app-content">
-            {/* Timeline */}
-            <div style={{
-        display: 'flex',
-        justifyContent: 'center', 
-        gap: "15px" 
+      <div className="app-content">
+        {/* Timeline */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center', 
+          gap: "15px", 
+          marginBottom: "10px"
         }}>
-        <p style={{ fontWeight: '600', margin: '2.5px' }}>Select Year Range:</p>
+          <p style={{ fontWeight: '600', margin: '2.5px' }}>Select Year Range:</p>
           <Timeline
             value={yearRange}
             onChange={handleRangeChange}
             label="Select year range"
             width={500}
           />
-          
-      </div>
-        
-          {/* Force-directed graph component */}
-          {/* <ForceDirectedGraph 
-            datasets={datasets}
-            currentDataset={currentDataset}
-            handleDatasetChange={handleDatasetChange}
-            nodes={graphData.nodes}
-            links={graphData.links}
-            // nodes={filteredNodes}
-            // links={filteredLinks}
-            width={800}
-            height={600}
-          /> */}
-      
-          <ForceDirectedGraph
-          nodes={nodes} links={links} width={928} height={400} 
+        </div>
+        {/* Force-directed graph component */}
+        <ForceDirectedGraph 
+          datasets={datasets}
+          currentDataset={currentDataset}
+          handleDatasetChange={handleDatasetChange}
+          nodes={graphData.nodes}
+          links={graphData.links}
+          width={800}
+          height={600}
         />
-        </div>        
       </div>
+    </div>
   );
-  
-};
+}
 
 export default App;
