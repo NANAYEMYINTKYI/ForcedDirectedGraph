@@ -1,8 +1,9 @@
 import {useState, useEffect, useMemo, useCallback } from "react";
-import ForceDirectedGraph from "./components/ForcedDirectedGraph";
-import Timeline from './components/Timeline';
-import { PeopleData } from "./components/TransformDataPeopleFunction";
 import { CountryData } from "./components/TransformDataCountryFunction";
+import { PeopleData } from "./components/TransformDataPeopleFunction";
+import ForceDirectedGraph from "./components/ForcedDirectedGraph";
+import TagManager from "./components/TagManager";
+import Timeline from './components/Timeline';
 import rawData from './data/mabData.json';
 import countrylink from '../src/data/CountryLink.json';
 import countrynode from '../src/data/CountryNode.json';
@@ -10,7 +11,6 @@ import yearlink from '../src/data/YearLink.json';
 import yearnode from '../src/data/YearNode.json';
 import peoplenode from '../src/data/PeopleNode.json';
 import peoplelink from '../src/data/PeopleLink.json';
-import TagManager from "./components/TagManager";
 import './App.css'
 
   // const datasets ={
@@ -21,7 +21,8 @@ import './App.css'
 
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
-  const [processedDatasets, setProcessedDatasets] = useState({});
+  // const [processedDatasets, setProcessedDatasets] = useState({});
+  const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -56,8 +57,29 @@ const App = () => {
     setYearRange(newValue);
   };
 
-  const handleDatasetChange = (key) => setCurrentDataset(key);
- 
+  // const handleDatasetChange = (key) => setCurrentDataset(key);
+
+  // Handle dataset change - also memoized
+  const handleDatasetChange = useCallback((key) => {
+    setCurrentDataset(key);
+  }, []);
+
+  // Handle filtered data from TagManager
+  const handleFilterChange = useCallback((data) => {
+    setFilteredData(data);
+  }, []);
+
+  // Memoize the graph props to prevent unnecessary re-renders
+  const graphProps = useMemo(() => ({
+    datasets,
+    currentDataset,
+    handleDatasetChange,
+    nodes: filteredData.nodes,
+    links: filteredData.links,
+    width: 800,
+    height: 600
+  }), [currentDataset, filteredData.nodes, filteredData.links]);
+
   return (
     <div className="app">
       {/* Header */}
@@ -79,7 +101,6 @@ const App = () => {
           ))}
         </div>
       </div>
-      <div className="app-content">
         {/* Timeline */}
         <div style={{
           display: 'flex',
@@ -95,8 +116,17 @@ const App = () => {
             width={500}
           />
         </div>
+      {/* Tag filter component */}
+      <TagManager 
+        datasets={datasets}
+        currentDataset={currentDataset}
+        mabData={rawData}
+        onFilterChange={handleFilterChange}
+        showCounts={true}
+      />
+      <div className="app-content">
         {/* Force-directed graph component */}
-        <ForceDirectedGraph 
+        {/* <ForceDirectedGraph 
           datasets={datasets}
           currentDataset={currentDataset}
           handleDatasetChange={handleDatasetChange}
@@ -104,7 +134,9 @@ const App = () => {
           links={graphData.links}
           width={800}
           height={600}
-        />
+        /> */}
+        {/* Force-directed graph component */}
+        <ForceDirectedGraph {...graphProps} />
       </div>
     </div>
   );
