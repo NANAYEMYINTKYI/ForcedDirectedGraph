@@ -33,7 +33,7 @@ const TagManager = ({
   const [filterTag, setFilterTag] = useState("");
   const [processedDatasets, setProcessedDatasets] = useState({});
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
-  
+
   useEffect(() => {
     if (!mabData || !datasets) return;
 
@@ -134,23 +134,25 @@ const TagManager = ({
     }
 
   }, [datasets, mabData, currentDataset, filterTag, onFilterChange]);
-
-  // Generate unique tags for dropdown
+  
   const allTags = useMemo(() => {
     if (!processedDatasets[currentDataset]) return [];
-    
+
     const tagSet = new Set();
     processedDatasets[currentDataset].nodes.forEach(node => {
       if (node.tags && node.tags.length > 0) {
         node.tags.forEach(tag => {
           if (tag) {
             const cleanTag = tag.replace(/^#/, "").trim();
-            if (cleanTag) tagSet.add(cleanTag);
+            // 👇 Filter out tags that are purely numbers
+            if (cleanTag && !/^\d+$/.test(cleanTag)) {
+              tagSet.add(cleanTag);
+            }
           }
         });
       }
     });
-    
+
     return Array.from(tagSet).sort();
   }, [processedDatasets, currentDataset]);
 
