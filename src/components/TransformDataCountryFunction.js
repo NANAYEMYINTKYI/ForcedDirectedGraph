@@ -66,7 +66,7 @@ rawData.forEach((item) => {
       description: item.Description,
       image: item["Images.1"],
       url: item.URL,
-      size: 24,
+      size: 54,
       group: setGroup(item.Location, true),
       file: item.URL.split("/")[5] + ".jpg"
     };
@@ -78,7 +78,7 @@ rawData.forEach((item) => {
   if (!nodeMap[item.Location.split(",")[0].trim()]) {
     nodeMap[item.Location.split(",")[0].trim()] = {
       id: item.Location.split(",")[0].trim(),
-      size: 24,
+      size: 34,
       group: setGroup(item.Location),
     };
   }

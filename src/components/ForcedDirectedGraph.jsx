@@ -367,4 +367,4 @@ const ForceDirectedGraph = ({
   );
 };
 
-export default ForceDirectedGraph;
+export default React.memo(ForceDirectedGraph);
