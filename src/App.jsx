@@ -13,16 +13,10 @@ import peoplenode from '../src/data/PeopleNode.json';
 import peoplelink from '../src/data/PeopleLink.json';
 import './App.css'
 
-  // const datasets ={
-  //   country: {nodes:countrynode, links:countrylink, name:"Social Graph By Country"},
-  //   // year: {nodes:yearnode, links: yearlink, name: "Social graph by Year"},
-  //   people: { nodes: peoplenode, links: peoplelink, name: "Social graph by People" }
-  // };
-
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
-  // const [processedDatasets, setProcessedDatasets] = useState({});
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
+  const [currentDataset, setCurrentDataset] = useState('people');
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -49,9 +43,6 @@ const App = () => {
     };
   }, [FilterData]);
   
-  const [currentDataset, setCurrentDataset] = useState('people');
-  // const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
-  const graphData = datasets[currentDataset];
 
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
@@ -120,7 +111,7 @@ const App = () => {
       <TagManager 
         datasets={datasets}
         currentDataset={currentDataset}
-        mabData={rawData}
+        mabData={FilterData}
         onFilterChange={handleFilterChange}
         showCounts={true}
       />

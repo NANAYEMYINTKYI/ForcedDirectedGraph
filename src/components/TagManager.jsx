@@ -33,12 +33,11 @@ const TagManager = ({
   const [filterTag, setFilterTag] = useState("");
   const [processedDatasets, setProcessedDatasets] = useState({});
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
-
-  // Process datasets with tag information
+  
   useEffect(() => {
     if (!mabData || !datasets) return;
 
-    // Build tag lookup from mabdata using normalized titles
+    // Build tag lookup from mabData
     const tagLookup = {};
     mabData.forEach(item => {
       const normalizedTitle = normalizeTitle(item.Title);
@@ -46,16 +45,15 @@ const TagManager = ({
     });
 
     const mergedDatasets = {};
-    
+
     Object.keys(datasets).forEach(key => {
       const dataset = datasets[key];
-      
-      // Transform nodes - keep original title, add normalized lookup
+
       const transformedNodes = dataset.nodes.map(node => {
         const originalTitle = node.id;
         const normalizedId = normalizeTitle(node.id);
         const tags = parseTagsArray(tagLookup[normalizedId]);
-        
+
         return {
           ...node,
           id: originalTitle,
@@ -65,7 +63,6 @@ const TagManager = ({
         };
       });
 
-      // Links stay as-is since they reference original titles
       const transformedLinks = dataset.links.map(link => ({
         ...link,
         source: link.source,
@@ -80,7 +77,63 @@ const TagManager = ({
     });
 
     setProcessedDatasets(mergedDatasets);
-  }, [datasets, mabData]);
+
+    // 👇 Apply filtering immediately after processing
+    const activeDataset = mergedDatasets[currentDataset];
+    if (!activeDataset) return;
+
+    const { nodes, links } = activeDataset;
+
+    let visibleNodes;
+    let visibleLinks;
+
+    if (!filterTag) {
+      visibleNodes = nodes;
+      visibleLinks = links;
+    } else {
+      const primaryNodes = nodes.filter(node => {
+        if (!node.tags || node.tags.length === 0) return false;
+
+        return node.tags.some(tag => {
+          const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
+          return cleanTag === filterTag.toLowerCase();
+        });
+      });
+
+      const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
+      const connectedNodeIds = new Set();
+
+      links.forEach(link => {
+        if (primaryNodeIds.has(link.source)) {
+          connectedNodeIds.add(link.target);
+        }
+        if (primaryNodeIds.has(link.target)) {
+          connectedNodeIds.add(link.source);
+        }
+      });
+
+      visibleNodes = nodes.filter(node =>
+        primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
+      );
+
+      const visibleNodeTitles = new Set(visibleNodes.map(n => n.id));
+      visibleLinks = links.filter(link => {
+        return visibleNodeTitles.has(link.source) && visibleNodeTitles.has(link.target);
+      });
+    }
+
+    const filteredResult = {
+      nodes: visibleNodes,
+      links: visibleLinks
+    };
+
+    setFilteredData(filteredResult);
+
+    if (onFilterChange) {
+      onFilterChange(filteredResult);
+    }
+
+  }, [datasets, mabData, currentDataset, filterTag, onFilterChange]);
 
   // Generate unique tags for dropdown
   const allTags = useMemo(() => {
