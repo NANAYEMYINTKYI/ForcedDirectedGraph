@@ -122,7 +122,7 @@ rawData.forEach(title => {
         tag: item.Tag,
         image: item["Images.1"],
         url: item.URL,
-        size: 54,
+        size: 44,
         group: 9,
         file: item.URL.split("/")[5] + ".jpg"
         };
@@ -150,10 +150,10 @@ rawData.forEach(title => {
     // Count occurrences
     links.forEach((link) => {
     if (nodeMap[link.source]) {
-        nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 1, 100);
+        nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 5, 100);
     }
     if (nodeMap[link.target]) {
-        nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 1, 100);
+        nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 5, 100);
     }
     });
 
