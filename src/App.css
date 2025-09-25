@@ -23,9 +23,9 @@ html, body {
 }
 
 .app {
-  min-height: 100vh;
+  /* min-height: 100vh;
   height: 100vh;
-  width: 100vw;
+  width: 100vw; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
@@ -33,9 +33,9 @@ html, body {
 }
 
 .app-content{
-  min-height: 100vh;
-  height: 100vh;
-  width: 100vw;
+  /* min-height: 100vh; */
+  /* height: 100vh; */
+  /* width: 100vw; */
   margin-top: 10px;
 }
 
