@@ -108,12 +108,14 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("y", d3.forceY(height))
-      .force("x", d3.forceX(width))
-      .force("link", d3.forceLink(links).id(d => d.id).strength(0.2)) // Attraction
+      .force("y", d3.forceY(1048/2))
+      .force("x", d3.forceX(705/2))
+      .force("link", d3.forceLink(links).id(d => d.id).distance(10).strength(0.2)) // Attraction
+      // .force("charge", d3.forceManyBody().strength(chargeStrength)) 
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
+      .alpha(3)
       .alphaDecay(0.05) 
 
     simulationRef.current = simulation;
@@ -270,7 +272,7 @@ const ForceDirectedGraph = ({
     setChargeStrength(value);
     if (simulationRef.current) {
       simulationRef.current.force("charge", d3.forceManyBody().strength(-value));
-      simulationRef.current.alpha(0.3).restart;
+      simulationRef.current.alpha(0.3).restart();
     }
   }, []);
   // handle link strength
