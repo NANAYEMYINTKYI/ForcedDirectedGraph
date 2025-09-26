@@ -143,8 +143,8 @@ const dragended = useCallback(function(event, d) {
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("y", d3.forceY(1048/2))
-      .force("x", d3.forceX(705/2))
+      .force("y", d3.forceY(width))
+      .force("x", d3.forceX(height))
       .force("link", d3.forceLink(links).id(d => d.id).distance(10).strength(0.2)) // Attraction
       // .force("charge", d3.forceManyBody().strength(chargeStrength)) 
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
