@@ -30,9 +30,9 @@ const ForceDirectedGraph = ({
   const linkElementsRef = useRef(); // ⬅️ add this at the top
 
   // State
-  const [chargeStrength, setChargeStrength] = useState(1500);
-  const [linkStrength, setLinkStrength] = useState(100);
-  const [centerStrength, setCenterStrength] = useState(0);
+  const [chargeStrength, setChargeStrength] = useState(1000);
+  const [linkStrength, setLinkStrength] = useState(0.1);
+  const [centerStrength, setCenterStrength] = useState(0.3);
   const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
 
   // Color scale
@@ -150,8 +150,17 @@ const dragended = useCallback(function(event, d) {
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
+      .alphaTarget(1)
       .alpha(3)
       .alphaDecay(0.05) 
+
+const durationPerNode = 5; // milliseconds
+const duration = Math.min(nodes.length * durationPerNode, 10000);
+
+// ⏹ Turn off alphaTarget after duration
+setTimeout(() => {
+  simulation.alphaTarget(0);
+}, duration);
 
     simulationRef.current = simulation;
     // Create links
