@@ -40,16 +40,6 @@ const ForceDirectedGraph = ({
     .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
     .range(["#cb6bffff", "#6e4ecdff", "#4594d1ff", "#96cea2ff", "#e6ff6bff", "#cd9a4eff", "#d14545ff", "#c8c8c8ff", "#000000ff"]);
 
-  // Drag functions
-  // const dragstarted = useCallback((event, d) => {
-  //   console.log('Drag started:', d.id)
-  //   if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
-  //   d.fx = d.x;
-  //   d.fy = d.y;
-  //   d3.select(this) // `this` is the node where drag happend
-  //     .select("circle")
-  //     .style("stroke", "red");
-  // }, []);
   const dragstarted = useCallback(function(event, d) {
   if (!event.active) simulationRef.current.alphaTarget (0.3).restart();
   d.fx = d.x;
@@ -71,14 +61,6 @@ const dragged = useCallback(function(event, d) {
   d3.select(this).select("circle").style("stroke", "red");
 }, []);
 
-  // const dragged = useCallback((event, d) => {
-  //   console.log('Dragging:', d.id, event.x, event.y);
-  //   d.fx = event.x;
-  //   d.fy = event.y;
-  //   d3.select(this) // `this` is the node where drag happend
-  //     .select("circle")
-  //     .style("stroke", "red");
-  // }, []);
 const dragended = useCallback(function(event, d) {
   if (!event.active) simulationRef.current.alphaTarget(0);
   d.fx = null;
@@ -93,16 +75,6 @@ const dragended = useCallback(function(event, d) {
   d3.select(this).select("circle").style("stroke", "steelblue");
 }, []);
 
-  // const dragended = useCallback((event, d) => {
-  //   if (!event.active) simulationRef.current.alphaTarget(0);
-  //   d.fx = null;
-  //   d.fy = null;
-  //   d3.select(this) // `this` is the node where drag happend
-  //     .select("circle")
-  //     .style("stroke", "steelblue");
-  // }, []);
-
-  
   // Initialize and update graph when dependent
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg 
@@ -132,13 +104,27 @@ const dragended = useCallback(function(event, d) {
       .scaleExtent([0.01, 30]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
     svg.call(zoom);
-
+    
     // set the initial zoom/translate when entering
     const initialTransform = d3.zoomIdentity.translate(900,425).scale(0.2); 
-
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
+    function zoomToNode(d) {
+      const svgWidth = +svg.attr("width");
+      const svgHeight = +svg.attr("height");
 
+      const desiredSize = 200; // how "big" the node should appear
+      const scale = Math.min(svgWidth, svgHeight) / desiredSize;
+
+      const transform = d3.zoomIdentity
+        .translate(svgWidth / 2, svgHeight / 2) // move viewport to center
+        .scale(scale)
+        .translate(-d.x, -d.y); // move node into center
+
+      svg.transition()
+        .duration(750)
+        .call(zoom.transform, transform); // smooth zoom
+    }
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
@@ -146,7 +132,6 @@ const dragended = useCallback(function(event, d) {
       .force("y", d3.forceY(height/2))
       .force("x", d3.forceX(width/2))
       .force("link", d3.forceLink(links).id(d => d.id).strength(0.25)) // Attraction
-      // .force("charge", d3.forceManyBody().strength(chargeStrength)) 
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
@@ -157,21 +142,13 @@ const dragended = useCallback(function(event, d) {
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
-  .data(links)
-  .join("line")
-  .attr("class", "link-line") // <--- Add this line
-  .attr("stroke", "#46444dff")
-  .attr("stroke-opacity", 0.7)
-  .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
+    .data(links)
+    .join("line")
+    .attr("class", "link-line") // <--- Add this line
+    .attr("stroke", "#46444dff")
+    .attr("stroke-opacity", 0.7)
+    .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
 
-    // const link = linkGroup.selectAll("line")
-    //   .data(links)
-    //   .join("line")
-    //   .attr("stroke", d => colorScale(d.group) || "#999")
-    //   .attr("stroke", "#46444dff")
-    //   .attr("stroke-opacity", 0.7)
-    //   .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
-  
     // Create nodes
     const node = nodeGroup.selectAll("g")
       .data(nodes)
@@ -181,7 +158,6 @@ const dragended = useCallback(function(event, d) {
         .on("drag", dragged)
         .on("end", dragended)
       )
-
       // Set up clipPath
       node.append("clipPath")
         .attr("id", d => `circle-clip-${d.size}`)  // unique id per node
@@ -197,7 +173,7 @@ const dragended = useCallback(function(event, d) {
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
-      
+      let selectedNodes = [];
       node.each(function(d) {
         const current = d3.select(this);
         if (d.file) {
@@ -221,128 +197,101 @@ const dragended = useCallback(function(event, d) {
         }
       })
       .on("mouseenter", (event, d) => {
-  // Show tooltip (your existing logic)
-  if (d.group === 9) {
-    tooltipRef.current
-      .style("opacity", 1)
-      .html(`<strong>${d.id}</strong><br/> Year: ${d.year}<br/> Location: ${d.location}<br/> Description: ${d.description}<br/> Tag: ${d.tag}`);
-  } else {
-    tooltipRef.current
-      .style("opacity", 1)
-      .html(`<strong>${d.id}</strong>`);
-  }
+      // Show tooltip (your existing logic)
+      if (d.group === 9) {
+        tooltipRef.current
+          .style("opacity", 1)
+          .html(`<strong>${d.id}</strong><br/> Year: ${d.year}<br/> Location: ${d.location}<br/> Description: ${d.description}<br/> Tag: ${d.tag}`);
+      } else {
+        tooltipRef.current
+          .style("opacity", 1)
+          .html(`<strong>${d.id}</strong>`);
+      }
 
-  // Move tooltip to mouse position
-  tooltipRef.current
-    .style("left", (event.pageX + 10) + "px")
-    .style("top", (event.pageY + 10) + "px");
+      // Move tooltip to mouse position
+      tooltipRef.current
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY + 10) + "px");
 
-  // 👉 Highlight connected links
-  d3.selectAll(".link-line")
-    .filter(l => l.source.id === d.id || l.target.id === d.id)
-    .attr("stroke", "#FF5c00")
-    .attr("stroke-width", 10);
-})
-
-        // .on("mouseenter", (event, d) => {
-        //   // tootip reference and design 
-        //   tooltipRef.current
-        //   // Two conditions
-        //   if (d.group === 9) {
-        //     tooltipRef.current
-        //       .style("opacity", 1)
-        //       .html(`
-        //         <strong>${d.id}</strong><br/>
-        //         Year: ${d.year}<br/>
-        //         Location: ${d.location}<br/>
-        //         Description: ${d.description}<br/>
-        //         Tag: ${d.tag}
-        //       `);
-        //   } else {
-        //     tooltipRef.current
-        //       .style("opacity", 1)
-        //       .html(`
-        //         <strong>${d.id}</strong>
-        //       `);
-        //   }
-        //     // .style("opacity", 1)
-        //     // .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
-        // })
-        // mousemove update position in mousemove
-        .on("mousemove", (event) => {
-          tooltipRef.current
-            .style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY + 10) + "px");
-        })
-        // .on("mouseleave", () => {
-        //   tooltipRef.current.style("opacity", 0);
-        // });
-        .on("mouseleave", (event, d) => {
-  tooltipRef.current.style("opacity", 0);
-
-  // 👉 Restore connected link colors
-  d3.selectAll(".link-line")
-    .filter(l => l.source.id === d.id || l.target.id === d.id)
-    .attr("stroke", "#46444dff")
-    .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
-})
-
-
-      // Append text into node
-      // node.append("text")
-      //   // .text(d => d.id)
-      //   .attr("font-size", 12)
-      //   .attr("font-weight", "bold")
-      //   .attr("text-anchor", "middle")
-      //   .attr("x", 4)
-      //   .attr("dy", 4)
-      //   .attr("fill", "#333")
-      //   .style("pointer-events", "none")
-      //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
-      //    .attr("clip-path", "url(#circleClip)");
-
-        // Aligh text in node to be center
-      node.append("foreignObject")
-        .each(function(d) {
-          const current = d3.select(this);
-          if (d.file) {
-            current.attr("y", d.size + 5)
-            .style("font-size", "12px")
-          } else {
-            current.attr("y", -50)
-            .style("font-size", d => d.size/4)
-          }})
-        .attr("x", d => -d.size*1)
-        .attr("width", d => d.size*2)   // box width
-        .attr("height", 100)  // box height
-        .append("xhtml:div")
-        .style("display", "flex")
-        .style("flex-direction", "column")
-        .style("justify-content", d => d.file ? "flex-start" : "center")
-        .style("width", "100%")
-        .style("height", "100%")
-        .style("font-weight", "bold")
-        .style("text-align", "center")
-        .style("color", "#333")
-        .style("word-wrap", "break-word")
-        .text(d => d.id)
-        
-    // Update positions on tick
-    simulation.on("tick", () => {
-      link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
-      node.attr("transform", d => `translate(${d.x},${d.y})`);
-      
-
-    });
-
-    return () => {
-      simulation.stop();
-    };
-  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended]);
+      // 👉 Highlight connected links
+      d3.selectAll(".link-line")
+        .filter(l => l.source.id === d.id || l.target.id === d.id)
+        .attr("stroke", "#FF5c00")
+        .attr("stroke-width", 10);
+      })
+      .on("mousemove", (event) => {
+        tooltipRef.current
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY + 10) + "px");
+      })
+      .on("mouseleave", (event, d) => {
+        tooltipRef.current.style("opacity", 0);
+          d3.selectAll(".link-line")
+            .filter(l => l.source.id === d.id || l.target.id === d.id)
+            .attr("stroke", "#46444dff")
+            .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
+      })
+      .on("click", function(event, d) {
+        const index = selectedNodes.indexOf(d);
+        if (index === -1) {
+          // not selected → add to selection
+          selectedNodes.push(d);
+          d3.select(this).select("circle,image")
+            .attr("stroke", "red")
+            .attr("stroke-width", 3);
+        } else {
+          // already selected → remove from selection
+          selectedNodes.splice(index, 1);
+          d3.select(this).select("circle,image")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 2);
+        }
+        // Immediately zoom to the selection
+        if (selectedNodes.length === 1) {
+          zoomToNode(selectedNodes[0]);       // single node
+        } else if (selectedNodes.length > 1) {
+          zoomToNodes(selectedNodes);         // multiple nodes
+        }
+      })
+  // Aligh text in node to be center
+    node.append("foreignObject")
+      .each(function(d) {
+        const current = d3.select(this);
+        if (d.file) {
+          current.attr("y", d.size + 5)
+          .style("font-size", "12px")
+        } else {
+          current.attr("y", -50)
+          .style("font-size", d => d.size/4)
+        }})
+      .attr("x", d => -d.size*1)
+      .attr("width", d => d.size*2)   // box width
+      .attr("height", 100)  // box height
+      .append("xhtml:div")
+      .style("display", "flex")
+      .style("flex-direction", "column")
+      .style("justify-content", d => d.file ? "flex-start" : "center")
+      .style("width", "100%")
+      .style("height", "100%")
+      .style("font-weight", "bold")
+      .style("text-align", "center")
+      .style("color", "#333")
+      .style("word-wrap", "break-word")
+      .text(d => d.id)
+          
+      // Update positions on tick
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      });
+      return () => {
+        simulation.stop();
+      };
+    }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended]);
 
   // Handle repulsion
   const handleChargeChange = useCallback((e) => {
@@ -420,7 +369,6 @@ const dragended = useCallback(function(event, d) {
           ref={svgRef}
           width={width}
           height={height}
-          // viewBox={`0 0 ${width} ${height}`} 
           className="graph-svg"
         />
         {/* Tooltip */}
