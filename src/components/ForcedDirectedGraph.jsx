@@ -104,7 +104,6 @@ const dragended = useCallback(function(event, d) {
       .scaleExtent([0.01, 30]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
     svg.call(zoom);
-    
     // set the initial zoom/translate when entering
     const initialTransform = d3.zoomIdentity.translate(900,425).scale(0.2); 
     svg.call(zoom.transform, initialTransform); // apply starting transform
@@ -112,10 +111,9 @@ const dragended = useCallback(function(event, d) {
     function zoomToNode(d) {
       const svgWidth = +svg.attr("width");
       const svgHeight = +svg.attr("height");
-
-      const desiredSize = 200; // how "big" the node should appear
+      const desiredSize = 400; // how "big" the node should appear
       const scale = Math.min(svgWidth, svgHeight) / desiredSize;
-
+      // const t = d3.zoomTransform(svg.node()); // current transform
       const transform = d3.zoomIdentity
         .translate(svgWidth / 2, svgHeight / 2) // move viewport to center
         .scale(scale)
@@ -135,8 +133,8 @@ const dragended = useCallback(function(event, d) {
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
-      .alpha(1) // analogous to temperature in simulated annealing
-      .alphaDecay(0.005)
+      .alpha(3) // analogous to temperature in simulated annealing
+      .alphaDecay(0.05)
       .alphaTarget(0);
 
     simulationRef.current = simulation;
@@ -232,26 +230,16 @@ const dragended = useCallback(function(event, d) {
             .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
       })
       .on("click", function(event, d) {
-        const index = selectedNodes.indexOf(d);
-        if (index === -1) {
-          // not selected → add to selection
-          selectedNodes.push(d);
-          d3.select(this).select("circle,image")
-            .attr("stroke", "red")
-            .attr("stroke-width", 3);
-        } else {
-          // already selected → remove from selection
-          selectedNodes.splice(index, 1);
-          d3.select(this).select("circle,image")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2);
+        // Track selected node(s) temporarily
+        let tempSelectedNodes = [d];
+        // Zoom to selection
+        if (tempSelectedNodes.length === 1) {
+          zoomToNode(tempSelectedNodes[0]);
+        } else if (tempSelectedNodes.length > 1) {
+          zoomToNodes(tempSelectedNodes);
         }
-        // Immediately zoom to the selection
-        if (selectedNodes.length === 1) {
-          zoomToNode(selectedNodes[0]);       // single node
-        } else if (selectedNodes.length > 1) {
-          zoomToNodes(selectedNodes);         // multiple nodes
-        }
+        // Clear selection array
+        selectedNodes = [];
       })
   // Aligh text in node to be center
     node.append("foreignObject")
