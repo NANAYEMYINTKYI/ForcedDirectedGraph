@@ -51,7 +51,7 @@ const ForceDirectedGraph = ({
   //     .style("stroke", "red");
   // }, []);
   const dragstarted = useCallback(function(event, d) {
-  if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
+  if (!event.active) simulationRef.current.alphaTarget (0.3).restart();
   d.fx = d.x;
   d.fy = d.y;
 
@@ -143,15 +143,16 @@ const dragended = useCallback(function(event, d) {
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("y", d3.forceY(width))
-      .force("x", d3.forceX(height))
-      .force("link", d3.forceLink(links).id(d => d.id).distance(10).strength(0.2)) // Attraction
+      .force("y", d3.forceY(height/2))
+      .force("x", d3.forceX(width/2))
+      .force("link", d3.forceLink(links).id(d => d.id).strength(0.25)) // Attraction
       // .force("charge", d3.forceManyBody().strength(chargeStrength)) 
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
-      .alpha(3)
-      .alphaDecay(0.05) 
+      .alpha(1) // analogous to temperature in simulated annealing
+      .alphaDecay(0.005)
+      .alphaTarget(0);
 
     simulationRef.current = simulation;
     // Create links
