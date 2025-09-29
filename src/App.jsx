@@ -63,7 +63,7 @@ const App = () => {
     handleDatasetChange,
     nodes: filteredData.nodes,
     links: filteredData.links,
-    width: 1000,
+    width: window.innerWidth ,
     height: 1000
   }), [currentDataset, filteredData.nodes, filteredData.links]);
 
