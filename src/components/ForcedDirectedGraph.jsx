@@ -41,67 +41,57 @@ const ForceDirectedGraph = ({
     .range(["#cb6bffff", "#6e4ecdff", "#4594d1ff", "#96cea2ff", "#e6ff6bff", "#cd9a4eff", "#d14545ff", "#c8c8c8ff", "#000000ff"]);
 
   // Drag functions
-  // const dragstarted = useCallback((event, d) => {
-  //   console.log('Drag started:', d.id)
-  //   if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
-  //   d.fx = d.x;
-  //   d.fy = d.y;
-  //   d3.select(this) // `this` is the node where drag happend
-  //     .select("circle")
-  //     .style("stroke", "red");
-  // }, []);
   const dragstarted = useCallback(function(event, d) {
-  if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
-  d.fx = d.x;
-  d.fy = d.y;
+    if (!event.active ) simulationRef.current
+    .alphaTarget(0.01)
+    .alpha(1.01)
+    // .alphamin(1.01)
+    .restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  
+    // Highlight connected links
+    d3.selectAll(".link-line")
+      .filter(l => l.source.id === d.id || l.target.id === d.id)
+      .attr("stroke", "#FF5c00")
+      .attr("stroke-width", 10);
+  
+      d3.select(this)
+        .select("circle")
+        .style("stroke", "red");
+  }, []);
 
-  // Highlight connected links
-  d3.selectAll(".link-line")
-    .filter(l => l.source.id === d.id || l.target.id === d.id)
-    .attr("stroke", "#FF5c00")
-    .attr("stroke-width", 10);
+  const dragged = useCallback(function(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  
+    d3.select(this)
+      .select("circle")
+      .style("stroke", "red");
+  }, []);
 
-  d3.select(this).select("circle").style("stroke", "red");
-}, []);
+  const dragended = useCallback(function(event, d) {
+    if (!event.active) simulationRef.current
+      // .alphaDecay(0.01)
+      .alphaTarget(0.5)
+      .alpha(1.01)
 
-const dragged = useCallback(function(event, d) {
-  d.fx = event.x;
-  d.fy = event.y;
-
-  d3.select(this).select("circle").style("stroke", "red");
-}, []);
-
-  // const dragged = useCallback((event, d) => {
-  //   console.log('Dragging:', d.id, event.x, event.y);
-  //   d.fx = event.x;
-  //   d.fy = event.y;
-  //   d3.select(this) // `this` is the node where drag happend
-  //     .select("circle")
-  //     .style("stroke", "red");
-  // }, []);
-const dragended = useCallback(function(event, d) {
-  if (!event.active) simulationRef.current.alphaTarget(0);
-  d.fx = null;
-  d.fy = null;
-
-  // Restore connected links to original style
-  d3.selectAll(".link-line")
-    .filter(l => l.source.id === d.id || l.target.id === d.id)
-    .attr("stroke", "#46444dff")
-    .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
-
-  d3.select(this).select("circle").style("stroke", "steelblue");
-}, []);
-
-  // const dragended = useCallback((event, d) => {
-  //   if (!event.active) simulationRef.current.alphaTarget(0);
-  //   d.fx = null;
-  //   d.fy = null;
-  //   d3.select(this) // `this` is the node where drag happend
-  //     .select("circle")
-  //     .style("stroke", "steelblue");
-  // }, []);
-
+    setTimeout(() => {
+      simulationRef.current.alphaTarget(0);
+    }, 1000);
+    d.fx = null;
+    d.fy = null;
+  
+    // Restore connected links to original style
+    d3.selectAll(".link-line")
+      .filter(l => l.source.id === d.id || l.target.id === d.id)
+      .attr("stroke", "#46444dff")
+      .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
+  
+    d3.select(this)
+      .select("circle")
+      .style("stroke", "steelblue");
+  }, []);
   
   // Initialize and update graph when dependent
   useEffect(() => {
@@ -150,35 +140,27 @@ const dragended = useCallback(function(event, d) {
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
-      .alphaTarget(1)
-      .alpha(3)
+      // .alphaTarget(1)
+      .alpha(10)
       .alphaDecay(0.05) 
 
-const durationPerNode = 5; // milliseconds
-const duration = Math.min(nodes.length * durationPerNode, 10000);
+    const durationPerNode = 5; // milliseconds
+    const duration = Math.min(nodes.length * durationPerNode, 10000);
 
-// ⏹ Turn off alphaTarget after duration
-setTimeout(() => {
-  simulation.alphaTarget(0);
-}, duration);
+    // ⏹ Turn off alphaTarget after duration
+    setTimeout(() => {
+      simulation.alphaTarget(0);
+    }, duration);
 
     simulationRef.current = simulation;
     // Create links
     const link = linkGroup.selectAll("line")
-  .data(links)
-  .join("line")
-  .attr("class", "link-line") // <--- Add this line
-  .attr("stroke", "#46444dff")
-  .attr("stroke-opacity", 0.7)
-  .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
-
-    // const link = linkGroup.selectAll("line")
-    //   .data(links)
-    //   .join("line")
-    //   .attr("stroke", d => colorScale(d.group) || "#999")
-    //   .attr("stroke", "#46444dff")
-    //   .attr("stroke-opacity", 0.7)
-    //   .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
+      .data(links)
+      .join("line")
+      .attr("class", "link-line")
+      .attr("stroke", "#46444dff")
+      .attr("stroke-opacity", 0.7)
+      .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
   
     // Create nodes
     const node = nodeGroup.selectAll("g")
@@ -229,87 +211,59 @@ setTimeout(() => {
         }
       })
       .on("mouseenter", (event, d) => {
-  // Show tooltip (your existing logic)
-  if (d.group === 9) {
-    tooltipRef.current
-      .style("opacity", 1)
-      .html(`<strong>${d.id}</strong><br/> Year: ${d.year}<br/> Location: ${d.location}<br/> Description: ${d.description}<br/> Tag: ${d.tag}`);
-  } else {
-    tooltipRef.current
-      .style("opacity", 1)
-      .html(`<strong>${d.id}</strong>`);
-  }
 
-  // Move tooltip to mouse position
-  tooltipRef.current
-    .style("left", (event.pageX + 10) + "px")
-    .style("top", (event.pageY + 10) + "px");
-
-  // 👉 Highlight connected links
-  d3.selectAll(".link-line")
-    .filter(l => l.source.id === d.id || l.target.id === d.id)
-    .attr("stroke", "#FF5c00")
-    .attr("stroke-width", 10);
-})
-
-        // .on("mouseenter", (event, d) => {
-        //   // tootip reference and design 
-        //   tooltipRef.current
-        //   // Two conditions
-        //   if (d.group === 9) {
-        //     tooltipRef.current
-        //       .style("opacity", 1)
-        //       .html(`
-        //         <strong>${d.id}</strong><br/>
-        //         Year: ${d.year}<br/>
-        //         Location: ${d.location}<br/>
-        //         Description: ${d.description}<br/>
-        //         Tag: ${d.tag}
-        //       `);
-        //   } else {
-        //     tooltipRef.current
-        //       .style("opacity", 1)
-        //       .html(`
-        //         <strong>${d.id}</strong>
-        //       `);
-        //   }
-        //     // .style("opacity", 1)
-        //     // .html(`<strong>${d.id}</strong><br/>Group: ${d.group}<br/>Size: ${d.size}<br/>${d.description}`);
-        // })
-        // mousemove update position in mousemove
-        .on("mousemove", (event) => {
+        // Show tooltip (your existing logic)
+        if (d.group === 9) {
           tooltipRef.current
-            .style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY + 10) + "px");
-        })
-        // .on("mouseleave", () => {
-        //   tooltipRef.current.style("opacity", 0);
-        // });
-        .on("mouseleave", (event, d) => {
-  tooltipRef.current.style("opacity", 0);
+            .style("opacity", 1)
+            .html(`<strong>${d.id}</strong><br/> 
+              <strong>Year:</strong> ${d.year}<br/> 
+              <strong>Location:</strong> ${d.location}<br/> 
+              <strong>Description:</strong> ${d.description}<br/> 
+              <strong>Tag:</strong> ${d.tag}`);
+        } else if (d.positions !== undefined) {
+          tooltipRef.current
+            .style("opacity", 1)
+            .html(`<strong>${d.id}</strong><br/> 
+              <strong>Position:</strong> ${d.positions}`);
+        } else {
+          tooltipRef.current
+            .style("opacity", 1)
+            .html(`<strong>${d.id}</strong><br/> 
+              <strong>Continent:</strong> ${d.continent}`);
+        }
 
-  // 👉 Restore connected link colors
-  d3.selectAll(".link-line")
-    .filter(l => l.source.id === d.id || l.target.id === d.id)
-    .attr("stroke", "#46444dff")
-    .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
-})
+        // Move tooltip to mouse position
+        tooltipRef.current
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY + 10) + "px");
 
+        // Highlight connected links
+        d3.selectAll(".link-line")
+          .filter(l => l.source.id === d.id || l.target.id === d.id)
+          .attr("stroke", "#FF5c00")
+          .attr("stroke-width", 10);
+      })
 
-      // Append text into node
-      // node.append("text")
-      //   // .text(d => d.id)
-      //   .attr("font-size", 12)
-      //   .attr("font-weight", "bold")
-      //   .attr("text-anchor", "middle")
-      //   .attr("x", 4)
-      //   .attr("dy", 4)
-      //   .attr("fill", "#333")
-      //   .style("pointer-events", "none")
-      //   .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
-      //    .attr("clip-path", "url(#circleClip)");
+      // mousemove update position in mousemove
+      .on("mousemove", (event) => {
+        tooltipRef.current
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY + 10) + "px");
+      })
+      
+      .on("mouseleave", (event, d) => {
+        tooltipRef.current
+          .style("opacity", 0);
 
-        // Aligh text in node to be center
+        // Restore connected link colors
+        d3.selectAll(".link-line")
+          .filter(l => l.source.id === d.id || l.target.id === d.id)
+          .attr("stroke", "#46444dff")
+          .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
+      })
+
+      // Aligh text in node to be center
       node.append("foreignObject")
         .each(function(d) {
           const current = d3.select(this);
@@ -335,17 +289,15 @@ setTimeout(() => {
         .style("word-wrap", "break-word")
         .text(d => d.id)
         
-    // Update positions on tick
-    simulation.on("tick", () => {
-      link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
-      node.attr("transform", d => `translate(${d.x},${d.y})`);
-      
-
-    });
+      // Update positions on tick
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      });
 
     return () => {
       simulation.stop();
@@ -382,7 +334,7 @@ setTimeout(() => {
 
   return (
     <div className="force-graph-container">
-      <div className="controls">
+      {/* <div className="controls">
         <div className="control-group">
           <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
           <input
@@ -420,7 +372,7 @@ setTimeout(() => {
             onChange={handleCenterStrengthChange}
           />
         </div>
-      </div>
+      </div> */}
 
       {/* Graph */}
       <div className="graph-container">

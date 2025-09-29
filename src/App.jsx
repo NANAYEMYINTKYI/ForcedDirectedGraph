@@ -13,6 +13,10 @@ import peoplenode from '../src/data/PeopleNode.json';
 import peoplelink from '../src/data/PeopleLink.json';
 import './App.css'
 
+  // const datasets = {
+  //   country: { nodes: countrynode, links: countrylink, name: "Social Graph By Country" },
+  //   people: { nodes: peoplenode, links: peoplelink, name: "Social graph by People" }
+  // };
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });

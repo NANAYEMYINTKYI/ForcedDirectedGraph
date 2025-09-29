@@ -26,12 +26,12 @@ const contributorFields = [
     "Host organization",
     "Facade design",
     "Facade construction",
-    "Kinetic engineering"
+    "Kinetic engineering",
+    "Contributors"
 ];
 
 export function PeopleData(rawData) {
-
-// Clean contributors and set position
+  // Clean contributors
 rawData.forEach(title => {
   const contributors = [];
 
@@ -40,11 +40,11 @@ rawData.forEach(title => {
 
     if (
       value &&
-      String(value).trim() !== "" &&
-      !["n/a", "none", "na", "/"].includes(String(value).trim().toLowerCase())
+      value.trim() !== "" &&
+      !["n/a", "none", "na", "/"].includes(value.trim().toLowerCase())
     ) {
       // Clean parentheses
-      let cleaned = String(value).trim().replace(/\s*\([^)]*\)/g, "");
+      let cleaned = value.trim().replace(/\s*\([^)]*\)/g, "");
 
       // Skip if contains .com or .net
       if (cleaned.includes(".com") || cleaned.includes(".net")) return;
@@ -57,34 +57,52 @@ rawData.forEach(title => {
       cleaned = cleaned.replace(/, (?=(?!inc|ltd|llc|corp|co))/gi, "|");
       cleaned = cleaned.replace(/[\\&;]/g, "|");
 
-      cleaned
-        .split("|")
-        .map(c => c.trim())
-        .filter(Boolean)
-        .forEach(name => {
-          contributors.push({ name, position: field });
-        });
+      contributors.push(cleaned);
     }
+
+    delete title[field];
   });
 
-  title.Contributors = contributors;
+  title.Contributors = contributors.join("| ");
 });
+
+
+
+
+  // rawData.forEach(title => {
+  //   const contributors = [];
+
+  //   contributorFields.forEach(field => {
+  //     if (
+  //       title[field] &&
+  //       title[field].trim() !== "" &&
+  //       !["n/a", "none", "na"].includes(title[field].trim().toLowerCase())
+  //     ) {
+  //       const cleaned = title[field].trim().replace(/\s*\([^)]*\)/g, "");
+  //       contributors.push(cleaned);
+  //     }
+  //     delete title[field];
+  //   });
+
+  //   title.Contributors = contributors.join("| ");
+  // });
   
     // node → connectionNode
     const seenLinks = new Set();
+
     let links = rawData 
     .filter(d => d.Title && d.Contributors) 
     .flatMap(d => d.Contributors 
-        // .split("|") 
-        // .map(c => c.trim()) 
-        // .filter(c => c) 
+        .split("|") 
+        .map(c => c.trim()) 
+        .filter(c => c) 
         .map(c => { 
-        const key = `${d.Title}→${c.name}`; 
+        const key = `${d.Title}→${c}`; 
         if (seenLinks.has(key)) return null; 
         seenLinks.add(key); 
         return { 
             source: d.Title, 
-            target: c.name, 
+            target: c, 
             strength: 1 
         }; 
         }) 
@@ -115,28 +133,16 @@ rawData.forEach(title => {
     rawData.forEach((item) => {
     if (!item.Contributors) return;
     item.Contributors
-        // .split("|")
-        // .map(name => name.trim())
-        // .filter(name => name)
+        .split("|")
+        .map(name => name.trim())
+        .filter(name => name)
         .forEach(contributor => {
-          const name = contributor.name;
-          const position = contributor.position;
-
-        if (!nodeMap[name]) {
-            nodeMap[name] = {
-            id: name,
+        if (!nodeMap[contributor]) {
+            nodeMap[contributor] = {
+            id: contributor,
             size: 34,
-            group: 8,
-            positions: [position],
-            projects: [item.Title]
+            group: 8
             };
-    } else {
-      if (!nodeMap[name].positions.includes(position)) {
-        nodeMap[name].positions.push(position);
-      }
-      if (!nodeMap[name].projects.includes(item.Title)) {
-        nodeMap[name].projects.push(item.Title);
-      }
         }
         });
     });
