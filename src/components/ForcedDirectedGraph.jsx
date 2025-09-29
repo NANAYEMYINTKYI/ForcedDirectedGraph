@@ -105,7 +105,7 @@ const dragended = useCallback(function(event, d) {
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    const initialTransform = d3.zoomIdentity.translate(900,425).scale(0.2); 
+    const initialTransform = d3.zoomIdentity.translate(1000,500).scale(0.1); 
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
     function zoomToNode(d) {
