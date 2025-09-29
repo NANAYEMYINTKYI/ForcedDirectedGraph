@@ -111,7 +111,7 @@ const dragended = useCallback(function(event, d) {
     function zoomToNode(d) {
       const svgWidth = +svg.attr("width");
       const svgHeight = +svg.attr("height");
-      const desiredSize = 400; // how "big" the node should appear
+      const desiredSize = 600; // how "big" the node should appear
       const scale = Math.min(svgWidth, svgHeight) / desiredSize;
       // const t = d3.zoomTransform(svg.node()); // current transform
       const transform = d3.zoomIdentity
@@ -312,7 +312,7 @@ const dragended = useCallback(function(event, d) {
   return (
     <div className="force-graph-container">
       <div className="controls">
-        <div className="control-group">
+        {/* <div className="control-group">
           <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
           <input
             type="range"
@@ -322,9 +322,8 @@ const dragended = useCallback(function(event, d) {
             value={chargeStrength}
             onChange={handleChargeChange}
           />
-        </div>
-
-        <div className="control-group">
+        </div> */}
+        {/* <div className="control-group">
           <label htmlFor="link-strength">Attraction: {linkStrength}</label>
           <input
             type="range"
@@ -335,9 +334,8 @@ const dragended = useCallback(function(event, d) {
             value={linkStrength}
             onChange={handleLinkStrengthChange}
           />
-        </div>
-        
-        <div className="control-group">
+        </div> */}
+        {/* <div className="control-group">
           <label htmlFor="center-strength">Centering: {centerStrength}</label>
           <input
             type="range"
@@ -348,7 +346,7 @@ const dragended = useCallback(function(event, d) {
             value={centerStrength}
             onChange={handleCenterStrengthChange}
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Graph */}
