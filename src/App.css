@@ -27,7 +27,7 @@ html, body {
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
+  height: 100vh;
   width: 100vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -36,7 +36,7 @@ html, body {
   flex: 1;               /* fill remaining vertical space */
   display: flex;
   flex-direction: column;
-  min-height: 0;         /* allows child flex items to shrink correctly */
+  min-height: 0;        
 }
 /* Background */
 
@@ -47,7 +47,7 @@ html, body {
 .topcontrols {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   padding: 15px;
   gap: 15px; /* space between dataset selector, timeline, and tagmanager */
   flex-shrink: 0; /* prevent it from collapsing */

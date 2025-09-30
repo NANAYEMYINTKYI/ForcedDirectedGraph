@@ -101,17 +101,17 @@ const dragended = useCallback(function(event, d) {
       g.attr("transform", event.transform);
     };
     const zoom = d3.zoom()
-      .scaleExtent([0.01, 30]) // Sets min and max zoom levels
+      .scaleExtent([0.01, 20]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    const initialTransform = d3.zoomIdentity.translate(1100,450).scale(0.1);
+    const initialTransform = d3.zoomIdentity.translate(750,200).scale(0.04); 
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
     function zoomToNode(d) {
       const svgWidth = +svg.attr("width");
       const svgHeight = +svg.attr("height");
-      const desiredSize = 600; // how "big" the node should appear
+      const desiredSize = 800; // how "big" the node should appear
       const scale = Math.min(svgWidth, svgHeight) / desiredSize;
       // const t = d3.zoomTransform(svg.node()); // current transform
       const transform = d3.zoomIdentity
@@ -236,7 +236,7 @@ const dragended = useCallback(function(event, d) {
         if (tempSelectedNodes.length === 1) {
           zoomToNode(tempSelectedNodes[0]);
         } else if (tempSelectedNodes.length > 1) {
-          zoomToNodes(tempSelectedNodes);
+          zoomToNode(tempSelectedNodes);
         }
         // Clear selection array
         selectedNodes = [];
@@ -311,6 +311,46 @@ const dragended = useCallback(function(event, d) {
 
   return (
     <div className="force-graph-container">
+      {/* <div className="controls">
+        <div className="control-group">
+          <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
+          <input
+            type="range"
+            id="charge-strength"
+            min="10"
+            max="500"
+            value={chargeStrength}
+            onChange={handleChargeChange}
+          />
+        </div>
+
+        <div className="control-group">
+          <label htmlFor="link-strength">Attraction: {linkStrength}</label>
+          <input
+            type="range"
+            id="link-strength"
+            min="0.01"
+            max="20"
+            step="0.1"
+            value={linkStrength}
+            onChange={handleLinkStrengthChange}
+          />
+        </div>
+        
+        <div className="control-group">
+          <label htmlFor="center-strength">Centering: {centerStrength}</label>
+          <input
+            type="range"
+            id="center-strength"
+            min="0"
+            max="1000"
+            step="0.1"
+            value={centerStrength}
+            onChange={handleCenterStrengthChange}
+          />
+        </div>
+      </div> */}
+
       {/* Graph */}
       <div className="graph-container">
         <svg

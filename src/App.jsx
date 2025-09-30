@@ -64,15 +64,15 @@ const App = () => {
     nodes: filteredData.nodes,
     links: filteredData.links,
     width: window.innerWidth ,
-    height: 1000
+    height: window.innerHeight
   }), [currentDataset, filteredData.nodes, filteredData.links]);
 
     return (
     <div className="app">
       {/* Graph Container */}
-      {/* <main className="app-content">
+      <main className="app-content">
         <ForceDirectedGraph {...graphProps} />
-      </main> */}
+      </main>
       {/* Header */}
       <header className="header">
         <h1>MAB Social Graph</h1>
@@ -80,7 +80,7 @@ const App = () => {
       <div className="topcontrols">
       {/* Dataset Selector */}
       <section className="dataset-selector">
-        <h3>Choose Dataset:</h3>
+        <h4>Choose Dataset</h4>
         <div className="dataset-buttons">
           {Object.entries(datasets).map(([key, dataset]) => (
             <button
@@ -93,9 +93,9 @@ const App = () => {
           ))}
         </div>
       </section>
-      <div className="controls-row">
+     
         {/* Tag Filter */}
-        <section className="tagmanager-section">
+        <section>
           <TagManager
             datasets={datasets}
             currentDataset={currentDataset}
@@ -104,8 +104,7 @@ const App = () => {
             showCounts={true}
           />
         </section>
-        {/* Tag Filter */}
-        <section className="tagmanager-section">
+         {/* <section className="tagmanager-section">
           <TagManager
             datasets={datasets}
             currentDataset={currentDataset}
@@ -114,22 +113,20 @@ const App = () => {
             showCounts={true}
           />
         </section>
-          {/* Tag Filter */}
-          <section className="tagmanager-section">
-            <TagManager
-              datasets={datasets}
-              currentDataset={currentDataset}
-              mabData={FilterData}
-              onFilterChange={handleFilterChange}
-              showCounts={true}
-            />
-          </section>
+         <section className="tagmanager-section">
+          <TagManager
+            datasets={datasets}
+            currentDataset={currentDataset}
+            mabData={FilterData}
+            onFilterChange={handleFilterChange}
+            showCounts={true}
+          />
+        </section> */}
         </div>
-      </div>
       {/* Graph Container */}
-      <main className="app-content">
+      {/* <main className="app-content">
         <ForceDirectedGraph {...graphProps} />
-      </main>
+      </main> */}
       <div className="buttom-controls">
       {/* Timeline */}
         <section className="timeline-section">
