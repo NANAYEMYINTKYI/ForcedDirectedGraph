@@ -69,14 +69,14 @@ const App = () => {
 
     return (
     <div className="app">
-      {/* Graph Container */}
-      <main className="app-content">
-        <ForceDirectedGraph {...graphProps} />
-      </main>
       {/* Header */}
       <header className="header">
         <h1>MAB Social Graph</h1>
       </header>
+        {/* Grapph container */}
+      {/* <main className="app-content">
+        <ForceDirectedGraph {...graphProps} />
+      </main> */}
       <div className="topcontrols">
       {/* Dataset Selector */}
       <section className="dataset-selector">
@@ -124,18 +124,18 @@ const App = () => {
         </section> */}
         </div>
       {/* Graph Container */}
-      {/* <main className="app-content">
+      <main className="app-content">
         <ForceDirectedGraph {...graphProps} />
-      </main> */}
+      </main>
       <div className="buttom-controls">
       {/* Timeline */}
         <section className="timeline-section">
           <p>Select Year Range:</p>
-          <Timeline
-            value={yearRange}
-            onChange={handleRangeChange}
-            label="Select year range"
-            width={500}
+          <Timeline 
+            value={yearRange} 
+            onChange={handleRangeChange} 
+            label="Select year range" 
+            width={Math.min(500, window.innerWidth - 100)} // Make responsive
           />
         </section>
       </div>

@@ -108,14 +108,13 @@ const dragended = useCallback(function(event, d) {
     const initialTransform = d3.zoomIdentity.translate(750,200).scale(0.04); 
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
-    function zoomToNode(d) {
-      const svgWidth = +svg.attr("width");
-      const svgHeight = +svg.attr("height");
+   function zoomToNode(d) {
+      const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
       const desiredSize = 800; // how "big" the node should appear
       const scale = Math.min(svgWidth, svgHeight) / desiredSize;
-      // const t = d3.zoomTransform(svg.node()); // current transform
+
       const transform = d3.zoomIdentity
-        .translate(svgWidth / 2, svgHeight / 2) // move viewport to center
+        .translate(svgWidth / 2, svgHeight / 2) // center of visible SVG
         .scale(scale)
         .translate(-d.x, -d.y); // move node into center
 
@@ -123,6 +122,7 @@ const dragended = useCallback(function(event, d) {
         .duration(750)
         .call(zoom.transform, transform); // smooth zoom
     }
+
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
