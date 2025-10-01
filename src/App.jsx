@@ -119,71 +119,42 @@ const App = () => {
           ))}
         </div>
       </section>
-     
         {/* Tag Filter */}
-        <section>
-          <TagManager
+          <TagManager 
             datasets={datasets}
             currentDataset={currentDataset}
             mabData={FilterData}
             onFilterChange={handleFilterChange}
             showCounts={true}
           />
-        </section>
-         {/* <section className="tagmanager-section">
-          <TagManager
-            datasets={datasets}
-            currentDataset={currentDataset}
-            mabData={FilterData}
-            onFilterChange={handleFilterChange}
-            showCounts={true}
+          <ListSearch 
+            options = {projects}
+            Title = "Search by Title"
+            placeholder = "Input Title"
+            onFilterChange={handleTitleChange}
+            value = {selectedTitle}
           />
-        </section>
-         <section className="tagmanager-section">
-          <TagManager
-            datasets={datasets}
-            currentDataset={currentDataset}
-            mabData={FilterData}
-            onFilterChange={handleFilterChange}
-            showCounts={true}
+          <ListSearch 
+            options = {connection}
+            Title = "Search by People"
+            placeholder = "Input People"
+            onFilterChange = {handleConnectionChange}
+            visible = {currentDataset === 'people'}
+            value = {selectedConnection}
           />
-        </section> */}
+          <ListSearch 
+            options = {connection}
+            Title = "Search by Country"
+            placeholder = "Input Country"
+            onFilterChange = {handleConnectionChange}
+            visible = {currentDataset === 'country'}
+            value = {selectedConnection}
+          />
         </div>
-      {/* Tag filter component */}
-      <TagManager 
-        datasets={datasets}
-        currentDataset={currentDataset}
-        mabData={FilterData}
-        onFilterChange={handleFilterChange}
-        showCounts={true}
-      />
-      <ListSearch 
-        options = {projects}
-        Title = "Search by Title"
-        placeholder = "Input Title"
-        onFilterChange={handleTitleChange}
-        value = {selectedTitle}
-      />
-      <ListSearch 
-        options = {connection}
-        Title = "Search by People"
-        placeholder = "Input People"
-        onFilterChange = {handleConnectionChange}
-        visible = {currentDataset === 'people'}
-        value = {selectedConnection}
-      />
-      <ListSearch 
-        options = {connection}
-        Title = "Search by Country"
-        placeholder = "Input Country"
-        onFilterChange = {handleConnectionChange}
-        visible = {currentDataset === 'country'}
-        value = {selectedConnection}
-      />
       <div className="app-content">
         {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />
-      </main>
+      </div>
       <div className="buttom-controls">
       {/* Timeline */}
         <section className="timeline-section">
