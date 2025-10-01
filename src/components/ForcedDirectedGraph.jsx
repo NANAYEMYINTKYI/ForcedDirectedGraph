@@ -108,41 +108,102 @@ const dragended = useCallback(function(event, d) {
     const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
+    // function zoomToNode(d) {
+    //     const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
+    //   // Get all connected nodes
+    //   const connectedLinks = links.filter(l => l.source === d || l.target === d);
+    //   const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
+    //   // Calculate the average distance from the target node to its connections
+    //   let avgDistance = 0;
+    //   if (connectedNodes.length > 0) {
+    //     const totalDistance = connectedNodes.reduce((sum, node) => {
+    //       const dx = node.x - d.x;
+    //       const dy = node.y - d.y;
+    //       return sum + Math.sqrt(dx * dx + dy * dy);
+    //     }, 0);
+    //     avgDistance = totalDistance / connectedNodes.length;
+    //   }
+    //   const baseSize = 500;
+    //   const connectionsCount = connectedLinks.length;
+    //   const sizePerConnection = 50;
+    //   const distanceFactor = avgDistance * 0.5; // adjust this multiplier to control distance influence
+      
+    //   const desiredSize = Math.min(
+    //     baseSize + (connectionsCount * sizePerConnection) + distanceFactor,
+    //     5000 // max zoom out
+    //   );
+      
+    //   const scale = Math.min(svgWidth, svgHeight) / desiredSize;
+    //   console.log(scale)
+    //   const transform = d3.zoomIdentity
+    //     .translate(svgWidth / 2, svgHeight / 2)
+    //     .scale(scale)
+    //     .translate(-d.x, -d.y); // center on the clicked node
+    //   svg.transition()
+    //     .duration(750)
+    //     .call(zoom.transform, transform); // smooth zoom
+    // }
+
     function zoomToNode(d) {
-            const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
-          // Get all connected nodes
-          const connectedLinks = links.filter(l => l.source === d || l.target === d);
-          const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
-          // Calculate the average distance from the target node to its connections
-          let avgDistance = 0;
-          if (connectedNodes.length > 0) {
-            const totalDistance = connectedNodes.reduce((sum, node) => {
-              const dx = node.x - d.x;
-              const dy = node.y - d.y;
-              return sum + Math.sqrt(dx * dx + dy * dy);
-            }, 0);
-            avgDistance = totalDistance / connectedNodes.length;
-          }
-          const baseSize = 500;
-          const connectionsCount = connectedLinks.length;
-          const sizePerConnection = 50;
-          const distanceFactor = avgDistance * 0.5; // adjust this multiplier to control distance influence
+      const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
+      
+      const connectedLinks = links.filter(l => l.source === d || l.target === d);
+      const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
           
-          const desiredSize = Math.min(
-            baseSize + (connectionsCount * sizePerConnection) + distanceFactor,
-            5000 // max zoom out
-          );
-          
-          const scale = Math.min(svgWidth, svgHeight) / desiredSize;
-          console.log(scale)
-          const transform = d3.zoomIdentity
-            .translate(svgWidth / 2, svgHeight / 2)
-            .scale(scale)
-            .translate(-d.x, -d.y); // center on the clicked node
-          svg.transition()
-            .duration(750)
-            .call(zoom.transform, transform); // smooth zoom
+      // Calculate average distance to connections
+        let avgDistance = 0;
+        if (connectedNodes.length > 0) {
+          const totalDistance = connectedNodes.reduce((sum, node) => {
+            const dx = node.x - d.x;
+            const dy = node.y - d.y;
+            return sum + Math.sqrt(dx * dx + dy * dy);
+          }, 0);
+          avgDistance = totalDistance / connectedNodes.length;
         }
+        // Scale based on how spread out the connections are
+        const targetRadius = 100; // How much space you want to see
+        const scale = Math.min(
+          Math.max(targetRadius / avgDistance, 0.5),
+          3
+        );
+      const transform = d3.zoomIdentity
+        .translate(svgWidth / 2, svgHeight / 2)
+        .scale(scale)
+        .translate(-d.x, -d.y);
+      
+      svg.transition()
+        .duration(750)
+        .call(zoom.transform, transform);
+      
+      // Step 2: Pull connected nodes closer WHILE zooming
+      const attractForce = (alpha) => {
+        connectedNodes.forEach(node => {
+          const dx = d.x - node.x;
+          const dy = d.y - node.y;
+          const distance = Math.sqrt(dx * dx + dy * dy) || 1;
+          
+          // Pull nodes within a certain radius
+          const targetDistance = 200; // Desired distance from center node
+          if (distance > targetDistance) {
+            const strength = 0.5 * alpha;
+            node.vx += (dx / distance) * strength;
+            node.vy += (dy / distance) * strength;
+          }
+        });
+      };
+  
+  simulationRef.current
+    .force("tempAttract", attractForce)
+    .alphaTarget(0.3)
+    .restart();
+  
+  // Step 3: Remove temporary force after animation
+  setTimeout(() => {
+    simulationRef.current
+      .force("tempAttract", null)
+      .alphaTarget(0);
+  }, 1500);
+}
 
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
