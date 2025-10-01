@@ -18,6 +18,7 @@ export function CountryData(rawData) {
     { country: "Taiwan", continent: "Asia" }
   ];
   countryToContinent.push(...Add);
+            console.log(countryToContinent)
 
   // Define Group
   function setGroup(location, isproject = false) {
@@ -44,8 +45,8 @@ export function CountryData(rawData) {
         return {id: 5, name: "South America"};
       case "Antarctica":
         return {id: 6, name: "Antarctica"};
-      case "Australia":
-        return {id: 7, name: "Australia"};
+      case "Oceania":
+        return {id: 7, name: "Oceania"};
       default:
         return {id: 8, name: "Unknown"};
     }

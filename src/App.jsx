@@ -89,6 +89,7 @@ const App = () => {
     width: 800,
     height: 600
   }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links]);
+  // console.log(filteredData.nodes)
    
   // Title list
   let projects = filteredData.nodes 
