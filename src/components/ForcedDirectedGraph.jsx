@@ -35,6 +35,7 @@ const ForceDirectedGraph = ({
     .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
     .range(["#cb6bffff", "#6e4ecdff", "#4594d1ff", "#96cea2ff", "#e6ff6bff", "#cd9a4eff", "#d14545ff", "#c8c8c8ff", "#000000ff"]);
 
+
   // Drag functions
   const dragstarted = useCallback(function(event, d) {
     if (!event.active ) simulationRef.current
@@ -104,15 +105,109 @@ const ForceDirectedGraph = ({
     };
     
     const zoom = d3.zoom()
-      .scaleExtent([0.01, 30]) // Sets min and max zoom levels
+      .scaleExtent([0.01, 20]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
     svg.call(zoom);
-
     // set the initial zoom/translate when entering
-    const initialTransform = d3.zoomIdentity.translate(900,425).scale(0.2); 
-
+    const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
+    // function zoomToNode(d) {
+    //     const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
+    //   // Get all connected nodes
+    //   const connectedLinks = links.filter(l => l.source === d || l.target === d);
+    //   const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
+    //   // Calculate the average distance from the target node to its connections
+    //   let avgDistance = 0;
+    //   if (connectedNodes.length > 0) {
+    //     const totalDistance = connectedNodes.reduce((sum, node) => {
+    //       const dx = node.x - d.x;
+    //       const dy = node.y - d.y;
+    //       return sum + Math.sqrt(dx * dx + dy * dy);
+    //     }, 0);
+    //     avgDistance = totalDistance / connectedNodes.length;
+    //   }
+    //   const baseSize = 500;
+    //   const connectionsCount = connectedLinks.length;
+    //   const sizePerConnection = 50;
+    //   const distanceFactor = avgDistance * 0.5; // adjust this multiplier to control distance influence
+      
+    //   const desiredSize = Math.min(
+    //     baseSize + (connectionsCount * sizePerConnection) + distanceFactor,
+    //     5000 // max zoom out
+    //   );
+      
+    //   const scale = Math.min(svgWidth, svgHeight) / desiredSize;
+    //   console.log(scale)
+    //   const transform = d3.zoomIdentity
+    //     .translate(svgWidth / 2, svgHeight / 2)
+    //     .scale(scale)
+    //     .translate(-d.x, -d.y); // center on the clicked node
+    //   svg.transition()
+    //     .duration(750)
+    //     .call(zoom.transform, transform); // smooth zoom
+    // }
+
+    function zoomToNode(d) {
+      const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
+      
+      const connectedLinks = links.filter(l => l.source === d || l.target === d);
+      const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
+          
+      // Calculate average distance to connections
+        let avgDistance = 0;
+        if (connectedNodes.length > 0) {
+          const totalDistance = connectedNodes.reduce((sum, node) => {
+            const dx = node.x - d.x;
+            const dy = node.y - d.y;
+            return sum + Math.sqrt(dx * dx + dy * dy);
+          }, 0);
+          avgDistance = totalDistance / connectedNodes.length;
+        }
+        // Scale based on how spread out the connections are
+        const targetRadius = 100; // How much space you want to see
+        const scale = Math.min(
+          Math.max(targetRadius / avgDistance, 0.5),
+          3
+        );
+      const transform = d3.zoomIdentity
+        .translate(svgWidth / 2, svgHeight / 2)
+        .scale(scale)
+        .translate(-d.x, -d.y);
+      
+      svg.transition()
+        .duration(750)
+        .call(zoom.transform, transform);
+      
+      // Step 2: Pull connected nodes closer WHILE zooming
+      const attractForce = (alpha) => {
+        connectedNodes.forEach(node => {
+          const dx = d.x - node.x;
+          const dy = d.y - node.y;
+          const distance = Math.sqrt(dx * dx + dy * dy) || 1;
+          
+          // Pull nodes within a certain radius
+          const targetDistance = 200; // Desired distance from center node
+          if (distance > targetDistance) {
+            const strength = 0.5 * alpha;
+            node.vx += (dx / distance) * strength;
+            node.vy += (dy / distance) * strength;
+          }
+        });
+      };
+  
+  simulationRef.current
+    .force("tempAttract", attractForce)
+    .alphaTarget(0.3)
+    .restart();
+  
+  // Step 3: Remove temporary force after animation
+  setTimeout(() => {
+    simulationRef.current
+      .force("tempAttract", null)
+      .alphaTarget(0);
+  }, 1500);
+}
 
     // set click node zoom
     function zoomToNode(d) {
@@ -149,13 +244,13 @@ const ForceDirectedGraph = ({
 
     // Create links
     const link = linkGroup.selectAll("line")
+
       .data(links)
       .join("line")
       .attr("class", "link-line")
       .attr("stroke", "#46444dff")
       .attr("stroke-opacity", 0.7)
       .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
-  
     // Create nodes
     const node = nodeGroup.selectAll("g")
       .data(nodes)
@@ -165,7 +260,6 @@ const ForceDirectedGraph = ({
         .on("drag", dragged)
         .on("end", dragended)
       )
-
       // Set up clipPath
       node.append("clipPath")
         .attr("id", d => `circle-clip-${d.size}`)  // unique id per node
@@ -179,7 +273,6 @@ const ForceDirectedGraph = ({
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
-      
       node.each(function(d) {
         const current = d3.select(this);
         if (d.file) {
@@ -243,20 +336,17 @@ const ForceDirectedGraph = ({
           .style("left", (event.pageX + 10) + "px")
           .style("top", (event.pageY + 10) + "px");
       })
-      
-      .on("mouseleave", (event, d) => {
-        tooltipRef.current
-          .style("opacity", 0);
 
-        // Restore connected link colors
-        d3.selectAll(".link-line")
-          .filter(l => l.source.id === d.id || l.target.id === d.id)
-          .attr("stroke", "#46444dff")
-          .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
+      .on("mouseleave", (event, d) => {
+        tooltipRef.current.style("opacity", 0);
+          d3.selectAll(".link-line")
+            .filter(l => l.source.id === d.id || l.target.id === d.id)
+            .attr("stroke", "#46444dff")
+            .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
       })
-      
       .on("click", function(event, d) {
         // Track selected node(s) temporarily
+        let selectedNodes = [];
         let tempSelectedNodes = [d];
         // Zoom to selection
         if (tempSelectedNodes.length === 1) {
@@ -265,6 +355,7 @@ const ForceDirectedGraph = ({
           zoomToNode(tempSelectedNodes);
         }
         // Clear selection array
+
         tempSelectedNodes = [];
       })
       
@@ -316,7 +407,6 @@ const ForceDirectedGraph = ({
           .attr("y2", d => d.target.y);
         node.attr("transform", d => `translate(${d.x},${d.y})`);
       });
-
     return () => {
       simulation.stop();
     };
@@ -400,7 +490,6 @@ const ForceDirectedGraph = ({
           ref={svgRef}
           width={width}
           height={height}
-          // viewBox={`0 0 ${width} ${height}`} 
           className="graph-svg"
         />
         {/* Tooltip */}
