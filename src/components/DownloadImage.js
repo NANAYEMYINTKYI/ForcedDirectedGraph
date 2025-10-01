@@ -20,4 +20,3 @@ jsonData.forEach((data) => {
     console.log(filename);
     downloadImage(imageUrl, filename).catch(console.error);
 });
-

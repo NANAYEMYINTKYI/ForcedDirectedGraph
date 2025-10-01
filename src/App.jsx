@@ -1,8 +1,9 @@
-import {useState, useEffect, useMemo, useCallback } from "react";
+import {useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData } from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import TagManager from "./components/TagManager";
+import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
 import rawData from './data/mabData.json';
 import countrylink from '../src/data/CountryLink.json';
@@ -17,6 +18,9 @@ const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const [currentDataset, setCurrentDataset] = useState('people');
+  const [selectedTitle, setSelectedTitle] = useState(null);
+  const [selectedConnection, setselectedConnection] = useState(null);
+  const [selectedNode, setselectedNode] = useState(null);
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -30,6 +34,7 @@ const App = () => {
     });
   }, [yearRange]);
   
+  // dataset
   const datasets = useMemo(() => {
     return {
       country: {
@@ -45,15 +50,28 @@ const App = () => {
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
   };
-  // const handleDatasetChange = (key) => setCurrentDataset(key);
-  // Handle dataset change - also memoized
   const handleDatasetChange = useCallback((key) => {
     setCurrentDataset(key);
+    setSelectedTitle(null);
+    setselectedConnection(null);
+    setselectedNode(null);
   }, []);
 
   // Handle filtered data from TagManager
   const handleFilterChange = useCallback((data) => {
     setFilteredData(data);
+  }, []);
+
+  const handleTitleChange = useCallback((data) => {
+    setSelectedTitle(data);
+    setselectedConnection(null);
+    setselectedNode(data);
+  }, []);
+
+  const handleConnectionChange = useCallback((data) => {
+    setselectedConnection(data);
+    setSelectedTitle(null);
+    setselectedNode(data);
   }, []);
 
   // Memoize the graph props to prevent unnecessary re-renders
@@ -63,11 +81,24 @@ const App = () => {
     handleDatasetChange,
     nodes: filteredData.nodes,
     links: filteredData.links,
+    selectnode: selectedNode,
     width: window.innerWidth ,
     height: window.innerHeight
-  }), [currentDataset, filteredData.nodes, filteredData.links]);
+  }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links]);
+  // console.log(filteredData.nodes)
+   
+  // Title list
+  let projects = filteredData.nodes 
+  .filter(d => d.group === 9)
+  .map(d => ({value: d.id, label: d.id}));
 
-    return (
+  // non Title list
+  let connection = filteredData.nodes 
+  .filter(d => d.group !== 9)
+  .map(d => ({value: d.id, label: d.id}));
+  
+  // UI
+  return (
     <div className="app">
       {/* Header */}
       <header className="header">
@@ -118,8 +149,39 @@ const App = () => {
           />
         </section> */}
         </div>
-      {/* Graph Container */}
-      <main className="app-content">
+      {/* Tag filter component */}
+      <TagManager 
+        datasets={datasets}
+        currentDataset={currentDataset}
+        mabData={FilterData}
+        onFilterChange={handleFilterChange}
+        showCounts={true}
+      />
+      <ListSearch 
+        options = {projects}
+        Title = "Search by Title"
+        placeholder = "Input Title"
+        onFilterChange={handleTitleChange}
+        value = {selectedTitle}
+      />
+      <ListSearch 
+        options = {connection}
+        Title = "Search by People"
+        placeholder = "Input People"
+        onFilterChange = {handleConnectionChange}
+        visible = {currentDataset === 'people'}
+        value = {selectedConnection}
+      />
+      <ListSearch 
+        options = {connection}
+        Title = "Search by Country"
+        placeholder = "Input Country"
+        onFilterChange = {handleConnectionChange}
+        visible = {currentDataset === 'country'}
+        value = {selectedConnection}
+      />
+      <div className="app-content">
+        {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />
       </main>
       <div className="buttom-controls">

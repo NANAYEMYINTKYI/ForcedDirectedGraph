@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import Select from 'react-select';
 
 // Parse tag arrays from JSON strings
 const parseTagsArray = (tagData) => {
@@ -28,7 +29,8 @@ const TagManager = ({
   currentDataset, 
   mabData, 
   onFilterChange,
-  showCounts = true 
+  showCounts = true,
+  width = '300'
 }) => {
   const [filterTag, setFilterTag] = useState("");
   const [processedDatasets, setProcessedDatasets] = useState({});
@@ -78,7 +80,7 @@ const TagManager = ({
 
     setProcessedDatasets(mergedDatasets);
 
-    // 👇 Apply filtering immediately after processing
+    // Apply filtering immediately after processing
     const activeDataset = mergedDatasets[currentDataset];
     if (!activeDataset) return;
 
@@ -144,7 +146,7 @@ const TagManager = ({
         node.tags.forEach(tag => {
           if (tag) {
             const cleanTag = tag.replace(/^#/, "").trim();
-            // 👇 Filter out tags that are purely numbers
+            // Filter out tags that are purely numbers
             if (cleanTag && !/^\d+$/.test(cleanTag)) {
               tagSet.add(cleanTag);
             }
@@ -228,19 +230,40 @@ const TagManager = ({
   useEffect(() => {
     setFilterTag("");
   }, [currentDataset]);
+  
+  const options = [
+    { value: '', label: `All ${showCounts ? `(${filteredData.nodes.length} nodes, ${filteredData.links.length} links)` : ''}` },
+    ...allTags.map(tag => ({ value: tag, label: tag })),
+  ];
+
+  const handleChange = (selectedOption) => {
+    handleTagChange(selectedOption.value);
+  };
+
 
   return (
-    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center"}}>
       <label>
         Filter by Tag:{" "}
-        <select value={filterTag} onChange={(e) => handleTagChange(e.target.value)}>
+        <Select
+          value={options.find(opt => opt.value === filterTag)}
+          onChange={handleChange}
+          options={options}
+          isSearchable
+          styles={{
+            container: (base) => ({
+              ...base,
+              width: `${width}px`,
+            })}}
+        />
+        {/* <select value={filterTag} onChange={(e) => handleTagChange(e.target.value)}>
           <option value="">
             All {showCounts && `(${filteredData.nodes.length} nodes, ${filteredData.links.length} links)`}
           </option>
           {allTags.map(tag => (
             <option key={tag} value={tag}>{tag}</option>
           ))}
-        </select>
+        </select> */}
       </label>
     </div>
   );

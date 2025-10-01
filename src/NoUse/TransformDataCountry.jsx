@@ -13,7 +13,11 @@ import rawData from './../data/mabData.json' with { type: 'json' };
 
 
 // Add new country
-let Add = { country: "United States of America", continent: "North America" };
+let Add = [
+  { country: "United States of America", continent: "North America" }, 
+  { country: "Kosovo", continent: "Europe" },
+  { country: "Taiwan", continent: "Asia" }
+];
 countryToContinent.push(Add);
 
 // Define Group
@@ -49,14 +53,35 @@ function setGroup(location, isproject = false) {
   }
 }
 
-// node → connectionNode
-let links = rawData
-  .filter(d => d.Title && d.Location.split(",")[0].trim())
-  .map(d => ({
-    source: d.Title,
-    target: d.Location.split(",")[0].trim(),
-    strength: 1
-  }));
+  // node → connectionNode
+  const seenLinks = new Set();
+  let links = rawData 
+  .filter(d => d.Title && d.Location)
+  .flatMap(d => d.Location 
+      .split(",") 
+      .map(l => l.trim()) 
+      .filter(l => setGroup(l) !== 8) 
+      .map(l => { 
+      const key = `${d.Title}→${l}`; 
+      if (seenLinks.has(key)) return null; 
+      seenLinks.add(key); 
+      return { 
+          source: d.Title, 
+          target: l, 
+          strength: 1 
+      }; 
+      }) 
+  ) 
+  .filter(Boolean); // Remove nulls
+
+// // node → connectionNode
+// let links = rawData
+//   .filter(d => d.Title && d.Location.split(",")[0].trim())
+//   .map(d => ({
+//     source: d.Title,
+//     target: d.Location.split(",")[0].trim(),
+//     strength: 1
+//   }));
 
 let nodeMap = {};
 // Add nodes
@@ -77,15 +102,33 @@ rawData.forEach((item) => {
 });
 
 // Add connectionNode
-rawData.forEach((item) => {
-  if (!nodeMap[item.Location.split(",")[0].trim()]) {
-    nodeMap[item.Location.split(",")[0].trim()] = {
-      id: item.Location.split(",")[0].trim(),
-      size: 24,
-      group: setGroup(item.Location),
-    };
-  }
-});
+    rawData.forEach((item) => {
+    if (!item.Location) return;
+    item.Location
+        .split(",")
+        .map(name => name.trim())
+        .filter(name => name)
+        .filter(name => setGroup(name) !== 8 )
+        .forEach(location => {
+        if (!nodeMap[location]) {
+            nodeMap[location] = {
+            id: location,
+            size: 34,
+            group: setGroup(location)
+            };
+        }
+        });
+    });
+
+// rawData.forEach((item) => {
+//   if (!nodeMap[item.Location.split(",")[0].trim()]) {
+//     nodeMap[item.Location.split(",")[0].trim()] = {
+//       id: item.Location.split(",")[0].trim(),
+//       size: 24,
+//       group: setGroup(item.Location),
+//     };
+//   }
+// });
 
 // Count occurrences
 links.forEach((link) => {
