@@ -15,9 +15,9 @@ Object.keys(imageslist).forEach((path) => {
 
 // this is forced-directed graph component
 const ForceDirectedGraph = ({ 
-  datasets,
-  currentDataset,
-  handleDatasetChange,
+  // datasets,
+  // currentDataset,
+  // handleDatasetChange,
   nodes,
   links,
   width,
@@ -105,37 +105,57 @@ const dragended = useCallback(function(event, d) {
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    const initialTransform = d3.zoomIdentity.translate(750,200).scale(0.04); 
+    const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
-   function zoomToNode(d) {
-      const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
-      const desiredSize = 800; // how "big" the node should appear
-      const scale = Math.min(svgWidth, svgHeight) / desiredSize;
-
-      const transform = d3.zoomIdentity
-        .translate(svgWidth / 2, svgHeight / 2) // center of visible SVG
-        .scale(scale)
-        .translate(-d.x, -d.y); // move node into center
-
-      svg.transition()
-        .duration(750)
-        .call(zoom.transform, transform); // smooth zoom
-    }
+    function zoomToNode(d) {
+            const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
+          // Get all connected nodes
+          const connectedLinks = links.filter(l => l.source === d || l.target === d);
+          const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
+          // Calculate the average distance from the target node to its connections
+          let avgDistance = 0;
+          if (connectedNodes.length > 0) {
+            const totalDistance = connectedNodes.reduce((sum, node) => {
+              const dx = node.x - d.x;
+              const dy = node.y - d.y;
+              return sum + Math.sqrt(dx * dx + dy * dy);
+            }, 0);
+            avgDistance = totalDistance / connectedNodes.length;
+          }
+          const baseSize = 500;
+          const connectionsCount = connectedLinks.length;
+          const sizePerConnection = 50;
+          const distanceFactor = avgDistance * 0.5; // adjust this multiplier to control distance influence
+          
+          const desiredSize = Math.min(
+            baseSize + (connectionsCount * sizePerConnection) + distanceFactor,
+            5000 // max zoom out
+          );
+          
+          const scale = Math.min(svgWidth, svgHeight) / desiredSize;
+          console.log(scale)
+          const transform = d3.zoomIdentity
+            .translate(svgWidth / 2, svgHeight / 2)
+            .scale(scale)
+            .translate(-d.x, -d.y); // center on the clicked node
+          svg.transition()
+            .duration(750)
+            .call(zoom.transform, transform); // smooth zoom
+        }
 
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("y", d3.forceY(height/2))
-      .force("x", d3.forceX(width/2))
+      .force("y", d3.forceY(height/2).strength(0.15))
+      .force("x", d3.forceX(width/2).strength(0.15))    
       .force("link", d3.forceLink(links).id(d => d.id).strength(0.25)) // Attraction
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
       .alpha(3) // analogous to temperature in simulated annealing
-      .alphaDecay(0.05)
-      .alphaTarget(0);
+      .alphaDecay(0.05);
 
     simulationRef.current = simulation;
     // Create links
@@ -171,7 +191,6 @@ const dragended = useCallback(function(event, d) {
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
-      let selectedNodes = [];
       node.each(function(d) {
         const current = d3.select(this);
         if (d.file) {
@@ -231,6 +250,7 @@ const dragended = useCallback(function(event, d) {
       })
       .on("click", function(event, d) {
         // Track selected node(s) temporarily
+        let selectedNodes = [];
         let tempSelectedNodes = [d];
         // Zoom to selection
         if (tempSelectedNodes.length === 1) {

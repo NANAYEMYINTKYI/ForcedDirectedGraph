@@ -73,14 +73,9 @@ const App = () => {
       <header className="header">
         <h1>MAB Social Graph</h1>
       </header>
-        {/* Grapph container */}
-      {/* <main className="app-content">
-        <ForceDirectedGraph {...graphProps} />
-      </main> */}
       <div className="topcontrols">
       {/* Dataset Selector */}
       <section className="dataset-selector">
-        <h4>Choose Dataset</h4>
         <div className="dataset-buttons">
           {Object.entries(datasets).map(([key, dataset]) => (
             <button

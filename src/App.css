@@ -30,6 +30,7 @@ html, body {
   flex-direction: column;
   overflow: hidden;
   position: relative;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .app-content {
@@ -49,19 +50,24 @@ html, body {
 .topcontrols {
   position: absolute;
   top: 20px;
-  left: 20px;
+  right: 20px;
   z-index: 50;
-  max-width: min(300px, 25vw); /* Responsive width */
-  max-height: calc(100% - 180px); /* Leave space for bottom controls */
+  width: fit-content; /* Auto-size based on content */
+  height: fit-content;
+  /* min-width: 280px; /* Minimum width */
+  max-width: 400px; /* Maximum width to prevent too wide */   */
   overflow-y: auto; /* Scroll if content too long */
   background: rgba(255, 255, 255, 0.95);
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   pointer-events: auto;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .dataset-btn {
+  width: fit-content;
   background: linear-gradient(45deg, #f8f9fa, #e9ecef);
   border: 2px solid #dee2e6;
   color: #495057;
@@ -104,6 +110,7 @@ html, body {
 
 .dataset-buttons {
   display: flex;
+  width: fit-content;
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
