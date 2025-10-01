@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
-// import linkdata from './../utilities/LinkData.json'
-// import nodedata from './../utilities/NodeData.json'
 import './ForcedDirectedGraph.css'
 
 // Import all images from a folder
@@ -14,12 +12,10 @@ Object.keys(imageslist).forEach((path) => {
 });
 
 // this is forced-directed graph component
-const ForceDirectedGraph = ({ 
-  datasets,
-  currentDataset,
-  handleDatasetChange,
+const ForceDirectedGraph = ({
   nodes,
   links,
+  selectnode,
   width,
   height
 }) => {
@@ -27,7 +23,6 @@ const ForceDirectedGraph = ({
   const svgRef = useRef();
   const simulationRef = useRef();
   const tooltipRef = useRef();
-  const linkElementsRef = useRef(); // ⬅️ add this at the top
 
   // State
   const [chargeStrength, setChargeStrength] = useState(1000);
@@ -45,7 +40,6 @@ const ForceDirectedGraph = ({
     if (!event.active ) simulationRef.current
     .alphaTarget(0.01)
     .alpha(1.01)
-    // .alphamin(1.01)
     .restart();
     d.fx = d.x;
     d.fy = d.y;
@@ -55,24 +49,15 @@ const ForceDirectedGraph = ({
       .filter(l => l.source.id === d.id || l.target.id === d.id)
       .attr("stroke", "#FF5c00")
       .attr("stroke-width", 10);
-  
-      d3.select(this)
-        .select("circle")
-        .style("stroke", "red");
   }, []);
 
   const dragged = useCallback(function(event, d) {
     d.fx = event.x;
     d.fy = event.y;
-  
-    d3.select(this)
-      .select("circle")
-      .style("stroke", "red");
   }, []);
 
   const dragended = useCallback(function(event, d) {
     if (!event.active) simulationRef.current
-      // .alphaDecay(0.01)
       .alphaTarget(0.5)
       .alpha(1.01)
 
@@ -87,16 +72,13 @@ const ForceDirectedGraph = ({
       .filter(l => l.source.id === d.id || l.target.id === d.id)
       .attr("stroke", "#46444dff")
       .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
-  
-    d3.select(this)
-      .select("circle")
-      .style("stroke", "steelblue");
   }, []);
-  
+
   // Initialize and update graph when dependent
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg 
     svg.selectAll("*").remove(); // Clear previous content 
+
     // tooltip appear by checking current tooltip 
     if (!tooltipRef.current) {
       tooltipRef.current = d3.select("body")
@@ -112,12 +94,15 @@ const ForceDirectedGraph = ({
         .style("font-size", "12px")
         .style("z-index", 1000);
     }
+
     // Create groups
     const g=svg.append("g").attr("class","graph-group");
+    
     // set zoom behavior
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
     };
+    
     const zoom = d3.zoom()
       .scaleExtent([0.01, 30]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
@@ -129,30 +114,39 @@ const ForceDirectedGraph = ({
     svg.call(zoom.transform, initialTransform); // apply starting transform
     g.attr("transform", initialTransform);      // also set g’s transform
 
+    // set click node zoom
+    function zoomToNode(d) {
+      const svgWidth = +svg.attr("width");
+      const svgHeight = +svg.attr("height");
+      const desiredSize = 800; // how "big" the node should appear
+      const scale = Math.min(svgWidth, svgHeight) / desiredSize;
+      // const t = d3.zoomTransform(svg.node()); // current transform
+      const transform = d3.zoomIdentity
+        .translate(svgWidth / 2, svgHeight / 2) // move viewport to center
+        .scale(scale)
+        .translate(-d.x, -d.y); // move node into center
+
+      svg.transition()
+        .duration(750)
+        .call(zoom.transform, transform); // smooth zoom
+    }
+
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
+
     // Create D3 force simulation
     const simulation = d3.forceSimulation(nodes)
       .force("y", d3.forceY(width))
       .force("x", d3.forceX(height))
       .force("link", d3.forceLink(links).id(d => d.id).distance(10).strength(0.2)) // Attraction
-      // .force("charge", d3.forceManyBody().strength(chargeStrength)) 
-      .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction // negativre represent repulsion // impact every node
+      .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction (negative represent repulsion, impact every node)
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
-      // .alphaTarget(1)
       .alpha(10)
       .alphaDecay(0.05) 
 
-    const durationPerNode = 5; // milliseconds
-    const duration = Math.min(nodes.length * durationPerNode, 10000);
-
-    // ⏹ Turn off alphaTarget after duration
-    setTimeout(() => {
-      simulation.alphaTarget(0);
-    }, duration);
-
     simulationRef.current = simulation;
+
     // Create links
     const link = linkGroup.selectAll("line")
       .data(links)
@@ -182,8 +176,6 @@ const ForceDirectedGraph = ({
       node.append("circle")
         .attr("r", d => d.size)
         .attr("fill", d => colorScale(d.group))
-        // .attr("r", 20)
-        // .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
         .style("cursor", "pointer")
@@ -210,9 +202,9 @@ const ForceDirectedGraph = ({
           .style("cursor", "pointer");
         }
       })
-      .on("mouseenter", (event, d) => {
 
-        // Show tooltip (your existing logic)
+      .on("mouseenter", (event, d) => {
+        // Set tooltip
         if (d.group === 9) {
           tooltipRef.current
             .style("opacity", 1)
@@ -225,7 +217,7 @@ const ForceDirectedGraph = ({
           tooltipRef.current
             .style("opacity", 1)
             .html(`<strong>${d.id}</strong><br/> 
-              <strong>Position:</strong> ${d.positions}`);
+              <strong>Position:</strong> ${d.positions.join(", ")}`);
         } else {
           tooltipRef.current
             .style("opacity", 1)
@@ -262,6 +254,32 @@ const ForceDirectedGraph = ({
           .attr("stroke", "#46444dff")
           .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
       })
+      
+      .on("click", function(event, d) {
+        // Track selected node(s) temporarily
+        let tempSelectedNodes = [d];
+        // Zoom to selection
+        if (tempSelectedNodes.length === 1) {
+          zoomToNode(tempSelectedNodes[0]);
+        } else if (tempSelectedNodes.length > 1) {
+          zoomToNode(tempSelectedNodes);
+        }
+        // Clear selection array
+        tempSelectedNodes = [];
+      })
+      
+      // Find selectnode to zoom
+      if (selectnode) {
+        const select = nodes.find(
+          n => n.id.toLowerCase().replace(/\s+/g, "_") === 
+              selectnode.value.toLowerCase().replace(/\s+/g, "_")
+        );
+
+        if (select) {
+          // simulate click on this node
+          zoomToNode(select);
+        }
+      }
 
       // Aligh text in node to be center
       node.append("foreignObject")
@@ -302,35 +320,37 @@ const ForceDirectedGraph = ({
     return () => {
       simulation.stop();
     };
-  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended]);
+  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);
 
-  // Handle repulsion
-  const handleChargeChange = useCallback((e) => {
-    const value = parseInt(e.target.value);
-    setChargeStrength(value);
-    if (simulationRef.current) {
-      simulationRef.current.force("charge", d3.forceManyBody().strength(-value));
-      simulationRef.current.alpha(0.3).restart();
-    }
-  }, []);
-  // handle link strength
-  const handleLinkStrengthChange = useCallback((e) => {
-    const value = parseFloat(e.target.value);
-    setLinkStrength(value);
-    if (simulationRef.current) {
-      simulationRef.current.force("link", d3.forceLink(links).id(d => d.id).strength(-value));
-      simulationRef.current.alpha(0.5).restart();
-    }
-  }, [links]);
-  // handle node center change
-  const handleCenterStrengthChange = useCallback((e) => {
-    const value = parseFloat(e.target.value);
-    setCenterStrength(value);
-    if (simulationRef.current) {
-      simulationRef.current.force("center", d3.forceCenter(width / 2, height / 2).strength(value));
-      simulationRef.current.alpha(0.3).restart();
-    }
-  }, [width, height]);
+  // // Handle repulsion
+  // const handleChargeChange = useCallback((e) => {
+  //   const value = parseInt(e.target.value);
+  //   setChargeStrength(value);
+  //   if (simulationRef.current) {
+  //     simulationRef.current.force("charge", d3.forceManyBody().strength(-value));
+  //     simulationRef.current.alpha(0.3).restart();
+  //   }
+  // }, []);
+
+  // // handle link strength
+  // const handleLinkStrengthChange = useCallback((e) => {
+  //   const value = parseFloat(e.target.value);
+  //   setLinkStrength(value);
+  //   if (simulationRef.current) {
+  //     simulationRef.current.force("link", d3.forceLink(links).id(d => d.id).strength(-value));
+  //     simulationRef.current.alpha(0.5).restart();
+  //   }
+  // }, [links]);
+
+  // // handle node center change
+  // const handleCenterStrengthChange = useCallback((e) => {
+  //   const value = parseFloat(e.target.value);
+  //   setCenterStrength(value);
+  //   if (simulationRef.current) {
+  //     simulationRef.current.force("center", d3.forceCenter(width / 2, height / 2).strength(value));
+  //     simulationRef.current.alpha(0.3).restart();
+  //   }
+  // }, [width, height]);
 
   return (
     <div className="force-graph-container">

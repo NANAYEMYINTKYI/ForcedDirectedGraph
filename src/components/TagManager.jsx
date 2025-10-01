@@ -29,7 +29,8 @@ const TagManager = ({
   currentDataset, 
   mabData, 
   onFilterChange,
-  showCounts = true 
+  showCounts = true,
+  width = '300'
 }) => {
   const [filterTag, setFilterTag] = useState("");
   const [processedDatasets, setProcessedDatasets] = useState({});
@@ -79,7 +80,7 @@ const TagManager = ({
 
     setProcessedDatasets(mergedDatasets);
 
-    // 👇 Apply filtering immediately after processing
+    // Apply filtering immediately after processing
     const activeDataset = mergedDatasets[currentDataset];
     if (!activeDataset) return;
 
@@ -145,7 +146,7 @@ const TagManager = ({
         node.tags.forEach(tag => {
           if (tag) {
             const cleanTag = tag.replace(/^#/, "").trim();
-            // 👇 Filter out tags that are purely numbers
+            // Filter out tags that are purely numbers
             if (cleanTag && !/^\d+$/.test(cleanTag)) {
               tagSet.add(cleanTag);
             }
@@ -252,7 +253,7 @@ const TagManager = ({
           styles={{
             container: (base) => ({
               ...base,
-              width: '300px',
+              width: `${width}px`,
             })}}
         />
         {/* <select value={filterTag} onChange={(e) => handleTagChange(e.target.value)}>

@@ -4,6 +4,7 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import { PlayArrow, Pause } from '@mui/icons-material';
 
+//set marks
 const marks = [
   { value: 1999, label: '1999' },
   { value: 2023, label: '2023' },
@@ -18,6 +19,7 @@ const RangeSlider = ({ value, onChange, label, width = 300 }) => {
   const intervalRef = useRef(null);
 
   useEffect(() => {
+    // set playing
     if (isPlaying) {
       intervalRef.current = setInterval(() => {
         onChange(null, (prev) => {
