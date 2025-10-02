@@ -47,13 +47,9 @@ const App = () => {
       }
     };
   }, [FilterData]);
-  
-  // Handle year change
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
   };
-
-  // Handle dataset change
   const handleDatasetChange = useCallback((key) => {
     setCurrentDataset(key);
     setSelectedTitle(null);
@@ -86,8 +82,8 @@ const App = () => {
     nodes: filteredData.nodes,
     links: filteredData.links,
     selectnode: selectedNode,
-    width: 800,
-    height: 600
+    width: window.innerWidth ,
+    height: window.innerHeight
   }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links]);
   // console.log(filteredData.nodes)
    
@@ -105,12 +101,12 @@ const App = () => {
   return (
     <div className="app">
       {/* Header */}
-      <div className="header">
-        <h1>🌐 Force-Directed Graph</h1>
-      </div>
-      {/* Controls */}
-      <div className="dataset-selector">
-        <h3>Choose Dataset:</h3>
+      <header className="header">
+        <h1>MAB Social Graph</h1>
+      </header>
+      <div className="topcontrols">
+      {/* Dataset Selector */}
+      <section className="dataset-selector">
         <div className="dataset-buttons">
           {Object.entries(datasets).map(([key, dataset]) => (
             <button
@@ -122,21 +118,36 @@ const App = () => {
             </button>
           ))}
         </div>
-      </div>
-        {/* Timeline */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center', 
-          gap: "15px", 
-          marginBottom: "10px"
-        }}>
-          <p style={{ fontWeight: '600', margin: '2.5px' }}>Select Year Range:</p>
-          <Timeline
-            value={yearRange}
-            onChange={handleRangeChange}
-            label="Select year range"
-            width={500}
+      </section>
+     
+        {/* Tag Filter */}
+        <section>
+          <TagManager
+            datasets={datasets}
+            currentDataset={currentDataset}
+            mabData={FilterData}
+            onFilterChange={handleFilterChange}
+            showCounts={true}
           />
+        </section>
+         {/* <section className="tagmanager-section">
+          <TagManager
+            datasets={datasets}
+            currentDataset={currentDataset}
+            mabData={FilterData}
+            onFilterChange={handleFilterChange}
+            showCounts={true}
+          />
+        </section>
+         <section className="tagmanager-section">
+          <TagManager
+            datasets={datasets}
+            currentDataset={currentDataset}
+            mabData={FilterData}
+            onFilterChange={handleFilterChange}
+            showCounts={true}
+          />
+        </section> */}
         </div>
       {/* Tag filter component */}
       <TagManager 
@@ -172,9 +183,22 @@ const App = () => {
       <div className="app-content">
         {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />
+      </main>
+      <div className="buttom-controls">
+      {/* Timeline */}
+        <section className="timeline-section">
+          <p>Select Year Range:</p>
+          <Timeline 
+            value={yearRange} 
+            onChange={handleRangeChange} 
+            label="Select year range" 
+            width={Math.min(500, window.innerWidth - 100)} // Make responsive
+          />
+        </section>
       </div>
     </div>
   );
+
 }
 
 export default App;
