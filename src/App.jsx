@@ -5,7 +5,7 @@ import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import TagManager from "./components/TagManager";
 import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
-import rawData from './data/mabData.json';
+import rawData from './data/mabDataFull.json';
 import countrylink from '../src/data/CountryLink.json';
 import countrynode from '../src/data/CountryNode.json';
 import yearlink from '../src/data/YearLink.json';

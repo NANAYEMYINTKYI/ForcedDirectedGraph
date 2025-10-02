@@ -51,11 +51,13 @@ rawData.forEach(title => {
 
       // Remove &amp
       cleaned = cleaned.replace(/amp/g, "");
-      cleaned = cleaned.replace(/AV&C/g, "");
+      // cleaned = cleaned.replace(/AV&C/g, "");
 
       // Replace /, \, & (not comma) with |
       cleaned = cleaned.replace(/, (?=(?!inc|ltd|llc|corp|co))/gi, "|");
-      cleaned = cleaned.replace(/[\\&;]/g, "|");
+      // cleaned = cleaned = cleaned.replace(/(?<!AV)&/g, "|");
+      cleaned = cleaned.replace(/(?<!AV)&(?=\s)/g, "|");
+      cleaned = cleaned.replace(/[\\;]/g, "|");
 
       cleaned
         .split("|")
