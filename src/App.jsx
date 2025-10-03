@@ -17,6 +17,7 @@ import './App.css'
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
+  const [filterTag, setFilterTag]= useState("");
   const [currentDataset, setCurrentDataset] = useState('people');
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
@@ -82,9 +83,10 @@ const App = () => {
     nodes: filteredData.nodes,
     links: filteredData.links,
     selectnode: selectedNode,
+    filterTag: filterTag,
     width: window.innerWidth ,
     height: window.innerHeight
-  }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links]);
+  }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links, filterTag]);
   // console.log(filteredData.nodes)
    
   // Title list
@@ -125,6 +127,7 @@ const App = () => {
             currentDataset={currentDataset}
             mabData={FilterData}
             onFilterChange={handleFilterChange}
+            onTagSelect= {setFilterTag}
             showCounts={true}
           />
           <ListSearch 
