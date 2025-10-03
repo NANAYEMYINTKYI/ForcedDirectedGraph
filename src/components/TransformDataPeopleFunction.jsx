@@ -46,29 +46,39 @@ rawData.forEach(title => {
       // Clean parentheses
       let cleaned = String(value).trim().replace(/\s*\([^)]*\)/g, "");
 
+      // Normalize for case-insensitive checks
+      const lowerCleaned = cleaned.toLowerCase();
+
       // Skip if contains .com or .net
-      if (cleaned.includes(".com") || cleaned.includes(".net")) return;
+      if (lowerCleaned.includes(".com") || lowerCleaned.includes(".net")) return;
 
-      // Remove &amp
-      cleaned = cleaned.replace(/amp/g, "");
-      cleaned = cleaned.replace(/AV&C/g, "");
+      // Remove &amp and AV&C (case-insensitive)
+      cleaned = cleaned.replace(/amp/gi, "");
+      cleaned = cleaned.replace(/AV&C/gi, "");
 
-      // Replace /, \, & (not comma) with |
-      cleaned = cleaned.replace(/, (?=(?!inc|ltd|llc|corp|co))/gi, "|");
-      cleaned = cleaned.replace(/[\\&;]/g, "|");
+      // Replace comma unless followed by exact suffixes (case-insensitive)
+      cleaned = cleaned.replace(/, (?!(inc\b|ltd\b|llc\b|corp\b|co\b))/gi, "|");
+
+      // Replace /, \, &, ; with |
+      cleaned = cleaned.replace(/[\\\/&;] /g, "|");
 
       cleaned
         .split("|")
         .map(c => c.trim())
         .filter(Boolean)
         .forEach(name => {
-          contributors.push({ name, position: field });
+          contributors.push({
+            name, // original casing preserved
+            normalized: name.toLowerCase(), // optional: for matching or deduplication
+            position: field
+          });
         });
     }
   });
 
   title.Contributors = contributors;
 });
+
   
     // node → connectionNode
     const seenLinks = new Set();
@@ -79,12 +89,13 @@ rawData.forEach(title => {
         // .map(c => c.trim()) 
         // .filter(c => c) 
         .map(c => { 
-        const key = `${d.Title}→${c.name}`; 
+        const key = `${d.Title.toLowerCase()}→${c.normalized}`;
+        // const key = `${d.Title}→${c.name}`; 
         if (seenLinks.has(key)) return null; 
         seenLinks.add(key); 
         return { 
             source: d.Title, 
-            target: c.name, 
+            target: c.normalized, 
             strength: 1 
         }; 
         }) 
@@ -98,6 +109,7 @@ rawData.forEach(title => {
     if (!nodeMap[item.Title]) {
         nodeMap[item.Title] = {
         id: item.Title,
+        label: item.Title,
         year: item.Year,
         location: item.Location,
         description: item.Description,
@@ -121,21 +133,23 @@ rawData.forEach(title => {
         .forEach(contributor => {
           const name = contributor.name;
           const position = contributor.position;
+          const normalizedName = contributor.normalized;
 
-        if (!nodeMap[name]) {
-            nodeMap[name] = {
-            id: name,
+        if (!nodeMap[normalizedName]) {
+            nodeMap[normalizedName] = {
+            id: normalizedName,
+            label: name, // ✅ original casing for display
             size: 34,
             group: 8,
             positions: [position],
             projects: [item.Title]
             };
     } else {
-      if (!nodeMap[name].positions.includes(position)) {
-        nodeMap[name].positions.push(position);
+      if (!nodeMap[normalizedName].positions.includes(position)) {
+        nodeMap[normalizedName].positions.push(position);
       }
-      if (!nodeMap[name].projects.includes(item.Title)) {
-        nodeMap[name].projects.push(item.Title);
+      if (!nodeMap[normalizedName].projects.includes(item.Title)) {
+        nodeMap[normalizedName].projects.push(item.Title);
       }
         }
         });
