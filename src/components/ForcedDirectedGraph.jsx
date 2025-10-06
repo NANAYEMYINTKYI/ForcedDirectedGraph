@@ -261,7 +261,7 @@ const ForceDirectedGraph = ({
         if (d.group === 9) {
           tooltipRef.current
             .style("opacity", 1)
-            .html(`<strong>${d.id}</strong><br/> 
+            .html(`<strong>${d.label}</strong><br/> 
               <strong>Year:</strong> ${d.year}<br/> 
               <strong>Location:</strong> ${d.location}<br/> 
               <strong>Description:</strong> ${d.description}<br/> 
@@ -269,12 +269,12 @@ const ForceDirectedGraph = ({
         } else if (d.positions !== undefined) {
           tooltipRef.current
             .style("opacity", 1)
-            .html(`<strong>${d.id}</strong><br/> 
+            .html(`<strong>${d.label}</strong><br/> 
               <strong>Position:</strong> ${d.positions.join(", ")}`);
         } else {
           tooltipRef.current
             .style("opacity", 1)
-            .html(`<strong>${d.id}</strong><br/> 
+            .html(`<strong>${d.label}</strong><br/> 
               <strong>Continent:</strong> ${d.continent}`);
         }
 
@@ -389,7 +389,7 @@ const ForceDirectedGraph = ({
         .style("text-align", "center")
         .style("color", "#333")
         .style("word-wrap", "break-word")
-        .text(d => d.id)
+        .text(d => d.label)
         
       // Update positions on tick
       simulation.on("tick", () => {

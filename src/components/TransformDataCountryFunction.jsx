@@ -1,6 +1,5 @@
 import countryToContinent from 'country-json/src/country-by-continent.json' with { type: 'json' };// ----- Customize Data Section-----
 
-
 // ----- Customize Data Section-----
 // import rawData from './../data/FilterData.json' with { type: 'json' };
 // node = Title // Focus Node
@@ -61,17 +60,17 @@ export function CountryData(rawData) {
       .map(l => l.trim()) 
       .filter(l => setGroup(l).id !== 8) 
       .map(l => {
-      const key = `${d.Title}→${l}`; 
+      const key = `${d.Title}→${l.toLowerCase()}`; 
       if (seenLinks.has(key)) return null; 
       seenLinks.add(key); 
       return { 
           source: d.Title, 
-          target: l, 
+          target: l.toLowerCase(), 
           strength: 1 
       }; 
       }) 
   ) 
-  .filter(Boolean); // Remove nulls
+  .filter(Boolean);
 
     let nodeMap = {};
 
@@ -80,6 +79,7 @@ export function CountryData(rawData) {
       if (!nodeMap[item.Title]) {
         nodeMap[item.Title] = {
           id: item.Title,
+          label: item.Title,
           year: item.Year,
           location: item.Location,
           description: item.Description,
@@ -103,8 +103,9 @@ export function CountryData(rawData) {
         .filter(name => setGroup(name).id !== 8 )
         .forEach(location => {
           if (!nodeMap[location]) {
-            nodeMap[location] = {
-              id: location,
+            nodeMap[location.toLowerCase()] = {
+              id: location.toLowerCase(),
+              label: location,
               size: 24,
               group: setGroup(location).id,
               continent: setGroup(location).name
@@ -118,13 +119,12 @@ export function CountryData(rawData) {
     if (nodeMap[link.source]) {
         nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 4, 100);
     }
-    if (nodeMap[link.target]) {
-        nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 4, 100);
+    if (nodeMap[link.target.toLowerCase()]) {
+        nodeMap[link.target.toLowerCase()].size = Math.min(nodeMap[link.target.toLowerCase()].size + 4, 100);
     }
     });
 
     const nodes = Object.values(nodeMap);  
 
-    // console.log(nodes);
     return { nodes, links };
 }

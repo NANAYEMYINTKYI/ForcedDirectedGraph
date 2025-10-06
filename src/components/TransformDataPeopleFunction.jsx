@@ -7,26 +7,28 @@
 // Group 9 = Project
 // ----- End Section -----
 
+import { group } from "d3";
+
 // export function processData(rawData) {
 // Fields to merge
 const contributorFields = [
-    "Building or project owner",
-    "Architecture",
-    "Project artist/ concept/ design/ planning",
-    "Structural engineering",
-    "Light design",
-    "Technical layout light",
-    "Display content/ visuals/ showreel",
-    "Light hardware (LED hardware)",
-    "Lighting control software",
-    "Interaction design/ programming",
-    "Mediacredits",
-    "Project co-ordination",
-    "Project sponsor/ support",
-    "Host organization",
-    "Facade design",
-    "Facade construction",
-    "Kinetic engineering"
+  "Building or project owner",
+  "Architecture",
+  "Project artist/ concept/ design/ planning",
+  "Structural engineering",
+  "Light design",
+  "Technical layout light",
+  "Display content/ visuals/ showreel",
+  "Light hardware (LED hardware)",
+  "Lighting control software",
+  "Interaction design/ programming",
+  "Mediacredits",
+  "Project co-ordination",
+  "Project sponsor/ support",
+  "Host organization",
+  "Facade design",
+  "Facade construction",
+  "Kinetic engineering"
 ];
 
 export function PeopleData(rawData) {
@@ -68,9 +70,10 @@ rawData.forEach(title => {
         .filter(Boolean)
         .forEach(name => {
           contributors.push({
-            name, // original casing preserved
-            normalized: name.toLowerCase(), // optional: for matching or deduplication
-            position: field
+            name,
+            normalized: name.toLowerCase(),
+            position: field,
+            group: contributorFields.indexOf(field) + 1
           });
         });
     }
@@ -90,7 +93,6 @@ rawData.forEach(title => {
         // .filter(c => c) 
         .map(c => { 
         const key = `${d.Title.toLowerCase()}→${c.normalized}`;
-        // const key = `${d.Title}→${c.name}`; 
         if (seenLinks.has(key)) return null; 
         seenLinks.add(key); 
         return { 
@@ -100,7 +102,7 @@ rawData.forEach(title => {
         }; 
         }) 
     ) 
-    .filter(Boolean); // Remove nulls
+    .filter(Boolean);
 
     let nodeMap = {};
 
@@ -138,9 +140,9 @@ rawData.forEach(title => {
         if (!nodeMap[normalizedName]) {
             nodeMap[normalizedName] = {
             id: normalizedName,
-            label: name, // ✅ original casing for display
+            label: name,
             size: 34,
-            group: 8,
+            group: [group],
             positions: [position],
             projects: [item.Title]
             };
@@ -166,7 +168,6 @@ rawData.forEach(title => {
     });
 
     const nodes = Object.values(nodeMap);  
-
-    // console.log(nodes);
+    
     return { nodes, links };
 }

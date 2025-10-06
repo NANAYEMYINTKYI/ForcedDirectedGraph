@@ -88,16 +88,17 @@ const App = () => {
     height: window.innerHeight
   }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links, filterTag]);
   // console.log(filteredData.nodes)
+  // console.log(filteredData.links)
    
   // Title list
   let projects = filteredData.nodes 
   .filter(d => d.group === 9)
-  .map(d => ({value: d.id, label: d.id}));
+  .map(d => ({value: d.id, label: d.label}));
 
   // non Title list
   let connection = filteredData.nodes 
   .filter(d => d.group !== 9)
-  .map(d => ({value: d.id, label: d.id}));
+  .map(d => ({value: d.id, label: d.label}));
   
   // UI
   return (
