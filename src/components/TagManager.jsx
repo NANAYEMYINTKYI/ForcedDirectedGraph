@@ -29,6 +29,7 @@ const TagManager = ({
   currentDataset, 
   mabData, 
   onFilterChange,
+  onTagSelect,
   showCounts = true,
   width = '300'
 }) => {
@@ -222,9 +223,12 @@ const TagManager = ({
   }, [processedDatasets, currentDataset, filterTag, onFilterChange]);
 
   // Handle tag filter change
-  const handleTagChange = (tag) => {
-    setFilterTag(tag);
-  };
+ const handleTagChange = (tag) => {
+  setFilterTag(tag);
+  if (onTagSelect) {
+    onTagSelect(tag);  // Add this line to notify parent
+  }
+};
 
   // Reset filter when dataset changes
   useEffect(() => {

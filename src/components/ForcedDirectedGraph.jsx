@@ -16,6 +16,7 @@ const ForceDirectedGraph = ({
   nodes,
   links,
   selectnode,
+  filterTag,
   width,
   height
 }) => {
@@ -303,21 +304,54 @@ const ForceDirectedGraph = ({
         }
         // Clear selection array
 
-        tempSelectedNodes = [];
+        // tempSelectedNodes = [];
       })
       
       // Find selectnode to zoom
+      // if (selectnode) {
+      //   const select = nodes.find(
+      //     n => n.id.toLowerCase().replace(/\s+/g, "_") === 
+      //         selectnode.value.toLowerCase().replace(/\s+/g, "_")
+      //   );
+
+      //   if (select) {
+      //     // simulate click on this node
+      //     zoomToNode(select);
+      //   }
+      // }
       if (selectnode) {
+      setTimeout(() => {
         const select = nodes.find(
           n => n.id.toLowerCase().replace(/\s+/g, "_") === 
               selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
-
         if (select) {
-          // simulate click on this node
-          zoomToNode(select);
+          // ensure simulation updates positions before zoom
+          simulationRef.current.alpha(0.3).restart();
+
+          setTimeout(() => {
+            zoomToNode(select);
+          }, 300);
         }
-      }
+      }, 100);
+    } else if (filterTag) {
+      setTimeout(() => {
+        const matchingNode = nodes.find(node => {
+          if (!node.tags || node.tags.length === 0) return false;
+          return node.tags.some(tag => {
+            const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
+            return cleanTag === filterTag.toLowerCase();
+          });
+        });
+        if (matchingNode) {
+          simulationRef.current.alpha(0.3).restart();
+
+          setTimeout(() => {
+            zoomToNode(matchingNode);
+          }, 300);
+        }
+      }, 50);
+    }
 
       // Aligh text in node to be center
       node.append("foreignObject")
