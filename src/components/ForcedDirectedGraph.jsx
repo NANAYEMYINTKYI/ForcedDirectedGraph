@@ -110,12 +110,6 @@ const ForceDirectedGraph = ({
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    // const initialTransform = d3.behavior.zoom().translate([100,50]).scale(.5);
-    // const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
-    // svg.call(zoom.transform, initialTransform); // apply starting transform
-    // g.attr("transform", initialTransform);      // also set g’s transform
-
-    // Pick scale based on screen size
     let scale;
     if (width < 600) { // telephone size
       scale = 0.03; // small screen → zoom out more
@@ -206,7 +200,6 @@ const ForceDirectedGraph = ({
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
       .alpha(10)
       .alphaDecay(0.05) 
-
     simulationRef.current = simulation;
 
     // Create links
