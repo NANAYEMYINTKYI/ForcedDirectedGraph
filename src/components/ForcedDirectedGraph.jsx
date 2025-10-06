@@ -110,9 +110,28 @@ const ForceDirectedGraph = ({
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
-    svg.call(zoom.transform, initialTransform); // apply starting transform
-    g.attr("transform", initialTransform);      // also set g’s transform
+    // const initialTransform = d3.behavior.zoom().translate([100,50]).scale(.5);
+    // const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
+    // svg.call(zoom.transform, initialTransform); // apply starting transform
+    // g.attr("transform", initialTransform);      // also set g’s transform
+
+    // Pick scale based on screen size
+    let scale;
+    if (width < 600) { // telephone size
+      scale = 0.03; // small screen → zoom out more
+    } else if (height < 1200) { //laptop size
+      scale = 0.06; // medium screen
+    } else {  // large screen 
+      scale = 0.1;  // large screen → zoom in more
+    }
+    // Translate to roughly center your content
+    const tx = width / 2.25;
+    const ty = height / 2.5;
+    // Build transform
+    const initialTransform = d3.zoomIdentity.translate(tx, ty).scale(scale);
+
+    // Apply
+    svg.call(zoom.transform, initialTransform);
 
     function zoomToNode(d) {
       const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
@@ -365,8 +384,8 @@ const ForceDirectedGraph = ({
             .style("font-size", d => d.size/4)
           }})
         .attr("x", d => -d.size*1)
-        .attr("width", d => d.size*2)   // box width
-        .attr("height", 100)  // box height
+        .attr("width", d => d.size*2) 
+        .attr("height", 100) 
         .append("xhtml:div")
         .style("display", "flex")
         .style("flex-direction", "column")
@@ -392,79 +411,8 @@ const ForceDirectedGraph = ({
       simulation.stop();
     };
   }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);
-
-  // // Handle repulsion
-  // const handleChargeChange = useCallback((e) => {
-  //   const value = parseInt(e.target.value);
-  //   setChargeStrength(value);
-  //   if (simulationRef.current) {
-  //     simulationRef.current.force("charge", d3.forceManyBody().strength(-value));
-  //     simulationRef.current.alpha(0.3).restart();
-  //   }
-  // }, []);
-
-  // // handle link strength
-  // const handleLinkStrengthChange = useCallback((e) => {
-  //   const value = parseFloat(e.target.value);
-  //   setLinkStrength(value);
-  //   if (simulationRef.current) {
-  //     simulationRef.current.force("link", d3.forceLink(links).id(d => d.id).strength(-value));
-  //     simulationRef.current.alpha(0.5).restart();
-  //   }
-  // }, [links]);
-
-  // // handle node center change
-  // const handleCenterStrengthChange = useCallback((e) => {
-  //   const value = parseFloat(e.target.value);
-  //   setCenterStrength(value);
-  //   if (simulationRef.current) {
-  //     simulationRef.current.force("center", d3.forceCenter(width / 2, height / 2).strength(value));
-  //     simulationRef.current.alpha(0.3).restart();
-  //   }
-  // }, [width, height]);
-
   return (
     <div className="force-graph-container">
-      {/* <div className="controls">
-        <div className="control-group">
-          <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
-          <input
-            type="range"
-            id="charge-strength"
-            min="10"
-            max="500"
-            value={chargeStrength}
-            onChange={handleChargeChange}
-          />
-        </div>
-
-        <div className="control-group">
-          <label htmlFor="link-strength">Attraction: {linkStrength}</label>
-          <input
-            type="range"
-            id="link-strength"
-            min="0.01"
-            max="20"
-            step="0.1"
-            value={linkStrength}
-            onChange={handleLinkStrengthChange}
-          />
-        </div>
-        
-        <div className="control-group">
-          <label htmlFor="center-strength">Centering: {centerStrength}</label>
-          <input
-            type="range"
-            id="center-strength"
-            min="0"
-            max="1000"
-            step="0.1"
-            value={centerStrength}
-            onChange={handleCenterStrengthChange}
-          />
-        </div>
-      </div> */}
-
       {/* Graph */}
       <div className="graph-container">
         <svg
