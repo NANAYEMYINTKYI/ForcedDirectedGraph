@@ -132,7 +132,9 @@ const ForceDirectedGraph = ({
       
       const connectedLinks = links.filter(l => l.source === d || l.target === d);
       const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
-          
+      // d.fx = d.x;
+      // d.fy = d.y;
+      let scale;
       // Calculate average distance to connections
         let avgDistance = 0;
         if (connectedNodes.length > 0) {
@@ -142,13 +144,17 @@ const ForceDirectedGraph = ({
             return sum + Math.sqrt(dx * dx + dy * dy);
           }, 0);
           avgDistance = totalDistance / connectedNodes.length;
+            // Scale based on how spread out the connections are
+            const targetRadius = 100; // How much space you want to see
+            scale = Math.min(
+              Math.max(targetRadius / avgDistance, 0.5),
+              3
+          );  
+        } else{
+          d.fx = d.x;
+          d.fy = d.y;
+          scale  = 2
         }
-        // Scale based on how spread out the connections are
-        const targetRadius = 100; // How much space you want to see
-        const scale = Math.min(
-          Math.max(targetRadius / avgDistance, 0.5),
-          3
-        );
       const transform = d3.zoomIdentity
         .translate(svgWidth / 2, svgHeight / 2)
         .scale(scale)
@@ -170,11 +176,11 @@ const ForceDirectedGraph = ({
           if (distance > targetDistance) {
             const strength = 0.5 * alpha;
             node.vx += (dx / distance) * strength;
-            node.vy += (dy / distance) * strength;
+            node.vy += (dy / distance) * strength;3
           }
         });
       };
-  
+
     simulationRef.current
       .force("tempAttract", attractForce)
       .alphaTarget(0.3)
@@ -199,7 +205,15 @@ const ForceDirectedGraph = ({
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
       .alpha(10)
-      .alphaDecay(0.05) 
+      .alphaDecay(0.05)      // Update positions on tick
+      .on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      }); 
     simulationRef.current = simulation;
 
     // Create links
@@ -255,7 +269,6 @@ const ForceDirectedGraph = ({
           .style("cursor", "pointer");
         }
       })
-
       .on("mouseenter", (event, d) => {
         // Set tooltip
         if (d.group === 9) {
@@ -318,19 +331,6 @@ const ForceDirectedGraph = ({
 
         // tempSelectedNodes = [];
       })
-      
-      // Find selectnode to zoom
-      // if (selectnode) {
-      //   const select = nodes.find(
-      //     n => n.id.toLowerCase().replace(/\s+/g, "_") === 
-      //         selectnode.value.toLowerCase().replace(/\s+/g, "_")
-      //   );
-
-      //   if (select) {
-      //     // simulate click on this node
-      //     zoomToNode(select);
-      //   }
-      // }
       if (selectnode) {
       setTimeout(() => {
         const select = nodes.find(
@@ -390,16 +390,6 @@ const ForceDirectedGraph = ({
         .style("color", "#333")
         .style("word-wrap", "break-word")
         .text(d => d.id)
-        
-      // Update positions on tick
-      simulation.on("tick", () => {
-        link
-          .attr("x1", d => d.source.x)
-          .attr("y1", d => d.source.y)
-          .attr("x2", d => d.target.x)
-          .attr("y2", d => d.target.y);
-        node.attr("transform", d => `translate(${d.x},${d.y})`);
-      });
     return () => {
       simulation.stop();
     };
