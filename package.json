@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/coreui": "^5.4.3",
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-react": "^2.3.0",
+    "@coreui/react": "^5.9.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.2",
@@ -20,6 +24,7 @@
     "node-fetch": "^3.3.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-pro-sidebar": "^1.1.0",
     "react-select": "^5.10.2"
   },
   "devDependencies": {

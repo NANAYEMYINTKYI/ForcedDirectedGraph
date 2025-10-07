@@ -24,17 +24,24 @@ const ForceDirectedGraph = ({
   const svgRef = useRef();
   const simulationRef = useRef();
   const tooltipRef = useRef();
+  const hasToggledVisibility = useRef(false);
 
   // State
   const [chargeStrength, setChargeStrength] = useState(1000);
   const [linkStrength, setLinkStrength] = useState(0.1);
   const [centerStrength, setCenterStrength] = useState(0.3);
   const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
+  const [graphVisible, setGraphVisible] = useState(false);
 
   // Color scale
   const colorScale = d3.scaleOrdinal()
-    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    .range(["#cb6bffff", "#6e4ecdff", "#4594d1ff", "#96cea2ff", "#e6ff6bff", "#cd9a4eff", "#d14545ff", "#c8c8c8ff", "#000000ff"]);
+    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
+    .range(["#eb7270", "#eb9d70", "#ebc970", 
+      "#e2eb70", "#b6eb70", "#8beb70", 
+      "#70eb80", "#70ebac","#70ebd7",
+      "#70d3eb","#70a8eb","#707ceb",
+      "#8f70eb","#ba70eb","#e670eb",
+      "#eb70c5","#eb7099","#000000ff"]);
 
 
   // Drag functions
@@ -258,7 +265,7 @@ const ForceDirectedGraph = ({
 
       .on("mouseenter", (event, d) => {
         // Set tooltip
-        if (d.group === 9) {
+        if (d.group === 18) {
           tooltipRef.current
             .style("opacity", 1)
             .html(`<strong>${d.label}</strong><br/> 
@@ -399,21 +406,34 @@ const ForceDirectedGraph = ({
           .attr("x2", d => d.target.x)
           .attr("y2", d => d.target.y);
         node.attr("transform", d => `translate(${d.x},${d.y})`);
+        // console.log(simulation.alpha())
+        const alpha = simulation.alpha();
+
+        // Only show the graph once, when alpha is low enough
+        if (alpha < 0.01 && !hasToggledVisibility.current) {
+          hasToggledVisibility.current = true;
+          setGraphVisible(true); // Triggers just once
+        }
       });
+
     return () => {
       simulation.stop();
     };
-  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);
+  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);  
+        console.log(graphVisible)
   return (
     <div className="force-graph-container">
       {/* Graph */}
       <div className="graph-container">
-        <svg
-          ref={svgRef}
-          width={width}
-          height={height}
-          className="graph-svg"
-        />
+        { graphVisible ? (
+          <svg
+            ref={svgRef}
+            width={width}
+            height={height}
+            className="graph-svg"
+          /> ) : (
+            <h1> Loading</h1>
+          )}
         {/* Tooltip */}
         {tooltip.visible && (
           <div

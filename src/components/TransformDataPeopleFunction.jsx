@@ -7,8 +7,6 @@
 // Group 9 = Project
 // ----- End Section -----
 
-import { group } from "d3";
-
 // export function processData(rawData) {
 // Fields to merge
 const contributorFields = [
@@ -119,7 +117,7 @@ rawData.forEach(title => {
         image: item["Images.1"],
         url: item.URL,
         size: 44,
-        group: 9,
+        group: 18,
         file: item.URL.split("/")[5] + ".jpg"
         };
     }
@@ -136,13 +134,14 @@ rawData.forEach(title => {
           const name = contributor.name;
           const position = contributor.position;
           const normalizedName = contributor.normalized;
+          const group = contributor.group;
 
         if (!nodeMap[normalizedName]) {
             nodeMap[normalizedName] = {
             id: normalizedName,
             label: name,
             size: 34,
-            group: [group],
+            group: group,
             positions: [position],
             projects: [item.Title]
             };

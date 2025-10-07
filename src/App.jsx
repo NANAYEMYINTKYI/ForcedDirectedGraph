@@ -5,6 +5,7 @@ import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import TagManager from "./components/TagManager";
 import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
+import Toolbar from './components/ToolBar';
 import rawData from './data/mabData.json';
 import countrylink from '../src/data/CountryLink.json';
 import countrynode from '../src/data/CountryNode.json';
@@ -92,12 +93,12 @@ const App = () => {
    
   // Title list
   let projects = filteredData.nodes 
-  .filter(d => d.group === 9)
+  .filter(d => d.group === 18)
   .map(d => ({value: d.id, label: d.label}));
 
   // non Title list
   let connection = filteredData.nodes 
-  .filter(d => d.group !== 9)
+  .filter(d => d.group !== 18)
   .map(d => ({value: d.id, label: d.label}));
   
   // UI
@@ -109,6 +110,7 @@ const App = () => {
       </header>
       <div className="topcontrols">
       {/* Dataset Selector */}
+      {/* <Toolbar /> */}
       <section className="dataset-selector">
         <div className="dataset-buttons">
           {Object.entries(datasets).map(([key, dataset]) => (

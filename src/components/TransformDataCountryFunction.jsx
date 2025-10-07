@@ -17,7 +17,6 @@ export function CountryData(rawData) {
     { country: "Taiwan", continent: "Asia" }
   ];
   countryToContinent.push(...Add);
-            console.log(countryToContinent)
 
   // Define Group
   function setGroup(location, isproject = false) {
@@ -35,17 +34,17 @@ export function CountryData(rawData) {
       case "Africa":
         return {id: 1, name: "Africa"};
       case "Asia":
-        return {id: 2, name: "Asia"};
+        return {id: 3, name: "Asia"};
       case "Europe":
-        return {id: 3, name: "Europe"};
+        return {id: 5, name: "Europe"};
       case "North America":
-        return {id: 4, name: "North America"};
+        return {id: 7, name: "North America"};
       case "South America":
-        return {id: 5, name: "South America"};
+        return {id: 9, name: "South America"};
       case "Antarctica":
-        return {id: 6, name: "Antarctica"};
+        return {id: 11, name: "Antarctica"};
       case "Oceania":
-        return {id: 7, name: "Oceania"};
+        return {id: 13, name: "Oceania"};
       default:
         return {id: 8, name: "Unknown"};
     }
@@ -87,7 +86,7 @@ export function CountryData(rawData) {
           image: item["Images.1"],
           url: item.URL,
           size: 49,
-          group: 9,
+          group: 18,
           file: item.URL.split("/")[5] + ".jpg"
         };
       }
