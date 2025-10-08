@@ -17,7 +17,7 @@ html, body {
 .header{
   flex-shrink: 0;
   position: relative;
-  z-index: 100;
+  z-index: 0;
   display: 'flex';
   text-align: center;
   /* margin-top: '20px'; */
@@ -47,6 +47,7 @@ html, body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 .topcontrols {
   position: absolute;
   top: 20px;
@@ -146,4 +147,21 @@ html, body {
 .timeline-section p {
   font-weight: 600;
   margin: 2.5px;
+}
+
+.toolbar {
+  position: absolute;
+  align-self: flex-end;
+  z-index: 50;
+  width: fit-content; /* Auto-size based on content */
+  height: 100vh;
+  /* min-width: 280px; /* Minimum width */
+  max-width: 400px; /* Maximum width to prevent too wide */   */
+  overflow-y: auto; /* Scroll if content too long */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  pointer-events: auto;
+  flex-direction: column;
+  gap: 1.5rem;
 }

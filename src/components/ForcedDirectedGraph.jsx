@@ -83,6 +83,11 @@ const ForceDirectedGraph = ({
       .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
   }, []);
 
+  useEffect(() => {
+    hasToggledVisibility.current = false;
+    setGraphVisible(false);
+  }, [nodes, links])
+
   // Initialize and update graph when dependent
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg 
@@ -412,7 +417,7 @@ const ForceDirectedGraph = ({
         // Only show the graph once, when alpha is low enough
         if (alpha < 0.01 && !hasToggledVisibility.current) {
           hasToggledVisibility.current = true;
-          setGraphVisible(true); // Triggers just once
+          setGraphVisible(true);
         }
       });
 
@@ -420,7 +425,7 @@ const ForceDirectedGraph = ({
       simulation.stop();
     };
   }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);  
-        console.log(graphVisible)
+        // console.log(graphVisible)
   return (
     <div className="force-graph-container">
       {/* Graph */}
@@ -432,7 +437,13 @@ const ForceDirectedGraph = ({
             height={height}
             className="graph-svg"
           /> ) : (
-            <h1> Loading</h1>
+          <svg
+            ref={svgRef}
+            width={width}
+            height={height}
+            className="graph-svg"
+          />
+            // <h1> Loading</h1>
           )}
         {/* Tooltip */}
         {tooltip.visible && (

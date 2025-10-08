@@ -23,6 +23,7 @@ const App = () => {
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -52,6 +53,11 @@ const App = () => {
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
   };
+  
+  const toggleToolbar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   const handleDatasetChange = useCallback((key) => {
     setCurrentDataset(key);
     setSelectedTitle(null);
@@ -108,10 +114,27 @@ const App = () => {
       <header className="header">
         <h1>MAB Social Graph</h1>
       </header>
-      <div className="topcontrols">
+      <div className="toolbar">
+        <Toolbar 
+  datasets={datasets}
+  currentDataset={currentDataset}
+  handleDatasetChange={handleDatasetChange}
+  FilterData={FilterData}
+  handleFilterChange={handleFilterChange}
+  setFilterTag={setFilterTag}
+  projects={projects}
+  connection={connection}
+  handleTitleChange={handleTitleChange}
+  handleConnectionChange={handleConnectionChange}
+  selectedTitle={selectedTitle}
+  selectedConnection={selectedConnection}
+  toggleToolbar = {toggleToolbar}
+  isCollapsed = {isCollapsed}
+/>
+      </div>
+      {/* <div className="topcontrols"> */}
       {/* Dataset Selector */}
-      {/* <Toolbar /> */}
-      <section className="dataset-selector">
+      {/* <section className="dataset-selector">
         <div className="dataset-buttons">
           {Object.entries(datasets).map(([key, dataset]) => (
             <button
@@ -125,7 +148,7 @@ const App = () => {
         </div>
       </section>
         {/* Tag Filter */}
-          <TagManager 
+          {/* <TagManager 
             datasets={datasets}
             currentDataset={currentDataset}
             mabData={FilterData}
@@ -155,8 +178,8 @@ const App = () => {
             onFilterChange = {handleConnectionChange}
             visible = {currentDataset === 'country'}
             value = {selectedConnection}
-          />
-        </div>
+          /> */}
+        {/* </div> */}
       <div className="app-content">
         {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />
