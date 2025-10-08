@@ -5,13 +5,13 @@ import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import TagManager from "./components/TagManager";
 import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
-import rawData from './data/mabData.json';
-import countrylink from '../src/data/CountryLink.json';
-import countrynode from '../src/data/CountryNode.json';
-import yearlink from '../src/data/YearLink.json';
-import yearnode from '../src/data/YearNode.json';
-import peoplenode from '../src/data/PeopleNode.json';
-import peoplelink from '../src/data/PeopleLink.json';
+import rawData from './../public/mabData.json';
+// import countrylink from '../src/data/CountryLink.json';
+// import countrynode from '../src/data/CountryNode.json';
+// import yearlink from '../src/data/YearLink.json';
+// import yearnode from '../src/data/YearNode.json';
+// import peoplenode from '../src/data/PeopleNode.json';
+// import peoplelink from '../src/data/PeopleLink.json';
 import './App.css'
 
 const App = () => {

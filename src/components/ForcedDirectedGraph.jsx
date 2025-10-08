@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
 
 // Import all images from a folder
-const imageslist = import.meta.glob('./../data/image/*.{png,jpg,jpeg,svg}', { eager: true });
+const imageslist = import.meta.glob('./../../public/image/*.{png,jpg,jpeg,svg}', { eager: true });
 
 const image = {};
 Object.keys(imageslist).forEach((path) => {
