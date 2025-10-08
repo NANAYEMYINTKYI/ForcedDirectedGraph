@@ -26,9 +26,9 @@ const ForceDirectedGraph = ({
   const tooltipRef = useRef();
 
   // State
-  const [chargeStrength, setChargeStrength] = useState(1000);
-  const [linkStrength, setLinkStrength] = useState(0.1);
-  const [centerStrength, setCenterStrength] = useState(0.3);
+  const [chargeStrength] = useState(1000);
+  const [linkStrength] = useState(0.1);
+  const [centerStrength] = useState(0.3);
   const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
 
   // Color scale
@@ -110,22 +110,9 @@ const ForceDirectedGraph = ({
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    let scale;
-    if (width < 600) { // telephone size
-      scale = 0.03; // small screen → zoom out more
-    } else if (height < 1200) { //laptop size
-      scale = 0.06; // medium screen
-    } else {  // large screen 
-      scale = 0.1;  // large screen → zoom in more
-    }
-    // Translate to roughly center your content
-    const tx = width / 2.25;
-    const ty = height / 2.5;
-    // Build transform
-    const initialTransform = d3.zoomIdentity.translate(tx, ty).scale(scale);
-
-    // Apply
-    svg.call(zoom.transform, initialTransform);
+    const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
+    svg.call(zoom.transform, initialTransform); // apply starting transform
+    g.attr("transform", initialTransform);      // also set g’s transform
 
     function zoomToNode(d) {
       const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
@@ -200,8 +187,16 @@ const ForceDirectedGraph = ({
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
       .alpha(10)
       .alphaDecay(0.05) 
+      // Update positions on tick
+      .on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      });
     simulationRef.current = simulation;
-
     // Create links
     const link = linkGroup.selectAll("line")
 
@@ -306,7 +301,7 @@ const ForceDirectedGraph = ({
       })
       .on("click", function(event, d) {
         // Track selected node(s) temporarily
-        let selectedNodes = [];
+        // let selectedNodes = [];
         let tempSelectedNodes = [d];
         // Zoom to selection
         if (tempSelectedNodes.length === 1) {
@@ -318,19 +313,6 @@ const ForceDirectedGraph = ({
 
         // tempSelectedNodes = [];
       })
-      
-      // Find selectnode to zoom
-      // if (selectnode) {
-      //   const select = nodes.find(
-      //     n => n.id.toLowerCase().replace(/\s+/g, "_") === 
-      //         selectnode.value.toLowerCase().replace(/\s+/g, "_")
-      //   );
-
-      //   if (select) {
-      //     // simulate click on this node
-      //     zoomToNode(select);
-      //   }
-      // }
       if (selectnode) {
       setTimeout(() => {
         const select = nodes.find(
@@ -356,8 +338,7 @@ const ForceDirectedGraph = ({
           });
         });
         if (matchingNode) {
-          simulationRef.current.alpha(0.3).restart();
-
+          // simulationRef.current.alpha(0.3).restart();
           setTimeout(() => {
             zoomToNode(matchingNode);
           }, 300);
@@ -377,8 +358,8 @@ const ForceDirectedGraph = ({
             .style("font-size", d => d.size/4)
           }})
         .attr("x", d => -d.size*1)
-        .attr("width", d => d.size*2) 
-        .attr("height", 100) 
+        .attr("width", d => d.size*2)   // box width
+        .attr("height", 100)  // box height
         .append("xhtml:div")
         .style("display", "flex")
         .style("flex-direction", "column")
@@ -390,20 +371,11 @@ const ForceDirectedGraph = ({
         .style("color", "#333")
         .style("word-wrap", "break-word")
         .text(d => d.id)
-        
-      // Update positions on tick
-      simulation.on("tick", () => {
-        link
-          .attr("x1", d => d.source.x)
-          .attr("y1", d => d.source.y)
-          .attr("x2", d => d.target.x)
-          .attr("y2", d => d.target.y);
-        node.attr("transform", d => `translate(${d.x},${d.y})`);
-      });
     return () => {
       simulation.stop();
     };
-  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);
+  }, [nodes, links, width, height, filterTag, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);
+
   return (
     <div className="force-graph-container">
       {/* Graph */}
