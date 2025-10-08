@@ -1,7 +1,10 @@
 import React, {useCallback, useState} from 'react';
 import * as Icons from '@ant-design/icons';
 import PublicIcon from '@mui/icons-material/Public';
-import {Menu, MenuItem} from 'antd';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 import TagManager from './TagManager';
 import ListSearch from './ListSearch';
 import './ToolBar.css'
@@ -23,13 +26,17 @@ const Toolbar = ({
   isCollapsed
 }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     // <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
@@ -54,24 +61,46 @@ const Toolbar = ({
       </button>
     </div>
     <div>
-      <button className={'toolelement'}>
+      {/* Dataset Selector */}
+      
+    <div>
+    </div>
+      <button
+       className={'toolelement'}
+        aria-describedby={id}
+        variant="contained"
+        onClick={handleClick}
+        >
         <Icons.DatabaseOutlined /> Select Dataset
       </button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
+      <Popover
+        id={id}
         open={open}
+        anchorEl={anchorEl}
         onClose={handleClose}
-        slotProps={{
-          list: {
-            'aria-labelledby': 'basic-button',
-          },
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+      <section className="dataset-selector">
+        <div className="dataset-buttons">
+          {Object.entries(datasets).map(([key, dataset]) => (
+            <button
+              key={key}
+              className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
+              onClick={() => handleDatasetChange(key)}
+            >
+              {dataset.name}
+            </button>
+          ))}
+        </div>
+      </section>
+      </Popover>
     </div>
     <div>
       <button className={'toolelement'}>
@@ -98,20 +127,6 @@ const Toolbar = ({
         <Icons.BarsOutlined /> Meaning of Color
       </button>
     </div>
-      {/* Dataset Selector */}
-      {/* <section className="dataset-selector">
-        <div className="dataset-buttons">
-          {Object.entries(datasets).map(([key, dataset]) => (
-            <button
-              key={key}
-              className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
-              onClick={() => handleDatasetChange(key)}
-            >
-              {dataset.name}
-            </button>
-          ))}
-        </div>
-      </section> */}
 
       {/* Tag Filter */}
       <TagManager 

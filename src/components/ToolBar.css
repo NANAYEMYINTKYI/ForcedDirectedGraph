@@ -14,10 +14,11 @@
   border: 0;
   border-radius: 15px;
   width: 100%;
-  text-align: start;
-  font-size: large;
+  text-align: start !important;
+  font-size: large !important;
+  color: black !important;
   pointer-events: auto ;
-  padding: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px !important;
 }
 
 .toolelement:hover {
@@ -88,4 +89,104 @@
   background-color: #34495e;
   padding: 5px;
   border-radius: 4px;
+}
+
+.dataset-btn {
+  width: fit-content;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border: 2px solid #dee2e6;
+  color: #495057;
+  padding: 10px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.dataset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #667eea;
+}
+
+.dataset-btn.active {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border-color: #667eea;
+}
+
+.dataset-selector {
+  background: rgba(255, 255, 255, 0.95);
+  width: fit-content;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  margin: auto;
+}
+
+.dataset-selector h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.dataset-buttons {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.controls-row {
+  display: flex;
+  gap: 20px; /* space between timeline and tag manager */
+  align-items: flex-start; /* aligns items at the top */
+}
+
+.buttom-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  max-width: calc(100% - 40px); /* Prevent overflow */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  pointer-events: auto;
+}
+
+.timeline-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.timeline-section p {
+  font-weight: 600;
+  margin: 2.5px;
+}
+
+.toolbar {
+  position: absolute;
+  align-self: flex-end;
+  z-index: 50;
+  width: fit-content; /* Auto-size based on content */
+  height: 100vh;
+  /* min-width: 280px; /* Minimum width */
+  max-width: 400px; /* Maximum width to prevent too wide */   */
+  overflow-y: auto; /* Scroll if content too long */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  pointer-events: auto;
+  flex-direction: column;
+  gap: 1.5rem;
 }
