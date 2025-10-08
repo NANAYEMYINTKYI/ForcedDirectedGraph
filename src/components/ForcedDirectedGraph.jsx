@@ -26,9 +26,9 @@ const ForceDirectedGraph = ({
   const tooltipRef = useRef();
 
   // State
-  const [chargeStrength, setChargeStrength] = useState(1000);
-  const [linkStrength, setLinkStrength] = useState(0.1);
-  const [centerStrength, setCenterStrength] = useState(0.3);
+  const [chargeStrength] = useState(1000);
+  const [linkStrength] = useState(0.1);
+  const [centerStrength] = useState(0.3);
   const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
 
   // Color scale
@@ -187,9 +187,16 @@ const ForceDirectedGraph = ({
       .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
       .alpha(10)
       .alphaDecay(0.05) 
-
+      // Update positions on tick
+      .on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      });
     simulationRef.current = simulation;
-
     // Create links
     const link = linkGroup.selectAll("line")
 
@@ -294,7 +301,7 @@ const ForceDirectedGraph = ({
       })
       .on("click", function(event, d) {
         // Track selected node(s) temporarily
-        let selectedNodes = [];
+        // let selectedNodes = [];
         let tempSelectedNodes = [d];
         // Zoom to selection
         if (tempSelectedNodes.length === 1) {
@@ -306,19 +313,6 @@ const ForceDirectedGraph = ({
 
         // tempSelectedNodes = [];
       })
-      
-      // Find selectnode to zoom
-      // if (selectnode) {
-      //   const select = nodes.find(
-      //     n => n.id.toLowerCase().replace(/\s+/g, "_") === 
-      //         selectnode.value.toLowerCase().replace(/\s+/g, "_")
-      //   );
-
-      //   if (select) {
-      //     // simulate click on this node
-      //     zoomToNode(select);
-      //   }
-      // }
       if (selectnode) {
       setTimeout(() => {
         const select = nodes.find(
@@ -377,93 +371,13 @@ const ForceDirectedGraph = ({
         .style("color", "#333")
         .style("word-wrap", "break-word")
         .text(d => d.id)
-        
-      // Update positions on tick
-      simulation.on("tick", () => {
-        link
-          .attr("x1", d => d.source.x)
-          .attr("y1", d => d.source.y)
-          .attr("x2", d => d.target.x)
-          .attr("y2", d => d.target.y);
-        node.attr("transform", d => `translate(${d.x},${d.y})`);
-      });
     return () => {
       simulation.stop();
     };
-  }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);
-
-  // // Handle repulsion
-  // const handleChargeChange = useCallback((e) => {
-  //   const value = parseInt(e.target.value);
-  //   setChargeStrength(value);
-  //   if (simulationRef.current) {
-  //     simulationRef.current.force("charge", d3.forceManyBody().strength(-value));
-  //     simulationRef.current.alpha(0.3).restart();
-  //   }
-  // }, []);
-
-  // // handle link strength
-  // const handleLinkStrengthChange = useCallback((e) => {
-  //   const value = parseFloat(e.target.value);
-  //   setLinkStrength(value);
-  //   if (simulationRef.current) {
-  //     simulationRef.current.force("link", d3.forceLink(links).id(d => d.id).strength(-value));
-  //     simulationRef.current.alpha(0.5).restart();
-  //   }
-  // }, [links]);
-
-  // // handle node center change
-  // const handleCenterStrengthChange = useCallback((e) => {
-  //   const value = parseFloat(e.target.value);
-  //   setCenterStrength(value);
-  //   if (simulationRef.current) {
-  //     simulationRef.current.force("center", d3.forceCenter(width / 2, height / 2).strength(value));
-  //     simulationRef.current.alpha(0.3).restart();
-  //   }
-  // }, [width, height]);
+  }, [nodes, links, width, height, filterTag, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);
 
   return (
     <div className="force-graph-container">
-      {/* <div className="controls">
-        <div className="control-group">
-          <label htmlFor="charge-strength">Repulsion: {chargeStrength}</label>
-          <input
-            type="range"
-            id="charge-strength"
-            min="10"
-            max="500"
-            value={chargeStrength}
-            onChange={handleChargeChange}
-          />
-        </div>
-
-        <div className="control-group">
-          <label htmlFor="link-strength">Attraction: {linkStrength}</label>
-          <input
-            type="range"
-            id="link-strength"
-            min="0.01"
-            max="20"
-            step="0.1"
-            value={linkStrength}
-            onChange={handleLinkStrengthChange}
-          />
-        </div>
-        
-        <div className="control-group">
-          <label htmlFor="center-strength">Centering: {centerStrength}</label>
-          <input
-            type="range"
-            id="center-strength"
-            min="0"
-            max="1000"
-            step="0.1"
-            value={centerStrength}
-            onChange={handleCenterStrengthChange}
-          />
-        </div>
-      </div> */}
-
       {/* Graph */}
       <div className="graph-container">
         <svg
