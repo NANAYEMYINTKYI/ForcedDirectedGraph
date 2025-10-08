@@ -5,7 +5,7 @@ import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import TagManager from "./components/TagManager";
 import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
-import rawData from './../public/mabData.json';
+import rawData from './../public/Data.json';
 import './App.css'
 
 const App = () => {
