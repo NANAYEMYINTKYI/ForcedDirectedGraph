@@ -110,10 +110,22 @@ const ForceDirectedGraph = ({
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    const initialTransform = d3.zoomIdentity.translate(750,300).scale(0.06); 
-    svg.call(zoom.transform, initialTransform); // apply starting transform
-    g.attr("transform", initialTransform);      // also set g’s transform
+    let scale;
+    if (width < 600) { // telephone size
+      scale = 0.03; // small screen → zoom out more
+    } else if (height < 1200) { //laptop size
+      scale = 0.06; // medium screen
+    } else {  // large screen 
+      scale = 0.1;  // large screen → zoom in more
+    }
+    // Translate to roughly center your content
+    const tx = width / 2.25;
+    const ty = height / 2.5;
+    // Build transform
+    const initialTransform = d3.zoomIdentity.translate(tx, ty).scale(scale);
 
+    // Apply
+    svg.call(zoom.transform, initialTransform);
     function zoomToNode(d) {
       const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
       
