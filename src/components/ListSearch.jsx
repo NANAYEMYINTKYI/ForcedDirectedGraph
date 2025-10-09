@@ -25,13 +25,20 @@ const ListSearch = ({ options, Title, placeholder, onFilterChange, value, width 
           onChange={handleChange}
           options={sortedOptions}
           placeholder={placeholder}
+          menuIsOpen={true}
           isSearchable
           isClearable
           styles={{
             container: (base) => ({
               ...base,
               width: `${width}px`,
-            })}}
+            }),
+            menu: (base) => ({
+              ...base,
+              position: 'relative',
+              zIndex: 1,
+            })
+          }}
         />
       </label>
     </div>

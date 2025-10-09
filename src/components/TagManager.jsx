@@ -253,12 +253,19 @@ const TagManager = ({
           value={options.find(opt => opt.value === filterTag)}
           onChange={handleChange}
           options={options}
+          menuIsOpen={true}
           isSearchable
           styles={{
             container: (base) => ({
               ...base,
               width: `${width}px`,
-            })}}
+            }),
+            menu: (base) => ({
+              ...base,
+              position: 'relative',
+              zIndex: 1,
+            })
+          }}
         />
         {/* <select value={filterTag} onChange={(e) => handleTagChange(e.target.value)}>
           <option value="">

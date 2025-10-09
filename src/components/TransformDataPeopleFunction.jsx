@@ -1,3 +1,4 @@
+import {contributorFields} from './Colorlist'
 // ----- Customize Data Section-----
 // import rawData from './../data/FilterData.json' with { type: 'json' };
 // node = Title // Focus Node
@@ -9,25 +10,25 @@
 
 // export function processData(rawData) {
 // Fields to merge
-const contributorFields = [
-  "Building or project owner",
-  "Architecture",
-  "Project artist/ concept/ design/ planning",
-  "Structural engineering",
-  "Light design",
-  "Technical layout light",
-  "Display content/ visuals/ showreel",
-  "Light hardware (LED hardware)",
-  "Lighting control software",
-  "Interaction design/ programming",
-  "Mediacredits",
-  "Project co-ordination",
-  "Project sponsor/ support",
-  "Host organization",
-  "Facade design",
-  "Facade construction",
-  "Kinetic engineering"
-];
+// const contributorFields = [
+//   "Building or project owner",
+//   "Architecture",
+//   "Project artist/ concept/ design/ planning",
+//   "Structural engineering",
+//   "Light design",
+//   "Technical layout light",
+//   "Display content/ visuals/ showreel",
+//   "Light hardware (LED hardware)",
+//   "Lighting control software",
+//   "Interaction design/ programming",
+//   "Mediacredits",
+//   "Project co-ordination",
+//   "Project sponsor/ support",
+//   "Host organization",
+//   "Facade design",
+//   "Facade construction",
+//   "Kinetic engineering"
+// ];
 
 export function PeopleData(rawData) {
 

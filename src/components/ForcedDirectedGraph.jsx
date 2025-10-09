@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
+import {colorScale} from './Colorlist'
 
 // Import all images from a folder
 const imageslist = import.meta.glob('./../data/image/*.{png,jpg,jpeg,svg}', { eager: true });
@@ -18,7 +19,7 @@ const ForceDirectedGraph = ({
   selectnode,
   filterTag,
   width,
-  height
+  height,
 }) => {
   // Refs
   const svgRef = useRef();
@@ -34,14 +35,14 @@ const ForceDirectedGraph = ({
   const [graphVisible, setGraphVisible] = useState(false);
 
   // Color scale
-  const colorScale = d3.scaleOrdinal()
-    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
-    .range(["#eb7270", "#eb9d70", "#ebc970", 
-      "#e2eb70", "#b6eb70", "#8beb70", 
-      "#70eb80", "#70ebac","#70ebd7",
-      "#70d3eb","#70a8eb","#707ceb",
-      "#8f70eb","#ba70eb","#e670eb",
-      "#eb70c5","#eb7099","#000000ff"]);
+  // d3.scaleOrdinal()
+  //   .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
+  //   .range(["#eb7270", "#eb9d70", "#ebc970", 
+  //     "#e2eb70", "#b6eb70", "#8beb70", 
+  //     "#70eb80", "#70ebac","#70ebd7",
+  //     "#70d3eb","#70a8eb","#707ceb",
+  //     "#8f70eb","#ba70eb","#e670eb",
+  //     "#eb70c5","#eb7099","#000000ff"]);
 
 
   // Drag functions

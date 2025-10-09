@@ -1,4 +1,5 @@
-import countryToContinent from 'country-json/src/country-by-continent.json' with { type: 'json' };// ----- Customize Data Section-----
+import countryToContinent from 'country-json/src/country-by-continent.json' with { type: 'json' };
+import {defaultContinent, continentList} from './Colorlist'
 
 // ----- Customize Data Section-----
 // import rawData from './../data/FilterData.json' with { type: 'json' };
@@ -29,25 +30,30 @@ export function CountryData(rawData) {
       (c) => c.country.toLowerCase() === country.toLowerCase()
     );
 
-    if (!entry) return {id: 8, name: "Unknown"};
-    switch (entry.continent) {
-      case "Africa":
-        return {id: 1, name: "Africa"};
-      case "Asia":
-        return {id: 3, name: "Asia"};
-      case "Europe":
-        return {id: 5, name: "Europe"};
-      case "North America":
-        return {id: 7, name: "North America"};
-      case "South America":
-        return {id: 9, name: "South America"};
-      case "Antarctica":
-        return {id: 11, name: "Antarctica"};
-      case "Oceania":
-        return {id: 13, name: "Oceania"};
-      default:
-        return {id: 8, name: "Unknown"};
-    }
+    
+  if (!entry) return defaultContinent;
+
+  return continentList.find(c => c.name === entry.continent) || defaultContinent;
+
+    // if (!entry) return {id: 8, name: "Unknown"};
+    // switch (entry.continent) {
+    //   case "Africa":
+    //     return {id: 1, name: "Africa"};
+    //   case "Asia":
+    //     return {id: 3, name: "Asia"};
+    //   case "Europe":
+    //     return {id: 5, name: "Europe"};
+    //   case "North America":
+    //     return {id: 7, name: "North America"};
+    //   case "South America":
+    //     return {id: 9, name: "South America"};
+    //   case "Antarctica":
+    //     return {id: 11, name: "Antarctica"};
+    //   case "Oceania":
+    //     return {id: 13, name: "Oceania"};
+    //   default:
+    //     return {id: 8, name: "Unknown"};
+    // }
   }
   
   // node → connectionNode
