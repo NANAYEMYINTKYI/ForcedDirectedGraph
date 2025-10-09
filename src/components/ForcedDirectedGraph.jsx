@@ -21,11 +21,14 @@ const ForceDirectedGraph = ({
   filterTag,
   width,
   height,
+  OnPlayingChange 
 }) => {
+  console.log(OnPlayingChange)
   // Refs
   const svgRef = useRef();
   const simulationRef = useRef();
   const tooltipRef = useRef();
+  const [isVisible, setIsVisible] = useState(false);
 
   // State
   const [chargeStrength] = useState(1000);
@@ -120,30 +123,29 @@ const ForceDirectedGraph = ({
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
-    let scale;
-    if (width < 600) {
-      // telephone size
-      scale = 0.03; // small screen → zoom out more
-    } else if (height < 1200) {
-      //laptop size
-      scale = 0.06; // medium screen
-    } else {
-      // large screen
-      scale = 0.1; // large screen → zoom in more
-    }
-    // Translate to roughly center your content
-    const tx = width / 2.25;
-    const ty = height / 2.5;
-    // Build transform
-    const initialTransform = d3.zoomIdentity.translate(tx, ty).scale(scale);
+    // let scale;
+    // if (width < 600) {
+    //   // telephone size
+    //   scale = 0.03; // small screen → zoom out more
+    // } else if (height < 1200) {
+    //   //laptop size
+    //   scale = 0.06; // medium screen
+    // } else {
+    //   // large screen
+    //   scale = 0.1; // large screen → zoom in more
+    // }
+    // // Translate to roughly center your content
+    // const tx = width / 2.25;
+    // const ty = height / 2.5;
+    // // Build transform
+    // const initialTransform = d3.zoomIdentity.translate(tx, ty).scale(scale);
 
     // Apply
-    svg.call(zoom.transform, initialTransform);
+    // svg.call(zoom.transform, initialTransform);
     function zoomToNode(d) {
       const { width: svgWidth, height: svgHeight } = svg
         .node()
         .getBoundingClientRect();
-
       const connectedLinks = links.filter(
         (l) => l.source === d || l.target === d
       );
@@ -200,38 +202,10 @@ const ForceDirectedGraph = ({
     }
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
-
+      // g.style("opacity",0)
     // Create D3 force simulation
-    const simulation = d3
-      .forceSimulation(nodes)
-      .force("y", d3.forceY(width))
-      .force("x", d3.forceX(height))
-      .force(
-        "link",
-        d3
-          .forceLink(links)
-          .id((d) => d.id)
-          .distance(10)
-          .strength(0.2)
-      ) // Attraction
-      .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction (negative represent repulsion, impact every node)
-      .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
-      .force(
-        "collision",
-        d3.forceCollide().radius((d) => (d.size * 4) / 3)
-      ) // update new circle collision // prevent node from overlapping
-      .alpha(10)
-      .alphaDecay(0.05)
-      // Update positions on tick
-      .on("tick", () => {
-        link
-          .attr("x1", (d) => d.source.x)
-          .attr("y1", (d) => d.source.y)
-          .attr("x2", (d) => d.target.x)
-          .attr("y2", (d) => d.target.y);
-        node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-      });
-    simulationRef.current = simulation;
+    // Hide graph initially
+
     // Create links
     const link = linkGroup
       .selectAll("line")
@@ -355,7 +329,56 @@ const ForceDirectedGraph = ({
 
         // tempSelectedNodes = [];
       });
-    if (selectnode) {
+
+    const simulation = d3
+      .forceSimulation(nodes)
+      .force("y", d3.forceY(height / 2).strength(0.1))  // Fix: y uses height
+      .force("x", d3.forceX(width / 2).strength(0.1))   // Fix: x uses width
+      .force("link", d3.forceLink(links).id((d) => d.id)
+        .distance(50)        // Increased from 10
+        .strength(0.5))      // Increased from 0.2
+      .force("charge", d3.forceManyBody().strength(-chargeStrength))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius((d) => (d.size * 4) / 3))
+      .alpha(2)              // Reduced from 3
+      .alphaDecay(0.05)      // Reduced from 0.05 for smoother settling
+      .velocityDecay(0.4)    // Add friction
+      .on("tick", () => {
+        link
+          .attr("x1", (d) => d.source.x)
+          .attr("y1", (d) => d.source.y)
+          .attr("x2", (d) => d.target.x)
+          .attr("y2", (d) => d.target.y);
+        node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+        const alpha = simulation.alpha()
+        if(alpha< 0.0007){
+          setIsVisible(true);
+        }
+      })
+      .on("end", () => {
+        // setIsVisible(true);
+        const alpha =simulation.alpha()
+        const alphaMin =simulation.alphaMin()
+        console.log(alpha)
+        console.log(alphaMin)
+        
+        // Zoom to fit
+        const contentBounds = g.node().getBBox();
+        
+        if (contentBounds.width === 0 || contentBounds.height === 0) return;
+        
+        const scale = Math.min(
+          (width / contentBounds.width) * 0.9,
+          (height / contentBounds.height) * 0.9
+        );
+        const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
+        const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
+        
+        svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
+      });
+
+    simulationRef.current = simulation;
+        if (selectnode) {
       setTimeout(() => {
         const select = nodes.find(
           (n) =>
@@ -437,7 +460,12 @@ const ForceDirectedGraph = ({
     <div className="force-graph-container">
       {/* Graph */}
       <div className="graph-container">
-        <svg ref={svgRef} width={width} height={height} className="graph-svg" />
+       
+        {isVisible ? (
+          <div className="graph-svg">
+            <svg ref={svgRef} width={width} height={height}/>
+          </div>
+        ):(<p> Loading Data</p>)}
         {/* Tooltip */}
         {tooltip.visible && (
           <div

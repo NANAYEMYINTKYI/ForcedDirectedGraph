@@ -16,7 +16,8 @@ const App = () => {
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
-
+  // This Isplaying used to ri
+  const [isPlaying, setIsPlaying] = useState(false);
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
     const [startYear, endYear] = yearRange;
@@ -81,8 +82,10 @@ const App = () => {
       filterTag: filterTag,
       width: window.innerWidth,
       height: window.innerHeight,
+      OnPlayingChange : isPlaying
     }),
     [
+      isPlaying,
       selectedNode,
       currentDataset,
       filteredData.nodes,
@@ -91,7 +94,6 @@ const App = () => {
     ]
   );
   // console.log(filteredData.nodes)
-
   // Title list
   let projects = filteredData.nodes
     .filter((d) => d.group === 9)
@@ -170,6 +172,9 @@ const App = () => {
           <Timeline
             value={yearRange}
             onChange={handleRangeChange}
+            OnPlayingChange={isPlaying => {
+              setIsPlaying(isPlaying);
+            }}
             label="Select year range"
             width={Math.min(500, window.innerWidth - 100)} // Make responsive
           />

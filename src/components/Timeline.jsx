@@ -14,9 +14,14 @@ function valuetext(value) {
   return `${value}`;
 }
 
-const RangeSlider = ({ value, onChange, label, width = 300 }) => {
+const RangeSlider = ({ value, onChange, label, width = 300, OnPlayingChange }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
+  useEffect (() => {
+    if(OnPlayingChange){
+      OnPlayingChange(isPlaying);
+    }
+  }, [isPlaying, OnPlayingChange]);
 
   useEffect(() => {
     // set playing
@@ -24,7 +29,6 @@ const RangeSlider = ({ value, onChange, label, width = 300 }) => {
       intervalRef.current = setInterval(() => {
         onChange(null, (prev) => {
           let currentYear = Array.isArray(prev) ? prev[1] : 1999;
-
           if (currentYear >= 2023) {
             clearInterval(intervalRef.current);
             setIsPlaying(false);
@@ -46,6 +50,7 @@ const RangeSlider = ({ value, onChange, label, width = 300 }) => {
       // reset to [1999, 1999] before starting
       onChange(null, [1999, 1999]);
     }
+    console.log("This is unable isPlaying")
     setIsPlaying((prev) => !prev);
   };
 
