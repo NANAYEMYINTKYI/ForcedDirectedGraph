@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import * as d3 from "d3";
 import "./ForcedDirectedGraph.css";
+import { alpha } from "@mui/material/styles";
 
 // Import all images from a folder
 const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
@@ -111,37 +112,16 @@ const ForceDirectedGraph = ({
 
     // Create groups
     const g = svg.append("g").attr("class", "graph-group");
-
     // set zoom behavior
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
     };
-
     const zoom = d3
       .zoom()
       .scaleExtent([0.01, 20]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
     svg.call(zoom);
-    // set the initial zoom/translate when entering
-    // let scale;
-    // if (width < 600) {
-    //   // telephone size
-    //   scale = 0.03; // small screen → zoom out more
-    // } else if (height < 1200) {
-    //   //laptop size
-    //   scale = 0.06; // medium screen
-    // } else {
-    //   // large screen
-    //   scale = 0.1; // large screen → zoom in more
-    // }
-    // // Translate to roughly center your content
-    // const tx = width / 2.25;
-    // const ty = height / 2.5;
-    // // Build transform
-    // const initialTransform = d3.zoomIdentity.translate(tx, ty).scale(scale);
 
-    // Apply
-    // svg.call(zoom.transform, initialTransform);
     function zoomToNode(d) {
       const { width: svgWidth, height: svgHeight } = svg
         .node()
@@ -170,7 +150,6 @@ const ForceDirectedGraph = ({
         .translate(svgWidth / 2, svgHeight / 2)
         .scale(scale)
         .translate(-d.x, -d.y);
-
       svg.transition().duration(750).call(zoom.transform, transform);
 
       // Step 2: Pull connected nodes closer WHILE zooming
@@ -209,7 +188,6 @@ const ForceDirectedGraph = ({
     // Create links
     const link = linkGroup
       .selectAll("line")
-
       .data(links)
       .join("line")
       .attr("class", "link-line")
@@ -329,7 +307,6 @@ const ForceDirectedGraph = ({
 
         // tempSelectedNodes = [];
       });
-
     const simulation = d3
       .forceSimulation(nodes)
       .force("y", d3.forceY(height / 2).strength(0.1))  // Fix: y uses height
@@ -340,7 +317,9 @@ const ForceDirectedGraph = ({
       .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("collision", d3.forceCollide().radius((d) => (d.size * 4) / 3))
-      .alpha(2)              // Reduced from 3
+      // .alpha(2)
+      .alpha( OnPlayingChange? 2 : 3)  // Conditional alpha
+      // console.log(alpha)
       .alphaDecay(0.05)      // Reduced from 0.05 for smoother settling
       .velocityDecay(0.4)    // Add friction
       .on("tick", () => {
@@ -350,18 +329,21 @@ const ForceDirectedGraph = ({
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y);
         node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-        const alpha = simulation.alpha()
-        if(alpha< 0.0007){
-          setIsVisible(true);
-        }
+        // const alpha = simulation.alpha()
+        // if(alpha< 0.0009){
+        //   setIsVisible(true);
+        // }
       })
       .on("end", () => {
         // setIsVisible(true);
+        console.log("Tell the simulation to stop")
+        simulation.stop();
+        console.log("Enter End")
         const alpha =simulation.alpha()
         const alphaMin =simulation.alphaMin()
-        console.log(alpha)
-        console.log(alphaMin)
-        
+        // console.log(alpha)
+        // console.log(alphaMin)
+        // setIsVisible(true);
         // Zoom to fit
         const contentBounds = g.node().getBBox();
         
@@ -371,10 +353,27 @@ const ForceDirectedGraph = ({
           (width / contentBounds.width) * 0.9,
           (height / contentBounds.height) * 0.9
         );
+        console.log("Finishes scale calculated")
+        console.log("Calculated scale")
         const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
         const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
-        
-        svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
+        console.log("Finished Translate")
+        svg
+          .transition()
+          .duration(500) // optional
+          .call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale))
+          .on("end", () => {
+            setIsVisible(true);
+            console.log("Visible after zoom complete");
+          });
+
+        // svg.call(zoom.transform, d3.zoomIdentity.translate(translateX,translateY).scale(scale))
+        // setIsVisible(true);
+          // .on("end", () => {
+          //   setIsVisible(true);
+          //   console.log("Invisible after zoom tranform")
+          // })
+        // console.log("Set inivisible=true")
       });
 
     simulationRef.current = simulation;
@@ -454,18 +453,24 @@ const ForceDirectedGraph = ({
     dragged,
     dragended,
     selectnode,
+    OnPlayingChange
   ]);
 
   return (
     <div className="force-graph-container">
       {/* Graph */}
       <div className="graph-container">
-       
-        {isVisible ? (
+        {/* {isVisible ? (
           <div className="graph-svg">
             <svg ref={svgRef} width={width} height={height}/>
           </div>
-        ):(<p> Loading Data</p>)}
+        ):(<p> Loading Data</p>)} */}
+        {!isVisible && (
+          <p> loading Data</p>
+        )}
+        <div className="graph-svg" style={{visibility: isVisible ? 'visible': 'hidden'}}>
+          <svg ref={svgRef} width={width} height={height}/>
+        </div>
         {/* Tooltip */}
         {tooltip.visible && (
           <div
