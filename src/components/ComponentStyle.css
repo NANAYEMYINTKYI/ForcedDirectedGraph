@@ -1,0 +1,122 @@
+.Description {
+  height: 100%;
+  width: 100%;
+  z-index: 100 ;
+}
+
+.descriptionimage {
+  max-width: 100%;   /* Image width won't exceed container width */
+  max-height: 100%;  /* Image height won't exceed container height */
+  object-fit: contain; /* Scale image to fit inside container, preserving aspect ratio */
+  display: block;    /* Removes inline image spacing */
+}
+
+.section-line {
+  border: none;            /* Remove default browser border */
+  height: 1px;             /* Thickness of the line */
+  background-color: #585858;  /* Light gray color, change as you want */
+  margin: 10px 0;          /* Vertical space around the line */
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;   /* Slightly rounded corners */
+  font-size: 14px;
+  cursor: default;      /* or pointer if clickable */
+  user-select: none;
+}
+
+.togglebutton {
+  background: rgba(255, 255, 255, 0) ;
+  border: 0;
+  z-index: 100 ;
+  pointer-events: auto ;
+  font-size: large;
+  position: relative;
+  line-height: normal;
+  padding: 20px 20px 20px 20px;
+}
+
+.toolelement {
+  background: rgba(255, 255, 255, 0) ;
+  border: 0;
+  border-radius: 15px;
+  width: 100%;
+  text-align: start !important;
+  font-size: large !important;
+  color: black !important;
+  pointer-events: auto ;
+  padding: 20px 20px 20px 20px !important;
+}
+
+.toolelement:hover {
+  background: rgba(240, 240, 240, 80) ;
+  border: 0;
+  border-radius: 15px;
+  width: 100%;
+  text-align: start;
+  font-size: large;
+  pointer-events: auto ;
+  padding: 20px 20px 20px 20px;
+}
+
+.Popoverelement{
+  border-radius: 15px;
+}
+
+.dataset-btn {
+  width: fit-content;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border: 2px solid #dee2e6;
+  color: #495057;
+  padding: 10px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.dataset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #667eea;
+}
+
+.dataset-btn.active {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border-color: #667eea;
+}
+
+.dataset-selector {
+  background: rgba(255, 255, 255, 0.95);
+  width: fit-content;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  margin: auto;
+}
+
+.dataset-selector h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.dataset-buttons {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
