@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import * as d3 from "d3";
 import "./ForcedDirectedGraph.css";
-import { alpha } from "@mui/material/styles";
+
 
 // Import all images from a folder
 const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
@@ -30,6 +30,7 @@ const ForceDirectedGraph = ({
   const simulationRef = useRef();
   const tooltipRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
+  const zoomRef = useRef(false)
 
   // State
   const [chargeStrength] = useState(1000);
@@ -115,12 +116,14 @@ const ForceDirectedGraph = ({
     // set zoom behavior
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
+      setIsVisible(false); // Hide during zoom
     };
     const zoom = d3
       .zoom()
-      .scaleExtent([0.01, 20]) // Sets min and max zoom levels
+      .scaleExtent([0.01, 20]) 
       .on("zoom", zoomHandler);
     svg.call(zoom);
+
 
     function zoomToNode(d) {
       const { width: svgWidth, height: svgHeight } = svg
@@ -181,10 +184,6 @@ const ForceDirectedGraph = ({
     }
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
-      // g.style("opacity",0)
-    // Create D3 force simulation
-    // Hide graph initially
-
     // Create links
     const link = linkGroup
       .selectAll("line")
@@ -329,24 +328,15 @@ const ForceDirectedGraph = ({
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y);
         node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-        // const alpha = simulation.alpha()
-        // if(alpha< 0.0009){
-        //   setIsVisible(true);
-        // }
       })
       .on("end", () => {
-        // setIsVisible(true);
-        console.log("Tell the simulation to stop")
-        simulation.stop();
-        console.log("Enter End")
-        const alpha =simulation.alpha()
-        const alphaMin =simulation.alphaMin()
-        // console.log(alpha)
-        // console.log(alphaMin)
-        // setIsVisible(true);
-        // Zoom to fit
+        setIsVisible(false);
+        console.log("On playing changed vlaue is:",OnPlayingChange)
+        if(zoomRef.current == true){
+          return;
+        }       
+        console.log("Initial zoomed:", zoomRef)
         const contentBounds = g.node().getBBox();
-        
         if (contentBounds.width === 0 || contentBounds.height === 0) return;
         
         const scale = Math.min(
@@ -358,26 +348,16 @@ const ForceDirectedGraph = ({
         const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
         const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
         console.log("Finished Translate")
-        svg
-          .transition()
-          .duration(500) // optional
-          .call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale))
-          .on("end", () => {
-            setIsVisible(true);
-            console.log("Visible after zoom complete");
-          });
-
-        // svg.call(zoom.transform, d3.zoomIdentity.translate(translateX,translateY).scale(scale))
-        // setIsVisible(true);
-          // .on("end", () => {
-          //   setIsVisible(true);
-          //   console.log("Invisible after zoom tranform")
-          // })
-        // console.log("Set inivisible=true")
+        svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
+        setIsVisible(true);
+        simulation.stop();
+        // zoomRef.current = true;
+        console.log("zoomref is", zoomRef);
       });
 
     simulationRef.current = simulation;
-        if (selectnode) {
+    if (selectnode) {
+      setIsVisible(false);
       setTimeout(() => {
         const select = nodes.find(
           (n) =>
@@ -390,10 +370,12 @@ const ForceDirectedGraph = ({
 
           setTimeout(() => {
             zoomToNode(select);
+            setIsVisible(true);
           }, 300);
         }
       }, 100);
     } else if (filterTag) {
+      setIsVisible(false);
       setTimeout(() => {
         const matchingNode = nodes.find((node) => {
           if (!node.tags || node.tags.length === 0) return false;
@@ -442,16 +424,16 @@ const ForceDirectedGraph = ({
   }, [
     nodes,
     links,
-    width,
-    height,
+    // width,
+    // height,
     filterTag,
-    chargeStrength,
-    linkStrength,
-    centerStrength,
-    colorScale,
-    dragstarted,
-    dragged,
-    dragended,
+    // chargeStrength,
+    // linkStrength,
+    // centerStrength,
+    // colorScale,
+    // dragstarted,
+    // dragged,
+    // dragended,
     selectnode,
     OnPlayingChange
   ]);
