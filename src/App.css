@@ -58,13 +58,24 @@ html, body {
   align-self: flex-start;
   max-width: 500px;
   overflow: scroll;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   pointer-events: auto;
   flex-direction: column;
   gap: 1.5rem;
   overflow-x: visible;
 }
+
+.closebutton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+}
+
 
 .topcontrols {
   position: absolute;

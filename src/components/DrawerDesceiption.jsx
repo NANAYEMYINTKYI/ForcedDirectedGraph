@@ -9,7 +9,7 @@ Object.keys(imageslist).forEach((path) => {
 
 const Description = ({name, data, nodelist, dataset}) => {
   // console.log(data)
-  // console.log(nodelist)
+  // console.log(name)
 
   // const selectedNode = nodelist.find(d => d.id.toLowerCase() === name.toLowerCase());
   // const selectedTitle = data.find(d => d.Title.toLowerCase() === name.toLowerCase());
@@ -18,8 +18,8 @@ const Description = ({name, data, nodelist, dataset}) => {
 
   const selectedNode = listselectedNode[0]
   // const selectedTitle = listselectedTitle[0]
-  console.log(selectedNode)
-  console.log(listselectedTitle)
+  // console.log(selectedNode)
+  // console.log(listselectedTitle)
 
   if (selectedNode.group === 18){    
   return(
@@ -30,7 +30,7 @@ const Description = ({name, data, nodelist, dataset}) => {
          <img src={image[project.file]} alt={project.Title} className="descriptionimage" /><br />
          <b>Year: </b>{project.Year}<br />
          <b>Location: </b>{project.Location}
-         <hr class="section-line" />
+         <hr className="section-line" />
          <h3>Description </h3>
          {project.Description}<br />
          <Tags tagString={project.Tag} />
@@ -40,7 +40,7 @@ const Description = ({name, data, nodelist, dataset}) => {
         >
           More about {project.Title}...
         </a>
-        <hr class="section-line" />
+        <hr className="section-line" />
         <h3>Contributer </h3>
         <ul style={{ listStyle: 'none' }}>
           {Object.entries(

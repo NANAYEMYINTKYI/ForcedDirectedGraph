@@ -14,6 +14,7 @@ import yearnode from '../src/data/YearNode.json';
 import peoplenode from '../src/data/PeopleNode.json';
 import peoplelink from '../src/data/PeopleLink.json';
 import Description from "./components/DrawerDesceiption";
+import * as Icons from '@ant-design/icons';
 import './App.css'
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [showNode, setShowNode] = useState(null);
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -64,11 +66,13 @@ const App = () => {
     setSelectedTitle(null);
     setselectedConnection(null);
     setselectedNode(null);
+    setShowNode(null);
   }, []);
 
   // Handle filtered data from TagManager
   const handleFilterChange = useCallback((data) => {
     setFilteredData(data);
+    setselectedNode(null);
   }, []);
 
   const handleTitleChange = useCallback((data) => {
@@ -83,6 +87,10 @@ const App = () => {
     setselectedNode(data);
   }, []);
 
+  const closeDescription = useCallback(() => {
+    setShowNode(null);
+  }, []);
+
   // Memoize the graph props to prevent unnecessary re-renders
   const graphProps = useMemo(() => ({
     datasets,
@@ -93,7 +101,9 @@ const App = () => {
     selectnode: selectedNode,
     filterTag: filterTag,
     width: window.innerWidth ,
-    height: window.innerHeight
+    height: window.innerHeight,
+    onNodeSelect: setShowNode,
+    showNode: showNode
   }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links, filterTag]);
   // console.log(filteredData.nodes)
   // console.log(filteredData.links)
@@ -133,17 +143,25 @@ const App = () => {
   isCollapsed = {isCollapsed}
 />
       </div>
+        {showNode && (
       <div className="description">
+            <div style={{display: 'inline-block' }}>
+
+              <button className={'closebutton'} onClick={closeDescription}>
+                <Icons.CloseOutlined /> 
+              </button>
+            </div>
               <Description 
                 // name = 'iart'
                 // name = 'Germany'
-                name = 'IN THE AIR, TONIGHT'
+                // name = 'IN THE AIR, TONIGHT'
                 // name = 'ANTopolis'
+                name = {showNode}
                 data = {FilterData}
                 nodelist = {datasets[currentDataset].nodes}
                 dataset = {currentDataset}
               />
-              </div>
+              </div>)}
       {/* <div className="topcontrols"> */}
       {/* Dataset Selector */}
       {/* <section className="dataset-selector">

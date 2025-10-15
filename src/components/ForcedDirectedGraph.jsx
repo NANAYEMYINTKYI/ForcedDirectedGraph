@@ -20,6 +20,8 @@ const ForceDirectedGraph = ({
   filterTag,
   width,
   height,
+  showNode,
+  onNodeSelect
 }) => {
   // Refs
   const svgRef = useRef();
@@ -83,6 +85,11 @@ const ForceDirectedGraph = ({
       .attr("stroke", "#46444dff")
       .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
   }, []);
+
+  useEffect(() => {
+  onNodeSelect(null);
+  }, [nodes, links, showNode]);
+
 
   useEffect(() => {
     hasToggledVisibility.current = false;
@@ -324,6 +331,7 @@ const ForceDirectedGraph = ({
         // Zoom to selection
         if (tempSelectedNodes.length === 1) {
           zoomToNode(tempSelectedNodes[0]);
+        onNodeSelect(tempSelectedNodes[0].id)
         } else if (tempSelectedNodes.length > 1) {
           zoomToNode(tempSelectedNodes);
         }
@@ -345,6 +353,7 @@ const ForceDirectedGraph = ({
       //   }
       // }
       if (selectnode) {
+        onNodeSelect(selectnode.value)
       setTimeout(() => {
         const select = nodes.find(
           n => n.id.toLowerCase().replace(/\s+/g, "_") === 
