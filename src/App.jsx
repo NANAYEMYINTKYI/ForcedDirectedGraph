@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData } from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
@@ -20,8 +20,8 @@ import './App.css'
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
-  const [filterTag, setFilterTag]= useState("");
-  const [currentDataset, setCurrentDataset] = useState('people');
+  const [filterTag, setFilterTag] = useState("");
+  const [currentDataset, setCurrentDataset] = useState("people");
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
@@ -31,26 +31,26 @@ const App = () => {
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
     const [startYear, endYear] = yearRange;
-    return rawData.filter(data => {
+    return rawData.filter((data) => {
       let dataYear = parseInt(data.Year);
-      if (dataYear > 10000){
+      if (dataYear > 10000) {
         dataYear = dataYear % 10000;
       }
       return dataYear >= startYear && dataYear <= endYear;
     });
   }, [yearRange]);
-  
+
   // dataset
   const datasets = useMemo(() => {
     return {
       country: {
         ...CountryData(FilterData),
-        name: "Social Graph By Country"
+        name: "Social Graph By Country",
       },
       people: {
         ...PeopleData(FilterData),
-        name: "Social Graph By People"
-      }
+        name: "Social Graph By People",
+      },
     };
   }, [FilterData]);
   const handleRangeChange = (event, newValue) => {
@@ -216,20 +216,19 @@ const App = () => {
         <ForceDirectedGraph {...graphProps} />
       </div>
       <div className="buttom-controls">
-      {/* Timeline */}
+        {/* Timeline */}
         <section className="timeline-section">
           <p>Select Year Range:</p>
-          <Timeline 
-            value={yearRange} 
-            onChange={handleRangeChange} 
-            label="Select year range" 
+          <Timeline
+            value={yearRange}
+            onChange={handleRangeChange}
+            label="Select year range"
             width={Math.min(500, window.innerWidth - 100)} // Make responsive
           />
         </section>
       </div>
     </div>
   );
-
-}
+};
 
 export default App;

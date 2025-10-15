@@ -4,11 +4,13 @@ import './ForcedDirectedGraph.css'
 import {colorScale} from './Colorlist'
 
 // Import all images from a folder
-const imageslist = import.meta.glob('./../data/image/*.{png,jpg,jpeg,svg}', { eager: true });
+const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
+  eager: true,
+});
 
 const image = {};
 Object.keys(imageslist).forEach((path) => {
-  const fileName = path.split('/').pop();
+  const fileName = path.split("/").pop();
   image[fileName] = imageslist[path].default || imageslist[path];
 });
 
@@ -48,42 +50,38 @@ const ForceDirectedGraph = ({
 
 
   // Drag functions
-  const dragstarted = useCallback(function(event, d) {
-    if (!event.active ) simulationRef.current
-    .alphaTarget(0.01)
-    .alpha(1.01)
-    .restart();
+  const dragstarted = useCallback(function (event, d) {
+    if (!event.active)
+      simulationRef.current.alphaTarget(0.01).alpha(1.01).restart();
     d.fx = d.x;
     d.fy = d.y;
-  
+
     // Highlight connected links
     d3.selectAll(".link-line")
-      .filter(l => l.source.id === d.id || l.target.id === d.id)
+      .filter((l) => l.source.id === d.id || l.target.id === d.id)
       .attr("stroke", "#FF5c00")
       .attr("stroke-width", 10);
   }, []);
 
-  const dragged = useCallback(function(event, d) {
+  const dragged = useCallback(function (event, d) {
     d.fx = event.x;
     d.fy = event.y;
   }, []);
 
-  const dragended = useCallback(function(event, d) {
-    if (!event.active) simulationRef.current
-      .alphaTarget(0.5)
-      .alpha(1.01)
+  const dragended = useCallback(function (event, d) {
+    if (!event.active) simulationRef.current.alphaTarget(0.5).alpha(1.01);
 
     setTimeout(() => {
       simulationRef.current.alphaTarget(0);
     }, 1000);
     d.fx = null;
     d.fy = null;
-  
+
     // Restore connected links to original style
     d3.selectAll(".link-line")
-      .filter(l => l.source.id === d.id || l.target.id === d.id)
+      .filter((l) => l.source.id === d.id || l.target.id === d.id)
       .attr("stroke", "#46444dff")
-      .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
+      .attr("stroke-width", (d) => Math.sqrt(d.strength) * 2);
   }, []);
 
   useEffect(() => {
@@ -98,12 +96,13 @@ const ForceDirectedGraph = ({
 
   // Initialize and update graph when dependent
   useEffect(() => {
-    const svg = d3.select(svgRef.current); // select the current node and link into svg 
-    svg.selectAll("*").remove(); // Clear previous content 
+    const svg = d3.select(svgRef.current); // select the current node and link into svg
+    svg.selectAll("*").remove(); // Clear previous content
 
-    // tooltip appear by checking current tooltip 
+    // tooltip appear by checking current tooltip
     if (!tooltipRef.current) {
-      tooltipRef.current = d3.select("body")
+      tooltipRef.current = d3
+        .select("body")
         .append("div")
         .attr("class", "tooltip")
         .style("position", "absolute")
@@ -118,25 +117,29 @@ const ForceDirectedGraph = ({
     }
 
     // Create groups
-    const g=svg.append("g").attr("class","graph-group");
-    
+    const g = svg.append("g").attr("class", "graph-group");
+
     // set zoom behavior
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
     };
-    
-    const zoom = d3.zoom()
+
+    const zoom = d3
+      .zoom()
       .scaleExtent([0.01, 20]) // Sets min and max zoom levels
       .on("zoom", zoomHandler);
     svg.call(zoom);
     // set the initial zoom/translate when entering
     let scale;
-    if (width < 600) { // telephone size
+    if (width < 600) {
+      // telephone size
       scale = 0.03; // small screen → zoom out more
-    } else if (height < 1200) { //laptop size
+    } else if (height < 1200) {
+      //laptop size
       scale = 0.06; // medium screen
-    } else {  // large screen 
-      scale = 0.1;  // large screen → zoom in more
+    } else {
+      // large screen
+      scale = 0.1; // large screen → zoom in more
     }
     // Translate to roughly center your content
     const tx = width / 2.25;
@@ -146,45 +149,45 @@ const ForceDirectedGraph = ({
 
     // Apply
     svg.call(zoom.transform, initialTransform);
-
     function zoomToNode(d) {
-      const { width: svgWidth, height: svgHeight } = svg.node().getBoundingClientRect();
-      
-      const connectedLinks = links.filter(l => l.source === d || l.target === d);
-      const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
-          
+      const { width: svgWidth, height: svgHeight } = svg
+        .node()
+        .getBoundingClientRect();
+
+      const connectedLinks = links.filter(
+        (l) => l.source === d || l.target === d
+      );
+      const connectedNodes = connectedLinks.map((l) =>
+        l.source === d ? l.target : l.source
+      );
+
       // Calculate average distance to connections
-        let avgDistance = 0;
-        if (connectedNodes.length > 0) {
-          const totalDistance = connectedNodes.reduce((sum, node) => {
-            const dx = node.x - d.x;
-            const dy = node.y - d.y;
-            return sum + Math.sqrt(dx * dx + dy * dy);
-          }, 0);
-          avgDistance = totalDistance / connectedNodes.length;
-        }
-        // Scale based on how spread out the connections are
-        const targetRadius = 100; // How much space you want to see
-        const scale = Math.min(
-          Math.max(targetRadius / avgDistance, 0.5),
-          3
-        );
+      let avgDistance = 0;
+      if (connectedNodes.length > 0) {
+        const totalDistance = connectedNodes.reduce((sum, node) => {
+          const dx = node.x - d.x;
+          const dy = node.y - d.y;
+          return sum + Math.sqrt(dx * dx + dy * dy);
+        }, 0);
+        avgDistance = totalDistance / connectedNodes.length;
+      }
+      // Scale based on how spread out the connections are
+      const targetRadius = 100; // How much space you want to see
+      const scale = Math.min(Math.max(targetRadius / avgDistance, 0.5), 3);
       const transform = d3.zoomIdentity
         .translate(svgWidth / 2, svgHeight / 2)
         .scale(scale)
         .translate(-d.x, -d.y);
-      
-      svg.transition()
-        .duration(750)
-        .call(zoom.transform, transform);
-      
+
+      svg.transition().duration(750).call(zoom.transform, transform);
+
       // Step 2: Pull connected nodes closer WHILE zooming
       const attractForce = (alpha) => {
-        connectedNodes.forEach(node => {
+        connectedNodes.forEach((node) => {
           const dx = d.x - node.x;
           const dy = d.y - node.y;
           const distance = Math.sqrt(dx * dx + dy * dy) || 1;
-          
+
           // Pull nodes within a certain radius
           const targetDistance = 200; // Desired distance from center node
           if (distance > targetDistance) {
@@ -194,85 +197,111 @@ const ForceDirectedGraph = ({
           }
         });
       };
-  
-    simulationRef.current
-      .force("tempAttract", attractForce)
-      .alphaTarget(0.3)
-      .restart();
-    
-    // Step 3: Remove temporary force after animation
-    setTimeout(() => {
+
       simulationRef.current
-        .force("tempAttract", null)
-        .alphaTarget(0);
-    }, 1500);
-  }
+        .force("tempAttract", attractForce)
+        .alphaTarget(0.3)
+        .restart();
+
+      // Step 3: Remove temporary force after animation
+      setTimeout(() => {
+        simulationRef.current.force("tempAttract", null).alphaTarget(0);
+      }, 1500);
+    }
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
 
     // Create D3 force simulation
-    const simulation = d3.forceSimulation(nodes)
+    const simulation = d3
+      .forceSimulation(nodes)
       .force("y", d3.forceY(width))
       .force("x", d3.forceX(height))
-      .force("link", d3.forceLink(links).id(d => d.id).distance(10).strength(0.2)) // Attraction
+      .force(
+        "link",
+        d3
+          .forceLink(links)
+          .id((d) => d.id)
+          .distance(10)
+          .strength(0.2)
+      ) // Attraction
       .force("charge", d3.forceManyBody().strength(-chargeStrength)) // simulate gravity attrction (negative represent repulsion, impact every node)
       .force("center", d3.forceCenter(width / 2, height / 2)) // update new centering force
-      .force("collision", d3.forceCollide().radius(d => d.size*4/3)) // update new circle collision // prevent node from overlapping
+      .force(
+        "collision",
+        d3.forceCollide().radius((d) => (d.size * 4) / 3)
+      ) // update new circle collision // prevent node from overlapping
       .alpha(10)
-      .alphaDecay(0.05) 
+      .alphaDecay(0.05)
+      // Update positions on tick
+      .on("tick", () => {
+        link
+          .attr("x1", (d) => d.source.x)
+          .attr("y1", (d) => d.source.y)
+          .attr("x2", (d) => d.target.x)
+          .attr("y2", (d) => d.target.y);
+        node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+      });
     simulationRef.current = simulation;
-
     // Create links
-    const link = linkGroup.selectAll("line")
+    const link = linkGroup
+      .selectAll("line")
 
       .data(links)
       .join("line")
       .attr("class", "link-line")
       .attr("stroke", "#46444dff")
       .attr("stroke-opacity", 0.7)
-      .attr("stroke-width", d => Math.sqrt(d.strength) * 2);
+      .attr("stroke-width", (d) => Math.sqrt(d.strength) * 2);
     // Create nodes
-    const node = nodeGroup.selectAll("g")
+    const node = nodeGroup
+      .selectAll("g")
       .data(nodes)
-      .join ("g")
-      .call(d3.drag()
-        .on("start", dragstarted)
-        .on("drag", dragged)
-        .on("end", dragended)
-      )
-      // Set up clipPath
-      node.append("clipPath")
-        .attr("id", d => `circle-clip-${d.size}`)  // unique id per node
-        .append("circle")
-        .attr("r", d => d.size)
+      .join("g")
+      .call(
+        d3
+          .drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended)
+      );
+    // Set up clipPath
+    node
+      .append("clipPath")
+      .attr("id", (d) => `circle-clip-${d.size}`) // unique id per node
+      .append("circle")
+      .attr("r", (d) => d.size);
 
-      // create circle
-      node.append("circle")
-        .attr("r", d => d.size)
-        .attr("fill", d => colorScale(d.group))
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 2)
-        .style("cursor", "pointer")
-      node.each(function(d) {
+    // create circle
+    node
+      .append("circle")
+      .attr("r", (d) => d.size)
+      .attr("fill", (d) => colorScale(d.group))
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 2)
+      .style("cursor", "pointer");
+    node
+      .each(function (d) {
         const current = d3.select(this);
         if (d.file) {
           // If image exists, append image
-          current.append("image")
-          .attr("href", d => image[d.file])
-          .attr("x", d => -d.size*1.5)
-          .attr("y", d => -d.size*1.5)
-          .attr("width", d => d.size*3)
-          .attr("height", d => d.size*3)
-          .attr("clip-path", d => `url(#circle-clip-${d.size})`)
-          .style("cursor", "pointer");
+          current
+            .append("image")
+            .attr("href", (d) => image[d.file])
+            .attr("x", (d) => -d.size * 1.5)
+            .attr("y", (d) => -d.size * 1.5)
+            .attr("width", (d) => d.size * 3)
+            .attr("height", (d) => d.size * 3)
+            .attr("clip-path", (d) => `url(#circle-clip-${d.size})`)
+            .style("cursor", "pointer");
         } else {
           // Otherwise, append a colored circle
-          current.append("circle")
-          .attr("r", d => d.size)
-          .attr("fill", d => colorScale(d.group))
-          .attr("stroke", "steelblue")
-          .attr("stroke-width", 2)
-          .style("cursor", "pointer");
+          current
+            .append("circle")
+            .attr("r", (d) => d.size)
+            .attr("fill", (d) => colorScale(d.group))
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 2)
+            .style("cursor", "pointer");
         }
       })
 
@@ -300,12 +329,12 @@ const ForceDirectedGraph = ({
 
         // Move tooltip to mouse position
         tooltipRef.current
-          .style("left", (event.pageX + 10) + "px")
-          .style("top", (event.pageY + 10) + "px");
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY + 10 + "px");
 
         // Highlight connected links
         d3.selectAll(".link-line")
-          .filter(l => l.source.id === d.id || l.target.id === d.id)
+          .filter((l) => l.source.id === d.id || l.target.id === d.id)
           .attr("stroke", "#FF5c00")
           .attr("stroke-width", 10);
       })
@@ -313,20 +342,20 @@ const ForceDirectedGraph = ({
       // mousemove update position in mousemove
       .on("mousemove", (event) => {
         tooltipRef.current
-          .style("left", (event.pageX + 10) + "px")
-          .style("top", (event.pageY + 10) + "px");
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY + 10 + "px");
       })
 
       .on("mouseleave", (event, d) => {
         tooltipRef.current.style("opacity", 0);
-          d3.selectAll(".link-line")
-            .filter(l => l.source.id === d.id || l.target.id === d.id)
-            .attr("stroke", "#46444dff")
-            .attr("stroke-width", l => Math.sqrt(l.strength) * 2);
+        d3.selectAll(".link-line")
+          .filter((l) => l.source.id === d.id || l.target.id === d.id)
+          .attr("stroke", "#46444dff")
+          .attr("stroke-width", (l) => Math.sqrt(l.strength) * 2);
       })
-      .on("click", function(event, d) {
+      .on("click", function (event, d) {
         // Track selected node(s) temporarily
-        let selectedNodes = [];
+        // let selectedNodes = [];
         let tempSelectedNodes = [d];
         // Zoom to selection
         if (tempSelectedNodes.length === 1) {
@@ -356,8 +385,9 @@ const ForceDirectedGraph = ({
         onNodeSelect(selectnode.value)
       setTimeout(() => {
         const select = nodes.find(
-          n => n.id.toLowerCase().replace(/\s+/g, "_") === 
-              selectnode.value.toLowerCase().replace(/\s+/g, "_")
+          (n) =>
+            n.id.toLowerCase().replace(/\s+/g, "_") ===
+            selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
         if (select) {
           // ensure simulation updates positions before zoom
@@ -370,16 +400,15 @@ const ForceDirectedGraph = ({
       }, 100);
     } else if (filterTag) {
       setTimeout(() => {
-        const matchingNode = nodes.find(node => {
+        const matchingNode = nodes.find((node) => {
           if (!node.tags || node.tags.length === 0) return false;
-          return node.tags.some(tag => {
+          return node.tags.some((tag) => {
             const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
             return cleanTag === filterTag.toLowerCase();
           });
         });
         if (matchingNode) {
-          simulationRef.current.alpha(0.3).restart();
-
+          // simulationRef.current.alpha(0.3).restart();
           setTimeout(() => {
             zoomToNode(matchingNode);
           }, 300);
@@ -459,17 +488,17 @@ const ForceDirectedGraph = ({
           <div
             className="tooltip"
             style={{
-              position: 'absolute',
+              position: "absolute",
               left: tooltip.x,
               top: tooltip.y,
-              background: 'rgba(0, 0, 0, 0.8)',
-              color: 'white',
-              padding: '8px 12px',
-              borderRadius: '6px',
-              fontSize: '12px',
-              pointerEvents: 'none',
-              zIndex: 1000
-            }} 
+              background: "rgba(0, 0, 0, 0.8)",
+              color: "white",
+              padding: "8px 12px",
+              borderRadius: "6px",
+              fontSize: "12px",
+              pointerEvents: "none",
+              zIndex: 1000,
+            }}
             dangerouslySetInnerHTML={{ __html: tooltip.content }}
           />
         )}
