@@ -19,6 +19,8 @@ const App = () => {
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
+  // This Isplaying used to ri
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [showNode, setShowNode] = useState(null);
 
@@ -87,22 +89,30 @@ const App = () => {
   }, []);
 
   // Memoize the graph props to prevent unnecessary re-renders
-  const graphProps = useMemo(() => ({
-    datasets,
-    currentDataset,
-    handleDatasetChange,
-    nodes: filteredData.nodes,
-    links: filteredData.links,
-    selectnode: selectedNode,
-    filterTag: filterTag,
-    width: window.innerWidth ,
-    height: window.innerHeight,
-    onNodeSelect: setShowNode,
-    showNode: showNode
-  }), [selectedNode, currentDataset, filteredData.nodes, filteredData.links, filterTag]);
-  // console.log(filteredData.nodes)
-  // console.log(filteredData.links)
-   
+  const graphProps = useMemo(
+    () => ({
+      datasets,
+      currentDataset,
+      handleDatasetChange,
+      nodes: filteredData.nodes,
+      links: filteredData.links,
+      selectnode: selectedNode,
+      filterTag: filterTag,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      OnPlayingChange : isPlaying,
+      onNodeSelect: setShowNode,
+      showNode: showNode
+    }),
+    [
+      isPlaying,
+      selectedNode,
+      currentDataset,
+      filteredData.nodes,
+      filteredData.links,
+      filterTag,
+    ]
+  );
   // Title list
   let projects = filteredData.nodes 
   .filter(d => d.group === 18)
@@ -216,6 +226,9 @@ const App = () => {
           <Timeline
             value={yearRange}
             onChange={handleRangeChange}
+            OnPlayingChange={isPlaying => {
+              setIsPlaying(isPlaying);
+            }}
             label="Select year range"
             width={Math.min(500, window.innerWidth - 100)} // Make responsive
           />
