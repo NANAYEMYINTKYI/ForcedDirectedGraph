@@ -1,9 +1,13 @@
 import './ComponentStyle.css'
-const imageslist = import.meta.glob('./../data/image/*.{png,jpg,jpeg,svg}', { eager: true });
+
+// Import all images from a folder
+const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
+  eager: true,
+});
 
 const image = {};
 Object.keys(imageslist).forEach((path) => {
-  const fileName = path.split('/').pop();
+  const fileName = path.split("/").pop();
   image[fileName] = imageslist[path].default || imageslist[path];
 });
 
