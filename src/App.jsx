@@ -13,6 +13,7 @@ import yearlink from '../src/data/YearLink.json';
 import yearnode from '../src/data/YearNode.json';
 import peoplenode from '../src/data/PeopleNode.json';
 import peoplelink from '../src/data/PeopleLink.json';
+import Description from "./components/DrawerDesceiption";
 import './App.css'
 
 const App = () => {
@@ -132,6 +133,17 @@ const App = () => {
   isCollapsed = {isCollapsed}
 />
       </div>
+      <div className="description">
+              <Description 
+                // name = 'iart'
+                // name = 'Germany'
+                name = 'IN THE AIR, TONIGHT'
+                // name = 'ANTopolis'
+                data = {FilterData}
+                nodelist = {datasets[currentDataset].nodes}
+                dataset = {currentDataset}
+              />
+              </div>
       {/* <div className="topcontrols"> */}
       {/* Dataset Selector */}
       {/* <section className="dataset-selector">

@@ -78,30 +78,53 @@ rawData.forEach(title => {
     }
   });
 
-  title.Contributors = contributors;
+  title.contributors = contributors;
 });
 
   
     // node → connectionNode
-    const seenLinks = new Set();
-    let links = rawData 
-    .filter(d => d.Title && d.Contributors) 
-    .flatMap(d => d.Contributors 
-        // .split("|") 
-        // .map(c => c.trim()) 
-        // .filter(c => c) 
-        .map(c => { 
-        const key = `${d.Title.toLowerCase()}→${c.normalized}`;
-        if (seenLinks.has(key)) return null; 
-        seenLinks.add(key); 
-        return { 
-            source: d.Title, 
-            target: c.normalized, 
-            strength: 1 
-        }; 
-        }) 
-    ) 
-    .filter(Boolean);
+const seenLinks = new Set();
+
+const links = rawData
+  .filter(item => item.Title && item.contributors)
+  .flatMap(item =>
+    (item.contributors || [])
+      .map(c => {
+        if (!c.normalized) return null;
+
+        const key = `${item.Title.toLowerCase()}→${c.normalized}`;
+        if (seenLinks.has(key)) return null;
+
+        seenLinks.add(key);
+        return {
+          source: item.Title,
+          target: c.normalized,
+          strength: 1
+        };
+      })
+      .filter(Boolean)
+  );
+
+
+    // const seenLinks = new Set();
+    // let links = rawData 
+    // .filter(d => d.Title && d.Contributors) 
+    // .flatMap(d => d.Contributors 
+    //     // .split("|") 
+    //     // .map(c => c.trim()) 
+    //     // .filter(c => c) 
+    //     .map(c => { 
+    //     const key = `${d.Title.toLowerCase()}→${c.normalized}`;
+    //     if (seenLinks.has(key)) return null; 
+    //     seenLinks.add(key); 
+    //     return { 
+    //         source: d.Title, 
+    //         target: c.normalized, 
+    //         strength: 1 
+    //     }; 
+    //     }) 
+    // ) 
+    // .filter(Boolean);
 
     let nodeMap = {};
 
@@ -119,15 +142,17 @@ rawData.forEach(title => {
         url: item.URL,
         size: 44,
         group: 18,
-        file: item.URL.split("/")[5] + ".jpg"
+        file: item.URL.split("/")[5] + ".jpg",
+        contributors: item.contributors
         };
     }
+    item.file = item.URL.split("/")[5] + ".jpg";
     });
 
     // Add connectionNode
     rawData.forEach((item) => {
-    if (!item.Contributors) return;
-    item.Contributors
+    if (!item.contributors) return;
+    item.contributors
         // .split("|")
         // .map(name => name.trim())
         // .filter(name => name)

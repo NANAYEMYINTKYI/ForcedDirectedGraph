@@ -1,7 +1,40 @@
+.Description {
+  height: 100%;
+  width: 100%;
+  z-index: 100 ;
+}
+
+.descriptionimage {
+  max-width: 100%;   /* Image width won't exceed container width */
+  max-height: 100%;  /* Image height won't exceed container height */
+  object-fit: contain; /* Scale image to fit inside container, preserving aspect ratio */
+  display: block;    /* Removes inline image spacing */
+}
+
+.section-line {
+  border: none;            /* Remove default browser border */
+  height: 1px;             /* Thickness of the line */
+  background-color: #585858;  /* Light gray color, change as you want */
+  margin: 10px 0;          /* Vertical space around the line */
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;   /* Slightly rounded corners */
+  font-size: 14px;
+  cursor: default;      /* or pointer if clickable */
+  user-select: none;
+}
+
 .togglebutton {
   background: rgba(255, 255, 255, 0) ;
   border: 0;
-  z-index: 9999 ;
+  z-index: 100 ;
   pointer-events: auto ;
   font-size: large;
   position: relative;

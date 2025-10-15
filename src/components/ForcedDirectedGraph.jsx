@@ -426,7 +426,6 @@ const ForceDirectedGraph = ({
       simulation.stop();
     };
   }, [nodes, links, width, height, chargeStrength, linkStrength, centerStrength, colorScale, dragstarted, dragged, dragended, selectnode]);  
-        // console.log(graphVisible)
   return (
     <div className="force-graph-container">
       {/* Graph */}
