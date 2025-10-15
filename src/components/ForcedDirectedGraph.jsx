@@ -23,7 +23,7 @@ const ForceDirectedGraph = ({
   filterTag,
   width,
   height,
-  OnPlayingChange 
+  OnPlayingChange ,
   showNode,
   onNodeSelect
 }) => {
@@ -94,7 +94,7 @@ const ForceDirectedGraph = ({
 
 
   useEffect(() => {
-    hasToggledVisibility.current = false;
+    // hasToggledVisibility.current = false;
     setGraphVisible(false);
   }, [nodes, links])
 
@@ -431,25 +431,7 @@ const ForceDirectedGraph = ({
         .style("color", "#333")
         .style("word-wrap", "break-word")
         .text(d => d.label)
-        
-      // Update positions on tick
-      simulation.on("tick", () => {
-        link
-          .attr("x1", d => d.source.x)
-          .attr("y1", d => d.source.y)
-          .attr("x2", d => d.target.x)
-          .attr("y2", d => d.target.y);
-        node.attr("transform", d => `translate(${d.x},${d.y})`);
-        // console.log(simulation.alpha())
-        const alpha = simulation.alpha();
-
-        // Only show the graph once, when alpha is low enough
-        if (alpha < 0.01 && !hasToggledVisibility.current) {
-          hasToggledVisibility.current = true;
-          setGraphVisible(true);
-        }
-      });
-
+      
     return () => {
       simulation.stop();
     };
