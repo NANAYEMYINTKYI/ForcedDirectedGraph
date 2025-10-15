@@ -55,6 +55,7 @@ const App = () => {
   }, [FilterData]);
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
+    setShowNode(null);
   };
   
   const toggleToolbar = () => {
