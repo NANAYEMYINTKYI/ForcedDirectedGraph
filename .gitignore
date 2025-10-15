@@ -15,7 +15,6 @@ dist-ssr
 vite.config.js
 LinkData.json
 NodeData.json
-pic.jpg
 graph.css
 graph.jsx
 mab2023Data.json
@@ -23,6 +22,7 @@ mabdata.json
 peoplelink.json
 peoplenode.json
 Downloadimage.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -33,3 +33,6 @@ Downloadimage.js
 *.njsproj
 *.sln
 *.sw?
+package-lock.json
+package.json
+
