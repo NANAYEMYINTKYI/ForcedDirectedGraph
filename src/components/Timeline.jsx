@@ -36,7 +36,7 @@ const RangeSlider = ({ value, onChange, label, width = 300, OnPlayingChange }) =
             return [1999, 2023];
           }
 
-          return [currentYear + 1, currentYear + 1];
+          return [1999, currentYear + 1];
         });
       }, 800);
     } else {

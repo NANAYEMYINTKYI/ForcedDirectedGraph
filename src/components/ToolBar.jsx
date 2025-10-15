@@ -254,7 +254,7 @@ const Toolbar = ({
 
       <div>
         {/* Legend */}
-        <button
+        {/* <button
           className={'toolelement'}
           aria-describedby={Color.id}
           variant="contained"
@@ -299,7 +299,7 @@ const Toolbar = ({
               </>
             )}
           </div>
-        </Popover>
+        </Popover> */}
       </div>
     </div>
   );

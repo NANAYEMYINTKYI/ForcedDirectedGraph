@@ -10,11 +10,11 @@ const Legend = ({colorScale, label}) => {
     
   return (
     <div 
-    style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', margin: '0.5rem' }}>
+    style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '2rem', margin: '0.5rem' }}>
       {normalized.map((list) => (
         <div
           key={list.id}
-          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white' }}
         >
            <div
             style={{

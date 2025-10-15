@@ -2,12 +2,12 @@ import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData } from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
-import TagManager from "./components/TagManager";
-import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
 import Toolbar from './components/ToolBar';
-import rawData from './data/mabDataRaw.json';
+import rawData from './data/mabData.json';
 import Description from "./components/DrawerDesceiption";
+import Legend from './components/ColorLegend';
+import {colorScale, contributorFields, continentList} from './components/Colorlist'
 import * as Icons from '@ant-design/icons';
 import './App.css'
 
@@ -166,7 +166,26 @@ const App = () => {
                 dataset = {currentDataset}
               />
               </div>)}
-      {/* <div className="topcontrols"> */}
+      <div className="legend">
+      <div style={{ margin: '20px' }}>
+                  {currentDataset === 'people' ? (
+                    <>
+                      <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Contributor Role Legend</b>
+                      <Legend 
+                        colorScale={colorScale}
+                        label={contributorFields}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Continent Legend</b>
+                      <Legend 
+                        colorScale={colorScale}
+                        label={continentList}
+                      />
+                    </>
+                  )}
+                </div>
       {/* Dataset Selector */}
       {/* <section className="dataset-selector">
         <div className="dataset-buttons">
@@ -213,7 +232,7 @@ const App = () => {
             visible = {currentDataset === 'country'}
             value = {selectedConnection}
           /> */}
-        {/* </div> */}
+        </div>
       <div className="app-content">
         {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />

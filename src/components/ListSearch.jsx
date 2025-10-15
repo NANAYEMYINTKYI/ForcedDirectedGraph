@@ -27,7 +27,7 @@ const ListSearch = ({ options, Title, placeholder, onFilterChange, value, width 
           placeholder={placeholder}
           menuIsOpen={true}
           isSearchable
-          isClearable
+          // isClearable
           styles={{
             container: (base) => ({
               ...base,

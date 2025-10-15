@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import {LoadingOutlined} from '@ant-design/icons';
 import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
 import {colorScale} from './Colorlist'
@@ -125,7 +126,7 @@ const ForceDirectedGraph = ({
     // set zoom behavior
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
-      setIsVisible(false); // Hide during zoom
+      setIsVisible(true); // Hide during zoom
     };
     const zoom = d3
       .zoom()
@@ -456,14 +457,25 @@ const ForceDirectedGraph = ({
     <div className="force-graph-container">
       {/* Graph */}
       <div className="graph-container">
-        {/* {isVisible ? (
-          <div className="graph-svg">
-            <svg ref={svgRef} width={width} height={height}/>
-          </div>
-        ):(<p> Loading Data</p>)} */}
         {!isVisible && (
-          <p> loading Data</p>
-        )}
+          // <p> loading Data</p>
+           <div
+      style={{
+              position: 'absolute',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+      }}>
+            <LoadingOutlined
+              style={{
+                fontSize: 100,
+                color: 'white',
+              }}
+            />
+          </div>
+         )}
+        {/* )} */}
         <div className="graph-svg" style={{visibility: isVisible ? 'visible': 'hidden'}}>
           <svg ref={svgRef} width={width} height={height}/>
         </div>
