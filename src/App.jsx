@@ -6,7 +6,7 @@ import TagManager from "./components/TagManager";
 import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
 import Toolbar from './components/ToolBar';
-import rawData from './data/mabData.json';
+import rawData from './data/mabDataRaw.json';
 import Description from "./components/DrawerDesceiption";
 import * as Icons from '@ant-design/icons';
 import './App.css'
@@ -151,7 +151,6 @@ const App = () => {
         {showNode && (
       <div className="description">
             <div style={{display: 'inline-block' }}>
-
               <button className={'closebutton'} onClick={closeDescription}>
                 <Icons.CloseOutlined /> 
               </button>
