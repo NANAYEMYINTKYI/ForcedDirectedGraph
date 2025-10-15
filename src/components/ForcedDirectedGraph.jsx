@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
-import * as d3 from "d3";
-import "./ForcedDirectedGraph.css";
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import * as d3 from 'd3';
+import './ForcedDirectedGraph.css'
+import {colorScale} from './Colorlist'
 
 
 // Import all images from a folder
@@ -23,6 +24,8 @@ const ForceDirectedGraph = ({
   width,
   height,
   OnPlayingChange 
+  showNode,
+  onNodeSelect
 }) => {
   console.log(OnPlayingChange)
   // Refs
@@ -33,26 +36,22 @@ const ForceDirectedGraph = ({
   const zoomRef = useRef(false)
 
   // State
-  const [chargeStrength] = useState(1000);
-  const [linkStrength] = useState(0.1);
-  const [centerStrength] = useState(0.3);
-  const [tooltip] = useState({ visible: false, x: 0, y: 0, content: "" });
+  const [chargeStrength, setChargeStrength] = useState(1000);
+  const [linkStrength, setLinkStrength] = useState(0.1);
+  const [centerStrength, setCenterStrength] = useState(0.3);
+  const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
+  const [graphVisible, setGraphVisible] = useState(false);
 
   // Color scale
-  const colorScale = d3
-    .scaleOrdinal()
-    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    .range([
-      "#cb6bffff",
-      "#6e4ecdff",
-      "#4594d1ff",
-      "#96cea2ff",
-      "#e6ff6bff",
-      "#cd9a4eff",
-      "#d14545ff",
-      "#c8c8c8ff",
-      "#000000ff",
-    ]);
+  // d3.scaleOrdinal()
+  //   .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
+  //   .range(["#eb7270", "#eb9d70", "#ebc970", 
+  //     "#e2eb70", "#b6eb70", "#8beb70", 
+  //     "#70eb80", "#70ebac","#70ebd7",
+  //     "#70d3eb","#70a8eb","#707ceb",
+  //     "#8f70eb","#ba70eb","#e670eb",
+  //     "#eb70c5","#eb7099","#000000ff"]);
+
 
   // Drag functions
   const dragstarted = useCallback(function (event, d) {
@@ -88,6 +87,16 @@ const ForceDirectedGraph = ({
       .attr("stroke", "#46444dff")
       .attr("stroke-width", (d) => Math.sqrt(d.strength) * 2);
   }, []);
+
+  useEffect(() => {
+  onNodeSelect(null);
+  }, [nodes, links, showNode]);
+
+
+  useEffect(() => {
+    hasToggledVisibility.current = false;
+    setGraphVisible(false);
+  }, [nodes, links])
 
   // Initialize and update graph when dependent
   useEffect(() => {
@@ -248,21 +257,23 @@ const ForceDirectedGraph = ({
 
       .on("mouseenter", (event, d) => {
         // Set tooltip
-        if (d.group === 9) {
-          tooltipRef.current.style("opacity", 1)
-            .html(`<strong>${d.id}</strong><br/> 
+        if (d.group === 18) {
+          tooltipRef.current
+            .style("opacity", 1)
+            .html(`<strong>${d.label}</strong><br/> 
               <strong>Year:</strong> ${d.year}<br/> 
               <strong>Location:</strong> ${d.location}<br/> 
               <strong>Description:</strong> ${d.description}<br/> 
               <strong>Tag:</strong> ${d.tag}`);
         } else if (d.positions !== undefined) {
-          tooltipRef.current.style("opacity", 1).html(`<strong>${
-            d.id
-          }</strong><br/> 
+          tooltipRef.current
+            .style("opacity", 1)
+            .html(`<strong>${d.label}</strong><br/> 
               <strong>Position:</strong> ${d.positions.join(", ")}`);
         } else {
-          tooltipRef.current.style("opacity", 1)
-            .html(`<strong>${d.id}</strong><br/> 
+          tooltipRef.current
+            .style("opacity", 1)
+            .html(`<strong>${d.label}</strong><br/> 
               <strong>Continent:</strong> ${d.continent}`);
         }
 
@@ -299,6 +310,7 @@ const ForceDirectedGraph = ({
         // Zoom to selection
         if (tempSelectedNodes.length === 1) {
           zoomToNode(tempSelectedNodes[0]);
+        onNodeSelect(tempSelectedNodes[0].id)
         } else if (tempSelectedNodes.length > 1) {
           zoomToNode(tempSelectedNodes);
         }
@@ -358,6 +370,7 @@ const ForceDirectedGraph = ({
     simulationRef.current = simulation;
     if (selectnode) {
       setIsVisible(false);
+      onNodeSelect(selectnode.value)
       setTimeout(() => {
         const select = nodes.find(
           (n) =>
@@ -393,31 +406,50 @@ const ForceDirectedGraph = ({
       }, 50);
     }
 
-    // Aligh text in node to be center
-    node
-      .append("foreignObject")
-      .each(function (d) {
-        const current = d3.select(this);
-        if (d.file) {
-          current.attr("y", d.size + 5).style("font-size", "12px");
-        } else {
-          current.attr("y", -50).style("font-size", (d) => d.size / 4);
+      // Aligh text in node to be center
+      node.append("foreignObject")
+        .each(function(d) {
+          const current = d3.select(this);
+          if (d.file) {
+            current.attr("y", d.size + 5)
+            .style("font-size", "12px")
+          } else {
+            current.attr("y", -50)
+            .style("font-size", d => d.size/4)
+          }})
+        .attr("x", d => -d.size*1)
+        .attr("width", d => d.size*2) 
+        .attr("height", 100) 
+        .append("xhtml:div")
+        .style("display", "flex")
+        .style("flex-direction", "column")
+        .style("justify-content", d => d.file ? "flex-start" : "center")
+        .style("width", "100%")
+        .style("height", "100%")
+        .style("font-weight", "bold")
+        .style("text-align", "center")
+        .style("color", "#333")
+        .style("word-wrap", "break-word")
+        .text(d => d.label)
+        
+      // Update positions on tick
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+        // console.log(simulation.alpha())
+        const alpha = simulation.alpha();
+
+        // Only show the graph once, when alpha is low enough
+        if (alpha < 0.01 && !hasToggledVisibility.current) {
+          hasToggledVisibility.current = true;
+          setGraphVisible(true);
         }
-      })
-      .attr("x", (d) => -d.size * 1)
-      .attr("width", (d) => d.size * 2) // box width
-      .attr("height", 100) // box height
-      .append("xhtml:div")
-      .style("display", "flex")
-      .style("flex-direction", "column")
-      .style("justify-content", (d) => (d.file ? "flex-start" : "center"))
-      .style("width", "100%")
-      .style("height", "100%")
-      .style("font-weight", "bold")
-      .style("text-align", "center")
-      .style("color", "#333")
-      .style("word-wrap", "break-word")
-      .text((d) => d.id);
+      });
+
     return () => {
       simulation.stop();
     };

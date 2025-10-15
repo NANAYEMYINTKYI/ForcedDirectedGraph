@@ -1,3 +1,4 @@
+import {contributorFields} from './Colorlist'
 // ----- Customize Data Section-----
 // import rawData from './../data/FilterData.json' with { type: 'json' };
 // node = Title // Focus Node
@@ -9,25 +10,25 @@
 
 // export function processData(rawData) {
 // Fields to merge
-const contributorFields = [
-    "Building or project owner",
-    "Architecture",
-    "Project artist/ concept/ design/ planning",
-    "Structural engineering",
-    "Light design",
-    "Technical layout light",
-    "Display content/ visuals/ showreel",
-    "Light hardware (LED hardware)",
-    "Lighting control software",
-    "Interaction design/ programming",
-    "Mediacredits",
-    "Project co-ordination",
-    "Project sponsor/ support",
-    "Host organization",
-    "Facade design",
-    "Facade construction",
-    "Kinetic engineering"
-];
+// const contributorFields = [
+//   "Building or project owner",
+//   "Architecture",
+//   "Project artist/ concept/ design/ planning",
+//   "Structural engineering",
+//   "Light design",
+//   "Technical layout light",
+//   "Display content/ visuals/ showreel",
+//   "Light hardware (LED hardware)",
+//   "Lighting control software",
+//   "Interaction design/ programming",
+//   "Mediacredits",
+//   "Project co-ordination",
+//   "Project sponsor/ support",
+//   "Host organization",
+//   "Facade design",
+//   "Facade construction",
+//   "Kinetic engineering"
+// ];
 
 export function PeopleData(rawData) {
 
@@ -46,50 +47,84 @@ rawData.forEach(title => {
       // Clean parentheses
       let cleaned = String(value).trim().replace(/\s*\([^)]*\)/g, "");
 
+      // Normalize for case-insensitive checks
+      const lowerCleaned = cleaned.toLowerCase();
+
       // Skip if contains .com or .net
-      if (cleaned.includes(".com") || cleaned.includes(".net")) return;
+      if (lowerCleaned.includes(".com") || lowerCleaned.includes(".net")) return;
 
-      // Remove &amp
-      cleaned = cleaned.replace(/amp/g, "");
-      cleaned = cleaned.replace(/AV&C/g, "");
+      // Remove &amp and AV&C (case-insensitive)
+      cleaned = cleaned.replace(/amp/gi, "");
+      cleaned = cleaned.replace(/AV&C/gi, "");
 
-      // Replace /, \, & (not comma) with |
-      cleaned = cleaned.replace(/, (?=(?!inc|ltd|llc|corp|co))/gi, "|");
-      cleaned = cleaned.replace(/[\\&;]/g, "|");
+      // Replace comma unless followed by exact suffixes (case-insensitive)
+      cleaned = cleaned.replace(/, (?!(inc\b|ltd\b|llc\b|corp\b|co\b))/gi, "|");
+
+      // Replace /, \, &, ; with |
+      cleaned = cleaned.replace(/[\\\/&;] /g, "|");
 
       cleaned
         .split("|")
         .map(c => c.trim())
         .filter(Boolean)
         .forEach(name => {
-          contributors.push({ name, position: field });
+          contributors.push({
+            name,
+            normalized: name.toLowerCase(),
+            position: field,
+            group: contributorFields.indexOf(field) + 1
+          });
         });
     }
   });
 
-  title.Contributors = contributors;
+  title.contributors = contributors;
 });
+
   
     // node → connectionNode
-    const seenLinks = new Set();
-    let links = rawData 
-    .filter(d => d.Title && d.Contributors) 
-    .flatMap(d => d.Contributors 
-        // .split("|") 
-        // .map(c => c.trim()) 
-        // .filter(c => c) 
-        .map(c => { 
-        const key = `${d.Title}→${c.name}`; 
-        if (seenLinks.has(key)) return null; 
-        seenLinks.add(key); 
-        return { 
-            source: d.Title, 
-            target: c.name, 
-            strength: 1 
-        }; 
-        }) 
-    ) 
-    .filter(Boolean); // Remove nulls
+const seenLinks = new Set();
+
+const links = rawData
+  .filter(item => item.Title && item.contributors)
+  .flatMap(item =>
+    (item.contributors || [])
+      .map(c => {
+        if (!c.normalized) return null;
+
+        const key = `${item.Title.toLowerCase()}→${c.normalized}`;
+        if (seenLinks.has(key)) return null;
+
+        seenLinks.add(key);
+        return {
+          source: item.Title,
+          target: c.normalized,
+          strength: 1
+        };
+      })
+      .filter(Boolean)
+  );
+
+
+    // const seenLinks = new Set();
+    // let links = rawData 
+    // .filter(d => d.Title && d.Contributors) 
+    // .flatMap(d => d.Contributors 
+    //     // .split("|") 
+    //     // .map(c => c.trim()) 
+    //     // .filter(c => c) 
+    //     .map(c => { 
+    //     const key = `${d.Title.toLowerCase()}→${c.normalized}`;
+    //     if (seenLinks.has(key)) return null; 
+    //     seenLinks.add(key); 
+    //     return { 
+    //         source: d.Title, 
+    //         target: c.normalized, 
+    //         strength: 1 
+    //     }; 
+    //     }) 
+    // ) 
+    // .filter(Boolean);
 
     let nodeMap = {};
 
@@ -98,6 +133,7 @@ rawData.forEach(title => {
     if (!nodeMap[item.Title]) {
         nodeMap[item.Title] = {
         id: item.Title,
+        label: item.Title,
         year: item.Year,
         location: item.Location,
         description: item.Description,
@@ -105,37 +141,42 @@ rawData.forEach(title => {
         image: item["Images.1"],
         url: item.URL,
         size: 44,
-        group: 9,
-        file: item.URL.split("/")[5] + ".jpg"
+        group: 18,
+        file: item.URL.split("/")[5] + ".jpg",
+        contributors: item.contributors
         };
     }
+    item.file = item.URL.split("/")[5] + ".jpg";
     });
 
     // Add connectionNode
     rawData.forEach((item) => {
-    if (!item.Contributors) return;
-    item.Contributors
+    if (!item.contributors) return;
+    item.contributors
         // .split("|")
         // .map(name => name.trim())
         // .filter(name => name)
         .forEach(contributor => {
           const name = contributor.name;
           const position = contributor.position;
+          const normalizedName = contributor.normalized;
+          const group = contributor.group;
 
-        if (!nodeMap[name]) {
-            nodeMap[name] = {
-            id: name,
+        if (!nodeMap[normalizedName]) {
+            nodeMap[normalizedName] = {
+            id: normalizedName,
+            label: name,
             size: 34,
-            group: 8,
+            group: group,
             positions: [position],
             projects: [item.Title]
             };
     } else {
-      if (!nodeMap[name].positions.includes(position)) {
-        nodeMap[name].positions.push(position);
+      if (!nodeMap[normalizedName].positions.includes(position)) {
+        nodeMap[normalizedName].positions.push(position);
       }
-      if (!nodeMap[name].projects.includes(item.Title)) {
-        nodeMap[name].projects.push(item.Title);
+      if (!nodeMap[normalizedName].projects.includes(item.Title)) {
+        nodeMap[normalizedName].projects.push(item.Title);
       }
         }
         });
@@ -152,7 +193,6 @@ rawData.forEach(title => {
     });
 
     const nodes = Object.values(nodeMap);  
-
-    // console.log(nodes);
+    
     return { nodes, links };
 }
