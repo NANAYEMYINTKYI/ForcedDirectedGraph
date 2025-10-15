@@ -107,6 +107,7 @@ const App = () => {
     [
       isPlaying,
       selectedNode,
+      setShowNode,
       currentDataset,
       filteredData.nodes,
       filteredData.links,
@@ -132,21 +133,21 @@ const App = () => {
       </header>
       <div className="toolbar">
         <Toolbar 
-  datasets={datasets}
-  currentDataset={currentDataset}
-  handleDatasetChange={handleDatasetChange}
-  FilterData={FilterData}
-  handleFilterChange={handleFilterChange}
-  setFilterTag={setFilterTag}
-  projects={projects}
-  connection={connection}
-  handleTitleChange={handleTitleChange}
-  handleConnectionChange={handleConnectionChange}
-  selectedTitle={selectedTitle}
-  selectedConnection={selectedConnection}
-  toggleToolbar = {toggleToolbar}
-  isCollapsed = {isCollapsed}
-/>
+        datasets={datasets}
+        currentDataset={currentDataset}
+        handleDatasetChange={handleDatasetChange}
+        FilterData={FilterData}
+        handleFilterChange={handleFilterChange}
+        setFilterTag={setFilterTag}
+        projects={projects}
+        connection={connection}
+        handleTitleChange={handleTitleChange}
+        handleConnectionChange={handleConnectionChange}
+        selectedTitle={selectedTitle}
+        selectedConnection={selectedConnection}
+        toggleToolbar = {toggleToolbar}
+        isCollapsed = {isCollapsed}
+      />
       </div>
         {showNode && (
       <div className="description">
