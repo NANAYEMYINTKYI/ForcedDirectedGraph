@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Select from 'react-select';
-
+import TagFilter from "./TagFilter"
 // Parse tag arrays from JSON strings
 const parseTagsArray = (tagData) => {
   if (!tagData) return [];
@@ -39,7 +39,6 @@ const TagManager = ({
 
   useEffect(() => {
     if (!mabData || !datasets) return;
-
     // Build tag lookup from mabData
     const tagLookup = {};
     mabData.forEach(item => {
@@ -80,203 +79,17 @@ const TagManager = ({
     });
 
     setProcessedDatasets(mergedDatasets);
-
-    // Apply filtering immediately after processing
-    const activeDataset = mergedDatasets[currentDataset];
-    if (!activeDataset) return;
-
-    const { nodes, links } = activeDataset;
-
-    let visibleNodes;
-    let visibleLinks;
-
-    if (!filterTag) {
-      visibleNodes = nodes;
-      visibleLinks = links;
-    } else {
-      const primaryNodes = nodes.filter(node => {
-        if (!node.tags || node.tags.length === 0) return false;
-
-        return node.tags.some(tag => {
-          const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
-          return cleanTag === filterTag.toLowerCase();
-        });
-      });
-
-      const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
-      const connectedNodeIds = new Set();
-
-      links.forEach(link => {
-        if (primaryNodeIds.has(link.source)) {
-          connectedNodeIds.add(link.target);
-        }
-        if (primaryNodeIds.has(link.target)) {
-          connectedNodeIds.add(link.source);
-        }
-      });
-
-      visibleNodes = nodes.filter(node =>
-        primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
-      );
-
-      const visibleNodeTitles = new Set(visibleNodes.map(n => n.id));
-      visibleLinks = links.filter(link => {
-        return visibleNodeTitles.has(link.source) && visibleNodeTitles.has(link.target);
-      });
-    }
-
-    const filteredResult = {
-      nodes: visibleNodes,
-      links: visibleLinks
-    };
-
-    setFilteredData(filteredResult);
-
-    if (onFilterChange) {
-      onFilterChange(filteredResult);
-    }
-
-  }, [datasets, mabData, currentDataset, filterTag, onFilterChange]);
+  }, [datasets, mabData]);
   
-  const allTags = useMemo(() => {
-    if (!processedDatasets[currentDataset]) return [];
-
-    const tagSet = new Set();
-    processedDatasets[currentDataset].nodes.forEach(node => {
-      if (node.tags && node.tags.length > 0) {
-        node.tags.forEach(tag => {
-          if (tag) {
-            const cleanTag = tag.replace(/^#/, "").trim();
-            // Filter out tags that are purely numbers
-            if (cleanTag && !/^\d+$/.test(cleanTag)) {
-              tagSet.add(cleanTag);
-            }
-          }
-        });
-      }
-    });
-
-    return Array.from(tagSet).sort();
-  }, [processedDatasets, currentDataset]);
-
-  // Apply filter when dataset or tag changes
-  useEffect(() => {
-    if (!processedDatasets[currentDataset]) return;
-    
-    const { nodes, links } = processedDatasets[currentDataset];
-    
-    let visibleNodes;
-    let visibleLinks;
-    
-    if (!filterTag) {
-      visibleNodes = nodes;
-      visibleLinks = links;
-    } else {
-      // Find nodes that match the tag (primary nodes)
-      const primaryNodes = nodes.filter(node => {
-        if (!node.tags || node.tags.length === 0) return false;
-        
-        return node.tags.some(tag => {
-          const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
-          return cleanTag === filterTag.toLowerCase();
-        });
-      });
-
-      // Find all nodes connected to primary nodes
-      const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
-      const connectedNodeIds = new Set();
-      
-      links.forEach(link => {
-        if (primaryNodeIds.has(link.source)) {
-          connectedNodeIds.add(link.target);
-        }
-        if (primaryNodeIds.has(link.target)) {
-          connectedNodeIds.add(link.source);
-        }
-      });
-
-      // Combine primary nodes + connected nodes
-      visibleNodes = nodes.filter(node => 
-        primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
-      );
-
-      // Filter links to only show connections between visible nodes
-      const visibleNodeTitles = new Set(visibleNodes.map(n => n.id));
-      visibleLinks = links.filter(link => {
-        const hasSource = visibleNodeTitles.has(link.source);
-        const hasTarget = visibleNodeTitles.has(link.target);
-        return hasSource && hasTarget;
-      });
-    }
-
-    const filteredResult = {
-      nodes: visibleNodes,
-      links: visibleLinks
-    };
-
-    setFilteredData(filteredResult);
-    
-    // Pass filtered data back to parent
-    if (onFilterChange) {
-      onFilterChange(filteredResult);
-    }
-  }, [processedDatasets, currentDataset, filterTag, onFilterChange]);
-
-  // Handle tag filter change
- const handleTagChange = (tag) => {
-  setFilterTag(tag);
-  if (onTagSelect) {
-    onTagSelect(tag);  // Add this line to notify parent
-  }
-};
-
-  // Reset filter when dataset changes
-  useEffect(() => {
-    setFilterTag("");
-  }, [currentDataset]);
-  
-  const options = [
-    { value: '', label: `All ${showCounts ? `(${filteredData.nodes.length} nodes, ${filteredData.links.length} links)` : ''}` },
-    ...allTags.map(tag => ({ value: tag, label: tag })),
-  ];
-
-  const handleChange = (selectedOption) => {
-    handleTagChange(selectedOption.value);
-  };
-
-
   return (
-    <div style={{ display: "flex", gap: "1rem", alignItems: "center"}}>
-      <label>
-        Filter by Tag:{" "}
-        <Select
-          value={options.find(opt => opt.value === filterTag)}
-          onChange={handleChange}
-          options={options}
-          menuIsOpen={true}
-          isSearchable
-          styles={{
-            container: (base) => ({
-              ...base,
-              width: `${width}px`,
-            }),
-            menu: (base) => ({
-              ...base,
-              position: 'relative',
-              zIndex: 1,
-            })
-          }}
-        />
-        {/* <select value={filterTag} onChange={(e) => handleTagChange(e.target.value)}>
-          <option value="">
-            All {showCounts && `(${filteredData.nodes.length} nodes, ${filteredData.links.length} links)`}
-          </option>
-          {allTags.map(tag => (
-            <option key={tag} value={tag}>{tag}</option>
-          ))}
-        </select> */}
-      </label>
-    </div>
+    <TagFilter
+    processedDatasets = {processedDatasets}
+    currentDataset= {currentDataset}
+    onFilterChange= {onFilterChange}
+    onTagSelect = {onTagSelect}
+    showCount={showCounts}
+    width={width}
+    />
   );
 };
 
