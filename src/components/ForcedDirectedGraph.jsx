@@ -50,8 +50,7 @@ const ForceDirectedGraph = ({
   //     "#70d3eb","#70a8eb","#707ceb",
   //     "#8f70eb","#ba70eb","#e670eb",
   //     "#eb70c5","#eb7099","#000000ff"]);
-
-
+  
   // Drag functions
   const dragstarted = useCallback(function (event, d) {
     if (!event.active)
@@ -135,7 +134,7 @@ const ForceDirectedGraph = ({
       // const connectedNodes = connectedLinks.map((l) =>
       //   l.source === d ? l.target : l.source
       // );
-      const scale = Math.min(width, height/800);
+      const scale = Math.min(width, height/1500);
       const transform = d3.zoomIdentity
         .translate(width / 2, height / 2)
         .scale(scale)
@@ -289,6 +288,7 @@ const ForceDirectedGraph = ({
           onNodeSelect(tempSelectedNodes[0].id)
         } else if (tempSelectedNodes.length > 1) {
           zoomToNode(tempSelectedNodes);
+          console.log("StopPropagation")
         }
         // Clear selection array
         tempSelectedNodes = [];
@@ -298,8 +298,8 @@ const ForceDirectedGraph = ({
       .force("y", d3.forceY(height / 2).strength(0.1))  // Fix: y uses height
       .force("x", d3.forceX(width / 2).strength(0.1))   // Fix: x uses width
       .force("link", d3.forceLink(links).id((d) => d.id)
-        .distance(50)        // Increased from 10
-        .strength(0.5))      // Increased from 0.2
+        .distance(10)        // Increased from 10
+        .strength(0.2))      // Increased from 0.2
       .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("collision", d3.forceCollide().radius((d) => (d.size * 4) / 3))
@@ -352,35 +352,29 @@ const ForceDirectedGraph = ({
             selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
         if (select) {
-          // ensure simulation updates positions before zoom
-          // simulationRef.current.alpha(0.3).restart();
-          // zoomRef.current=true;
-          // zoomToNode(select);
           setTimeout(() => {
-            zoomRef.current=true;
-             zoomToNode(select);
-            // onNodeSelect(null);
+            zoomToNode(select);
           }, 800);
         }
       }, 100);
     } else if (filterTag) {
       setIsVisible(false);
-      // setTimeout(() => {
-      //   const matchingNode = nodes.find((node) => {
-      //     if (!node.tags || node.tags.length === 0) return false;
-      //     return node.tags.some((tag) => {
-      //       const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
-      //       return cleanTag === filterTag.toLowerCase();
-      //     });
-      //   });
-      //   if (matchingNode) {
-      //     // simulationRef.current.alpha(0.3).restart();
-      //     setTimeout(() => {
-      //       zoomToNode(matchingNode);
-      //       setIsVisible(true)
-      //     }, 300);
-      //   }
-      // }, 50);
+      setTimeout(() => {
+        const matchingNode = nodes.find((node) => {
+          if (!node.tags || node.tags.length === 0) return false;
+          return node.tags.some((tag) => {
+            const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
+            return cleanTag === filterTag.toLowerCase();
+          });
+        });
+        // if (matchingNode) {
+        //   // simulationRef.current.alpha(0.3).restart();
+        //   setTimeout(() => {
+        //     zoomToNode(matchingNode);
+        //     setIsVisible(true)
+        //   }, 300);
+        // }
+      }, 50);
     }      // Aligh text in node to be center
       node.append("foreignObject")
         .each(function(d) {
