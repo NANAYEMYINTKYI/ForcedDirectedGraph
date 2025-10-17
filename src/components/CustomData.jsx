@@ -1,4 +1,10 @@
 import * as d3 from 'd3';
+import countryToContinent from 'country-json/src/country-by-continent.json' with { type: 'json' };
+
+// ----- Color -----
+export const graphcolor = {
+  inactive: "rgba(135, 135, 135, 1)",
+};
 
 export const colorScale = d3.scaleOrdinal()
    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
@@ -9,6 +15,7 @@ export const colorScale = d3.scaleOrdinal()
      "#8f70eb","#ba70eb","#e670eb",
      "#eb70c5","#eb7099","#000000ff"]);
 
+// ----- Data -----
 export const continentList = [
   { id: 1, name: "Africa" },
   { id: 3, name: "Asia" },
@@ -41,6 +48,16 @@ export const contributorFields = [
   "Kinetic engineering"
 ];
 
-export const graphcolor = {
-  inactive: "rgb(135, 135, 135)",
-};
+export function updatedCountriesToContinent() {
+  const additionalCountries = [
+    { country: "United States of America", continent: "North America" }, 
+    { country: "Kosovo", continent: "Europe" },
+    { country: "Taiwan", continent: "Asia" }
+  ];
+
+  return [...countryToContinent, ...additionalCountries];
+}
+
+
+
+

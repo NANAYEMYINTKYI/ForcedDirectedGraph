@@ -1,12 +1,13 @@
 //--- This is the graph legend where you can check/uncheck the color ---//
-// NOTE: For changing color of select/unselect go to colorlist
+// NOTE: For changing color of select/unselect go to CustomData
 // CSS SECTION: Legend
 
 import { Checkbox } from 'antd';
 import './ComponentStyle.css';
-import {colorScale, graphcolor} from './Colorlist'
+import {colorScale, graphcolor} from './CustomData.jsx';
 
 const Legend = ({label, selectedIds, setSelectedIds }) => {
+  
   // NORMALIZE THE LABEL ARRAY
   const normalized = label.map((item, index) =>
     typeof item === 'object'

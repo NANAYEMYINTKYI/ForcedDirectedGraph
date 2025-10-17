@@ -7,7 +7,7 @@ import Toolbar from './components/ToolBar';
 import rawData from './data/mabData.json';
 import Description from "./components/DrawerDesceiption";
 import Legend from './components/ColorLegend';
-import {colorScale, contributorFields, continentList} from './components/Colorlist'
+import {colorScale, contributorFields, continentList} from './components/CustomData.jsx';
 import * as Icons from '@ant-design/icons';
 import * as d3 from 'd3';
 import './App.css'
@@ -16,7 +16,7 @@ const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const [filterTag, setFilterTag] = useState("");
-  const [currentDataset, setCurrentDataset] = useState("people");
+  const [currentDataset, setCurrentDataset] = useState("country");
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
@@ -65,6 +65,7 @@ const App = () => {
     setselectedConnection(null);
     setselectedNode(null);
     setShowNode(null);
+    setSelectedRoles(colorScale.domain());
   }, []);
 
   // Handle filtered data from TagManager

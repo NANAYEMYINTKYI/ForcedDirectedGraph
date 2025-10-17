@@ -4,7 +4,7 @@ import ToolBarPopover from './ToolBarPopover';
 import TagManager from './TagManager';
 import ListSearch from './ListSearch';
 import Legend from './ColorLegend';
-import {colorScale, contributorFields, continentList} from './Colorlist'
+import {colorScale, contributorFields, continentList} from './CustomData.jsx';
 import './ComponentStyle.css'
 
 const Toolbar = ({

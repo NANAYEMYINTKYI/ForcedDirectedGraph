@@ -124,7 +124,7 @@
 
 
 
-/* Legend */
+/* --- Legend --- */
 .legendbox {
   display: 'flex';
   flex-direction: 'row'; 
@@ -154,6 +154,14 @@
 .legenditem .ant-checkbox-checked:hover .ant-checkbox-inner {
   background-color: var(--checkbox-color) !important;
   border-color: var(--checkbox-color) !important;
+  filter: brightness(80%);
+}
+
+.legenditem .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-checked):hover .ant-checkbox-inner,
+.legenditem .ant-checkbox:not(.ant-checkbox-checked):hover .ant-checkbox-inner {
+  background-color: var(--unselected-color);
+  border-color: var(--unselected-color);
+  filter: brightness(80%);
 }
 
 .legenditem .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-checked) .ant-checkbox-inner,

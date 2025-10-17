@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import {LoadingOutlined} from '@ant-design/icons';
 import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
-import {colorScale, graphcolor} from './Colorlist'
+import {colorScale, graphcolor} from './CustomData.jsx';
 
 // Import all images from a folder
 const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
@@ -241,7 +241,11 @@ const ForceDirectedGraph = ({
             .append("circle")
             .attr("r", (d) => d.size)
             // .attr("fill", (d) => colorScale(d.group))
-            .attr("fill", (d) => selectedRoles.includes(d.group) ? colorScale(d.group) :graphcolor.inactive )
+            // .attr("fill", (d) => selectedRoles.includes(d.group) ? colorScale(d.group) :graphcolor.inactive )
+            .attr("fill", (d) => {
+              const hasMatch = d.group?.some(groupId => selectedRoles.includes(groupId));
+              return hasMatch ? colorScale(d.group?.[0]) : graphcolor.inactive;
+            })
             .attr("stroke", "steelblue")
             .attr("stroke-width", 2)
             .style("cursor", "pointer");

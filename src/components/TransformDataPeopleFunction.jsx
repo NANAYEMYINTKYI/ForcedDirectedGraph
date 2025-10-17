@@ -1,195 +1,160 @@
-import {contributorFields} from './Colorlist'
-// ----- Customize Data Section-----
-// import rawData from './../data/FilterData.json' with { type: 'json' };
+//--- This is the function to transform rawdata to nodes and links for "People Dataset" ---//
+// NOTE: For changing contributerFields go to CustomData
 // node = Title // Focus Node
-// connectionNode = People // Node for connection
-// Group 1-7 = Continent
-// Group 8 = Unknown
-// Group 9 = Project
-// ----- End Section -----
+// connectionNode = contributer // Node for connection
+// Group 1-17 = Contributer Role
+// Group 18 = Project
 
-// export function processData(rawData) {
-// Fields to merge
-// const contributorFields = [
-//   "Building or project owner",
-//   "Architecture",
-//   "Project artist/ concept/ design/ planning",
-//   "Structural engineering",
-//   "Light design",
-//   "Technical layout light",
-//   "Display content/ visuals/ showreel",
-//   "Light hardware (LED hardware)",
-//   "Lighting control software",
-//   "Interaction design/ programming",
-//   "Mediacredits",
-//   "Project co-ordination",
-//   "Project sponsor/ support",
-//   "Host organization",
-//   "Facade design",
-//   "Facade construction",
-//   "Kinetic engineering"
-// ];
+import {contributorFields} from './CustomData.jsx';
 
 export function PeopleData(rawData) {
 
-// Clean contributors and set position
-rawData.forEach(title => {
-  const contributors = [];
+  // CLEAN CONTRIBUTORS AND SET POSITION IN RAWDATA
+  rawData.forEach(title => {
+    const contributors = [];
 
-  contributorFields.forEach(field => {
-    let value = title[field];
+    contributorFields.forEach(field => {
+      let value = title[field];
 
-    if (
-      value &&
-      String(value).trim() !== "" &&
-      !["n/a", "none", "na", "/"].includes(String(value).trim().toLowerCase())
-    ) {
-      // Clean parentheses
-      let cleaned = String(value).trim().replace(/\s*\([^)]*\)/g, "");
+      if (
+        // Ignore empty or invalid values
+        value &&
+        String(value).trim() !== "" &&
+        !["n/a", "none", "na", "/"].includes(String(value).trim().toLowerCase())
+      ) {
+        // Clean parentheses
+        let cleaned = String(value).trim().replace(/\s*\([^)]*\)/g, "");
 
-      // Normalize for case-insensitive checks
-      const lowerCleaned = cleaned.toLowerCase();
+        // Normalize to all lower case
+        const lowerCleaned = cleaned.toLowerCase();
 
-      // Skip if contains .com or .net
-      if (lowerCleaned.includes(".com") || lowerCleaned.includes(".net")) return;
+        // Skip if contains .com or .net
+        if (lowerCleaned.includes(".com") || lowerCleaned.includes(".net")) return;
 
-      // Remove &amp and AV&C (case-insensitive)
-      cleaned = cleaned.replace(/amp/gi, "");
-      cleaned = cleaned.replace(/AV&C/gi, "");
+        // Remove &amp and AV&C (case-insensitive)
+        cleaned = cleaned.replace(/amp/gi, "");
+        cleaned = cleaned.replace(/AV&C/gi, "");
 
-      // Replace comma unless followed by exact suffixes (case-insensitive)
-      cleaned = cleaned.replace(/, (?!(inc\b|ltd\b|llc\b|corp\b|co\b))/gi, "|");
+        // Replace comma unless followed by exact suffixes (case-insensitive)
+        cleaned = cleaned.replace(/, (?!(inc\b|ltd\b|llc\b|corp\b|co\b))/gi, "|");
 
-      // Replace /, \, &, ; with |
-      cleaned = cleaned.replace(/[\\\/&;] /g, "|");
+        // Replace /, \, &, ; with |
+        cleaned = cleaned.replace(/[\\\/&;] /g, "|");
 
-      cleaned
-        .split("|")
-        .map(c => c.trim())
-        .filter(Boolean)
-        .forEach(name => {
-          contributors.push({
-            name,
-            normalized: name.toLowerCase(),
-            position: field,
-            group: contributorFields.indexOf(field) + 1
-          });
-        });
-    }
+        // Create contributer fields in rawData
+        cleaned
+          .split("|")
+          .map(c => c.trim())
+          .filter(Boolean)
+          .forEach(name => {
+            contributors.push({
+              name,
+              normalized: name.toLowerCase(),
+              position: field,
+              group: contributorFields.indexOf(field) + 1
+            });
+          }
+        );
+      }
+    });
+    title.contributors = contributors;
   });
 
-  title.contributors = contributors;
-});
-
-  
-    // node → connectionNode
-const seenLinks = new Set();
-
-const links = rawData
-  .filter(item => item.Title && item.contributors)
-  .flatMap(item =>
-    (item.contributors || [])
-      .map(c => {
-        if (!c.normalized) return null;
-
-        const key = `${item.Title.toLowerCase()}→${c.normalized}`;
-        if (seenLinks.has(key)) return null;
-
-        seenLinks.add(key);
-        return {
-          source: item.Title,
-          target: c.normalized,
-          strength: 1
-        };
-      })
-      .filter(Boolean)
-  );
 
 
-    // const seenLinks = new Set();
-    // let links = rawData 
-    // .filter(d => d.Title && d.Contributors) 
-    // .flatMap(d => d.Contributors 
-    //     // .split("|") 
-    //     // .map(c => c.trim()) 
-    //     // .filter(c => c) 
-    //     .map(c => { 
-    //     const key = `${d.Title.toLowerCase()}→${c.normalized}`;
-    //     if (seenLinks.has(key)) return null; 
-    //     seenLinks.add(key); 
-    //     return { 
-    //         source: d.Title, 
-    //         target: c.normalized, 
-    //         strength: 1 
-    //     }; 
-    //     }) 
-    // ) 
-    // .filter(Boolean);
+
+  const seenLinks = new Set();
+
+  // CREATE LINKS
+  const links = rawData
+    .filter(item => item.Title && item.contributors)
+    .flatMap(item =>
+      (item.contributors || [])
+        .map(c => {
+          if (!c.normalized) return null;
+
+          const key = `${item.Title.toLowerCase()}→${c.normalized}`;
+          if (seenLinks.has(key)) return null;
+
+          seenLinks.add(key);
+          return {
+            source: item.Title.toUpperCase(),
+            target: c.normalized,
+            strength: 1
+          };
+        })
+        .filter(Boolean)
+    );
+
+
+
 
     let nodeMap = {};
 
-    // Add nodes
+    // CREATE NODES FOR TITLES (FOCUS NODE)
     rawData.forEach((item) => {
-    if (!nodeMap[item.Title]) {
+      if (!nodeMap[item.Title]) {
         nodeMap[item.Title] = {
-        id: item.Title,
-        label: item.Title,
-        year: item.Year,
-        location: item.Location,
-        description: item.Description,
-        tag: item.Tag,
-        image: item["Images.1"],
-        url: item.URL,
-        size: 44,
-        group: 18,
-        file: item.URL.split("/")[5] + ".jpg",
-        contributors: item.contributors
+          id: item.Title.toUpperCase(),
+          label: item.Title,
+          year: item.Year,
+          location: item.Location,
+          description: item.Description,
+          tag: item.Tag,
+          url: item.URL,
+          file: item.URL.split("/")[5] + ".jpg",
+          contributors: item.contributors,
+          size: 44,
+          group: 18
         };
-    }
-    item.file = item.URL.split("/")[5] + ".jpg";
+      }
+      // Having this to handle image of same title but different projects
+      item.file = item.URL.split("/")[5] + ".jpg";
     });
 
-    // Add connectionNode
+    // CREATE NODES FOR CONTRIBUTORS (CONNECTION NODE)
     rawData.forEach((item) => {
-    if (!item.contributors) return;
-    item.contributors
-        // .split("|")
-        // .map(name => name.trim())
-        // .filter(name => name)
+      if (!item.contributors) return;
+      item.contributors
         .forEach(contributor => {
           const name = contributor.name;
           const position = contributor.position;
-          const normalizedName = contributor.normalized;
-          const group = contributor.group;
+          const normalized = contributor.normalized;
+          const g = contributor.group;
 
-        if (!nodeMap[normalizedName]) {
-            nodeMap[normalizedName] = {
-            id: normalizedName,
-            label: name,
-            size: 34,
-            group: group,
-            positions: [position],
-            projects: [item.Title]
+          if (!nodeMap[normalized]) {
+            // New node
+            nodeMap[normalized] = {
+              id: normalized,
+              label: name,
+              size: 34,
+              group: [g],
+              positions: [position],
+              projects: [item.Title]
             };
-    } else {
-      if (!nodeMap[normalizedName].positions.includes(position)) {
-        nodeMap[normalizedName].positions.push(position);
-      }
-      if (!nodeMap[normalizedName].projects.includes(item.Title)) {
-        nodeMap[normalizedName].projects.push(item.Title);
-      }
-        }
+          } else {
+            // Existing node - update positions, projects, group
+            if (!nodeMap[normalized].positions.includes(position)) {
+              nodeMap[normalized].positions.push(position);
+            }
+            if (!nodeMap[normalized].projects.includes(item.Title)) {
+              nodeMap[normalized].projects.push(item.Title);
+            }
+            if (!nodeMap[normalized].group.includes(g)) {
+              nodeMap[normalized].group.push(g);
+            }
+          }
         });
     });
 
-    // Count occurrences
+    // Count occurrences to adjust node size
     links.forEach((link) => {
-    if (nodeMap[link.source]) {
+      if (nodeMap[link.source]) {
         nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 5, 100);
-    }
-    if (nodeMap[link.target]) {
+      }
+      if (nodeMap[link.target]) {
         nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 5, 100);
-    }
+      }
     });
 
     const nodes = Object.values(nodeMap);  
