@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import Select from 'react-select';
-
 
 export default function TagFilter ({
     processedDatasets = {},
     currentDataset = 'people',
     onFilterChange,
     onTagSelect,
+    selectedCountry = '',
     showCounts = true,
     width = 300,
-    // filterTag = "",
-    // setFilterTag = () => {},
-    // filteredData = {nodes: [], links:[]},
-    // onTagSelect,
-    // showCounts = true,
-    // width = 300
 }) {
-    const dataset = processedDatasets && processedDatasets(currentDataset);
+    const dataset = processedDatasets && processedDatasets[currentDataset];
     const nodes = (dataset && dataset.nodes) || [];
     const links = (dataset && dataset.links) || [];
     const [filterTag, setFilterTag] = useState("");
+    const [filterCountry, setFilterCountry]= useState(selectedCountry)
+    const [localFilteredData, setLocalFilteredData] = useState({nodes:[], links:[]});
+    const prevFilteredData = useRef({nodes: [], links: []});
+
 
     // Apply filter when dataset or tag changes
+    //-- This extract all the unique tag from nodes in the current Dataset--//
     const allTags = useMemo(() => {
-        if (!nodes || node.length === 0) return [];
+        if (!nodes || nodes.length === 0) return [];
         const tagSet = new Set();
         nodes.forEach(node => {
             if (node.tags && node.tags.length > 0) {
@@ -32,7 +31,7 @@ export default function TagFilter ({
                     const cleanTag = tag.replace(/^#/, "").trim();
                     // Filter out tags that are purely numbers
                     if (cleanTag && !/^\d+$/.test(cleanTag)) {
-                    tagSet.add(cleanTag);
+                        tagSet.add(cleanTag);
                     }
                 }
                 });
@@ -41,6 +40,8 @@ export default function TagFilter ({
         return Array.from(tagSet).sort();
     }, [nodes]);
 
+    
+
     // Reset filter when dataset changes
     useEffect(() => {
         setFilterTag("");
@@ -48,30 +49,43 @@ export default function TagFilter ({
 
     useEffect(() => {
         if (!processedDatasets[currentDataset]) return;
-
         const { nodes, links } = processedDatasets[currentDataset];
+        console.log("Sample of link:", links[0]);
+        console.log("Source Type:", typeof links[0].source);
+        console.log("Source Value:", links[0]?.source)
 
         let visibleNodes;
         let visibleLinks;
 
-        if (!filterTag) {
+        if (!filterCountry & !filterTag) {
             visibleNodes = nodes;
             visibleLinks = links;
         } else {
             // Find nodes that match the tag (primary nodes)
             const primaryNodes = nodes.filter(node => {
-            if (!node.tags || node.tags.length === 0) return false;
-            
-            return node.tags.some(tag => {
-                const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
-                return cleanTag === filterTag.toLowerCase();
+                let tagMatch = true;
+                let countryMatch = true;
+                if(filterTag){
+                    tagMatch = node.tags && node.tag.some(tag=> {
+                         const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
+                        return cleanTag === filterTag.toLowerCase();
+                    });
+                }
+                if(filterCountry){
+                    countryMatch = node.country && node.country.toLowerCase() === filterCountry.toLowerCase()
+                }
+                return tagMatch && countryMatch;
+                // if (!node.tags || node.tags.length === 0) return false;
+                // return node.tags.some(tag => {
+                //     const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
+                //     return cleanTag === filterTag.toLowerCase();
+                // });
             });
-            });
-
             // Find all nodes connected to primary nodes
             const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
             const connectedNodeIds = new Set();
-            
+            // Find all links that connected to the primary node
+            // Only includes link where both source and target nodes are visible
             links.forEach(link => {
             if (primaryNodeIds.has(link.source)) {
                 connectedNodeIds.add(link.target);
@@ -80,38 +94,35 @@ export default function TagFilter ({
                 connectedNodeIds.add(link.source);
             }
             });
-
             // Combine primary nodes + connected nodes
-            visibleNodes = nodes.filter(node => 
-            primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
+            visibleNodes = nodes.filter(
+                node => primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
             );
-
-            // Filter links to only show connections between visible nodes
-            const visibleNodeTitles = new Set(visibleNodes.map(n => n.id));
-            visibleLinks = links.filter(link => {
-            const hasSource = visibleNodeTitles.has(link.source);
-            const hasTarget = visibleNodeTitles.has(link.target);
-            return hasSource && hasTarget;
-            });
+            const visibleNodeIds = new Set(visibleNodes.map((n)=> n.id));
+                visibleLinks = ((links || []).filter((links)=> visibleNodeIds.has(links.source)&&visibleNodeIds.has(links.target))
+            );
         }
-
-        const filteredResult = {
-            nodes: visibleNodes,
-            links: visibleLinks
+        // const prev = prevFilteredData.current;
+        // const hasChanged = checkForChanges(visibleNodes, visibleLinks, prev)
+        const result = { 
+            nodes: visibleNodes.map(node =>({...node})), 
+            links: visibleLinks.map(link =>({
+                ...link,
+                source: link.source,
+                target: link.target
+            }))
         };
-
-        setFilteredData(filteredResult);
-
-        // Pass filtered data back to parent
-        if (onFilterChange) {
-            onFilterChange(filteredResult);
+        setLocalFilteredData({nodes: visibleNodes, links: visibleLinks});
+        if(onFilterChange){
+            onFilterChange(result);
         }
     }, [processedDatasets, currentDataset, filterTag, onFilterChange]);
+
     const options = [
-        { value: '', label: `All ${showCounts ? `(${filteredData.nodes.length} nodes, ${filteredData.links.length} links)` : ''}` },
+        { value: '', label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
         ...allTags.map(tag => ({ value: tag, label: tag })),
     ];
-    const selectedOption = options.find((options) => options.value ==filterTag) || options[0];
+    const selectedOption = options.find((options) => options.value === filterTag) || options[0];
     const handleChange = (selectedOption)=>{
         const value = selectedOption ? selectedOption.value: "";
         setFilterTag(value);
@@ -130,15 +141,8 @@ export default function TagFilter ({
                     menuIsOpen={true}
                     isSearchable
                     styles={{
-                        container: (base) => ({
-                        ...base,
-                        width: `${width}px`,
-                        }),
-                        menu: (base) => ({
-                        ...base,
-                        position: 'relative',
-                        zIndex: 1,
-                        })
+                        container: (base) => ({...base,width: `${width}px`,}),
+                        menu: (base) => ({...base, position: 'relative', zIndex: 1,})
                     }}
                 />
             </label>

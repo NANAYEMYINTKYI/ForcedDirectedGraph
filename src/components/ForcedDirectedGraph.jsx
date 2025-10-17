@@ -40,16 +40,6 @@ const ForceDirectedGraph = ({
   const [centerStrength, setCenterStrength] = useState(0.3);
   const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
   const [isVisible, setIsVisible] = useState(false);
-
-  // Color scale
-  // d3.scaleOrdinal()
-  //   .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
-  //   .range(["#eb7270", "#eb9d70", "#ebc970", 
-  //     "#e2eb70", "#b6eb70", "#8beb70", 
-  //     "#70eb80", "#70ebac","#70ebd7",
-  //     "#70d3eb","#70a8eb","#707ceb",
-  //     "#8f70eb","#ba70eb","#e670eb",
-  //     "#eb70c5","#eb7099","#000000ff"]);
   
   // Drag functions
   const dragstarted = useCallback(function (event, d) {
@@ -134,7 +124,7 @@ const ForceDirectedGraph = ({
       // const connectedNodes = connectedLinks.map((l) =>
       //   l.source === d ? l.target : l.source
       // );
-      const scale = Math.min(width, height/1500);
+      const scale = Math.min(width, height/800);
       const transform = d3.zoomIdentity
         .translate(width / 2, height / 2)
         .scale(scale)

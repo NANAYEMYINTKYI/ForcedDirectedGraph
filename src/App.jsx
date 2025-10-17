@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData } from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
+// import TagFilter from "./components/TagFilter";
 import TagManager from "./components/TagManager";
 import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
@@ -10,7 +11,7 @@ import rawData from './data/mabDataRaw.json';
 import Description from "./components/DrawerDesceiption";
 import * as Icons from '@ant-design/icons';
 import './App.css'
-
+import countrySelector from "./components/CountryFilter";
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
@@ -19,7 +20,6 @@ const App = () => {
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
-  // This Isplaying used to ri
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [showNode, setShowNode] = useState(null);
@@ -49,6 +49,7 @@ const App = () => {
       },
     };
   }, [FilterData]);
+  
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
     setShowNode(null);
@@ -88,6 +89,17 @@ const App = () => {
     setShowNode(null);
   }, []);
 
+    // Title list
+  let projects = filteredData.nodes 
+  .filter(d => d.group === 18)
+  .map(d => ({value: d.id, label: d.label}));
+
+  // non Title list
+  let connection = filteredData.nodes 
+  .filter(d => d.group !== 18)
+  .map(d => ({value: d.id, label: d.label}));
+  
+
   // Memoize the graph props to prevent unnecessary re-renders
   const graphProps = useMemo(
     () => ({
@@ -114,16 +126,7 @@ const App = () => {
       filterTag,
     ]
   );
-  // Title list
-  let projects = filteredData.nodes 
-  .filter(d => d.group === 18)
-  .map(d => ({value: d.id, label: d.label}));
 
-  // non Title list
-  let connection = filteredData.nodes 
-  .filter(d => d.group !== 18)
-  .map(d => ({value: d.id, label: d.label}));
-  
   // UI
   return (
     <div className="app">
@@ -133,21 +136,21 @@ const App = () => {
       </header>
       <div className="toolbar">
         <Toolbar 
-        datasets={datasets}
-        currentDataset={currentDataset}
-        handleDatasetChange={handleDatasetChange}
-        FilterData={FilterData}
-        handleFilterChange={handleFilterChange}
-        setFilterTag={setFilterTag}
-        projects={projects}
-        connection={connection}
-        handleTitleChange={handleTitleChange}
-        handleConnectionChange={handleConnectionChange}
-        selectedTitle={selectedTitle}
-        selectedConnection={selectedConnection}
-        toggleToolbar = {toggleToolbar}
-        isCollapsed = {isCollapsed}
-      />
+          datasets={datasets}
+          currentDataset={currentDataset}
+          handleDatasetChange={handleDatasetChange}
+          FilterData={FilterData}
+          handleFilterChange={handleFilterChange}
+          setFilterTag={setFilterTag}
+          projects={projects}
+          connection={connection}
+          handleTitleChange={handleTitleChange}
+          handleConnectionChange={handleConnectionChange}
+          selectedTitle={selectedTitle}
+          selectedConnection={selectedConnection}
+          toggleToolbar = {toggleToolbar}
+          isCollapsed = {isCollapsed}
+        />
       </div>
         {showNode && (
       <div className="description">
