@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData } from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
@@ -9,6 +9,7 @@ import Description from "./components/DrawerDesceiption";
 import Legend from './components/ColorLegend';
 import {colorScale, contributorFields, continentList} from './components/Colorlist'
 import * as Icons from '@ant-design/icons';
+import * as d3 from 'd3';
 import './App.css'
 
 const App = () => {
@@ -19,10 +20,10 @@ const App = () => {
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
-  // This Isplaying used to ri
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [showNode, setShowNode] = useState(null);
+  const [selectedRoles, setSelectedRoles] = useState(colorScale.domain());
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -102,7 +103,8 @@ const App = () => {
       height: window.innerHeight,
       OnPlayingChange : isPlaying,
       onNodeSelect: setShowNode,
-      showNode: showNode
+      showNode: showNode,
+      selectedRoles: selectedRoles,
     }),
     [
       isPlaying,
@@ -111,6 +113,7 @@ const App = () => {
       filteredData.nodes,
       filteredData.links,
       filterTag,
+      selectedRoles
     ]
   );
   // Title list
@@ -172,16 +175,18 @@ const App = () => {
                     <>
                       <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Contributor Role Legend</b>
                       <Legend 
-                        colorScale={colorScale}
                         label={contributorFields}
+                        selectedIds={selectedRoles}
+                        setSelectedIds={setSelectedRoles}
                       />
                     </>
                   ) : (
                     <>
                       <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Continent Legend</b>
                       <Legend 
-                        colorScale={colorScale}
                         label={continentList}
+                        selectedIds={selectedRoles}
+                        setSelectedIds={setSelectedRoles}
                       />
                     </>
                   )}

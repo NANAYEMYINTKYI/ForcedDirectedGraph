@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import {LoadingOutlined} from '@ant-design/icons';
 import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
-import {colorScale} from './Colorlist'
-
+import {colorScale, graphcolor} from './Colorlist'
 
 // Import all images from a folder
 const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
@@ -26,14 +25,15 @@ const ForceDirectedGraph = ({
   height,
   OnPlayingChange ,
   showNode,
-  onNodeSelect
+  onNodeSelect,
+  selectedRoles
 }) => {
-  console.log(OnPlayingChange)
+  // console.log(OnPlayingChange)
   // Refs
   const svgRef = useRef();
   const simulationRef = useRef();
   const tooltipRef = useRef();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const zoomRef = useRef(false)
 
   // State
@@ -42,7 +42,6 @@ const ForceDirectedGraph = ({
   const [centerStrength, setCenterStrength] = useState(0.3);
   const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
   const [graphVisible, setGraphVisible] = useState(false);
-
   // Color scale
   // d3.scaleOrdinal()
   //   .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
@@ -95,7 +94,6 @@ const ForceDirectedGraph = ({
 
 
   useEffect(() => {
-    // hasToggledVisibility.current = false;
     setGraphVisible(false);
   }, [nodes, links])
 
@@ -224,13 +222,6 @@ const ForceDirectedGraph = ({
 
     // create circle
     node
-      .append("circle")
-      .attr("r", (d) => d.size)
-      .attr("fill", (d) => colorScale(d.group))
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 2)
-      .style("cursor", "pointer");
-    node
       .each(function (d) {
         const current = d3.select(this);
         if (d.file) {
@@ -249,7 +240,8 @@ const ForceDirectedGraph = ({
           current
             .append("circle")
             .attr("r", (d) => d.size)
-            .attr("fill", (d) => colorScale(d.group))
+            // .attr("fill", (d) => colorScale(d.group))
+            .attr("fill", (d) => selectedRoles.includes(d.group) ? colorScale(d.group) :graphcolor.inactive )
             .attr("stroke", "steelblue")
             .attr("stroke-width", 2)
             .style("cursor", "pointer");
@@ -341,14 +333,13 @@ const ForceDirectedGraph = ({
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y);
         node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-      })
-      .on("end", () => {
-        setIsVisible(false);
-        console.log("On playing changed vlaue is:",OnPlayingChange)
+        const alpha = simulation.alpha();
+        if(alpha >= 1.5){
+        // console.log("On playing changed vlaue is:",OnPlayingChange)
         if(zoomRef.current == true){
           return;
         }       
-        console.log("Initial zoomed:", zoomRef)
+        // console.log("Initial zoomed:", zoomRef)
         const contentBounds = g.node().getBBox();
         if (contentBounds.width === 0 || contentBounds.height === 0) return;
         
@@ -356,21 +347,44 @@ const ForceDirectedGraph = ({
           (width / contentBounds.width) * 0.9,
           (height / contentBounds.height) * 0.9
         );
-        console.log("Finishes scale calculated")
-        console.log("Calculated scale")
+        // console.log("Finishes scale calculated")
+        // console.log("Calculated scale")
         const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
         const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
-        console.log("Finished Translate")
+        // console.log("Finished Translate")
         svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
         setIsVisible(true);
+      }
+      })
+      .on("end", () => {
+        // setIsVisible(true);
+        // // console.log("On playing changed vlaue is:",OnPlayingChange)
+        // if(zoomRef.current == true){
+        //   return;
+        // }       
+        // // console.log("Initial zoomed:", zoomRef)
+        // const contentBounds = g.node().getBBox();
+        // if (contentBounds.width === 0 || contentBounds.height === 0) return;
+        
+        // const scale = Math.min(
+        //   (width / contentBounds.width) * 0.9,
+        //   (height / contentBounds.height) * 0.9
+        // );
+        // // console.log("Finishes scale calculated")
+        // // console.log("Calculated scale")
+        // const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
+        // const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
+        // // console.log("Finished Translate")
+        // svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
+        // setIsVisible(true);
         simulation.stop();
         // zoomRef.current = true;
-        console.log("zoomref is", zoomRef);
+        // console.log("zoomref is", zoomRef);
       });
 
     simulationRef.current = simulation;
     if (selectnode) {
-      setIsVisible(false);
+      setIsVisible(true);
       onNodeSelect(selectnode.value)
       setTimeout(() => {
         const select = nodes.find(
@@ -389,7 +403,7 @@ const ForceDirectedGraph = ({
         }
       }, 100);
     } else if (filterTag) {
-      setIsVisible(false);
+      setIsVisible(true);
       setTimeout(() => {
         const matchingNode = nodes.find((node) => {
           if (!node.tags || node.tags.length === 0) return false;
@@ -450,7 +464,8 @@ const ForceDirectedGraph = ({
     // dragged,
     // dragended,
     selectnode,
-    OnPlayingChange
+    OnPlayingChange,
+    selectedRoles
   ]);
 
   return (

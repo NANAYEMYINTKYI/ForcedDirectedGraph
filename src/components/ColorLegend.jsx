@@ -1,33 +1,53 @@
+//--- This is the graph legend where you can check/uncheck the color ---//
+// NOTE: For changing color of select/unselect go to colorlist
+// CSS SECTION: Legend
 
-const Legend = ({colorScale, label}) => {
+import { Checkbox } from 'antd';
+import './ComponentStyle.css';
+import {colorScale, graphcolor} from './Colorlist'
 
-  // Normalize the label array
+const Legend = ({label, selectedIds, setSelectedIds }) => {
+  // NORMALIZE THE LABEL ARRAY
   const normalized = label.map((item, index) =>
     typeof item === 'object'
       ? { id: item.id, name: item.name }
       : { id: index + 1, name: item }
   );
-    
+
+  // LOGIC OF CHECKBOX BEHAVIOR
+  const handleCheckboxChange = (id) => {
+    const isSelected = selectedIds.includes(id);
+    if (selectedIds.length >= normalized.length) {
+      // All selected → select only clicked one
+      setSelectedIds([id]);
+    } else if (isSelected) {
+      // Unchecking a selected one
+      setSelectedIds(prev => prev.filter(itemId => itemId !== id));
+    } else {
+      // Checking a new one
+      setSelectedIds(prev => [...prev, id]);
+    }
+  };
+
   return (
-    <div 
-    style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '2rem', margin: '0.5rem' }}>
-      {normalized.map((list) => (
-        <div
-          key={list.id}
-          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white' }}
-        >
-           <div
-            style={{
-              width: 16,
-              height: 16,
-              backgroundColor: colorScale(list.id),
-              borderRadius: 4,
-              flexShrink: 0,
-            }}
-          />
-          {list.name}
-        </div>
-      ))}
+    <div className="legendbox">
+      {normalized.map(list => {
+        const customStyle = { '--checkbox-color': colorScale(list.id), '--unselected-color': graphcolor.inactive };
+        return (
+          <div 
+            key = {list.id} 
+            className = "legenditem"
+            style={customStyle}
+          >
+            <Checkbox
+              checked={selectedIds.includes(list.id)}
+              onChange={() => handleCheckboxChange(list.id)}
+            >
+              {list.name}
+            </Checkbox>
+          </div>
+        );
+      })}
     </div>
   );
 };

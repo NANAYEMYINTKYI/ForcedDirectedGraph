@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
-import { PlayArrow, Pause } from '@mui/icons-material';
+import {CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
 
 //set marks
 const marks = [
@@ -77,7 +77,7 @@ const RangeSlider = ({ value, onChange, label, width = 300, OnPlayingChange }) =
         size="small"
         sx={{ minWidth: 40 }}
       >
-        {isPlaying ? <Pause /> : <PlayArrow />}
+        {isPlaying ? <b><PauseOutlined /> </b>: <b><CaretRightOutlined /></b>}
       </Button>
     </Box>
   );

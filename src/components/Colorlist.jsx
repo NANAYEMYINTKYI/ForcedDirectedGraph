@@ -40,3 +40,7 @@ export const contributorFields = [
   "Facade construction",
   "Kinetic engineering"
 ];
+
+export const graphcolor = {
+  inactive: "rgb(135, 135, 135)",
+};
