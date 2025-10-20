@@ -243,9 +243,9 @@ const ForceDirectedGraph = ({
             // .attr("fill", (d) => colorScale(d.group))
             // .attr("fill", (d) => selectedRoles.includes(d.group) ? colorScale(d.group) :graphcolor.inactive )
             .attr("fill", (d) => {
-              const hasMatch = d.group?.some(groupId => selectedRoles.includes(groupId));
-              return hasMatch ? colorScale(d.group?.[0]) : graphcolor.inactive;
-            })
+  const matchedGroup = d.group?.find(groupId => selectedRoles.includes(groupId));
+  return matchedGroup ? colorScale(matchedGroup) : graphcolor.inactive;
+})
             .attr("stroke", "steelblue")
             .attr("stroke-width", 2)
             .style("cursor", "pointer");

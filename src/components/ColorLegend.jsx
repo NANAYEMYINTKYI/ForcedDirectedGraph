@@ -2,7 +2,7 @@
 // NOTE: For changing color of select/unselect go to CustomData
 // CSS SECTION: Legend
 
-import { Checkbox } from 'antd';
+import { Checkbox, FormGroup, FormControlLabel } from '@mui/material';
 import './ComponentStyle.css';
 import {colorScale, graphcolor} from './CustomData.jsx';
 
@@ -40,12 +40,16 @@ const Legend = ({label, selectedIds, setSelectedIds }) => {
             className = "legenditem"
             style={customStyle}
           >
-            <Checkbox
-              checked={selectedIds.includes(list.id)}
-              onChange={() => handleCheckboxChange(list.id)}
-            >
-              {list.name}
-            </Checkbox>
+            <FormControlLabel  
+              control={
+                <Checkbox
+                  checked={selectedIds.includes(list.id)}
+                  onChange={() => handleCheckboxChange(list.id)}
+                  size="xsmall"
+                />
+              }
+              label = {list.name}
+            />
           </div>
         );
       })}

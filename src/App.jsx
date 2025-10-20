@@ -4,7 +4,7 @@ import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 import Timeline from './components/Timeline';
 import Toolbar from './components/ToolBar';
-import rawData from './data/mabData.json';
+import rawData from "./Data.json";
 import Description from "./components/DrawerDesceiption";
 import Legend from './components/ColorLegend';
 import {colorScale, contributorFields, continentList} from './components/CustomData.jsx';
@@ -150,6 +150,8 @@ const App = () => {
   selectedConnection={selectedConnection}
   toggleToolbar = {toggleToolbar}
   isCollapsed = {isCollapsed}
+  selectedRoles = {selectedRoles}
+  setSelectedRoles = {setSelectedRoles}
 />
       </div>
         {showNode && (
@@ -171,7 +173,7 @@ const App = () => {
               />
               </div>)}
       <div className="legend">
-      <div style={{ margin: '20px' }}>
+      <div style={{ margin: '20px'}}>
                   {currentDataset === 'people' ? (
                     <>
                       <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Contributor Role Legend</b>
