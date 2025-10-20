@@ -82,22 +82,22 @@ const TagManager = ({
     setProcessedDatasets(mergedDatasets);
   // }, [nodes, links])
   }, [datasets, mabData])
-  
+  // console.log("Datasets in TagManager", datasets)
   // Log what's being passed to TagFilter
-  console.log('Rendering TagFilter with:', {
-    currentDataset,
-    // datasetKeys: Object.keys(processedDatasets),
-    // hasCurrentDataset: Boolean(processedDatasets[currentDataset]),
-    // currentDatasetStats: processedDatasets[currentDataset] ? {
-    //   nodes: processedDatasets[currentDataset].nodes.length,
-    //   links: processedDatasets[currentDataset].links.length
-    // } : null
-  });
+  // console.log('Rendering TagFilter with:', {
+  //   currentDataset,
+  //   // datasetKeys: Object.keys(processedDatasets),
+  //   // hasCurrentDataset: Boolean(processedDatasets[currentDataset]),
+  //   // currentDatasetStats: processedDatasets[currentDataset] ? {
+  //   //   nodes: processedDatasets[currentDataset].nodes.length,
+  //   //   links: processedDatasets[currentDataset].links.length
+  //   // } : null
+  // });
 
   return (
     <TagFilter
     processedDatasets = {processedDatasets}
-    currentDataset= {currentDataset}
+    currentDataset= 'country'
     onFilterChange= {onFilterChange}
     onTagSelect = {onTagSelect}
     showCounts={showCounts}

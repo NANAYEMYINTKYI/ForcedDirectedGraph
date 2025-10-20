@@ -5,7 +5,7 @@ import { count, index } from "d3";
 
 export default function TagFilter ({
     processedDatasets = {},
-    currentDataset = 'people',
+    currentDataset = 'country',
     onFilterChange,
     onTagSelect,
     selectedCountry = '',
@@ -21,23 +21,20 @@ export default function TagFilter ({
     const prevFilteredData = useRef({nodes: [], links: []});
     // Apply filter when dataset or tag changes
     //-- This extract all the unique tag from nodes in the current Dataset--//
-    // console.log("Dataset in TagFilter:",dataset)
+    console.log("Dataset in TagFilter:",dataset)
     const allTags = useMemo(() => {
         if (!nodes || nodes.length === 0) return [];
         // const tagSet = new Set();
         const tagCategories = {
             country: {set: new Set()},
         }
-        nodes.forEach(node => {
-            if (node.tags && node.tags.length > 0) {
-                node.tags.forEach((tag, index) => {
-                if (tag) {
-                    const cleanTag = tag.replace(/^#/, "").trim();
+         nodes.forEach(node => {
+            if (node.group != 18) {
+                node.location.forEach( location => {
+                if (location) {
+                    const cleanTag = location.replace(/^#/, "").trim();
                     if(cleanTag &&!/^\d+$/.test(cleanTag)){
-                        if(index === 0){
-                            tagCategories.country.set.add(cleanTag);
-                            // console.log("Country Tag:", cleanTag)
-                        }
+                        console.log("Country Data:", cleanTag)
                     }
                     // Filter out tags that are purely numbers
                     // if (cleanTag && !/^\d+$/.test(cleanTag)) {
@@ -48,7 +45,27 @@ export default function TagFilter ({
                 });
             }
         });
-        return Array.from(tagCategories).sort();
+        // nodes.forEach(node => {
+        //     if (node.tags && node.tags.length > 0) {
+        //         node.tags.forEach((tag, index) => {
+        //         if (tag) {
+        //             const cleanTag = tag.replace(/^#/, "").trim();
+        //             if(cleanTag &&!/^\d+$/.test(cleanTag)){
+        //                 if(index === 0){
+        //                     tagCategories.country.set.add(cleanTag);
+        //                     // console.log("Country Tag:", cleanTag)
+        //                 }
+        //             }
+        //             // Filter out tags that are purely numbers
+        //             // if (cleanTag && !/^\d+$/.test(cleanTag)) {
+        //             //     tagSet.add(cleanTag);
+        //             // }
+        //             // console.log("This is tag:",tag)
+        //         }
+        //         });
+        //     }
+        // });
+        return Array.from(tagCategories.country.set).sort();
         // return Array.from(tagCategories).sort();
     }, [nodes]);
 
