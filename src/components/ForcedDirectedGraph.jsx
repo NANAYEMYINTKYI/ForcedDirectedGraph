@@ -281,6 +281,9 @@ const ForceDirectedGraph = ({
         node.attr("transform", (d) => `translate(${d.x},${d.y})`);
         const alpha = simulation.alpha()
         const alphaMin = simulation.alphaMin()
+        if(alpha<0.2){
+          setIsVisible(true)
+        }
         // setIsVisible(true);
         // if(alpha<0.2){
         //   if(zoomRef===true){
