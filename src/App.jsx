@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import CountryData  from "./components/TransformDataCountryFunction";
+import { CountryData}  from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
 // import TagFilter from "./components/TagFilter";
-import TagManager from "./components/TagManager";
+// import TagManager from "./components/TagManager";
+import TagFilter from "./components/TagFilter";
 import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
 import Toolbar from './components/ToolBar';

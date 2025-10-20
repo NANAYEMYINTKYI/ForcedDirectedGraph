@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
-import CountryData from "./TransformDataCountryFunction";
+import {CountryData} from "./TransformDataCountryFunction";
 import Select from 'react-select';
+import { count, index } from "d3";
 
 export default function TagFilter ({
     processedDatasets = {},
@@ -18,27 +19,37 @@ export default function TagFilter ({
     const [filterCountry, setFilterCountry]= useState(selectedCountry)
     const [localFilteredData, setLocalFilteredData] = useState({nodes:[], links:[]});
     const prevFilteredData = useRef({nodes: [], links: []});
-
-
     // Apply filter when dataset or tag changes
     //-- This extract all the unique tag from nodes in the current Dataset--//
+    // console.log("Dataset in TagFilter:",dataset)
     const allTags = useMemo(() => {
         if (!nodes || nodes.length === 0) return [];
-        const tagSet = new Set();
+        // const tagSet = new Set();
+        const tagCategories = {
+            country: {set: new Set()},
+        }
         nodes.forEach(node => {
             if (node.tags && node.tags.length > 0) {
-                node.tags.forEach(tag => {
+                node.tags.forEach((tag, index) => {
                 if (tag) {
                     const cleanTag = tag.replace(/^#/, "").trim();
-                    // Filter out tags that are purely numbers
-                    if (cleanTag && !/^\d+$/.test(cleanTag)) {
-                        tagSet.add(cleanTag);
+                    if(cleanTag &&!/^\d+$/.test(cleanTag)){
+                        if(index === 0){
+                            tagCategories.country.set.add(cleanTag);
+                            // console.log("Country Tag:", cleanTag)
+                        }
                     }
+                    // Filter out tags that are purely numbers
+                    // if (cleanTag && !/^\d+$/.test(cleanTag)) {
+                    //     tagSet.add(cleanTag);
+                    // }
+                    // console.log("This is tag:",tag)
                 }
                 });
             }
         });
-        return Array.from(tagSet).sort();
+        return Array.from(tagCategories).sort();
+        // return Array.from(tagCategories).sort();
     }, [nodes]);
 
     // Reset filter when dataset changes
@@ -49,10 +60,9 @@ export default function TagFilter ({
     useEffect(() => {
         if (!processedDatasets[currentDataset]) return;
         const { nodes, links } = processedDatasets[currentDataset];
-        console.log("Sample of link:", links[0]);
-        console.log("Source Type:", typeof links[0].source);
-        console.log("Source Value:", links[0]?.source)
-
+        // console.log("Sample of link:", links[0]);
+        // console.log("Source Type:", typeof links[0].source);
+        // console.log("Source Value:", links[0]?.source)
         let visibleNodes;
         let visibleLinks;
 

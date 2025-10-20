@@ -10,7 +10,7 @@ import {defaultContinent, continentList} from './Colorlist'
 // Group 9 = Project
 // ----- End Section -----
 
-export default function CountryData(rawData) {
+export function CountryData(rawData) {
   // Add new country
   let Add = [
     { country: "United States of America", continent: "North America" }, 
@@ -130,6 +130,6 @@ export default function CountryData(rawData) {
     });
 
     const nodes = Object.values(nodeMap);  
-
+    console.log("This is country data node:", nodes)
     return { nodes, links };
 }

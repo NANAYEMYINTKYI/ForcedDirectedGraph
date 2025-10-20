@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import CountryData from './TransformDataCountryFunction'
+import {CountryData} from './TransformDataCountryFunction'
 import TagManager from "./TagManager";
 import countryToContinent from 'country-json/src/country-by-continent.json' with { type: 'json' };
 
