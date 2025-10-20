@@ -1,3 +1,5 @@
+// This file have 3 sections: Color, Data, Image Assets
+
 import * as d3 from 'd3';
 import countryToContinent from 'country-json/src/country-by-continent.json' with { type: 'json' };
 
@@ -14,6 +16,9 @@ export const colorScale = d3.scaleOrdinal()
      "#70d3eb","#70a8eb","#707ceb",
      "#8f70eb","#ba70eb","#e670eb",
      "#eb70c5","#eb7099","#000000ff"]);
+
+
+
 
 // ----- Data -----
 export const continentList = [
@@ -58,6 +63,24 @@ export function updatedCountriesToContinent() {
   return [...countryToContinent, ...additionalCountries];
 }
 
+
+
+     
+// ----- Image Assets -----
+export function getImages() {
+  const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
+    eager: true,
+  });
+
+  const image = {};
+  
+  Object.keys(imageslist).forEach((path) => {
+    const fileName = path.split("/").pop();
+    image[fileName] = imageslist[path].default || imageslist[path];
+  });
+
+  return image;
+}
 
 
 

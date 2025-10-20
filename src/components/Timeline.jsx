@@ -1,10 +1,11 @@
+//--- This is the component of Timeline ---//
+// CSS SECTION: Timeline
+
 import { useState, useEffect, useRef } from 'react';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import Button from '@mui/material/Button';
+import { Box, Slider, Button} from '@mui/material';
 import {CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
 
-//set marks
+// set marks
 const marks = [
   { value: 1999, label: '1999' },
   { value: 2023, label: '2023' },
@@ -14,9 +15,16 @@ function valuetext(value) {
   return `${value}`;
 }
 
-const RangeSlider = ({ value, onChange, label, width = 300, OnPlayingChange }) => {
+const RangeSlider = ({ 
+  value, 
+  onChange, 
+  label, 
+  width = 300, 
+  OnPlayingChange 
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
+
   useEffect (() => {
     if(OnPlayingChange){
       OnPlayingChange(isPlaying);
@@ -24,22 +32,23 @@ const RangeSlider = ({ value, onChange, label, width = 300, OnPlayingChange }) =
   }, [isPlaying, OnPlayingChange]);
 
   useEffect(() => {
-    // set playing
     if (isPlaying) {
+      // set playing
       intervalRef.current = setInterval(() => {
         onChange(null, (prev) => {
           let currentYear = Array.isArray(prev) ? prev[1] : 1999;
           if (currentYear >= 2023) {
+            // after reaching 2023, stop playing
             clearInterval(intervalRef.current);
             setIsPlaying(false);
-            // reset to default range after stopping
             return [1999, 2023];
           }
-
+          // set next year
           return [1999, currentYear + 1];
         });
       }, 800);
     } else {
+      // set not playing
       clearInterval(intervalRef.current);
     }
     return () => clearInterval(intervalRef.current);
@@ -50,36 +59,38 @@ const RangeSlider = ({ value, onChange, label, width = 300, OnPlayingChange }) =
       // reset to [1999, 1999] before starting
       onChange(null, [1999, 1999]);
     }
-    console.log("This is unable isPlaying")
     setIsPlaying((prev) => !prev);
   };
 
   return (
-    <Box sx={{ width, height: '35px', display: 'flex', justifyContent: 'center', gap: 2.5 }}>
+    <div 
+      className = "timeline-container"
+      style = {{ width }}
+    >
       <Slider
-        size="small"
-        getAriaLabel={() => label}
-        value={value}
-        onChange={onChange}
-        valueLabelDisplay="auto"
-        getAriaValueText={valuetext}
-        marks={marks}
-        min={1999}
-        max={2023}
-        style={{
+        size = "small"
+        getAriaLabel = {() => label}
+        value = {value}
+        onChange = {onChange}
+        valueLabelDisplay = "auto"
+        getAriaValueText = {valuetext}
+        marks = {marks}
+        min = {1999}
+        max = {2023}
+        style = {{
           flexGrow: 1,
           height: 5,
         }}
       />
       <Button
-        variant="outlined"
-        onClick={togglePlay}
-        size="small"
-        sx={{ minWidth: 40 }}
+        variant = "outlined"
+        onClick = {togglePlay}
+        size = "small"
+        sx = {{ minWidth: 40 }}
       >
         {isPlaying ? <b><PauseOutlined /> </b>: <b><CaretRightOutlined /></b>}
       </Button>
-    </Box>
+    </div>
   );
 };
 

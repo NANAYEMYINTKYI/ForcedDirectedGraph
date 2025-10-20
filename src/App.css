@@ -159,6 +159,7 @@ html, body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
+  width: fit-content;
   max-width: calc(100% - 40px); /* Prevent overflow */
   background: rgba(255, 255, 255, 0.95);
   padding: 15px;
@@ -172,6 +173,7 @@ html, body {
   justify-content: center;
   gap: 15px;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .timeline-section p {

@@ -1,7 +1,21 @@
+//--- This is the component of Searching Dropdown ---//
+// CSS SECTION: Dropdown
+
 import {useState, useCallback } from "react";
 import Select from 'react-select';
 
-const ListSearch = ({ options, Title, placeholder, onFilterChange, value, width = '300', visible = true }) => {
+const ListSearch = ({ 
+  options, 
+  title, 
+  placeholder, 
+  onFilterChange, 
+  value, 
+  width = '300', 
+  visible = true,
+  menuIsOpen = true,
+  searchable = true,
+  clearable = true,
+}) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleChange = useCallback((option) => {
@@ -10,24 +24,26 @@ const ListSearch = ({ options, Title, placeholder, onFilterChange, value, width 
       onFilterChange(option);
   }}, [onFilterChange]);
 
-  if (!visible) return null; // ✅ Hide dropdown
+  // hide dropdown if not visible
+  if (!visible) return null; 
 
+  // sort option
   const sortedOptions = [...options].sort((a, b) =>
     a.label.localeCompare(b.label)
   );
 
   return (
-    <div style={{ display: "flex", gap: "1rem", alignItems: "center"}}>
+    <div className = "dropdown-container">
       <label>
-        {Title}:{" "}
+        {title}:{" "}
         <Select
-          value={value}
-          onChange={handleChange}
-          options={sortedOptions}
-          placeholder={placeholder}
-          menuIsOpen={true}
-          isSearchable
-          // isClearable
+          value = {value}
+          onChange = {handleChange}
+          options = {sortedOptions}
+          placeholder = {placeholder}
+          menuIsOpen = {menuIsOpen}
+          isSearchable = {searchable}
+          isClearable = {clearable}
           styles={{
             container: (base) => ({
               ...base,

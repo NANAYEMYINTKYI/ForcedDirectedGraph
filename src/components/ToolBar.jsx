@@ -1,5 +1,5 @@
 //--- This is the component of Toolbar ---//
-// CSS SECTION: ToolBar
+// CSS SECTION: ToolBar, Dataset
 
 import * as Icons from '@ant-design/icons';
 import usePopover from './usePopover';
@@ -83,10 +83,11 @@ const Toolbar = ({
           popoverContent = {
             <ListSearch 
               options = {projects}
-              Title = "Search by Title"
+              title = "Search by Title"
               placeholder = "Input Title"
               onFilterChange = {handleTitleChange}
               value = {selectedTitle}
+              clearable = {false}
             />
           }
         />
@@ -104,11 +105,12 @@ const Toolbar = ({
           popoverContent = {
             <ListSearch 
               options = {connection}
-              Title = "Search by People"
+              title = "Search by People"
               placeholder = "Input People"
               onFilterChange = {handleConnectionChange}
               visible = {currentDataset === 'people'}
               value = {selectedConnection}
+              clearable = {false}
             />
           }
         />
@@ -126,11 +128,12 @@ const Toolbar = ({
           popoverContent = {
             <ListSearch 
               options = {connection}
-              Title = "Search by Country"
+              title = "Search by Country"
               placeholder = "Input Country"
               onFilterChange = {handleConnectionChange}
               visible = {currentDataset === 'country'}
               value = {selectedConnection}
+              clearable = {false}
             />
           }
         />
