@@ -10,7 +10,7 @@ import {defaultContinent, continentList} from './Colorlist'
 // Group 9 = Project
 // ----- End Section -----
 
-export function CountryData(rawData) {
+export default function CountryData(rawData) {
   // Add new country
   let Add = [
     { country: "United States of America", continent: "North America" }, 

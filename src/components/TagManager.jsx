@@ -1,6 +1,7 @@
 //-- This feature is used to merge Tag data with the node and link in network graph--//
 import React, { useState, useEffect, useMemo } from "react";
 import Select from 'react-select';
+import CountryData from "./TransformDataCountryFunction";
 import TagFilter from "./TagFilter"
 // Parse tag arrays from JSON strings
 // Converts various tag into a consistencty array//
@@ -69,18 +70,18 @@ const TagManager = ({
         target: link.target
       }));
       // The merged data set for tag and node and link are store in processed dataset 
-      // mergedDatasets[key] = {
-      //   nodes: transformedNodes,
-      //   links: transformedLinks,
-      //   name: dataset.name
-      // };
-
-      allNodes.push(...transformedNodes);
-      allLinks.push(...transformedLinksL);
+      mergedDatasets[key] = {
+        nodes: transformedNodes,
+        links: transformedLinks,
+        name: dataset.name
+      }; 
+      // allNodes.push(...transformedNodes);
+      // allLinks.push(...transformedLinksL);
     });
 
     setProcessedDatasets(mergedDatasets);
-  }, [nodes, links])
+  // }, [nodes, links])
+  }, [datasets, mabData])
   
   // Log what's being passed to TagFilter
   console.log('Rendering TagFilter with:', {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
+import CountryData from "./TransformDataCountryFunction";
 import Select from 'react-select';
 
 export default function TagFilter ({
@@ -40,8 +41,6 @@ export default function TagFilter ({
         return Array.from(tagSet).sort();
     }, [nodes]);
 
-    
-
     // Reset filter when dataset changes
     useEffect(() => {
         setFilterTag("");
@@ -66,8 +65,8 @@ export default function TagFilter ({
                 let tagMatch = true;
                 let countryMatch = true;
                 if(filterTag){
-                    tagMatch = node.tags && node.tag.some(tag=> {
-                         const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
+                    tagMatch = node.tags && node.tags.some(tag => {
+                        const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
                         return cleanTag === filterTag.toLowerCase();
                     });
                 }
