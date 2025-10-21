@@ -130,6 +130,6 @@ export function CountryData(rawData) {
     });
 
     const nodes = Object.values(nodeMap);  
-    console.log("This is country data node:", nodes)
+    // console.log("This is country data node:", nodes)
     return { nodes, links };
 }

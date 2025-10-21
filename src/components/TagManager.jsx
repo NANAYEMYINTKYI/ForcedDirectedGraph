@@ -37,6 +37,7 @@ const TagManager = ({
   // const [filterTag, setFilterTag] = useState("");
   const [processedDatasets, setProcessedDatasets] = useState({});
   // const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
+  const mergedDatasets = {};
   useEffect(() => {
     if (!mabData || !datasets) return;
     // Build tag lookup from mabData
@@ -50,11 +51,13 @@ const TagManager = ({
 
     Object.keys(datasets).forEach(key => {
       const dataset = datasets[key];
+
       const transformedNodes = dataset.nodes.map(node => {
         const originalTitle = node.id; // Keep node ID as the priginal title
         const normalizedId = normalizeTitle(node.id); // Add normalixed for internal matching
         const tags = parseTagsArray(tagLookup[normalizedId]); // Look up and parsed tag from NormalizedID
         // Attach parsed  tag array to each nodes
+
         return {
           ...node,
           id: originalTitle,
@@ -78,28 +81,18 @@ const TagManager = ({
       // allNodes.push(...transformedNodes);
       // allLinks.push(...transformedLinksL);
     });
-
-    setProcessedDatasets(mergedDatasets);
-  // }, [nodes, links])
+  setProcessedDatasets(mergedDatasets);
+  // console.log("mergedDataset:",mergedDatasets)
   }, [datasets, mabData])
-  // console.log("Datasets in TagManager", datasets)
-  // Log what's being passed to TagFilter
-  // console.log('Rendering TagFilter with:', {
-  //   currentDataset,
-  //   // datasetKeys: Object.keys(processedDatasets),
-  //   // hasCurrentDataset: Boolean(processedDatasets[currentDataset]),
-  //   // currentDatasetStats: processedDatasets[currentDataset] ? {
-  //   //   nodes: processedDatasets[currentDataset].nodes.length,
-  //   //   links: processedDatasets[currentDataset].links.length
-  //   // } : null
-  // });
+
 
   return (
     <TagFilter
     processedDatasets = {processedDatasets}
-    currentDataset= 'country'
-    onFilterChange= {onFilterChange}
-    onTagSelect = {onTagSelect}
+    currentDataset= {currentDataset}
+    // CountryData = {CountryData}
+    onFilterChange={onFilterChange}
+    onTagSelect={onTagSelect}
     showCounts={showCounts}
     width={width}
     />
