@@ -6,6 +6,7 @@ import ListSearch from './ListSearch';
 import Legend from './ColorLegend';
 import {colorScale, contributorFields, continentList} from './Colorlist'
 import './ComponentStyle.css'
+import TagFilter from './TagFilter';
 
 const Toolbar = ({
   datasets,
@@ -14,6 +15,7 @@ const Toolbar = ({
   FilterData,
   handleFilterChange,
   setFilterTag,
+  setFilterCountry,
   projects,
   connection,
   handleTitleChange,
@@ -208,7 +210,52 @@ const Toolbar = ({
       </div>
 
       <div>
-        {/* Tag Filter */}
+        {/* Country Tag Filter */}
+        <button
+          className={'toolelement'}
+          aria-describedby={Tag.id}
+          variant="contained"
+          onClick={Tag.handleClick}
+        >
+          <Icons.FilterOutlined /> {!isCollapsed && ('Filter by Tag')}
+        </button>
+        <Popover
+          className={'Popoverelement'}
+          id={Tag.id}
+          open={Tag.open}
+          anchorEl={Tag.anchorEl}
+          onClose={Tag.handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          PaperProps={{
+            sx:{borderRadius: 3,
+          },
+            display: open ? 'block' : 'none',
+            pointerEvents: open ? 'auto' : 'none',
+          }}
+          keepMounted
+        >
+          <div style={{margin: '20px'}}>
+            <TagManager 
+              datasets={datasets}
+              currentDataset={currentDataset}
+              mabData={FilterData}
+              onFilterChange={handleFilterChange}
+              onCountrySelect={setFilterCountry}
+              showCounts={true}
+            />
+          </div>
+        </Popover>
+      </div>
+
+      <div>
+        {/* WorkType Tag Filter */}
         <button
           className={'toolelement'}
           aria-describedby={Tag.id}

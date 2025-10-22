@@ -2,14 +2,14 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import {CountryData} from "./TransformDataCountryFunction";
 import Select from 'react-select';
 import { count, index } from "d3";
+import { Tag } from "@mui/icons-material";
 
 export default function TagFilter ({
     processedDatasets = {},
     currentDataset = {},
-    countryData = [],
     onFilterChange,
     onTagSelect,
-    selectedCountry = '',
+    onCountrySelect,
     showCounts = true,
     width = 300,
 }) {
@@ -21,15 +21,20 @@ export default function TagFilter ({
     const countryNodes = (countryDataset && countryDataset.nodes) || [];
 
     const [filterTag, setFilterTag] = useState("");
-    const [filterCountry, setFilterCountry]= useState(selectedCountry)
+    const [filterCountry, setFilterCountry]= useState("")
     const [localFilteredData, setLocalFilteredData] = useState({nodes:[], links:[]});
     const prevFilteredData = useRef({nodes: [], links: []});
-    // Apply filter when dataset or tag changes
+
     //-- This extract all the unique tag from nodes in the current Dataset--//
-    // console.log("Dataset in TagFilter:",dataset)
     const allTags = useMemo(() => {
+        console.log("MergedNodes:", nodes)
+        console.log("MergeLinks:",links)
         // if (!nodes || nodes.length === 0) return [];
-        if(!countryNodes|| countryNodes === 0) return [];
+        if(!countryNodes|| countryNodes === 0){
+            return {country:[], tags:[]};
+        }
+        console.log("Node in AllTags:",nodes)
+        console.log("Links in AllTags:",links)
         // const tagSet = new Set();
         const tagCategories = {
             country: new Set(),
@@ -61,24 +66,27 @@ export default function TagFilter ({
             });
             } 
         })
-        // return {
-        //     // country: Array.from(tagCategories.country).sort(),
-        //     // tags: Array.from(tagCategories.tags).sort
-        // }
-        return Array.from(tagCategories.country).sort();
+        console.log("country categories:", tagCategories.country)
+        return {
+            country: Array.from(tagCategories.country).sort(),
+            tags: Array.from(tagCategories.tags).sort()
+        };
+        // return Array.from(tagCategories.tags).sort();
     }, [nodes]);
+
+    // console.log("ProcessedDatasets nodes:", processedDatasets)
+    // console.log("Nodes:",nodes)
+    // console.log("All Tags:", allTags)
 
     // Reset filter when dataset changes
     useEffect(() => {
         setFilterTag("");
-    }, [currentDataset, setFilterTag]);
+        setFilterCountry("");
+    }, [currentDataset, setFilterTag, setFilterCountry]);
 
     useEffect(() => {
         if (!processedDatasets[currentDataset]) return;
         const { nodes, links } = processedDatasets[currentDataset];
-        // console.log("Sample of link:", links[0]);
-        // console.log("Source Type:", typeof links[0].source);
-        // console.log("Source Value:", links[0]?.source)
         let visibleNodes;
         let visibleLinks;
 
@@ -86,39 +94,49 @@ export default function TagFilter ({
             visibleNodes = nodes;
             visibleLinks = links;
         } else {
+            console.log("Node:",nodes)
+            console.log("Links:",links)
             // Find nodes that match the tag (primary nodes)
             const primaryNodes = nodes.filter(node => {
                 let tagMatch = true;
                 let countryMatch = true;
                 if(filterTag){
-                    tagMatch = node.tags && node.tags.some(tag => {
+                    console.log("It's filter Tag")
+                    tagMatch = node.id && node.id.toLowerCase() === filterCountry.toLowerCase() || node.tags && node.tags.some(tag => {
                         const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
                         return cleanTag === filterTag.toLowerCase();
                     });
                 }
-                if(filterCountry){
-                    countryMatch = node.country && node.country.toLowerCase() === filterCountry.toLowerCase()
-                }
-                return tagMatch && countryMatch;
+                // console.log("Check node tags:",node.tags)
+                // if(filterCountry){
+                //     console.log("it's filter country")
+                //     // console.log("Check node tags:",node.tags)
+                //     // console.log("Check node country:", node.country)
+                //     countryMatch = node.id && node.id.toLowerCase() === filterCountry.toLowerCase()
+                //     console.log("countryMatch:",countryMatch)
+                // }
+                // return tagMatch && countryMatch;
+                return tagMatch;
                 // if (!node.tags || node.tags.length === 0) return false;
                 // return node.tags.some(tag => {
                 //     const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
                 //     return cleanTag === filterTag.toLowerCase();
                 // });
-            });
+            });       
             // Find all nodes connected to primary nodes
             const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
             const connectedNodeIds = new Set();
-            // Find all links that connected to the primary node
+
             // Only includes link where both source and target nodes are visible
             links.forEach(link => {
-            if (primaryNodeIds.has(link.source)) {
-                connectedNodeIds.add(link.target);
-            }
-            if (primaryNodeIds.has(link.target)) {
-                connectedNodeIds.add(link.source);
-            }
+                if (primaryNodeIds.has(link.source)) {
+                    connectedNodeIds.add(link.target);
+                }
+                if (primaryNodeIds.has(link.target)) {
+                    connectedNodeIds.add(link.source);
+                }
             });
+            
             // Combine primary nodes + connected nodes
             visibleNodes = nodes.filter(
                 node => primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
@@ -137,28 +155,66 @@ export default function TagFilter ({
                 target: link.target
             }))
         };
-        setLocalFilteredData({nodes: visibleNodes, links: visibleLinks});
+        // console.log("Current Filter:", {filterCountry, filterTag})
+        // setLocalFilteredData({nodes: visibleNodes, links: visibleLinks});
         if(onFilterChange){
             onFilterChange(result);
         }
-    }, [processedDatasets, currentDataset, filterTag, onFilterChange]);
+    }, [processedDatasets, currentDataset, filterTag ,filterCountry, onFilterChange]);
+
 
     const options = [
         { value: '', label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
-        ...allTags.map(tag => ({ value: tag, label: tag })),
+        ...allTags.tags.map(tag => ({ value: tag, label: tag})),
     ];
+    const countryOptions = [
+        { value: '', label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
+        ...allTags.country.map(country => ({ value: country, label: country})),
+    ];
+
+
+    // const tagsOptions = [
+    //     { value: '', label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
+    //     ...allTags.tags.map(tag => ({ value: tag, label: tag})),
+    // ]
     const selectedOption = options.find((options) => options.value === filterTag) || options[0];
+    const selectedCountry = countryOptions.find((options) => options.value === filterTag) || countryOptions[0];
+    // const selectedTags = tagsOptions.find((options) => options.value === filterTag) || tagsOptions[0];
+
+   
     const handleChange = (selectedOption)=>{
-        const value = selectedOption ? selectedOption.value: "";
+        const value = selectedOption ? selectedOption.value: "" ;
         setFilterTag(value);
         if(onTagSelect){
             onTagSelect(value);
         }
     }
+
+    const handleCountryChange = (selectedCountry)=>{
+        const value = selectedCountry ? selectedCountry.value: "";
+        setFilterCountry(value);
+        if(onCountrySelect){
+            onCountrySelect(value);
+        }
+    }
+        
+    // const handleTagChange = (selectedTags)=>{
+    //     const value = selectedTags ? selectedTags.value: "";
+    //     setFilterTag(value);
+    //     if(onTagSelect){
+    //         onTagSelect(value);
+    //     }
+    // }
+    if(setFilterCountry){
+        console.log("setFilterCountry")
+    } else {
+        console.log("setFilterTag")
+    }
+
     return (
         <div style={{display:"flex", gap:"1rem", alignItems:"center" }}>
-            <label>
-                Filter by Tag; (" ")
+            {setFilterTag ? (<label>
+                Filter by Tags
                 <Select
                     value={selectedOption}
                     onChange={handleChange}
@@ -170,7 +226,20 @@ export default function TagFilter ({
                         menu: (base) => ({...base, position: 'relative', zIndex: 1,})
                     }}
                 />
-            </label>
+            </label>): setFilterCountry ? ( <label>
+                Filter by Country
+                <Select
+                    value={selectedCountry}
+                    onChange={handleChange}
+                    options={countryOptions}
+                    menuIsOpen={true}
+                    isSearchable
+                    styles={{
+                        container: (base) => ({...base,width: `${width}px`,}),
+                        menu: (base) => ({...base, position: 'relative', zIndex: 1,})
+                    }}
+                />
+            </label>):null}
         </div>
     );
 }
