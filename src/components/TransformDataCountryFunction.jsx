@@ -12,16 +12,23 @@ export function CountryData(rawData) {
 
   // DEFINE GROUP AND CONTINENT
   function setGroup(location, isproject = false) {
-    if (isproject) return {id: 18, name: "Project"};
-    if (!location) return {id: 8, name: "Unknown"};
+    if (isproject) return { groupid: 18, name: "Project", idx: 18 };
+    if (!location) return { groupid: 8, name: "Unknown", idx: 8 };
 
     const entry = countryToContinent.find(
       (c) => c.country.toLowerCase() === location.toLowerCase()
     );
     
-    if (!entry) return defaultContinent;
+    if (!entry) return { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
 
-    return continentList.find(c => c.name === entry.continent) || defaultContinent;
+    const foundIndex = continentList.findIndex(c => c.name === entry.continent);
+    const found = continentList[foundIndex];
+
+    if (found) {
+      return { ...found, idx: foundIndex + 1 };
+    }
+
+    return { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
   }
   
 
@@ -35,7 +42,7 @@ export function CountryData(rawData) {
     .flatMap(item => item.Location 
       .split(",") 
       .map(l => l.trim()) 
-      .filter(l => setGroup(l).id !== 8) 
+      .filter(l => setGroup(l).groupid !== 8) 
       .map(l => {
 
         const key = `${item.Title}→${l.toLowerCase()}`; 
@@ -69,7 +76,7 @@ export function CountryData(rawData) {
         url: item.URL,
         file: item.URL.split("/")[5] + ".jpg",
         size: 49,
-        group: 18,
+        group: 18
       };
     }
   });
@@ -81,7 +88,7 @@ export function CountryData(rawData) {
       .split(",")
       .map(l => l.trim())
       .filter(l => l)
-      .filter(l => setGroup(l).id !== 8 )
+      .filter(l => setGroup(l).groupid !== 8 )
       .forEach(l => {
         const normalized = l.toLowerCase();
         if (!nodeMap[normalized]) {
@@ -90,7 +97,7 @@ export function CountryData(rawData) {
             id: normalized,
             label: l,
             size: 24,
-            group: [setGroup(normalized).id],
+            group: [setGroup(normalized).idx],
             continent: setGroup(normalized).name
           };
         }

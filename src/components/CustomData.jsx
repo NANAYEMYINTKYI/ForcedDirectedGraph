@@ -9,89 +9,102 @@ export const graphcolor = {
   link: "#444d45ff",
   stroke: 2.5,
   focuslink: "#FF5c00",
+  focuscircle: "#FF5c00",
   focusstroke: 5,
   circlestroke: "steelblue",
   circlestrokesize: 2,
   nodetext: "#ffffffff",
-  connectiontext: "#333",
+  connectiontext: "#ffffffff",
 };
 
 export const colorScale = d3.scaleOrdinal()
    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
-   .range(["#eb7270", "#eb9d70", "#ebc970", 
-     "#e2eb70", "#b6eb70", "#8beb70", 
-     "#70eb80", "#70ebac","#70ebd7",
-     "#70d3eb","#70a8eb","#707ceb",
-     "#8f70eb","#ba70eb","#e670eb",
-     "#eb70c5","#eb7099","#000000ff"]);
+   .range(["#3dc447", "#ef840f", "#0074fa", 
+     "#0075fa", "#6100fa", "#fa00bc", 
+     "#fa1a00", "#faf000","#2efa00",
+     "#00da95ff","","",
+     "","","",
+     "","","#000000ff"]);
+  //  .range(["#eb7270", "#eb9d70", "#ebc970", 
+  //    "#e2eb70", "#b6eb70", "#8beb70", 
+  //    "#70eb80", "#70ebac","#70ebd7",
+  //    "#70d3eb","#70a8eb","#707ceb",
+  //    "#8f70eb","#ba70eb","#e670eb",
+  //    "#eb70c5","#eb7099","#000000ff"]);
 
 
 
 
 // ----- Data -----
+// export const continentList = [
+//   { id: 1, name: "Africa" },
+//   { id: 3, name: "Asia" },
+//   { id: 5, name: "Europe" },
+//   { id: 7, name: "North America" },
+//   { id: 9, name: "South America" },
+//   { id: 11, name: "Antarctica" },
+//   { id: 13, name: "Oceania" }
+// ];
+
+// export const defaultContinent = { id: 8, name: "Unknown" };
+
 export const continentList = [
-  { id: 1, name: "Africa" },
-  { id: 3, name: "Asia" },
-  { id: 5, name: "Europe" },
-  { id: 7, name: "North America" },
-  { id: 9, name: "South America" },
-  { id: 11, name: "Antarctica" },
-  { id: 13, name: "Oceania" }
+  { groupid: 4, name: "Africa" },
+  { groupid: 5, name: "Asia" },
+  { groupid: 6, name: "Europe" },
+  { groupid: 7, name: "North America" },
+  { groupid: 8, name: "South America" },
+  { groupid: 9, name: "Antarctica" },
+  { groupid: 10, name: "Oceania" }
 ];
 
-export const defaultContinent = { id: 8, name: "Unknown" };
-
-// export const continentList = [
-//   { groupid: 1, name: "Africa" },
-//   { groupid: 3, name: "Asia" },
-//   { groupid: 5, name: "Europe" },
-//   { groupid: 7, name: "North America" },
-//   { groupid: 9, name: "South America" },
-//   { groupid: 11, name: "Antarctica" },
-//   { groupid: 13, name: "Oceania" }
-// ];
-
-// export const defaultContinent = { groupid: 8, name: "Unknown" };
-
-// export const contributorFields = [
-//   { groupid: 1, oldname: "Building or project owner", name: "Project owner"},
-//   { groupid: 1, oldname: "Project co-ordination", name: "Project co-ordination"},
-//   { groupid: 1, oldname: "Host organization", name: "Host organization"},
-//   { groupid: 1, oldname: "Project sponsor/ support", name: "Project support"},
-//   { groupid: 1, oldname: "Mediacredits", name: "Mediacredits"},
-//   { groupid: 2, oldname: "Architecture", name: "Architecture"},
-//   { groupid: 2, oldname: "Facade design", name: "Facade design"},
-//   { groupid: 2, oldname: "Light design", name: "Lighting design"},
-//   { groupid: 2, oldname: "Project artist/ concept/ design/ planning", name: "Project artist"},
-//   { groupid: 2, oldname: "Display content/ visuals/ showreel", name: "Visual content"},
-//   { groupid: 2, oldname: "Interaction design/ programming", name: "Interaction design"},
-//   { groupid: 3, oldname: "Structural engineering", name: "Structural engineer"},
-//   { groupid: 3, oldname: "Facade construction", name: "Facade construction"},
-//   { groupid: 3, oldname: "Kinetic engineering", name: "Kinetic engineering"},
-//   { groupid: 3, oldname: "Technical layout light", name: "Technical layout light"},
-//   { groupid: 3, oldname: "Light hardware (LED hardware)", name: "LED hardware"},
-//   { groupid: 3, oldname: "Lighting control software", name: "Lighting ctrl SW"},
-// ];
+export const defaultContinent = { groupid: 8, name: "Unknown" };
 
 export const contributorFields = [
-  "Building or project owner",
-  "Architecture",
-  "Project artist/ concept/ design/ planning",
-  "Structural engineering",
-  "Light design",
-  "Technical layout light",
-  "Display content/ visuals/ showreel",
-  "Light hardware (LED hardware)",
-  "Lighting control software",
-  "Interaction design/ programming",
-  "Mediacredits",
-  "Project co-ordination",
-  "Project sponsor/ support",
-  "Host organization",
-  "Facade design",
-  "Facade construction",
-  "Kinetic engineering"
+  { groupid: 1, oldname: "Building or project owner", name: "Project owner"},
+  { groupid: 1, oldname: "Project co-ordination", name: "Project co-ordination"},
+  { groupid: 1, oldname: "Host organization", name: "Host organization"},
+  { groupid: 1, oldname: "Project sponsor/ support", name: "Project support"},
+  { groupid: 1, oldname: "Mediacredits", name: "Mediacredits"},
+  { groupid: 2, oldname: "Architecture", name: "Architecture"},
+  { groupid: 2, oldname: "Facade design", name: "Facade design"},
+  { groupid: 2, oldname: "Light design", name: "Lighting design"},
+  { groupid: 2, oldname: "Project artist/ concept/ design/ planning", name: "Project artist"},
+  { groupid: 2, oldname: "Display content/ visuals/ showreel", name: "Visual content"},
+  { groupid: 2, oldname: "Interaction design/ programming", name: "Interaction design"},
+  { groupid: 3, oldname: "Structural engineering", name: "Structural engineer"},
+  { groupid: 3, oldname: "Facade construction", name: "Facade construction"},
+  { groupid: 3, oldname: "Kinetic engineering", name: "Kinetic engineering"},
+  { groupid: 3, oldname: "Technical layout light", name: "Technical layout light"},
+  { groupid: 3, oldname: "Light hardware (LED hardware)", name: "LED hardware"},
+  { groupid: 3, oldname: "Lighting control software", name: "Lighting ctrl SW"},
 ];
+
+export const contributergroup = [
+  { groupid: 1, name: "Project Oversight and Stakeholders"},
+  { groupid: 2, name: "Design and Concept Team"},
+  { groupid: 3, name: "Engineering and Technical Team"},
+]
+
+// export const contributorFields = [
+//   "Building or project owner",
+//   "Architecture",
+//   "Project artist/ concept/ design/ planning",
+//   "Structural engineering",
+//   "Light design",
+//   "Technical layout light",
+//   "Display content/ visuals/ showreel",
+//   "Light hardware (LED hardware)",
+//   "Lighting control software",
+//   "Interaction design/ programming",
+//   "Mediacredits",
+//   "Project co-ordination",
+//   "Project sponsor/ support",
+//   "Host organization",
+//   "Facade design",
+//   "Facade construction",
+//   "Kinetic engineering"
+// ];
 
 export function updatedCountriesToContinent() {
   const additionalCountries = [

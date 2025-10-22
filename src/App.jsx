@@ -107,6 +107,7 @@ const App = () => {
       onNodeSelect: setShowNode,
       nodeSelect: showNode,
       selectedRoles: selectedRoles,
+      currentdataset: currentDataset
     }),
     [
       isPlaying,

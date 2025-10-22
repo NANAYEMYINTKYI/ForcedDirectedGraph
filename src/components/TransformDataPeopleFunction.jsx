@@ -13,8 +13,9 @@ export function PeopleData(rawData) {
   rawData.forEach(title => {
     const contributors = [];
 
-    contributorFields.forEach(field => {
-      let value = title[field];
+    contributorFields.forEach((field, idx) => {
+      let value = title[field.oldname];
+      // let value = title[field];
 
       if (
         // Ignore empty or invalid values
@@ -50,8 +51,8 @@ export function PeopleData(rawData) {
             contributors.push({
               name,
               normalized: name.toLowerCase(),
-              position: field,
-              group: contributorFields.indexOf(field) + 1
+              position: field.name,
+              group: idx + 1
             });
           }
         );
