@@ -30,29 +30,38 @@ const Legend = ({label, selectedIds, setSelectedIds }) => {
     }
   };
 
+  const selectAll = (id) => {
+    setSelectedIds(colorScale.domain());
+  }
+
   return (
-    <div className="legendbox">
-      {normalized.map(list => {
-        const customStyle = { '--checkbox-color': colorScale(list.id), '--unselected-color': graphcolor.inactive };
-        return (
-          <div 
-            key = {list.id} 
-            className = "legenditem"
-            style={customStyle}
-          >
-            <FormControlLabel  
-              control={
-                <Checkbox
-                  checked={selectedIds.includes(list.id)}
-                  onChange={() => handleCheckboxChange(list.id)}
-                  size="xsmall"
-                />
-              }
-              label = {list.name}
-            />
-          </div>
-        );
-      })}
+    <div>
+      <button className="selectallbutton" onClick={selectAll}>
+        Select All
+      </button>
+      <div className="legendbox">
+        {normalized.map(list => {
+          const customStyle = { '--checkbox-color': colorScale(list.id), '--unselected-color': graphcolor.inactive };
+          return (
+            <div 
+              key = {list.id} 
+              className = "legenditem"
+              style={customStyle}
+            >
+              <FormControlLabel  
+                control={
+                  <Checkbox
+                    checked={selectedIds.includes(list.id)}
+                    onChange={() => handleCheckboxChange(list.id)}
+                    size="xsmall"
+                  />
+                }
+                label = {list.name}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
