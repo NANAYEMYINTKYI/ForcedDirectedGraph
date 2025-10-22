@@ -16,7 +16,7 @@ const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const [filterTag, setFilterTag] = useState("");
-  const [currentDataset, setCurrentDataset] = useState("country");
+  const [currentDataset, setCurrentDataset] = useState("people");
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
@@ -89,6 +89,7 @@ const App = () => {
   const closeDescription = useCallback(() => {
     setShowNode(null);
   }, []);
+  
 
   // Memoize the graph props to prevent unnecessary re-renders
   const graphProps = useMemo(
@@ -102,9 +103,9 @@ const App = () => {
       filterTag: filterTag,
       width: window.innerWidth,
       height: window.innerHeight,
-      OnPlayingChange : isPlaying,
+      onPlayingChange : isPlaying,
       onNodeSelect: setShowNode,
-      showNode: showNode,
+      nodeSelect: showNode,
       selectedRoles: selectedRoles,
     }),
     [

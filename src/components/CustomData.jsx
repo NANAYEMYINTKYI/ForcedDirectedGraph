@@ -6,6 +6,14 @@ import countryToContinent from 'country-json/src/country-by-continent.json' with
 // ----- Color -----
 export const graphcolor = {
   inactive: "rgba(135, 135, 135, 1)",
+  link: "#444d45ff",
+  stroke: 2.5,
+  focuslink: "#FF5c00",
+  focusstroke: 5,
+  circlestroke: "steelblue",
+  circlestrokesize: 2,
+  nodetext: "#ffffffff",
+  connectiontext: "#333",
 };
 
 export const colorScale = d3.scaleOrdinal()
@@ -32,6 +40,38 @@ export const continentList = [
 ];
 
 export const defaultContinent = { id: 8, name: "Unknown" };
+
+// export const continentList = [
+//   { groupid: 1, name: "Africa" },
+//   { groupid: 3, name: "Asia" },
+//   { groupid: 5, name: "Europe" },
+//   { groupid: 7, name: "North America" },
+//   { groupid: 9, name: "South America" },
+//   { groupid: 11, name: "Antarctica" },
+//   { groupid: 13, name: "Oceania" }
+// ];
+
+// export const defaultContinent = { groupid: 8, name: "Unknown" };
+
+// export const contributorFields = [
+//   { groupid: 1, oldname: "Building or project owner", name: "Project owner"},
+//   { groupid: 1, oldname: "Project co-ordination", name: "Project co-ordination"},
+//   { groupid: 1, oldname: "Host organization", name: "Host organization"},
+//   { groupid: 1, oldname: "Project sponsor/ support", name: "Project support"},
+//   { groupid: 1, oldname: "Mediacredits", name: "Mediacredits"},
+//   { groupid: 2, oldname: "Architecture", name: "Architecture"},
+//   { groupid: 2, oldname: "Facade design", name: "Facade design"},
+//   { groupid: 2, oldname: "Light design", name: "Lighting design"},
+//   { groupid: 2, oldname: "Project artist/ concept/ design/ planning", name: "Project artist"},
+//   { groupid: 2, oldname: "Display content/ visuals/ showreel", name: "Visual content"},
+//   { groupid: 2, oldname: "Interaction design/ programming", name: "Interaction design"},
+//   { groupid: 3, oldname: "Structural engineering", name: "Structural engineer"},
+//   { groupid: 3, oldname: "Facade construction", name: "Facade construction"},
+//   { groupid: 3, oldname: "Kinetic engineering", name: "Kinetic engineering"},
+//   { groupid: 3, oldname: "Technical layout light", name: "Technical layout light"},
+//   { groupid: 3, oldname: "Light hardware (LED hardware)", name: "LED hardware"},
+//   { groupid: 3, oldname: "Lighting control software", name: "Lighting ctrl SW"},
+// ];
 
 export const contributorFields = [
   "Building or project owner",
