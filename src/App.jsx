@@ -7,7 +7,7 @@ import Toolbar from './components/ToolBar';
 import rawData from "./Data.json";
 import Description from "./components/DrawerDesceiption";
 import Legend from './components/ColorLegend';
-import {colorScale, contributorFields, continentList} from './components/CustomData.jsx';
+import {colorScale, contributorFields, continentList, contributergroup} from './components/CustomData.jsx';
 import * as Icons from '@ant-design/icons';
 import * as d3 from 'd3';
 import './App.css'
@@ -87,6 +87,9 @@ const App = () => {
   }, []);
 
   const closeDescription = useCallback(() => {
+    setselectedConnection(null);
+    setSelectedTitle(null);
+    setselectedNode(null);
     setShowNode(null);
   }, []);
   
@@ -116,7 +119,8 @@ const App = () => {
       filteredData.nodes,
       filteredData.links,
       filterTag,
-      selectedRoles
+      selectedRoles,
+      showNode
     ]
   );
   // Title list
@@ -175,12 +179,13 @@ const App = () => {
               />
               </div>)}
       <div className="legend">
-      <div style={{ margin: '20px'}}>
+      {/* <div style={{ margin: '20px'}}>
                   {currentDataset === 'people' ? (
                     <>
                       <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Contributor Role Legend</b>
                       <Legend 
                         label={contributorFields}
+                        groups={contributergroup}
                         selectedIds={selectedRoles}
                         setSelectedIds={setSelectedRoles}
                       />
@@ -195,7 +200,7 @@ const App = () => {
                       />
                     </>
                   )}
-                </div>
+                </div> */}
       {/* Dataset Selector */}
       {/* <section className="dataset-selector">
         <div className="dataset-buttons">

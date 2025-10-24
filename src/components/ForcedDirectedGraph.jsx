@@ -28,6 +28,7 @@ const ForceDirectedGraph = ({
   const svgRef = useRef();
   const simulationRef = useRef();
   const zoomRef = useRef(false);
+  const selectedRef = useRef();
   const groupsRef = useRef({
     svg: null,
     g: null,
@@ -51,7 +52,7 @@ const ForceDirectedGraph = ({
 
   const dragstarted = useCallback(function (event, d) {
     if (!event.active)
-      simulationRef.current.alphaTarget(0.01).alpha(1.01).restart();
+      simulationRef.current.alphaTarget(0.1).alpha(1.01).restart();
 
     // Store initial location
     d._dragStartX = event.x;
@@ -108,11 +109,10 @@ const ForceDirectedGraph = ({
 
   // ZOOM TO NODE FUNCTION
   function zoomToNode(d, svg, zoom) {
-    
-  if (!svg || !zoom || !zoom.transform) {
-    console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
-    return;
-  }
+    if (!svg || !zoom || !zoom.transform) {
+      console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
+      return;
+    }
     const scale = Math.min(width, height/800);
     const transform = d3.zoomIdentity
       .translate(width / 2, height / 2)
@@ -120,7 +120,35 @@ const ForceDirectedGraph = ({
       .translate(-d.x, -d.y); 
     svg.transition().duration(750).call(zoom.transform, transform);
   }
+  
     
+
+
+  // HIGHLIGHT NODE FUNCTION
+  function highlightNode(selectedNode, nodeGroup, linkGroup) {
+  // Reset styles
+  nodeGroup.selectAll("circle")
+    .attr("stroke", graphcolor.circlestroke)
+    .attr("stroke-width", graphcolor.circlestrokesize)
+
+  linkGroup.selectAll("line")
+    .attr("stroke", graphcolor.link)
+    .attr("stroke-width", graphcolor.stroke);
+
+  if (selectedNode) {
+    // Highlight selected node
+    nodeGroup.selectAll("circle")
+      .filter((d) => d.id === selectedNode)
+      .attr("stroke", graphcolor.focuscircle)
+      .attr("stroke-width", graphcolor.focusstroke)
+      
+  linkGroup.selectAll("line")
+    .filter((l) => l.source.id === selectedNode || l.target.id === selectedNode)
+    .attr("stroke", graphcolor.focuslink)
+    .attr("stroke-width", graphcolor.focusstroke);
+  }  
+}
+
 
 
 
@@ -250,10 +278,17 @@ const ForceDirectedGraph = ({
 
       .on("mouseleave", (event, d) => {
         // Restore connected style
-        d3.selectAll(".link-line")
-          .filter((l) => l.source.id === d.id || l.target.id === d.id)
-          .attr("stroke", graphcolor.link)
-          .attr("stroke-width", graphcolor.stroke);
+        if (selectedRef.current === d.id) {
+          d3.select(this)
+            .attr("stroke", graphcolor.focuscircle) 
+            .attr("stroke-width", graphcolor.focusstroke)
+        } else {
+          d3.selectAll(".link-line")
+              .filter((l) => l.source.id === d.id || l.target.id === d.id)
+              .attr("stroke", graphcolor.link)
+              .attr("stroke-width", graphcolor.stroke);
+              highlightNode(selectedRef.current, nodeGroup, linkGroup)
+        }
       })
       
       .on("click", function (event, d) {
@@ -266,8 +301,10 @@ const ForceDirectedGraph = ({
           // Zoom to selection
           if (tempSelectedNodes.length === 1) {
             zoomRef.current = true;
+            selectedRef.current = tempSelectedNodes[0].id;
             zoomToNode(tempSelectedNodes[0], svg, zoom);
-            onNodeSelect(tempSelectedNodes[0].id)
+            onNodeSelect(tempSelectedNodes[0].id);
+            highlightNode(tempSelectedNodes[0].id, nodeGroup, linkGroup);
           } else if (tempSelectedNodes.length > 1) {
             zoomToNode(tempSelectedNodes, svg, zoom);
             console.log("StopPropagation")
@@ -424,13 +461,28 @@ const ForceDirectedGraph = ({
     zoomRef.current = zoom;
     groupsRef.current = { svg, g, linkGroup, nodeGroup };
       
-    }, [
-    selectedRoles,
+  }, [
+  selectedRoles,
+]);
+  
+
+
+
+  // Restore style when close descfription
+  useEffect(() => {  
+    const { linkGroup, nodeGroup } = groupsRef.current;
+
+    if(!nodeSelect){
+      highlightNode(null, nodeGroup, linkGroup);
+      selectedRef.current = null
+    }
+  }, [
+    nodeSelect,
   ]);
-  
 
 
   
+
   // ZOOM SEARCH NODE
   useEffect(() => {
     if (!groupsReady) return;
@@ -438,9 +490,10 @@ const ForceDirectedGraph = ({
     const zoom = zoomRef.current;
     const { svg, g, linkGroup, nodeGroup } = groupsRef.current;
 
-    console.log(selectnode);
     if (selectnode) {
       onNodeSelect(selectnode.value)
+      selectedRef.current = selectnode.value
+  
       setTimeout(() => {
         const select = nodes.find(
           (n) =>
@@ -448,7 +501,8 @@ const ForceDirectedGraph = ({
             selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
         if (select) {
-          console.log(select);      
+          console.log(select);     
+          highlightNode(select.id, nodeGroup, linkGroup);
           // simulationRef.current.alpha(0.3).restart();
 
           setTimeout(() => {
@@ -465,6 +519,9 @@ const ForceDirectedGraph = ({
     selectnode,
   ]);
 
+
+
+
   // Clear selected node when nodes change
   useEffect(() => {
     onNodeSelect(null);
@@ -476,14 +533,15 @@ const ForceDirectedGraph = ({
       <div className="graph-container">
         {!isVisible && (
           // <p> loading Data</p>
-           <div
-      style={{
+          <div
+            style={{
               position: 'absolute',
               inset: 0,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-      }}>
+            }}
+          >
             <LoadingOutlined
               style={{
                 fontSize: 100,
@@ -491,8 +549,7 @@ const ForceDirectedGraph = ({
               }}
             />
           </div>
-         )}
-        {/* )} */}
+        )}
         <div className="graph-svg" style={{visibility: isVisible ? 'visible': 'hidden'}}>
           <svg ref={svgRef} width={width} height={height}/>
         </div>

@@ -25,29 +25,11 @@ export const colorScale = d3.scaleOrdinal()
      "#00da95ff","","",
      "","","",
      "","","#000000ff"]);
-  //  .range(["#eb7270", "#eb9d70", "#ebc970", 
-  //    "#e2eb70", "#b6eb70", "#8beb70", 
-  //    "#70eb80", "#70ebac","#70ebd7",
-  //    "#70d3eb","#70a8eb","#707ceb",
-  //    "#8f70eb","#ba70eb","#e670eb",
-  //    "#eb70c5","#eb7099","#000000ff"]);
 
 
 
 
 // ----- Data -----
-// export const continentList = [
-//   { id: 1, name: "Africa" },
-//   { id: 3, name: "Asia" },
-//   { id: 5, name: "Europe" },
-//   { id: 7, name: "North America" },
-//   { id: 9, name: "South America" },
-//   { id: 11, name: "Antarctica" },
-//   { id: 13, name: "Oceania" }
-// ];
-
-// export const defaultContinent = { id: 8, name: "Unknown" };
-
 export const continentList = [
   { groupid: 4, name: "Africa" },
   { groupid: 5, name: "Asia" },
@@ -86,26 +68,6 @@ export const contributergroup = [
   { groupid: 3, name: "Engineering and Technical Team"},
 ]
 
-// export const contributorFields = [
-//   "Building or project owner",
-//   "Architecture",
-//   "Project artist/ concept/ design/ planning",
-//   "Structural engineering",
-//   "Light design",
-//   "Technical layout light",
-//   "Display content/ visuals/ showreel",
-//   "Light hardware (LED hardware)",
-//   "Lighting control software",
-//   "Interaction design/ programming",
-//   "Mediacredits",
-//   "Project co-ordination",
-//   "Project sponsor/ support",
-//   "Host organization",
-//   "Facade design",
-//   "Facade construction",
-//   "Kinetic engineering"
-// ];
-
 export function updatedCountriesToContinent() {
   const additionalCountries = [
     { country: "United States of America", continent: "North America" }, 
@@ -137,3 +99,44 @@ export function getImages() {
 
 
 
+
+  //  .range(["#eb7270", "#eb9d70", "#ebc970", 
+  //    "#e2eb70", "#b6eb70", "#8beb70", 
+  //    "#70eb80", "#70ebac","#70ebd7",
+  //    "#70d3eb","#70a8eb","#707ceb",
+  //    "#8f70eb","#ba70eb","#e670eb",
+  //    "#eb70c5","#eb7099","#000000ff"]);
+
+  
+// export const continentList = [
+//   { id: 1, name: "Africa" },
+//   { id: 3, name: "Asia" },
+//   { id: 5, name: "Europe" },
+//   { id: 7, name: "North America" },
+//   { id: 9, name: "South America" },
+//   { id: 11, name: "Antarctica" },
+//   { id: 13, name: "Oceania" }
+// ];
+
+// export const defaultContinent = { id: 8, name: "Unknown" };
+
+
+// export const contributorFields = [
+//   "Building or project owner",
+//   "Architecture",
+//   "Project artist/ concept/ design/ planning",
+//   "Structural engineering",
+//   "Light design",
+//   "Technical layout light",
+//   "Display content/ visuals/ showreel",
+//   "Light hardware (LED hardware)",
+//   "Lighting control software",
+//   "Interaction design/ programming",
+//   "Mediacredits",
+//   "Project co-ordination",
+//   "Project sponsor/ support",
+//   "Host organization",
+//   "Facade design",
+//   "Facade construction",
+//   "Kinetic engineering"
+// ];

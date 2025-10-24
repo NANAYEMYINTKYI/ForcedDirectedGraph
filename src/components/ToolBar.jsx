@@ -7,7 +7,7 @@ import ToolBarButton from './ToolBarButton';
 import TagManager from './TagManager';
 import ListSearch from './ListSearch';
 import Legend from './ColorLegend';
-import {contributorFields, continentList} from './CustomData.jsx';
+import {contributorFields, continentList, contributergroup} from './CustomData.jsx';
 import './ComponentStyle.css'
 
 const Toolbar = ({
@@ -167,7 +167,7 @@ const Toolbar = ({
           icon = {<Icons.BarsOutlined />}
           label = "Meaning of Color"
           showLabel = {!isCollapsed}
-          visible = {false}
+          visible = {true}
           popover = {colorPopover}
           mounted = {false}
           popoverContent = {
@@ -175,7 +175,8 @@ const Toolbar = ({
               <>
                 <b>Contributor Role Legend</b>
                 <Legend 
-                  label={contributorFields}
+                  label = {contributorFields}
+                  groups = {contributergroup}
                   selectedIds = {selectedRoles}
                   setSelectedIds = {setSelectedRoles}
                 />
@@ -184,7 +185,7 @@ const Toolbar = ({
               <>
                 <b>Continent Legend</b>
                 <Legend 
-                  label={continentList}
+                  label = {continentList}
                   selectedIds = {selectedRoles}
                   setSelectedIds = {setSelectedRoles}
                 />

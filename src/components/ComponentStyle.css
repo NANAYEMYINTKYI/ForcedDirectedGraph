@@ -151,47 +151,57 @@
 
 /* --- Legend --- */
 .selectallbutton {
-  background: rgba(255, 255, 255, 0.1) ;
+  background: rgba(0, 0, 0, 0.2) ;
   border: 0;
   border-radius: 5px;
-  color: white;
+  color: black;
   padding: 5px 10px;
-  margin-bottom: 5px;
+  margin-top: 5px;
   cursor: pointer;
   font-size: medium;
 }
 
 .legendbox {
   display: flex;
-  flex-direction: row; 
+  flex-direction: column; 
   flex-wrap: wrap;
   gap: 0.5rem; 
   margin: 0.5rem;
 }
 
-.legenditem {
+.legendparent {
   display: flex;
-  align-items: center;
+  flex-direction: column; 
+  /* align-items: center; */
   gap: 0.5rem;
-  color: white;
+  color: black;
+  font-size: medium;
+}
+.legenditem {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column; 
+  /* align-items: center; */
+  gap: 0.5rem;
+  color: black;
   font-size: medium;
 }
 
 /* Target the MUI Checkbox component */
+.legendparent .MuiCheckbox-root {
+  padding: 6px;
+}
 .legenditem .MuiCheckbox-root {
   padding: 6px;
 }
 
-/* Target the outer box when checkbox is NOT checked */
-.legenditem .MuiSvgIcon-root {
-  color: var(--unselected-color);
-  background-color: var(--unselected-color);
+/* When checkbox is checked */
+.legendparent .Mui-checked .MuiSvgIcon-root {
+  color: var(--checkbox-color);
   border-radius: 3px;
   margin-right: 5px;
   transition: 10ms;
 }
-
-/* When checkbox is checked */
 .legenditem .Mui-checked .MuiSvgIcon-root {
   color: var(--checkbox-color);
   background-color: var(--checkbox-color);
@@ -200,9 +210,25 @@
   transition: 10ms;
 }
 
+/* Target the outer box when checkbox is NOT checked */
+.legendparent .MuiSvgIcon-root {
+  color: var(--checkbox-color);
+  border-radius: 3px;
+  margin-right: 5px;
+  transition: 10ms;
+}
+.legenditem .MuiSvgIcon-root {
+  color: var(--unselected-color);
+  background-color: var(--unselected-color);
+  border-radius: 3px;
+  margin-right: 5px;
+  transition: 10ms;
+}
+
+
 /* Checked state on hover: dimmed checkbox color */
 .legenditem .MuiCheckbox-root:hover {
-  filter: brightness(80%);
+  filter: brightness(90%);
   transition: 10ms;
 }
 
