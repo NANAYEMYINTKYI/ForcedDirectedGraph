@@ -9,12 +9,13 @@
   margin: 0;         
   padding: 0;    
 }
+
 .graph-container {
   flex: 1;
   position: relative;
   display: flex;
 }
-
+/* This is for SVG */
 .graph-svg {
   flex: 1;
   background: #231f20;

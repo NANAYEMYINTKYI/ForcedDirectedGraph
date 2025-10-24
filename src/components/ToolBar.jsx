@@ -9,6 +9,7 @@ import ListSearch from './ListSearch';
 import Legend from './ColorLegend';
 import {contributorFields, continentList, contributergroup} from './CustomData.jsx';
 import './ComponentStyle.css'
+import TagFilter from './TagFilter';
 
 const Toolbar = ({
   datasets,
@@ -17,6 +18,7 @@ const Toolbar = ({
   FilterData,
   handleFilterChange,
   setFilterTag,
+  setFilterCountry,
   projects,
   connection,
   handleTitleChange,
@@ -32,6 +34,7 @@ const Toolbar = ({
   const titlePopover = usePopover();
   const contributerPopover = usePopover();
   const countryPopover = usePopover();
+  const countryTagPopover = usePopover();
   const tagPopover = usePopover();
   const colorPopover = usePopover();
 
@@ -138,8 +141,8 @@ const Toolbar = ({
           }
         />
       </div>
-
       <div>
+
         {/* Tag Filter */}
         <ToolBarButton
           icon = {<Icons.FilterOutlined />}
@@ -150,17 +153,40 @@ const Toolbar = ({
           mounted = {true}
           popoverContent = {
             <TagManager 
-              datasets = {datasets}
-              currentDataset = {currentDataset}
-              mabData = {FilterData}
-              onFilterChange = {handleFilterChange}
-              onTagSelect = {setFilterTag}
-              showCounts = {true}
+              datasets={datasets}
+              currentDataset={currentDataset}
+              mabData={FilterData}
+              onFilterChange={handleFilterChange}
+              onTagSelect={setFilterTag}
+              filterType='tag'
+              showCounts={true}
             />
           }
         />
       </div>
 
+      <div>
+      {/* Country Tag Filter */}
+        <ToolBarButton
+          icon = {<Icons.FilterOutlined />}
+          label = "Filter by Country"
+          showLabel = {!isCollapsed}
+          visible = {true}
+          popover = {countryTagPopover}
+          mounted = {true}
+          popoverContent = {
+            <TagManager 
+              datasets={datasets}
+              currentDataset={currentDataset}
+              mabData={FilterData}
+              onFilterChange={handleFilterChange}
+              onCountrySelect={setFilterCountry}
+              filterType="country"
+              showCounts={true}
+            />
+          }
+        />
+      </div>
       <div>
         {/* Legend */}
         <ToolBarButton

@@ -1,7 +1,11 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { CountryData } from "./components/TransformDataCountryFunction";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { CountryData}  from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
+// import TagFilter from "./components/TagFilter";
+// import TagManager from "./components/TagManager";
+import TagFilter from "./components/TagFilter";
+import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
 import Toolbar from './components/ToolBar';
 import rawData from "./Data.json";
@@ -11,11 +15,12 @@ import {colorScale, contributorFields, continentList, contributergroup} from './
 import * as Icons from '@ant-design/icons';
 import * as d3 from 'd3';
 import './App.css'
-
+import countrySelector from "./components/CountryFilter";
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const [filterTag, setFilterTag] = useState("");
+  const [filterCountry, setFilterCountry] =useState("")
   const [currentDataset, setCurrentDataset] = useState("people");
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
@@ -50,6 +55,7 @@ const App = () => {
       },
     };
   }, [FilterData]);
+  
   const handleRangeChange = (event, newValue) => {
     setYearRange(newValue);
     setShowNode(null);
@@ -94,6 +100,17 @@ const App = () => {
   }, []);
   
 
+    // Title list
+  let projects = filteredData.nodes 
+  .filter(d => d.group === 18)
+  .map(d => ({value: d.id, label: d.label}));
+
+  // non Title list
+  let connection = filteredData.nodes 
+  .filter(d => d.group !== 18)
+  .map(d => ({value: d.id, label: d.label}));
+  
+
   // Memoize the graph props to prevent unnecessary re-renders
   const graphProps = useMemo(
     () => ({
@@ -115,6 +132,7 @@ const App = () => {
     [
       isPlaying,
       selectedNode,
+      setShowNode,
       currentDataset,
       filteredData.nodes,
       filteredData.links,
@@ -123,16 +141,7 @@ const App = () => {
       showNode
     ]
   );
-  // Title list
-  let projects = filteredData.nodes 
-  .filter(d => d.group === 18)
-  .map(d => ({value: d.id, label: d.label}));
 
-  // non Title list
-  let connection = filteredData.nodes 
-  .filter(d => d.group !== 18)
-  .map(d => ({value: d.id, label: d.label}));
-  
   // UI
   return (
     <div className="app">
@@ -142,23 +151,24 @@ const App = () => {
       </header>
       <div className="toolbar">
         <Toolbar 
-  datasets={datasets}
-  currentDataset={currentDataset}
-  handleDatasetChange={handleDatasetChange}
-  FilterData={FilterData}
-  handleFilterChange={handleFilterChange}
-  setFilterTag={setFilterTag}
-  projects={projects}
-  connection={connection}
-  handleTitleChange={handleTitleChange}
-  handleConnectionChange={handleConnectionChange}
-  selectedTitle={selectedTitle}
-  selectedConnection={selectedConnection}
-  toggleToolbar = {toggleToolbar}
-  isCollapsed = {isCollapsed}
-  selectedRoles = {selectedRoles}
-  setSelectedRoles = {setSelectedRoles}
-/>
+          datasets={datasets}
+          currentDataset={currentDataset}
+          handleDatasetChange={handleDatasetChange}
+          FilterData={FilterData}
+          handleFilterChange={handleFilterChange}
+          setFilterTag={setFilterTag}
+          setFilterCountry={setFilterCountry}
+          projects={projects}
+          connection={connection}
+          handleTitleChange={handleTitleChange}
+          handleConnectionChange={handleConnectionChange}
+          selectedTitle={selectedTitle}
+          selectedConnection={selectedConnection}
+          toggleToolbar = {toggleToolbar}
+          isCollapsed = {isCollapsed}
+          selectedRoles = {selectedRoles}
+          setSelectedRoles = {setSelectedRoles} 
+        />
       </div>
         {showNode && (
       <div className="description">
@@ -270,5 +280,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;

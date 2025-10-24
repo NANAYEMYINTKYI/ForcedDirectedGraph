@@ -197,6 +197,9 @@ const ForceDirectedGraph = ({
       .on("zoom", zoomHandler);
     svg.call(zoom);
 
+    if(!onPlayingChange){
+      setIsVisible(false);
+    }
     console.log("Graph initialized");
     // Save references
     zoomRef.current = zoom;
@@ -213,8 +216,6 @@ const ForceDirectedGraph = ({
 
   // CREATE GRAPH WITH FORCE
   useEffect(() => {
-    console.log(nodes)
-    console.log(links)
     if (!groupsReady) return;
 
     let iszoom = false;
@@ -301,7 +302,6 @@ const ForceDirectedGraph = ({
             .style("cursor", "pointer");
         }
       })
-
       .on("mouseenter", (event, d) => {
         // Highlight connected links
         d3.selectAll(".link-line")
@@ -367,7 +367,7 @@ const ForceDirectedGraph = ({
 
         const alpha = simulation.alpha()
         const ALPHA_THRESHOLD = 0.25
-        if(ALPHA_THRESHOLD > alpha && !iszoom){
+        if(ALPHA_THRESHOLD > alpha && !iszoom && !onPlayingChange){
           if(zoomRef.current === true){
             return;
           }       
@@ -423,8 +423,9 @@ const ForceDirectedGraph = ({
         .style("height", "100%")
         .style("text-align", "center")
         .style("word-wrap", "break-word")
+        .style("user-select", "none")
         .text(d => d.label)
-
+            
       zoomRef.current = zoom;
       groupsRef.current = { svg, g, linkGroup, nodeGroup };
       
@@ -507,7 +508,7 @@ const ForceDirectedGraph = ({
   }, [
     nodeSelect,
   ]);
-
+  
 
 
 
