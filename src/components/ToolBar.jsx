@@ -34,7 +34,7 @@ const Toolbar = ({
   const titlePopover = usePopover();
   const contributerPopover = usePopover();
   const countryPopover = usePopover();
-  const CountryTag = ToolBarPopover();
+  const countryTagPopover = usePopover();
   const tagPopover = usePopover();
   const colorPopover = usePopover();
 
@@ -172,7 +172,7 @@ const Toolbar = ({
           label = "Filter by Country"
           showLabel = {!isCollapsed}
           visible = {true}
-          popover = {CountryTag}
+          popover = {countryTagPopover}
           mounted = {true}
           popoverContent = {
             <TagManager 
