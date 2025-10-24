@@ -395,8 +395,9 @@ const ForceDirectedGraph = ({
         .style("height", "100%")
         .style("text-align", "center")
         .style("word-wrap", "break-word")
+        .style("user-select", "none")
         .text(d => d.label)
-
+            
       zoomRef.current = zoom;
       groupsRef.current = { svg, g, linkGroup, nodeGroup };
       
