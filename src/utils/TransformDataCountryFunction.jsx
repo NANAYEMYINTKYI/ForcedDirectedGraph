@@ -42,7 +42,7 @@ export function CountryData(rawData) {
     .flatMap(item => item.Location 
       .split(",") 
       .map(l => l.trim()) 
-      .filter(l => setGroup(l).groupid !== 8) 
+      .filter(l => setGroup(l).idx !== 8) 
       .map(l => {
 
         const key = `${item.Title}→${l.toLowerCase()}`; 
@@ -88,7 +88,7 @@ export function CountryData(rawData) {
       .split(",")
       .map(l => l.trim())
       .filter(l => l)
-      .filter(l => setGroup(l).groupid !== 8 )
+      .filter(l => setGroup(l).idx !== 8 )
       .forEach(l => {
         const normalized = l.toLowerCase();
         if (!nodeMap[normalized]) {
