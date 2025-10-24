@@ -197,6 +197,9 @@ const ForceDirectedGraph = ({
       .on("zoom", zoomHandler);
     svg.call(zoom);
 
+    if(!onPlayingChange){
+      setIsVisible(false);
+    }
     console.log("Graph initialized");
     // Save references
     zoomRef.current = zoom;
@@ -339,7 +342,7 @@ const ForceDirectedGraph = ({
 
         const alpha = simulation.alpha()
         const ALPHA_THRESHOLD = 0.25
-        if(ALPHA_THRESHOLD > alpha && !iszoom){
+        if(ALPHA_THRESHOLD > alpha && !iszoom && !onPlayingChange){
           if(zoomRef.current === true){
             return;
           }       
@@ -480,7 +483,7 @@ const ForceDirectedGraph = ({
   }, [
     nodeSelect,
   ]);
-
+  
 
 
 
