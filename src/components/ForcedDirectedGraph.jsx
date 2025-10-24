@@ -77,6 +77,9 @@ const ForceDirectedGraph = ({
   }, []);
 
   const dragended = useCallback(function (event, d) {
+    const zoom = zoomRef.current;
+    const { svg, linkGroup, nodeGroup } = groupsRef.current;
+
     if (!event.active){
       simulationRef.current.alphaTarget(0.5).alpha(1.01);
     if (d._isRealDrag) {
@@ -87,6 +90,10 @@ const ForceDirectedGraph = ({
       // Freeze if it is a click
       d.fx = d.x;
       d.fy = d.y;
+      selectedRef.current = d.id;
+      zoomToNode(d, svg, zoom);
+      onNodeSelect(d.id);
+      highlightNode(d.id, nodeGroup, linkGroup);
     }}
 
     setTimeout(() => {
@@ -206,6 +213,8 @@ const ForceDirectedGraph = ({
 
   // CREATE GRAPH WITH FORCE
   useEffect(() => {
+    console.log(nodes)
+    console.log(links)
     if (!groupsReady) return;
 
     let iszoom = false;
@@ -278,17 +287,11 @@ const ForceDirectedGraph = ({
 
       .on("mouseleave", (event, d) => {
         // Restore connected style
-        if (selectedRef.current === d.id) {
-          d3.select(this)
-            .attr("stroke", graphcolor.focuscircle) 
-            .attr("stroke-width", graphcolor.focusstroke)
-        } else {
-          d3.selectAll(".link-line")
-              .filter((l) => l.source.id === d.id || l.target.id === d.id)
-              .attr("stroke", graphcolor.link)
-              .attr("stroke-width", graphcolor.stroke);
-              highlightNode(selectedRef.current, nodeGroup, linkGroup)
-        }
+        d3.selectAll(".link-line")
+          .filter((l) => l.source.id === d.id || l.target.id === d.id)
+          .attr("stroke", graphcolor.link)
+          .attr("stroke-width", graphcolor.stroke);
+        highlightNode(selectedRef.current, nodeGroup, linkGroup)
       })
       
       .on("click", function (event, d) {
@@ -481,7 +484,7 @@ const ForceDirectedGraph = ({
   ]);
 
 
-  
+
 
   // ZOOM SEARCH NODE
   useEffect(() => {

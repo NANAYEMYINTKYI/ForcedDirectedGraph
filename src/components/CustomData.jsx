@@ -20,9 +20,9 @@ export const graphcolor = {
 export const colorScale = d3.scaleOrdinal()
    .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
    .range(["#3dc447", "#ef840f", "#0074fa", 
-     "#0075fa", "#6100fa", "#fa00bc", 
-     "#fa1a00", "#faf000","#2efa00",
-     "#00da95ff","","",
+     "#d23be7", "#4355db", "#34bbe6", 
+     "#49da9a", "#fcb337","#eb7532",
+     "#e6261f","","",
      "","","",
      "","","#000000ff"]);
 
