@@ -1,14 +1,15 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData } from "./components/TransformDataCountryFunction";
 import { PeopleData } from "./components/TransformDataPeopleFunction";
 import ForceDirectedGraph from "./components/ForcedDirectedGraph";
-import TagManager from "./components/TagManager";
-import ListSearch from "./components/ListSearch";
 import Timeline from './components/Timeline';
 import Toolbar from './components/ToolBar';
-import rawData from './data/mabDataRaw.json';
+import rawData from "./Data.json";
 import Description from "./components/DrawerDesceiption";
+import Legend from './components/ColorLegend';
+import {colorScale, contributorFields, continentList, contributergroup} from './components/CustomData.jsx';
 import * as Icons from '@ant-design/icons';
+import * as d3 from 'd3';
 import './App.css'
 
 const App = () => {
@@ -19,10 +20,10 @@ const App = () => {
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
-  // This Isplaying used to ri
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [showNode, setShowNode] = useState(null);
+  const [selectedRoles, setSelectedRoles] = useState(colorScale.domain());
 
   // Filter data where Year is between start and end year
   const FilterData = useMemo(() => {
@@ -64,6 +65,7 @@ const App = () => {
     setselectedConnection(null);
     setselectedNode(null);
     setShowNode(null);
+    setSelectedRoles(colorScale.domain());
   }, []);
 
   // Handle filtered data from TagManager
@@ -85,8 +87,12 @@ const App = () => {
   }, []);
 
   const closeDescription = useCallback(() => {
+    setselectedConnection(null);
+    setSelectedTitle(null);
+    setselectedNode(null);
     setShowNode(null);
   }, []);
+  
 
   // Memoize the graph props to prevent unnecessary re-renders
   const graphProps = useMemo(
@@ -100,9 +106,11 @@ const App = () => {
       filterTag: filterTag,
       width: window.innerWidth,
       height: window.innerHeight,
-      OnPlayingChange : isPlaying,
+      onPlayingChange : isPlaying,
       onNodeSelect: setShowNode,
-      showNode: showNode
+      nodeSelect: showNode,
+      selectedRoles: selectedRoles,
+      currentdataset: currentDataset
     }),
     [
       isPlaying,
@@ -111,6 +119,8 @@ const App = () => {
       filteredData.nodes,
       filteredData.links,
       filterTag,
+      selectedRoles,
+      showNode
     ]
   );
   // Title list
@@ -146,6 +156,8 @@ const App = () => {
   selectedConnection={selectedConnection}
   toggleToolbar = {toggleToolbar}
   isCollapsed = {isCollapsed}
+  selectedRoles = {selectedRoles}
+  setSelectedRoles = {setSelectedRoles}
 />
       </div>
         {showNode && (
@@ -166,7 +178,29 @@ const App = () => {
                 dataset = {currentDataset}
               />
               </div>)}
-      {/* <div className="topcontrols"> */}
+      <div className="legend">
+      {/* <div style={{ margin: '20px'}}>
+                  {currentDataset === 'people' ? (
+                    <>
+                      <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Contributor Role Legend</b>
+                      <Legend 
+                        label={contributorFields}
+                        groups={contributergroup}
+                        selectedIds={selectedRoles}
+                        setSelectedIds={setSelectedRoles}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Continent Legend</b>
+                      <Legend 
+                        label={continentList}
+                        selectedIds={selectedRoles}
+                        setSelectedIds={setSelectedRoles}
+                      />
+                    </>
+                  )}
+                </div> */}
       {/* Dataset Selector */}
       {/* <section className="dataset-selector">
         <div className="dataset-buttons">
@@ -213,7 +247,7 @@ const App = () => {
             visible = {currentDataset === 'country'}
             value = {selectedConnection}
           /> */}
-        {/* </div> */}
+        </div>
       <div className="app-content">
         {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />

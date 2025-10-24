@@ -1,19 +1,14 @@
+//--- This is the forced-directed graph component ---//
+// NOTE: For changing color go to CustomData
+// CSS SECTION: Force Graph
+
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import {LoadingOutlined} from '@ant-design/icons';
 import * as d3 from 'd3';
 import './ForcedDirectedGraph.css'
-import {colorScale} from './Colorlist'
-import {LoadingOutlined} from '@ant-design/icons'
+import {colorScale, graphcolor, getImages, continentList, contributorFields} from './CustomData.jsx';
 
-// Import all images from a folder
-const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
-  eager: true,
-});
-
-const image = {};
-Object.keys(imageslist).forEach((path) => {
-  const fileName = path.split("/").pop();
-  image[fileName] = imageslist[path].default || imageslist[path];
-});
+const image = getImages();
 
 // this is forced-directed graph component
 const ForceDirectedGraph = ({
@@ -23,122 +18,216 @@ const ForceDirectedGraph = ({
   filterTag,
   width,
   height,
-  OnPlayingChange ,
-  showNode,
-  onNodeSelect
+  onPlayingChange,
+  nodeSelect,
+  onNodeSelect,
+  selectedRoles,
+  currentdataset
 }) => {
-  console.log(OnPlayingChange)
   // Refs
   const svgRef = useRef();
   const simulationRef = useRef();
-  const tooltipRef = useRef();
-  const zoomRef = useRef(false)
+  const zoomRef = useRef(false);
+  const selectedRef = useRef();
+  const groupsRef = useRef({
+    svg: null,
+    g: null,
+    linkGroup: null,
+    nodeGroup: null
+  });
 
   // State
   const [chargeStrength, setChargeStrength] = useState(1000);
   const [linkStrength, setLinkStrength] = useState(0.1);
   const [centerStrength, setCenterStrength] = useState(0.3);
-  const [tooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
   const [isVisible, setIsVisible] = useState(false);
-  const [isDragging] = useState(false);
-  // Drag functions
+  const [isDragging, setIsDragging] = useState(false);
+  const [groupsReady, setGroupsReady] = useState(false);
+
+
+
+
+  // DRAG FUNCTIONS
+  const DRAG_THRESHOLD = 5;
+
   const dragstarted = useCallback(function (event, d) {
     if (!event.active)
-      simulationRef.current.alphaTarget(0.01).alpha(1.01).restart();
+      simulationRef.current.alphaTarget(0.1).alpha(1.01).restart();
+
+    // Store initial location
+    d._dragStartX = event.x;
+    d._dragStartY = event.y;
     d.fx = d.x;
     d.fy = d.y;
-    // Highlight connected links
-    d3.selectAll(".link-line")
-      .filter((l) => l.source.id === d.id || l.target.id === d.id)
-      .attr("stroke", "#FF5c00")
-      .attr("stroke-width", 10);
-    isDragging(true)
-    setIsVisible(true);
   }, []);
 
   const dragged = useCallback(function (event, d) {
-    d.fx = event.x;
-    d.fy = event.y;
-    isDragging(true)
-    setIsVisible(true)
+    // Check distance from drag start
+    const dx = event.x - d._dragStartX;
+    const dy = event.y - d._dragStartY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist > DRAG_THRESHOLD) {
+      d.fx = event.x;
+      d.fy = event.y;
+      // setIsDragging(true);
+      setIsVisible(true);
+      d._isRealDrag = true;
+    }
   }, []);
 
   const dragended = useCallback(function (event, d) {
-    // isDragging(true)
-    if (!event.active) simulationRef.current.alphaTarget(0.5).alpha(1.01);
+    const zoom = zoomRef.current;
+    const { svg, linkGroup, nodeGroup } = groupsRef.current;
+
+    if (!event.active){
+      simulationRef.current.alphaTarget(0.5).alpha(1.01);
+    if (d._isRealDrag) {
+    //   Position update if real drag
+      d.fx = null;
+      d.fy = null;
+    } else {
+      // Freeze if it is a click
+      d.fx = d.x;
+      d.fy = d.y;
+      selectedRef.current = d.id;
+      zoomToNode(d, svg, zoom);
+      onNodeSelect(d.id);
+      highlightNode(d.id, nodeGroup, linkGroup);
+    }}
 
     setTimeout(() => {
       simulationRef.current.alphaTarget(0);
     }, 1000);
-    d.fx = null;
-    d.fy = null;
 
-    // Restore connected links to original style
-    d3.selectAll(".link-line")
-      .filter((l) => l.source.id === d.id || l.target.id === d.id)
-      .attr("stroke", "dad9ddff")
-      .attr("stroke-width", 2.5);
-      isDragging(true)
-      setIsVisible(true)
+    setTimeout(() => {
+      d.fx = null;
+      d.fy = null;
+    }, 3000);
+
+    // Clean temp drag properties
+    delete d._dragStartX;
+    delete d._dragStartY;
+    delete d._isRealDrag;
   }, []);
 
-  useEffect(() => {
-    onNodeSelect(null);
-  }, [nodes, links, showNode]);
 
 
-  // Initialize and update graph when dependent
+
+  // ZOOM TO NODE FUNCTION
+  function zoomToNode(d, svg, zoom) {
+    if (!svg || !zoom || !zoom.transform) {
+      console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
+      return;
+    }
+    const scale = Math.min(width, height/800);
+    const transform = d3.zoomIdentity
+      .translate(width / 2, height / 2)
+      .scale(scale)
+      .translate(-d.x, -d.y); 
+    svg.transition().duration(750).call(zoom.transform, transform);
+  }
+  
+    
+
+
+  // HIGHLIGHT NODE FUNCTION
+  function highlightNode(selectedNode, nodeGroup, linkGroup) {
+  // Reset styles
+  nodeGroup.selectAll("circle")
+    .attr("stroke", graphcolor.circlestroke)
+    .attr("stroke-width", graphcolor.circlestrokesize)
+
+  linkGroup.selectAll("line")
+    .attr("stroke", graphcolor.link)
+    .attr("stroke-width", graphcolor.stroke);
+
+  if (selectedNode) {
+    // Highlight selected node
+    nodeGroup.selectAll("circle")
+      .filter((d) => d.id === selectedNode)
+      .attr("stroke", graphcolor.focuscircle)
+      .attr("stroke-width", graphcolor.focusstroke)
+      
+  linkGroup.selectAll("line")
+    .filter((l) => l.source.id === selectedNode || l.target.id === selectedNode)
+    .attr("stroke", graphcolor.focuslink)
+    .attr("stroke-width", graphcolor.focusstroke);
+  }  
+}
+
+
+
+
+  // SET COLOR FUNCTION
+  function setcolor(d) {
+    const groups = Array.isArray(d.group) ? d.group : [d.group];
+    const matchedGroup = groups.find(groupId => selectedRoles.includes(groupId));
+    const color = matchedGroup
+      ? (currentdataset === 'people'
+          ? contributorFields[matchedGroup - 1]?.groupid
+          : continentList[matchedGroup - 1]?.groupid)
+      : null;
+    return color;
+  }
+
+
+
+
+  // INITIALIZE AND UPDATE GRAPH WHEN NODES CHANGE
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg
     svg.selectAll("*").remove(); // Clear previous content
 
-    // tooltip appear by checking current tooltip
-    if (!tooltipRef.current) {
-      tooltipRef.current = d3
-        .select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("position", "absolute")
-        .style("pointer-events", "none")
-        .style("opacity", 0)
-        .style("background", "rgba(0,0,0,0.8)")
-        .style("color", "#fff")
-        .style("padding", "6px 8px")
-        .style("border-radius", "4px")
-        .style("font-size", "12px")
-        .style("z-index", 1000);
-    }
-    // Create groups
+    // create groups
     const g = svg.append("g").attr("class", "graph-group");
-    // set zoom behavior
+    const linkGroup = g.append("g").attr("class", "links");
+    const nodeGroup = g.append("g").attr("class", "nodes");
+
+    // set scale size from svg
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
       setIsVisible(true); // Hide during zoom
     };
+
+    // call zoom function from D3
     const zoom = d3
       .zoom()
       .scaleExtent([0.01, 20]) 
       .on("zoom", zoomHandler);
     svg.call(zoom);
-    function zoomToNode(d) {
-      const scale = Math.min(width, height/800);
-      const transform = d3.zoomIdentity
-        .translate(width / 2, height / 2)
-        .scale(scale)
-        .translate(-d.x, -d.y); 
-      svg.transition().duration(750).call(zoom.transform, transform);
-    }
-    const linkGroup = g.append("g").attr("class", "links");
-    const nodeGroup = g.append("g").attr("class", "nodes");
+
+    console.log("Graph initialized");
+    // Save references
+    zoomRef.current = zoom;
+    groupsRef.current = { svg, g, linkGroup, nodeGroup };
+    setGroupsReady(true);
+
+    return () => svg.selectAll("*").remove();
+  }, [
+    nodes,
+  ]);
+
+
+  
+
+  // CREATE GRAPH WITH FORCE
+  useEffect(() => {
+    if (!groupsReady) return;
+
+    let iszoom = false;
+    const zoom = zoomRef.current;
+    const { svg, g, linkGroup, nodeGroup } = groupsRef.current;
+
     // Create links
     const link = linkGroup
       .selectAll("line")
       .data(links)
       .join("line")
       .attr("class", "link-line")
-      .attr("stroke", "#dad9ddff")
-      // .attr("stroke-opacity", 0.7)
-      .attr("stroke-width", 2.5);
+      .attr("stroke", graphcolor.link)
+      .attr("stroke-width", graphcolor.stroke);
+
     // Create nodes
     const node = nodeGroup
       .selectAll("g")
@@ -151,6 +240,7 @@ const ForceDirectedGraph = ({
           .on("drag", dragged)
           .on("end", dragended)
       );
+
     // Set up clipPath
     node
       .append("clipPath")
@@ -158,14 +248,16 @@ const ForceDirectedGraph = ({
       .append("circle")
       .attr("r", (d) => d.size);
 
-    // create circle
+    // Create circle
     node
       .append("circle")
       .attr("r", (d) => d.size)
-      .attr("fill", (d) => colorScale(d.group))
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 2)
+      .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
+      .attr("stroke", graphcolor.circlestroke)
+      .attr("stroke-width", graphcolor.circlestrokesize)
       .style("cursor", "pointer");
+    
+    // Style circle
     node
       .each(function (d) {
         const current = d3.select(this);
@@ -180,98 +272,63 @@ const ForceDirectedGraph = ({
             .attr("height", (d) => d.size * 3)
             .attr("clip-path", (d) => `url(#circle-clip-${d.size})`)
             .style("cursor", "pointer");
-        } else {
-          // Otherwise, append a colored circle
-          current
-            .append("circle")
-            .attr("r", (d) => d.size)
-            .attr("fill", (d) => colorScale(d.group))
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .style("cursor", "pointer");
         }
       })
       .on("mouseenter", (event, d) => {
-        // Set tooltip
-        if (d.group === 18) {
-          tooltipRef.current
-            .style("opacity", 1)
-            .html(`<strong>${d.label}</strong><br/> 
-              <strong>Year:</strong> ${d.year}<br/> 
-              <strong>Location:</strong> ${d.location}<br/> 
-              <strong>Description:</strong> ${d.description}<br/> 
-              <strong>Tag:</strong> ${d.tag}`);
-        } else if (d.positions !== undefined) {
-          tooltipRef.current
-            .style("opacity", 1)
-            .html(`<strong>${d.label}</strong><br/> 
-              <strong>Position:</strong> ${d.positions.join(", ")}`);
-        } else {
-          tooltipRef.current
-            .style("opacity", 1)
-            .html(`<strong>${d.label}</strong><br/> 
-              <strong>Continent:</strong> ${d.continent}`);
-        }
-
-        // Move tooltip to mouse position
-        tooltipRef.current
-          .style("left", event.pageX + 10 + "px")
-          .style("top", event.pageY + 10 + "px");
-
         // Highlight connected links
         d3.selectAll(".link-line")
           .filter((l) => l.source.id === d.id || l.target.id === d.id)
-          .attr("stroke", "#FF5c00")
-          .attr("stroke-width", 10);
-      })
-
-      // mousemove update position in mousemove
-      .on("mousemove", (event) => {
-        tooltipRef.current
-          .style("left", event.pageX + 10 + "px")
-          .style("top", event.pageY + 10 + "px");
+          .attr("stroke", graphcolor.focuslink)
+          .attr("stroke-width", graphcolor.focusstroke);
       })
 
       .on("mouseleave", (event, d) => {
-        tooltipRef.current.style("opacity", 0);
+        // Restore connected style
         d3.selectAll(".link-line")
           .filter((l) => l.source.id === d.id || l.target.id === d.id)
-          .attr("stroke", "#dad9ddff")
-          .attr("stroke-width",2.5);
+          .attr("stroke", graphcolor.link)
+          .attr("stroke-width", graphcolor.stroke);
+        highlightNode(selectedRef.current, nodeGroup, linkGroup)
       })
+      
       .on("click", function (event, d) {
+        console.log("Clicking!!!")
         // Track selected node(s) temporarily
         // let selectedNodes = [];
+        
         if(!isDragging){
           let tempSelectedNodes = [d];
           // Zoom to selection
           if (tempSelectedNodes.length === 1) {
-            zoomRef.current=true;
-            zoomToNode(tempSelectedNodes[0]);
-            onNodeSelect(tempSelectedNodes[0].id)
+            zoomRef.current = true;
+            selectedRef.current = tempSelectedNodes[0].id;
+            zoomToNode(tempSelectedNodes[0], svg, zoom);
+            onNodeSelect(tempSelectedNodes[0].id);
+            highlightNode(tempSelectedNodes[0].id, nodeGroup, linkGroup);
           } else if (tempSelectedNodes.length > 1) {
-            zoomToNode(tempSelectedNodes);
+            zoomToNode(tempSelectedNodes, svg, zoom);
             console.log("StopPropagation")
           }
           // Clear selection array
-          tempSelectedNodes = []; 
+          tempSelectedNodes = [];
         }
+        zoomRef.current = zoom;
       });
+
     const simulation = d3
       .forceSimulation(nodes)
       .force("y", d3.forceY(height / 2).strength(0.1))  // Fix: y uses height
       .force("x", d3.forceX(width / 2).strength(0.1))   // Fix: x uses width
       .force("link", d3.forceLink(links).id((d) => d.id)
-        .distance(10)        // Increased from 10
-        .strength(0.2))      // Increased from 0.2
+      .distance(50)
+      .strength(0.5))
       .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("collision", d3.forceCollide().radius((d) => (d.size * 4) / 3))
       // .alpha(2)
-      .alpha( OnPlayingChange? 1 : 3)  // Conditional alpha
-      // console.log(alpha)
-      .alphaDecay(0.015)      // Reduced from 0.05 for smoother settling
-      .velocityDecay(0.4)    // Add friction
+      .alpha( onPlayingChange? 1 : 3)
+      .alphaDecay(0.05)   
+      .velocityDecay(0.4)
       .on("tick", () => {
         link
           .attr("x1", (d) => d.source.x)
@@ -279,93 +336,53 @@ const ForceDirectedGraph = ({
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y);
         node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+
         const alpha = simulation.alpha()
-        const alphaMin = simulation.alphaMin()
-        if(alpha<0.2){
+        const ALPHA_THRESHOLD = 0.25
+        if(ALPHA_THRESHOLD > alpha && !iszoom){
+          if(zoomRef.current === true){
+            return;
+          }       
+          console.log("zoooooooooom!")
+          const contentBounds = g.node().getBBox();
+          if (contentBounds.width === 0 || contentBounds.height === 0) return;
+          
+          const scale = Math.min(
+            (width / contentBounds.width) * 0.9,
+            (height / contentBounds.height) * 0.9
+          );
+          // console.log("Finishes scale calculated")
+          // console.log("Calculated scale")
+          const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
+          const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
+          // console.log("Finished Translate")
+          svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
+          zoomRef.current = zoom;
+          iszoom = true;
+        }
+        if(alpha < 0.2){
           setIsVisible(true)
         }
-        // setIsVisible(true);
-        // if(alpha<0.2){
-        //   if(zoomRef===true){
-        //     return;
-        //   } else {
-        //     // setIsVisible(true)
-        //   const contentBounds = g.node().getBBox();
-        //   if (contentBounds.width === 0 || contentBounds.height === 0) return;
-        //   const scale = Math.min(
-        //     (width / contentBounds.width) * 0.9,
-        //     (height / contentBounds.height) * 0.9
-        //   );
-        //   const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
-        //   const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
-        //   svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
-        //   setIsVisible(true)
-        //   zoomRef == true
-        //   }
-        // }
       })
+
       .on("end", () => {
-        console.log("On playing changed vlaue is:",OnPlayingChange)
-        if(zoomRef.current == true){
-          return;
-        }       
-        console.log("Initial zoomed:", zoomRef)
-        const contentBounds = g.node().getBBox();
-        if (contentBounds.width === 0 || contentBounds.height === 0) return;
-        
-        const scale = Math.min(
-          (width / contentBounds.width) * 0.9,
-          (height / contentBounds.height) * 0.9
-        );
-        console.log("Finishes scale calculated")
-        console.log("Calculated scale")
-        const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
-        const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
-        console.log("Finished Translate")
-        svg.call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
-        setIsVisible(true);
         simulation.stop();
-        // zoomRef.current = true;
-        console.log("zoomref is", zoomRef);
       });
 
     simulationRef.current = simulation;
-    if (selectnode) {
-      onNodeSelect(selectnode.value)
-      console.log("This is selectnode:",selectnode)
-      setTimeout(() => {
-        const select = nodes.find(
-          (n) =>
-            n.id.toLowerCase().replace(/\s+/g, "_") ===
-            selectnode.value.toLowerCase().replace(/\s+/g, "_")
-        );
-        if (select) {
-          setTimeout(() => {
-            zoomToNode(select);
-          }, 2000);
-        }
-      }, 1000);
-    } else if (filterTag) {
-      setIsVisible(false);
-      setTimeout(() => {
-        const matchingNode = nodes.find((node) => {
-          if (!node.tags || node.tags.length === 0) return false;
-          return node.tags.some((tag) => {
-            const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
-            return cleanTag === filterTag.toLowerCase();
-          });
-        });
-      }, 50);
-    }      // Aligh text in node to be center
+
+      // Aligh text in node to be center
       node.append("foreignObject")
         .each(function(d) {
           const current = d3.select(this);
           if (d.file) {
             current.attr("y", d.size + 5)
             .style("font-size", "12px")
+            .style("color", graphcolor.nodetext)
           } else {
             current.attr("y", -50)
             .style("font-size", d => d.size/4)
+            .style("color", graphcolor.connectiontext)
           }})
         .attr("x", d => -d.size*1)
         .attr("width", d => d.size*2) 
@@ -376,81 +393,166 @@ const ForceDirectedGraph = ({
         .style("justify-content", d => d.file ? "flex-start" : "center")
         .style("width", "100%")
         .style("height", "100%")
-        .style("font-weight", "bold")
         .style("text-align", "center")
-        .style("color", "#333")
         .style("word-wrap", "break-word")
         .text(d => d.label)
+
+      zoomRef.current = zoom;
+      groupsRef.current = { svg, g, linkGroup, nodeGroup };
       
     return () => {
       simulation.stop();
     };
   }, [
     nodes,
-    links,
-    // width,
-    // height,
-    filterTag,
-    // chargeStrength,
-    // linkStrength,
-    // centerStrength,
-    // colorScale,
-    // dragstarted,
-    // dragged,
-    // dragended,
-    // selectnode,
-    OnPlayingChange
+    groupsReady,
   ]);
+
+
+
+
+  // SELECTROLES
+  useEffect(() => {
+    if (!groupsReady) return;
+
+    const zoom = zoomRef.current;
+    const { svg, g, linkGroup, nodeGroup } = groupsRef.current;
+    
+    const node = nodeGroup
+      .selectAll("g")
+      .data(nodes)
+      .join("g")
+
+    node
+      .filter((d) => d.group !== 18)
+      .append("circle")
+      .attr("r", (d) => d.size)
+      .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
+      .attr("stroke", graphcolor.circlestroke)
+      .attr("stroke-width", graphcolor.circlestrokesize)
+      .style("cursor", "pointer");
+
+    // Aligh text in node to be center
+    node.append("foreignObject")
+      .each(function(d) {
+        const current = d3.select(this);
+        if (d.file) {
+          current.attr("y", d.size + 5)
+          .style("font-size", "12px")
+          .style("color", graphcolor.nodetext)
+        } else {
+          current.attr("y", -50)
+          .style("font-size", d => d.size/4)
+          .style("color", graphcolor.connectiontext)
+        }})
+      .attr("x", d => -d.size*1)
+      .attr("width", d => d.size*2) 
+      .attr("height", 100) 
+      .append("xhtml:div")
+      .style("display", "flex")
+      .style("flex-direction", "column")
+      .style("justify-content", d => d.file ? "flex-start" : "center")
+      .style("width", "100%")
+      .style("height", "100%")
+      .style("text-align", "center")
+      .style("word-wrap", "break-word")
+      .text(d => d.label)
+
+    zoomRef.current = zoom;
+    groupsRef.current = { svg, g, linkGroup, nodeGroup };
+      
+  }, [
+  selectedRoles,
+]);
+  
+
+
+
+  // Restore style when close descfription
+  useEffect(() => {  
+    const { linkGroup, nodeGroup } = groupsRef.current;
+
+    if(!nodeSelect){
+      highlightNode(null, nodeGroup, linkGroup);
+      selectedRef.current = null
+    }
+  }, [
+    nodeSelect,
+  ]);
+
+
+
+
+  // ZOOM SEARCH NODE
+  useEffect(() => {
+    if (!groupsReady) return;
+
+    const zoom = zoomRef.current;
+    const { svg, g, linkGroup, nodeGroup } = groupsRef.current;
+
+    if (selectnode) {
+      onNodeSelect(selectnode.value)
+      selectedRef.current = selectnode.value
+  
+      setTimeout(() => {
+        const select = nodes.find(
+          (n) =>
+            n.id.toLowerCase().replace(/\s+/g, "_") ===
+            selectnode.value.toLowerCase().replace(/\s+/g, "_")
+        );
+        if (select) {
+          console.log(select);     
+          highlightNode(select.id, nodeGroup, linkGroup);
+          // simulationRef.current.alpha(0.3).restart();
+
+          setTimeout(() => {
+            zoomToNode(select, svg, zoom);
+          }, 500);
+        }
+      }, 100);
+    } 
+
+    zoomRef.current = zoom;
+    groupsRef.current = { svg, g, linkGroup, nodeGroup };
+      
+  }, [
+    selectnode,
+  ]);
+
+
+
+
+  // Clear selected node when nodes change
+  useEffect(() => {
+    onNodeSelect(null);
+  }, [nodes, onNodeSelect]);
 
   return (
     <div className="force-graph-container">
       {/* Graph */}
       <div className="graph-container">
-        {/* {isVisible ? (
-          <div className="graph-svg">
-            <svg ref={svgRef} width={width} height={height}/>
-          </div>
-        ):(<p> Loading Data</p>)} */}
         {!isVisible && (
           // <p> loading Data</p>
           <div
-          style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-          }}>
-                <LoadingOutlined
-                  style={{
-                    fontSize: 100,
-                    color: 'white',
-                  }}
-                />
+            style={{
+              position: 'absolute',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <LoadingOutlined
+              style={{
+                fontSize: 100,
+                color: 'white',
+              }}
+            />
           </div>
         )}
         <div className="graph-svg" style={{visibility: isVisible ? 'visible': 'hidden'}}>
           <svg ref={svgRef} width={width} height={height}/>
         </div>
-        {/* Tooltip */}
-        {tooltip.visible && (
-          <div
-            className="tooltip"
-            style={{
-              position: "absolute",
-              left: tooltip.x,
-              top: tooltip.y,
-              background: "rgba(0, 0, 0, 0.8)",
-              color: "white",
-              padding: "8px 12px",
-              borderRadius: "6px",
-              fontSize: "12px",
-              pointerEvents: "none",
-              zIndex: 1000,
-            }}
-            dangerouslySetInnerHTML={{ __html: tooltip.content }}
-          />
-        )}
       </div>
     </div>
   );

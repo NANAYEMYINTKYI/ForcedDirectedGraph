@@ -1,3 +1,5 @@
+//--- This is the function to download all image no file use this ---//
+
 import fs from "fs";
 import fetch from "node-fetch";
 import jsonData from "./../data/PeopleNode.json" with { type: "json" };

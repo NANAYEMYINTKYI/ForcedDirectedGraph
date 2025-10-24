@@ -1,135 +1,120 @@
-import countryToContinent from 'country-json/src/country-by-continent.json' with { type: 'json' };
-import {defaultContinent, continentList} from './Colorlist'
-
-// ----- Customize Data Section-----
-// import rawData from './../data/FilterData.json' with { type: 'json' };
+//--- This is the function to transform rawdata to nodes and links for "Country Dataset" ---//
+// NOTE: For changing countryToContinent go to CustomData
 // node = Title // Focus Node
-// connectionNode = country // Node for connection
-// Group 1-7 = Continent
-// Group 8 = Unknown
-// Group 9 = Project
-// ----- End Section -----
+// connectionNode = continent // Node for connection
+// Group 1-17 = continent
+// Group 18 = Project
+
+import {defaultContinent, continentList, updatedCountriesToContinent} from './CustomData.jsx';
 
 export function CountryData(rawData) {
-  // Add new country
-  let Add = [
-    { country: "United States of America", continent: "North America" }, 
-    { country: "Kosovo", continent: "Europe" },
-    { country: "Taiwan", continent: "Asia" }
-  ];
-  countryToContinent.push(...Add);
+  const countryToContinent = updatedCountriesToContinent()
 
-  // Define Group
+  // DEFINE GROUP AND CONTINENT
   function setGroup(location, isproject = false) {
-    if (isproject) return {id: 9, name: "Project"};
-    if (!location) return {id: 8, name: "Unknown"};
-
-    const country = location.split(",")[0].trim();
+    if (isproject) return { groupid: 18, name: "Project", idx: 18 };
+    if (!location) return { groupid: 8, name: "Unknown", idx: 8 };
 
     const entry = countryToContinent.find(
-      (c) => c.country.toLowerCase() === country.toLowerCase()
+      (c) => c.country.toLowerCase() === location.toLowerCase()
     );
-
     
-  if (!entry) return defaultContinent;
+    if (!entry) return { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
 
-  return continentList.find(c => c.name === entry.continent) || defaultContinent;
+    const foundIndex = continentList.findIndex(c => c.name === entry.continent);
+    const found = continentList[foundIndex];
 
-    // if (!entry) return {id: 8, name: "Unknown"};
-    // switch (entry.continent) {
-    //   case "Africa":
-    //     return {id: 1, name: "Africa"};
-    //   case "Asia":
-    //     return {id: 3, name: "Asia"};
-    //   case "Europe":
-    //     return {id: 5, name: "Europe"};
-    //   case "North America":
-    //     return {id: 7, name: "North America"};
-    //   case "South America":
-    //     return {id: 9, name: "South America"};
-    //   case "Antarctica":
-    //     return {id: 11, name: "Antarctica"};
-    //   case "Oceania":
-    //     return {id: 13, name: "Oceania"};
-    //   default:
-    //     return {id: 8, name: "Unknown"};
-    // }
+    if (found) {
+      return { ...found, idx: foundIndex + 1 };
+    }
+
+    return { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
   }
   
-  // node → connectionNode
+
+
+  
   const seenLinks = new Set();
-  let links = rawData 
-  .filter(d => d.Title && d.Location)
-  .flatMap(d => d.Location 
+
+  // CREATE LINKS
+  const links = rawData 
+    .filter(item => item.Title && item.Location)
+    .flatMap(item => item.Location 
       .split(",") 
       .map(l => l.trim()) 
-      .filter(l => setGroup(l).id !== 8) 
+      .filter(l => setGroup(l).groupid !== 8) 
       .map(l => {
-      const key = `${d.Title}→${l.toLowerCase()}`; 
-      if (seenLinks.has(key)) return null; 
-      seenLinks.add(key); 
-      return { 
-          source: d.Title, 
+
+        const key = `${item.Title}→${l.toLowerCase()}`; 
+        if (seenLinks.has(key)) return null; 
+
+        seenLinks.add(key); 
+        return { 
+          source: item.Title.toUpperCase(), 
           target: l.toLowerCase(), 
           strength: 1 
-      }; 
+        }; 
       }) 
-  ) 
-  .filter(Boolean);
+    ) 
+    .filter(Boolean);
 
-    let nodeMap = {};
 
-    // Add nodes
-    rawData.forEach((item) => {
-      if (!nodeMap[item.Title]) {
-        nodeMap[item.Title] = {
-          id: item.Title,
-          label: item.Title,
-          year: item.Year,
-          location: item.Location,
-          description: item.Description,
-          tag: item.Tag,
-          image: item["Images.1"],
-          url: item.URL,
-          size: 49,
-          group: 18,
-          file: item.URL.split("/")[5] + ".jpg"
-        };
-      }
-    });
 
-    // Add connectionNode
-    rawData.forEach((item) => {
-      if (!item.Location) return;
-      item.Location
-        .split(",")
-        .map(name => name.trim())
-        .filter(name => name)
-        .filter(name => setGroup(name).id !== 8 )
-        .forEach(location => {
-          if (!nodeMap[location]) {
-            nodeMap[location.toLowerCase()] = {
-              id: location.toLowerCase(),
-              label: location,
-              size: 24,
-              group: setGroup(location).id,
-              continent: setGroup(location).name
-            };
-          }
-        });
-    });
 
-    // Count occurrences
-    links.forEach((link) => {
+  let nodeMap = {};
+
+  // CREATE NODES FOR TITLES (FOCUS NODE)
+  rawData.forEach((item) => {
+    if (!nodeMap[item.Title]) {
+      nodeMap[item.Title] = {
+        id: item.Title.toUpperCase(),
+        label: item.Title,
+        year: item.Year,
+        location: item.Location,
+        description: item.Description,
+        tag: item.Tag,
+        url: item.URL,
+        file: item.URL.split("/")[5] + ".jpg",
+        size: 49,
+        group: 18
+      };
+    }
+  });
+
+  // CREATE NODES FOR CONTRIBUTORS (CONNECTION NODE)
+  rawData.forEach((item) => {
+    if (!item.Location) return;
+    item.Location
+      .split(",")
+      .map(l => l.trim())
+      .filter(l => l)
+      .filter(l => setGroup(l).groupid !== 8 )
+      .forEach(l => {
+        const normalized = l.toLowerCase();
+        if (!nodeMap[normalized]) {
+          // New node
+          nodeMap[normalized] = {
+            id: normalized,
+            label: l,
+            size: 24,
+            group: [setGroup(normalized).idx],
+            continent: setGroup(normalized).name
+          };
+        }
+      });
+  });
+
+  // Count occurrences to adjust node size
+  links.forEach((link) => {
     if (nodeMap[link.source]) {
-        nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 4, 100);
+      nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 4, 100);
     }
-    if (nodeMap[link.target.toLowerCase()]) {
-        nodeMap[link.target.toLowerCase()].size = Math.min(nodeMap[link.target.toLowerCase()].size + 4, 100);
+    if (nodeMap[link.target]) {
+      nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 4, 100);
     }
-    });
+  });
 
-    const nodes = Object.values(nodeMap);  
+  const nodes = Object.values(nodeMap);  
 
-    return { nodes, links };
+  return { nodes, links };
 }
