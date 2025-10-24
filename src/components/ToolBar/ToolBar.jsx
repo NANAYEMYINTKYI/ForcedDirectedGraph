@@ -17,6 +17,7 @@ const Toolbar = ({
   handleDatasetChange,
   FilterData,
   handleFilterChange,
+  handleCountryChange,
   setFilterTag,
   setFilterCountry,
   projects,
@@ -179,7 +180,7 @@ const Toolbar = ({
               datasets={datasets}
               currentDataset={currentDataset}
               mabData={FilterData}
-              onFilterChange={handleFilterChange}
+              onCountryChange={handleCountryChange}
               onCountrySelect={setFilterCountry}
               filterType="country"
               showCounts={true}

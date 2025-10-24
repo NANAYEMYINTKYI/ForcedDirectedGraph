@@ -8,6 +8,7 @@ export default function TagFilter ({
     processedDatasets = {},
     currentDataset = {},
     onFilterChange,
+    onCountryChange,
     onTagSelect,
     onCountrySelect,
     showCounts = true,
@@ -147,16 +148,19 @@ export default function TagFilter ({
         if(onFilterChange){
             onFilterChange(result);
         }
-    }, [processedDatasets, currentDataset, filterTag ,filterCountry, onFilterChange]);
+        if(onCountryChange){
+            onCountryChange(result)
+        }
+    }, [processedDatasets, currentDataset, filterTag ,filterCountry, onFilterChange, onCountryChange]);
 
     const options = [
         { value: '', 
             label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
-        ...allTags.tags.map(tag => ({ value: tag, label: tag})),
+        ...allTags.tags.map(tag => ({ value: tag, label: tag.toUpperCase()})),
     ];
     const countryOptions = [
         { value: '', label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
-        ...allTags.country.map(country => ({ value: country, label: country})),
+        ...allTags.country.map(country => ({ value: country, label: country.toUpperCase()})),
     ];
 
     const selectedOption = options.find((options) => options.value === filterTag) || options[0];

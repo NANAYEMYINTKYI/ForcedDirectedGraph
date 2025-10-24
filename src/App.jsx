@@ -77,9 +77,15 @@ const App = () => {
   // Handle filtered data from TagManager
   const handleFilterChange = useCallback((data) => {
     setFilteredData(data);
-    setselectedNode(null);
+    setFilterCountry(null);
+    setselectedNode(data);
   }, []);
 
+  const handleCountryChange = useCallback ((data)=> {
+    setFilterCountry = (data)
+    setFilteredData = (null)
+    setselectedNode=(data)
+  })
   const handleTitleChange = useCallback((data) => {
     setSelectedTitle(data);
     setselectedConnection(null);
@@ -156,6 +162,7 @@ const App = () => {
           handleDatasetChange={handleDatasetChange}
           FilterData={FilterData}
           handleFilterChange={handleFilterChange}
+          handleCountryChange = {handleCountryChange}
           setFilterTag={setFilterTag}
           setFilterCountry={setFilterCountry}
           projects={projects}
@@ -178,86 +185,12 @@ const App = () => {
               </button>
             </div>
               <Description 
-                // name = 'iart'
-                // name = 'Germany'
-                // name = 'IN THE AIR, TONIGHT'
-                // name = 'ANTopolis'
                 name = {showNode}
                 data = {FilterData}
                 nodelist = {datasets[currentDataset].nodes}
                 dataset = {currentDataset}
               />
               </div>)}
-      <div className="legend">
-      {/* <div style={{ margin: '20px'}}>
-                  {currentDataset === 'people' ? (
-                    <>
-                      <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Contributor Role Legend</b>
-                      <Legend 
-                        label={contributorFields}
-                        groups={contributergroup}
-                        selectedIds={selectedRoles}
-                        setSelectedIds={setSelectedRoles}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <b style={{ color: 'white', paddingBottom: '10px', display: 'block' }}>Continent Legend</b>
-                      <Legend 
-                        label={continentList}
-                        selectedIds={selectedRoles}
-                        setSelectedIds={setSelectedRoles}
-                      />
-                    </>
-                  )}
-                </div> */}
-      {/* Dataset Selector */}
-      {/* <section className="dataset-selector">
-        <div className="dataset-buttons">
-          {Object.entries(datasets).map(([key, dataset]) => (
-            <button
-              key={key}
-              className={`dataset-btn ${currentDataset === key ? 'active' : ''}`}
-              onClick={() => handleDatasetChange(key)}
-            >
-              {dataset.name}
-            </button>
-          ))}
-        </div>
-      </section>
-        {/* Tag Filter */}
-          {/* <TagManager 
-            datasets={datasets}
-            currentDataset={currentDataset}
-            mabData={FilterData}
-            onFilterChange={handleFilterChange}
-            onTagSelect= {setFilterTag}
-            showCounts={true}
-          />
-          <ListSearch 
-            options = {projects}
-            Title = "Search by Title"
-            placeholder = "Input Title"
-            onFilterChange={handleTitleChange}
-            value = {selectedTitle}
-          />
-          <ListSearch 
-            options = {connection}
-            Title = "Search by People"
-            placeholder = "Input People"
-            onFilterChange = {handleConnectionChange}
-            visible = {currentDataset === 'people'}
-            value = {selectedConnection}
-          />
-          <ListSearch 
-            options = {connection}
-            Title = "Search by Country"
-            placeholder = "Input Country"
-            onFilterChange = {handleConnectionChange}
-            visible = {currentDataset === 'country'}
-            value = {selectedConnection}
-          /> */}
-        </div>
       <div className="app-content">
         {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />
