@@ -29,7 +29,8 @@ const Toolbar = ({
   const TitlePopover = ToolBarPopover();
   const Contributer = ToolBarPopover();
   const Country = ToolBarPopover();
-  const Tag = ToolBarPopover();
+  const CountryTag = ToolBarPopover();
+  const Tag=ToolBarPopover();
   const Color = ToolBarPopover();
 
   return (
@@ -208,52 +209,6 @@ const Toolbar = ({
           </div>
         </Popover>
       </div>
-
-      <div>
-        {/* Country Tag Filter */}
-        <button
-          className={'toolelement'}
-          aria-describedby={Tag.id}
-          variant="contained"
-          onClick={Tag.handleClick}
-        >
-          <Icons.FilterOutlined /> {!isCollapsed && ('Filter by Tag')}
-        </button>
-        <Popover
-          className={'Popoverelement'}
-          id={Tag.id}
-          open={Tag.open}
-          anchorEl={Tag.anchorEl}
-          onClose={Tag.handleClose}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-          PaperProps={{
-            sx:{borderRadius: 3,
-          },
-            display: open ? 'block' : 'none',
-            pointerEvents: open ? 'auto' : 'none',
-          }}
-          keepMounted
-        >
-          <div style={{margin: '20px'}}>
-            <TagManager 
-              datasets={datasets}
-              currentDataset={currentDataset}
-              mabData={FilterData}
-              onFilterChange={handleFilterChange}
-              onCountrySelect={setFilterCountry}
-              showCounts={true}
-            />
-          </div>
-        </Popover>
-      </div>
-
       <div>
         {/* WorkType Tag Filter */}
         <button
@@ -293,6 +248,53 @@ const Toolbar = ({
               mabData={FilterData}
               onFilterChange={handleFilterChange}
               onTagSelect={setFilterTag}
+              filterType='tag'
+              showCounts={true}
+            />
+          </div>
+        </Popover>
+      </div>
+      
+      <div>
+        {/* Country Tag Filter */}
+        <button
+          className={'toolelement'}
+          aria-describedby={CountryTag.id}
+          variant="contained"
+          onClick={CountryTag.handleClick}
+        >
+          <Icons.FilterOutlined /> {!isCollapsed && ('Filter by Country')}
+        </button>
+        <Popover
+          className={'Popoverelement'}
+          id={CountryTag.id}
+          open={CountryTag.open}
+          anchorEl={CountryTag.anchorEl}
+          onClose={CountryTag.handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          PaperProps={{
+            sx:{borderRadius: 3,
+          },
+            display: open ? 'block' : 'none',
+            pointerEvents: open ? 'auto' : 'none',
+          }}
+          keepMounted
+        >
+          <div style={{margin: '20px'}}>
+            <TagManager 
+              datasets={datasets}
+              currentDataset={currentDataset}
+              mabData={FilterData}
+              onFilterChange={handleFilterChange}
+              onCountrySelect={setFilterCountry}
+              filterType="country"
               showCounts={true}
             />
           </div>

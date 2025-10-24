@@ -12,7 +12,10 @@ export default function TagFilter ({
     onCountrySelect,
     showCounts = true,
     width = 300,
+    filterType = "both"
 }) {
+    console.log("OnTagSelect:", onTagSelect)
+    console.log("OnCountrySelect:", onCountrySelect)
     const dataset = processedDatasets && processedDatasets[currentDataset];
     const nodes = (dataset && dataset.nodes) || [];
     const links = (dataset && dataset.links) || [];
@@ -98,30 +101,14 @@ export default function TagFilter ({
             console.log("Links:",links)
             // Find nodes that match the tag (primary nodes)
             const primaryNodes = nodes.filter(node => {
-                let tagMatch = true;
-                let countryMatch = true;
+                let tagMatch = !filterTag;
                 if(filterTag){
-                    console.log("It's filter Tag")
-                    tagMatch = node.id && node.id.toLowerCase() === filterCountry.toLowerCase() || node.tags && node.tags.some(tag => {
+                    tagMatch = node.id && node.id.toLowerCase()=== filterCountry.toLowerCase() || node.tags && node.tags.some(tag => {
                         const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
                         return cleanTag === filterTag.toLowerCase();
                     });
                 }
-                // console.log("Check node tags:",node.tags)
-                // if(filterCountry){
-                //     console.log("it's filter country")
-                //     // console.log("Check node tags:",node.tags)
-                //     // console.log("Check node country:", node.country)
-                //     countryMatch = node.id && node.id.toLowerCase() === filterCountry.toLowerCase()
-                //     console.log("countryMatch:",countryMatch)
-                // }
-                // return tagMatch && countryMatch;
                 return tagMatch;
-                // if (!node.tags || node.tags.length === 0) return false;
-                // return node.tags.some(tag => {
-                //     const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
-                //     return cleanTag === filterTag.toLowerCase();
-                // });
             });       
             // Find all nodes connected to primary nodes
             const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
@@ -155,16 +142,16 @@ export default function TagFilter ({
                 target: link.target
             }))
         };
-        // console.log("Current Filter:", {filterCountry, filterTag})
+        console.log("Current Filter:", {filterCountry, filterTag})
         // setLocalFilteredData({nodes: visibleNodes, links: visibleLinks});
         if(onFilterChange){
             onFilterChange(result);
         }
     }, [processedDatasets, currentDataset, filterTag ,filterCountry, onFilterChange]);
 
-
     const options = [
-        { value: '', label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
+        { value: '', 
+            label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
         ...allTags.tags.map(tag => ({ value: tag, label: tag})),
     ];
     const countryOptions = [
@@ -172,11 +159,6 @@ export default function TagFilter ({
         ...allTags.country.map(country => ({ value: country, label: country})),
     ];
 
-
-    // const tagsOptions = [
-    //     { value: '', label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
-    //     ...allTags.tags.map(tag => ({ value: tag, label: tag})),
-    // ]
     const selectedOption = options.find((options) => options.value === filterTag) || options[0];
     const selectedCountry = countryOptions.find((options) => options.value === filterTag) || countryOptions[0];
     // const selectedTags = tagsOptions.find((options) => options.value === filterTag) || tagsOptions[0];
@@ -184,36 +166,30 @@ export default function TagFilter ({
    
     const handleChange = (selectedOption)=>{
         const value = selectedOption ? selectedOption.value: "" ;
+        console.log("TagChanged:",value)
         setFilterTag(value);
         if(onTagSelect){
+            console.log("calling tags with:", value)
             onTagSelect(value);
         }
     }
 
-    const handleCountryChange = (selectedCountry)=>{
-        const value = selectedCountry ? selectedCountry.value: "";
-        setFilterCountry(value);
-        if(onCountrySelect){
-            onCountrySelect(value);
-        }
-    }
-        
-    // const handleTagChange = (selectedTags)=>{
-    //     const value = selectedTags ? selectedTags.value: "";
-    //     setFilterTag(value);
-    //     if(onTagSelect){
-    //         onTagSelect(value);
+    // const handleCountryChange = (selectedCountry)=>{
+    //     const value = selectedCountry ? selectedCountry.value: "";
+    //     console.log("country changed:", value)
+    //     setFilterCountry(value);
+    //     if(onCountrySelect){
+    //         console.log("calling contry with:", value)
+    //         onCountrySelect(value);
+    //     } else {
+    //         console.log("Oncoutnry is not defined")
     //     }
     // }
-    if(setFilterCountry){
-        console.log("setFilterCountry")
-    } else {
-        console.log("setFilterTag")
-    }
 
     return (
         <div style={{display:"flex", gap:"1rem", alignItems:"center" }}>
-            {setFilterTag ? (<label>
+            {(filterType === "tag") && (
+                <label>
                 Filter by Tags
                 <Select
                     value={selectedOption}
@@ -226,7 +202,10 @@ export default function TagFilter ({
                         menu: (base) => ({...base, position: 'relative', zIndex: 1,})
                     }}
                 />
-            </label>): setFilterCountry ? ( <label>
+                </label>
+            )}
+            {(filterType === "country" ) && (
+                <label>
                 Filter by Country
                 <Select
                     value={selectedCountry}
@@ -239,7 +218,8 @@ export default function TagFilter ({
                         menu: (base) => ({...base, position: 'relative', zIndex: 1,})
                     }}
                 />
-            </label>):null}
+                </label>
+            )}
         </div>
     );
 }

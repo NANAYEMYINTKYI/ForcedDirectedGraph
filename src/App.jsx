@@ -17,6 +17,7 @@ const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const [filterTag, setFilterTag] = useState("");
+  const [filterCountry, setFilterCountry] =useState("")
   const [currentDataset, setCurrentDataset] = useState("people");
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
@@ -143,6 +144,7 @@ const App = () => {
           FilterData={FilterData}
           handleFilterChange={handleFilterChange}
           setFilterTag={setFilterTag}
+          setFilterCountry={setFilterCountry}
           projects={projects}
           connection={connection}
           handleTitleChange={handleTitleChange}

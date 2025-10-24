@@ -33,10 +33,13 @@ const TagManager = ({
   onTagSelect,
   onCountrySelect,
   showCounts = true,
-  width = '300'
+  width = '300',
+  filterType = "both"
 }) => {
   const [processedDatasets, setProcessedDatasets] = useState({});
   const mergedDatasets = {};
+  console.log("OnTagSelect:", onTagSelect)
+  console.log("OnCountrySelect:", onCountrySelect)
   useEffect(() => {
     if (!mabData || !datasets) return;
     // Build tag lookup from mabData
@@ -77,8 +80,6 @@ const TagManager = ({
         links: transformedLinks,
         name: dataset.name
       }; 
-      // allNodes.push(...transformedNodes);
-      // allLinks.push(...transformedLinksL);
     });
   setProcessedDatasets(mergedDatasets);
   console.log("mergedDataset:",mergedDatasets)
@@ -93,6 +94,7 @@ const TagManager = ({
     onCountrySelect={onCountrySelect}
     showCounts={showCounts}
     width={width}
+    filterType={filterType}
     />
   );
 };
