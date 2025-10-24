@@ -213,8 +213,6 @@ const ForceDirectedGraph = ({
 
   // CREATE GRAPH WITH FORCE
   useEffect(() => {
-    console.log(nodes)
-    console.log(links)
     if (!groupsReady) return;
 
     let iszoom = false;
