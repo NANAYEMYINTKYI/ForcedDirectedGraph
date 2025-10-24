@@ -5,8 +5,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import {LoadingOutlined} from '@ant-design/icons';
 import * as d3 from 'd3';
-import './ForcedDirectedGraph.css'
-import {colorScale, graphcolor, getImages, continentList, contributorFields} from './CustomData.jsx';
+import '../../styles/ForcedDirectedGraph.css'
+import {colorScale, graphcolor, getImages, continentList, contributorFields} from '../../utils/CustomData.jsx';
 
 const image = getImages();
 
