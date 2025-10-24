@@ -3,20 +3,21 @@
   display: flex;
   /* flex-direction: column; */
   color:aliceblue;
-  background:black;
+  background:#231f20;
   position: relative; 
   overflow: hidden;   
   margin: 0;         
   padding: 0;    
 }
+
 .graph-container {
   flex: 1;
   position: relative;
   display: flex;
 }
-
+/* This is for SVG */
 .graph-svg {
   flex: 1;
-  background: black;
+  background: #231f20;
   cursor: grab;
 }
