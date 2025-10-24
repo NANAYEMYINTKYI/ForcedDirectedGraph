@@ -222,7 +222,7 @@ const ForceDirectedGraph = ({
     const { svg, g, linkGroup, nodeGroup } = groupsRef.current;
 
     // Create links
-    const link = linkGroup
+    const linkSelection = linkGroup
       .selectAll("line")
       .data(links)
       .join("line")
@@ -230,8 +230,17 @@ const ForceDirectedGraph = ({
       .attr("stroke", graphcolor.link)
       .attr("stroke-width", graphcolor.stroke);
 
+    linkSelection.exit().transition().duration(300).style("opacity", 0).remove();
+    const linkEnter = linkSelection.enter()
+      .attr("class", "link-line")
+      .attr("stroke", graphcolor.link)
+      .attr("stroke-width", graphcolor.stroke);
+      
+    linkEnter.transition().duration(300).style("opacity", 1);
+    const link = linkEnter.merge(linkSelection);
+
     // Create nodes
-    const node = nodeGroup
+    const nodeSelection = nodeGroup
       .selectAll("g")
       .data(nodes)
       .join("g")
@@ -242,6 +251,22 @@ const ForceDirectedGraph = ({
           .on("drag", dragged)
           .on("end", dragended)
       );
+
+    nodeSelection.exit().transition().duration(300).attr("r", 0).remove();
+    
+    const nodeEnter = nodeSelection.enter()
+      .data(nodes)
+      .join("g")
+      .call(
+        d3
+          .drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended)
+      );
+      
+    nodeEnter.transition().duration(300).attr("r", (d) => d.size);
+    const node = nodeEnter.merge(nodeSelection);
 
     // Set up clipPath
     node
