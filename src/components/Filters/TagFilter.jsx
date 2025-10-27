@@ -15,8 +15,8 @@ export default function TagFilter ({
     width = 300,
     filterType = "both"
 }) {
-    console.log("OnTagSelect:", onTagSelect)
-    console.log("OnCountrySelect:", onCountrySelect)
+    // console.log("OnTagSelect:", onTagSelect)
+    // console.log("OnCountrySelect:", onCountrySelect)
     const dataset = processedDatasets && processedDatasets[currentDataset];
     const nodes = (dataset && dataset.nodes) || [];
     const links = (dataset && dataset.links) || [];
@@ -31,8 +31,8 @@ export default function TagFilter ({
 
     //-- This extract all the unique tag from nodes in the current Dataset--//
     const allTags = useMemo(() => {
-        console.log("MergedNodes:", nodes)
-        console.log("MergeLinks:",links)
+        // console.log("MergedNodes:", nodes)
+        // console.log("MergeLinks:",links)
         // if (!nodes || nodes.length === 0) return [];
         if(!countryNodes|| countryNodes === 0){
             return {country:[], tags:[]};

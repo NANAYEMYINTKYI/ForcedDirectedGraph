@@ -15,7 +15,6 @@ const ForceDirectedGraph = ({
   nodes,
   links,
   selectnode,
-  filterTag,
   width,
   height,
   onPlayingChange,
@@ -502,6 +501,7 @@ const ForceDirectedGraph = ({
         const select = nodes.find(
           (n) =>
             n.id.toLowerCase().replace(/\s+/g, "_") ===
+            // selectnode.value.toLowerCase().replace(/\s+/g, "_")
             selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
         if (select) {
