@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import {CountryData} from "../../utils/TransformDataCountryFunction";
 import Select from 'react-select';
-import { count, index } from "d3";
 
-
-export default function TagFilter ({
-    processedDatasets = {},
+const TagFilter = ({
+    datasets,
+    // datasets = {},
     currentDataset = {},
     onFilterChange,
     onCountryChange,
@@ -14,21 +13,17 @@ export default function TagFilter ({
     showCounts = true,
     width = 300,
     filterType = "both"
-}) {
-    // console.log("OnTagSelect:", onTagSelect)
-    // console.log("OnCountrySelect:", onCountrySelect)
-    const dataset = processedDatasets && processedDatasets[currentDataset];
+}) => {
+    const dataset = datasets && datasets[currentDataset];
     const nodes = (dataset && dataset.nodes) || [];
     const links = (dataset && dataset.links) || [];
 
-    const countryDataset = processedDatasets['country'];
+    const countryDataset = datasets['country'];
     const countryNodes = (countryDataset && countryDataset.nodes) || [];
 
     const [filterTag, setFilterTag] = useState("");
     const [filterCountry, setFilterCountry]= useState("")
-    const [localFilteredData, setLocalFilteredData] = useState({nodes:[], links:[]});
-    const prevFilteredData = useRef({nodes: [], links: []});
-
+   
     //-- This extract all the unique tag from nodes in the current Dataset--//
     const allTags = useMemo(() => {
         // console.log("MergedNodes:", nodes)
@@ -56,9 +51,9 @@ export default function TagFilter ({
         });
         //--This is award type data--//
         countryNodes.forEach(node => {
-            if (node.tags){
-            // console.log("node tags:",node.tags)
-                node.tags.forEach(tag => {
+            if (node.tag){
+            console.log("node tags:",node.tag)
+                node.tag.forEach(tag => {
                 if (tag) {
                     const cleanTag = tag.replace(/^#/, "").trim().toLowerCase();
                     if(cleanTag &&!/^\d+$/.test(cleanTag)){
@@ -78,7 +73,7 @@ export default function TagFilter ({
         // return Array.from(tagCategories.tags).sort();
     }, [nodes]);
 
-    // console.log("ProcessedDatasets nodes:", processedDatasets)
+    // console.log("datasets nodes:", datasets)
     // console.log("Nodes:",nodes)
     // console.log("All Tags:", allTags)
 
@@ -87,10 +82,11 @@ export default function TagFilter ({
         setFilterTag("");
         setFilterCountry("");
     }, [currentDataset, setFilterTag, setFilterCountry]);
+ 
 
     useEffect(() => {
-        if (!processedDatasets[currentDataset]) return;
-        const { nodes, links } = processedDatasets[currentDataset];
+        if (!datasets[currentDataset]) return;
+        const { nodes, links } = datasets[currentDataset];
         let visibleNodes;
         let visibleLinks;
 
@@ -133,8 +129,6 @@ export default function TagFilter ({
                 visibleLinks = ((links || []).filter((links)=> visibleNodeIds.has(links.source)&&visibleNodeIds.has(links.target))
             );
         }
-        // const prev = prevFilteredData.current;
-        // const hasChanged = checkForChanges(visibleNodes, visibleLinks, prev)
         const result = { 
             nodes: visibleNodes.map(node =>({...node})), 
             links: visibleLinks.map(link =>({
@@ -144,14 +138,16 @@ export default function TagFilter ({
             }))
         };
         console.log("Current Filter:", {filterCountry, filterTag})
-        // setLocalFilteredData({nodes: visibleNodes, links: visibleLinks});
+       
         if(onFilterChange){
             onFilterChange(result);
+            console.log("OnFilterChange")
         }
         if(onCountryChange){
             onCountryChange(result)
+            console.log("OncountryChange")
         }
-    }, [processedDatasets, currentDataset, filterTag ,filterCountry, onFilterChange, onCountryChange]);
+    }, [datasets, currentDataset, filterTag ,filterCountry, onFilterChange, onCountryChange]);
 
     const options = [
         { value: '', 
@@ -178,17 +174,17 @@ export default function TagFilter ({
         }
     }
 
-    // const handleCountryChange = (selectedCountry)=>{
-    //     const value = selectedCountry ? selectedCountry.value: "";
-    //     console.log("country changed:", value)
-    //     setFilterCountry(value);
-    //     if(onCountrySelect){
-    //         console.log("calling contry with:", value)
-    //         onCountrySelect(value);
-    //     } else {
-    //         console.log("Oncoutnry is not defined")
-    //     }
-    // }
+    const handleCountryChange = (selectedCountry)=>{
+        const value = selectedCountry ? selectedCountry.value: "";
+        console.log("country changed:", value)
+        setFilterCountry(value);
+        if(onCountrySelect){
+            console.log("calling contry with:", value)
+            onCountrySelect(value);
+        } else {
+            console.log("Oncoutnry is not defined")
+        }
+    }
 
     return (
         <div style={{display:"flex", gap:"1rem", alignItems:"center" }}>
@@ -226,4 +222,5 @@ export default function TagFilter ({
             )}
         </div>
     );
-}
+};
+export default TagFilter;

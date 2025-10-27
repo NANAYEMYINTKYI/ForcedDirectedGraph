@@ -30,7 +30,7 @@ const TagManager = ({
   currentDataset, 
   mabData, 
   onFilterChange,
-  OnCountryChange,
+  onCountryChange,
   onTagSelect,
   onCountrySelect,
   showCounts = true,
@@ -38,7 +38,8 @@ const TagManager = ({
   filterType = "both"
 }) => {
   const [processedDatasets, setProcessedDatasets] = useState({});
-  const mergedDatasets = {};
+  // console.log("OnTagchange:",onFilterChange)
+  // console.log("Oncountrychage:", onCountryChange)
   useEffect(() => {
     if (!mabData || !datasets) return;
     // Build tag lookup from mabData
@@ -81,7 +82,7 @@ const TagManager = ({
       }; 
     });
   setProcessedDatasets(mergedDatasets);
-  console.log("mergedDataset:",mergedDatasets)
+  // console.log("mergedDataset:",mergedDatasets)
   }, [datasets, mabData])
 
   return (
@@ -89,7 +90,7 @@ const TagManager = ({
     processedDatasets = {processedDatasets}
     currentDataset= {currentDataset}
     onFilterChange={onFilterChange}
-    onCountryChange = {OnCountryChange}
+    onCountryChange = {onCountryChange}
     onTagSelect={onTagSelect}
     onCountrySelect={onCountrySelect}
     showCounts={showCounts}

@@ -2,6 +2,8 @@ import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData}  from "./utils/TransformDataCountryFunction.jsx";
 import { PeopleData } from "./utils/TransformDataPeopleFunction.jsx";
 import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";
+// import TagFilter from "./components/TagFilter";
+// import TagManager from "./components/TagManager";
 import TagFilter from "./components/Filters/TagFilter.jsx";
 import ListSearch from "./components/DropDown/ListSearch.jsx";
 import Timeline from './components/TimeLine/Timeline.jsx';
@@ -16,10 +18,12 @@ import './styles/App.css'
 import countrySelector from "./components/Filters/CountryFilter.jsx";
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
-  const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
+  const [filteredData, setFilteredData ] = useState({ nodes: [], links: [] });
+  const [filteredCountry, setFilteredCountry] = useState({nodes: [], links: []})
   const [filterTag, setFilterTag] = useState("");
   const [filterCountry, setFilterCountry] =useState("")
   const [currentDataset, setCurrentDataset] = useState("people");
+  // const [selectedCountry, setselectedCountry] = useState(null);
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [selectedConnection, setselectedConnection] = useState(null);
   const [selectedNode, setselectedNode] = useState(null);
@@ -74,16 +78,16 @@ const App = () => {
 
   // Handle filtered data from TagManager
   const handleFilterChange = useCallback((data) => {
-    setFilteredData(data);
-    setFilterCountry(null);
-    setselectedNode(data);
+    console.log("handleFilterChange:", data)
+    setFilteredData(data)
+    setselectedNode(null)
   }, []);
 
-  // const handleCountryChange = useCallback ((data)=> {
-  //   setFilterCountry = (data)
-  //   setFilteredData = (null)
-  //   setselectedNode=(data)
-  // })
+  const handleCountryChange = useCallback((data)=> {
+    console.log("HandleCountryChnage:", data)
+    setselectedNode(null)
+    setFilteredData(data);
+  }, []);
 
   const handleTitleChange = useCallback((data) => {
     setSelectedTitle(data);
@@ -104,8 +108,7 @@ const App = () => {
     setShowNode(null);
   }, []);
   
-
-    // Title list
+  // Title list
   let projects = filteredData.nodes 
   .filter(d => d.group === 18)
   .map(d => ({value: d.id, label: d.label}));
@@ -125,8 +128,6 @@ const App = () => {
       nodes: filteredData.nodes,
       links: filteredData.links,
       selectnode: selectedNode,
-      filterTag: filterTag,
-      // filterCountry: filterCountry,
       width: window.innerWidth,
       height: window.innerHeight,
       onPlayingChange : isPlaying,
@@ -142,7 +143,6 @@ const App = () => {
       currentDataset,
       filteredData.nodes,
       filteredData.links,
-      filterTag,
       selectedRoles,
       showNode
     ]
@@ -162,9 +162,9 @@ const App = () => {
           handleDatasetChange={handleDatasetChange}
           FilterData={FilterData}
           handleFilterChange={handleFilterChange}
-          // handleCountryChange = {handleCountryChange}
+          handleCountryChange={handleCountryChange}
           setFilterTag={setFilterTag}
-          // setFilterCountry={setFilterCountry}
+          setFilterCountry={setFilterCountry}
           projects={projects}
           connection={connection}
           handleTitleChange={handleTitleChange}

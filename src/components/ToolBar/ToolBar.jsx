@@ -4,12 +4,13 @@
 import * as Icons from '@ant-design/icons';
 import usePopover from '../../hooks/usePopover.jsx';
 import ToolBarButton from './ToolBarButton.jsx';
-import TagManager from '../../utils/TagManager.jsx';
+// import TagManager from '../../utils/TagManager.jsx';
+import TagFilter from '../Filters/TagFilter.jsx';
 import ListSearch from '../DropDown/ListSearch.jsx';
 import Legend from '../ColorLegend/ColorLegend.jsx';
 import {contributorFields, continentList, contributergroup} from '../../utils/CustomData.jsx';
-import '../../styles/ComponentStyle.css'
-import TagFilter from '../Filters/TagFilter.jsx';
+import '../../styles/ComponentStyle.css';
+
 
 const Toolbar = ({
   datasets,
@@ -153,12 +154,21 @@ const Toolbar = ({
           popover = {tagPopover}
           mounted = {true}
           popoverContent = {
-            <TagManager 
+            // <TagManager 
+            //   datasets={datasets}
+            //   currentDataset={currentDataset}
+            //   mabData={FilterData}
+            //   onFilterChange={handleFilterChange}
+            //   onTagSelect={setFilterTag}
+            //   filterType='tag'
+            //   showCounts={true}
+            // />
+            <TagFilter
               datasets={datasets}
+              // processedDatasets={processedDatasets}
               currentDataset={currentDataset}
-              mabData={FilterData}
-              onFilterChange={handleFilterChange}
-              onTagSelect={setFilterTag}
+              onCountryChange={handleCountryChange}
+              onCountrySelect={setFilterCountry}
               filterType='tag'
               showCounts={true}
             />
@@ -176,13 +186,22 @@ const Toolbar = ({
           popover = {countryTagPopover}
           mounted = {true}
           popoverContent = {
-            <TagManager 
+            // <TagManager 
+            //   datasets={datasets}
+            //   currentDataset={currentDataset}
+            //   mabData={FilterData}
+            //   onCountryChange={handleCountryChange}
+            //   onCountrySelect={setFilterCountry}
+            //   filterType="country"
+            //   showCounts={true}
+            // />
+            <TagFilter
+              // processedDatasets={processedDatasets}
               datasets={datasets}
               currentDataset={currentDataset}
-              mabData={FilterData}
               onCountryChange={handleCountryChange}
               onCountrySelect={setFilterCountry}
-              filterType="country"
+              filterType='country'
               showCounts={true}
             />
           }
