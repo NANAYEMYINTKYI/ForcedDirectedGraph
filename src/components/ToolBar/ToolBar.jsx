@@ -2,14 +2,14 @@
 // CSS SECTION: ToolBar, Dataset
 
 import * as Icons from '@ant-design/icons';
-import usePopover from './usePopover';
-import ToolBarButton from './ToolBarButton';
-import TagManager from './TagManager';
-import ListSearch from './ListSearch';
-import Legend from './ColorLegend';
-import {contributorFields, continentList, contributergroup} from './CustomData.jsx';
-import './ComponentStyle.css'
-import TagFilter from './TagFilter';
+import usePopover from '../../hooks/usePopover.jsx';
+import ToolBarButton from './ToolBarButton.jsx';
+import TagManager from '../../utils/TagManager.jsx';
+import ListSearch from '../DropDown/ListSearch.jsx';
+import Legend from '../ColorLegend/ColorLegend.jsx';
+import {contributorFields, continentList, contributergroup} from '../../utils/CustomData.jsx';
+import '../../styles/ComponentStyle.css'
+import TagFilter from '../Filters/TagFilter.jsx';
 
 const Toolbar = ({
   datasets,

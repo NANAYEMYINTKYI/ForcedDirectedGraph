@@ -1,21 +1,21 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { CountryData}  from "./components/TransformDataCountryFunction";
-import { PeopleData } from "./components/TransformDataPeopleFunction";
-import ForceDirectedGraph from "./components/ForcedDirectedGraph";
+import { CountryData}  from "./utils/TransformDataCountryFunction.jsx";
+import { PeopleData } from "./utils/TransformDataPeopleFunction.jsx";
+import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";
 // import TagFilter from "./components/TagFilter";
 // import TagManager from "./components/TagManager";
-import TagFilter from "./components/TagFilter";
-import ListSearch from "./components/ListSearch";
-import Timeline from './components/Timeline';
-import Toolbar from './components/ToolBar';
-import rawData from "./Data.json";
-import Description from "./components/DrawerDesceiption";
-import Legend from './components/ColorLegend';
-import {colorScale, contributorFields, continentList, contributergroup} from './components/CustomData.jsx';
+import TagFilter from "./components/Filters/TagFilter.jsx";
+import ListSearch from "./components/DropDown/ListSearch.jsx";
+import Timeline from './components/TimeLine/Timeline.jsx';
+import Toolbar from './components/ToolBar/ToolBar.jsx';
+import rawData from "./data/Data.json";
+import Description from "./components/Description/DrawerDescription.jsx";
+import Legend from './components/ColorLegend/ColorLegend.jsx';
+import {colorScale, contributorFields, continentList, contributergroup} from './utils/CustomData.jsx';
 import * as Icons from '@ant-design/icons';
 import * as d3 from 'd3';
-import './App.css'
-import countrySelector from "./components/CountryFilter";
+import './styles/App.css'
+import countrySelector from "./components/Filters/CountryFilter.jsx";
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });

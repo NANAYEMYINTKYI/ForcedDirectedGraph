@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Select from 'react-select';
 import { CountryData } from "./TransformDataCountryFunction";
-import TagFilter from "./TagFilter"
+import TagFilter from "../components/Filters/TagFilter"
 // Parse tag arrays from JSON strings
 // Converts various tag into a consistencty array//
 const parseTagsArray = (tagData) => {

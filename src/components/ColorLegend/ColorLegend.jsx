@@ -4,8 +4,8 @@
 
 import React, { useState } from "react";
 import { Checkbox, FormGroup, FormControlLabel, Box } from '@mui/material';
-import './ComponentStyle.css';
-import {colorScale, graphcolor} from './CustomData.jsx';
+import '../../styles/ComponentStyle.css';
+import {colorScale, graphcolor} from '../../utils/CustomData';
 
 const Legend = ({
   label, 

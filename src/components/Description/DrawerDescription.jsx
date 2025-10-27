@@ -1,8 +1,8 @@
 //--- This is the component of Description of node while selecting ---//
 // CSS SECTION: Description
 
-import './ComponentStyle.css'
-import { getImages } from './CustomData.jsx';
+import '../../styles/ComponentStyle.css'
+import { getImages } from '../../utils/CustomData.jsx';
 import Tags from './DescriptionTag.jsx';
 
 const image = getImages();

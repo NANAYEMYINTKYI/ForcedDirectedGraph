@@ -2,7 +2,7 @@
 // CSS SECTION: ToolBar
 
 import Popover from '@mui/material/Popover';
-import './ComponentStyle.css'
+import '../../styles/ComponentStyle.css'
 
 export default function ToolBarButton({
   icon,
