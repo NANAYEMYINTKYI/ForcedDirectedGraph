@@ -55,9 +55,9 @@ const RangeSlider = ({
             return [1999, 2023];
           }
           // set next year
-          return [currentYear + 1, currentYear + 1];
+          return [1999, currentYear + 1];
         });
-      }, 800);
+      }, 2000);
     } else {
       // set not playing
       clearInterval(intervalRef.current);

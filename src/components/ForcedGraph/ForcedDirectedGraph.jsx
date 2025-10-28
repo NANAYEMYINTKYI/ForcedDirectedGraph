@@ -40,7 +40,7 @@ const ForceDirectedGraph = ({
   const [chargeStrength, setChargeStrength] = useState(1000);
   const [linkStrength, setLinkStrength] = useState(0.1);
   const [centerStrength, setCenterStrength] = useState(0.3);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const [groupsReady, setGroupsReady] = useState(false);
 
@@ -208,11 +208,11 @@ const ForceDirectedGraph = ({
 
     return () => svg.selectAll("*").remove();
   }, [
-    nodes,
+    // nodes,
   ]);
 
 
-  
+
 
   // CREATE GRAPH WITH FORCE
   useEffect(() => {
@@ -222,46 +222,110 @@ const ForceDirectedGraph = ({
     const zoom = zoomRef.current;
     const { svg, g, linkGroup, nodeGroup } = groupsRef.current;
 
-    // Create links
+    // ----- LINKS -----
     const link = linkGroup
       .selectAll("line")
-      .data(links)
-      .join("line")
+      .data(links, d => `${d.source.id}-${d.target.id}`);
+
+    // EXIT links
+    link.exit().remove();
+
+    // ENTER links
+    const linkEnter = link.enter()
+      .append("line")
       .attr("class", "link-line")
       .attr("stroke", graphcolor.link)
-      .attr("stroke-width", graphcolor.stroke);
+      .attr("stroke-width", graphcolor.stroke)
+      .attr("stroke-opacity", 0);
+    
+    linkEnter.transition()
+      .duration(500)
+      .attr("stroke-opacity", 1);
+    
+    const linkMerge = linkEnter.merge(link);
 
-    // Create nodes
+    // // Create links
+    // const link = linkGroup
+    //   .selectAll("line")
+    //   .data(links)
+    //   .join("line")
+    //   .attr("class", "link-line")
+    //   .attr("stroke", graphcolor.link)
+    //   .attr("stroke-width", graphcolor.stroke);
+
+
+
+
+    // ----- NODES -----
+    // Preserve old x/y positions
+    const RADIUS = Math.min(width, height) / 3;
+    nodes.forEach(d => {
+      if (d.x === undefined || d.y === undefined) {
+        const linkedNode = links.find(l => l.target.id === d.id)?.source;
+        if (linkedNode) {
+          d.x = linkedNode.x + (Math.random() - 0.5) * RADIUS;
+          d.y = linkedNode.y + (Math.random() - 0.5) * RADIUS;
+        } else {
+          d.x = width/2 + (Math.random() - 0.5) * RADIUS;
+          d.y = height/2 + (Math.random() - 0.5) * RADIUS;
+        }
+      }
+    });
+
     const node = nodeGroup
       .selectAll("g")
-      .data(nodes)
-      .join("g")
+      .data(nodes, d => d.id);
+  
+    // EXIT nodes
+    node.exit()
+      .transition()
+      .duration(300)
+      .attr("opacity", 0)
+      .remove();
+
+    // ENTER nodes
+    const nodeEnter = node.enter()
+      .append("g")
+      .attr("opacity", 0)
+      .attr("transform", d => `translate(${d.x || width/2},${d.y || height/2})`)
       .call(
-        d3
-          .drag()
+        d3.drag()
           .on("start", dragstarted)
           .on("drag", dragged)
           .on("end", dragended)
       );
 
+    //     // Create nodes
+    // const node = nodeGroup
+    //   .selectAll("g")
+    //   .data(nodes)
+    //   .join("g")
+    //   .call(
+    //     d3
+    //       .drag()
+    //       .on("start", dragstarted)
+    //       .on("drag", dragged)
+    //       .on("end", dragended)
+    //   );
+
     // Set up clipPath
-    node
+    nodeEnter
       .append("clipPath")
       .attr("id", (d) => `circle-clip-${d.size}`) // unique id per node
       .append("circle")
       .attr("r", (d) => d.size);
 
     // Create circle
-    node
+    nodeEnter
       .append("circle")
-      .attr("r", (d) => d.size)
       .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
       .attr("stroke", graphcolor.circlestroke)
       .attr("stroke-width", graphcolor.circlestrokesize)
-      .style("cursor", "pointer");
+      .style("cursor", "pointer")
+      .attr("r", (d) => d.size);
     
     // Style circle
-    node
+    nodeEnter
       .each(function (d) {
         const current = d3.select(this);
         if (d.file) {
@@ -277,9 +341,62 @@ const ForceDirectedGraph = ({
             .style("cursor", "pointer");
         }
       })
+
+    // Aligh text in node to be center
+    nodeEnter.append("foreignObject")
+      .each(function(d) {
+        const current = d3.select(this);
+        if (d.file) {
+          current.attr("y", d.size + 5)
+          .style("font-size", "12px")
+          .style("color", graphcolor.nodetext)
+        } else {
+          current.attr("y", -50)
+          .style("font-size", d => d.size/4)
+          .style("color", graphcolor.connectiontext)
+        }})
+      .attr("x", d => -d.size*1)
+      .attr("width", d => d.size*2) 
+      .attr("height", 100) 
+      .append("xhtml:div")
+      .style("display", "flex")
+      .style("flex-direction", "column")
+      .style("justify-content", d => d.file ? "flex-start" : "center")
+      .style("width", "100%")
+      .style("height", "100%")
+      .style("text-align", "center")
+      .style("word-wrap", "break-word")
+      .style("user-select", "none")
+      .text(d => d.label)
+
+    nodeEnter.transition()
+      .duration(400)
+      .attr("opacity", 1);
+
+    const nodeMerge = nodeEnter.merge(node);
+
+
+
+
+        // ----- RESTART SIMULATION -----
+    if (simulationRef.current) {
+      simulationRef.current.nodes(nodes);
+      simulationRef.current.force("link").links(links);
+          
+      for (let i = 0; i < 50; i++) 
+        simulationRef.current.tick();
+
+      simulationRef.current.alpha(0.3).restart();
+    }
+
+
+
+
+    // ----- NODE EVENTS -----
+    nodeMerge
       .on("mouseenter", (event, d) => {
         // Highlight connected links
-        d3.selectAll(".link-line")
+        linkMerge
           .filter((l) => l.source.id === d.id || l.target.id === d.id)
           .attr("stroke", graphcolor.focuslink)
           .attr("stroke-width", graphcolor.focusstroke);
@@ -287,7 +404,7 @@ const ForceDirectedGraph = ({
 
       .on("mouseleave", (event, d) => {
         // Restore connected style
-        d3.selectAll(".link-line")
+        linkMerge
           .filter((l) => l.source.id === d.id || l.target.id === d.id)
           .attr("stroke", graphcolor.link)
           .attr("stroke-width", graphcolor.stroke);
@@ -318,6 +435,8 @@ const ForceDirectedGraph = ({
         zoomRef.current = zoom;
       });
 
+    
+    // ----- SIMULATION -----
     const simulation = d3
       .forceSimulation(nodes)
       .force("y", d3.forceY(height / 2).strength(0.1))  // Fix: y uses height
@@ -331,14 +450,19 @@ const ForceDirectedGraph = ({
       // .alpha(2)
       .alpha( onPlayingChange? 1 : 3)
       .alphaDecay(0.05)   
-      .velocityDecay(0.4)
-      .on("tick", () => {
-        link
+      .velocityDecay(0.4);
+    
+    
+
+
+    simulation.on("tick", () => {
+        linkMerge
           .attr("x1", (d) => d.source.x)
           .attr("y1", (d) => d.source.y)
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y);
-        node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+        nodeMerge
+          .attr("transform", (d) => `translate(${d.x},${d.y})`);
 
         const alpha = simulation.alpha()
         const ALPHA_THRESHOLD = 0.25
@@ -372,35 +496,7 @@ const ForceDirectedGraph = ({
         simulation.stop();
       });
 
-    simulationRef.current = simulation;
-
-      // Aligh text in node to be center
-      node.append("foreignObject")
-        .each(function(d) {
-          const current = d3.select(this);
-          if (d.file) {
-            current.attr("y", d.size + 5)
-            .style("font-size", "12px")
-            .style("color", graphcolor.nodetext)
-          } else {
-            current.attr("y", -50)
-            .style("font-size", d => d.size/4)
-            .style("color", graphcolor.connectiontext)
-          }})
-        .attr("x", d => -d.size*1)
-        .attr("width", d => d.size*2) 
-        .attr("height", 100) 
-        .append("xhtml:div")
-        .style("display", "flex")
-        .style("flex-direction", "column")
-        .style("justify-content", d => d.file ? "flex-start" : "center")
-        .style("width", "100%")
-        .style("height", "100%")
-        .style("text-align", "center")
-        .style("word-wrap", "break-word")
-        .style("user-select", "none")
-        .text(d => d.label)
-            
+      simulationRef.current = simulation;
       zoomRef.current = zoom;
       groupsRef.current = { svg, g, linkGroup, nodeGroup };
       
@@ -409,6 +505,7 @@ const ForceDirectedGraph = ({
     };
   }, [
     nodes,
+    links,
     groupsReady,
   ]);
 
