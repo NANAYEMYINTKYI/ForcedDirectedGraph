@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { CountryData}  from "./utils/TransformDataCountryFunction.jsx";
 import { PeopleData } from "./utils/TransformDataPeopleFunction.jsx";
-import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";
-// import TagFilter from "./components/TagFilter";
-// import TagManager from "./components/TagManager";
+import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";``
 import TagFilter from "./components/Filters/TagFilter.jsx";
 import ListSearch from "./components/DropDown/ListSearch.jsx";
 import Timeline from './components/TimeLine/Timeline.jsx';
@@ -76,17 +74,18 @@ const App = () => {
     setSelectedRoles(colorScale.domain());
   }, []);
 
-  // Handle filtered data from TagManager
+  // Handle filtered data from TagFilter
   const handleFilterChange = useCallback((data) => {
     console.log("handleFilterChange:", data)
     setFilteredData(data)
     setselectedNode(null)
+
   }, []);
 
   const handleCountryChange = useCallback((data)=> {
-    console.log("HandleCountryChnage:", data)
-    setselectedNode(null)
+    console.log("handleCountryChnage:", data)
     setFilteredData(data);
+    setselectedNode(null)
   }, []);
 
   const handleTitleChange = useCallback((data) => {
@@ -118,7 +117,8 @@ const App = () => {
   .filter(d => d.group !== 18)
   .map(d => ({value: d.id, label: d.label}));
   
-
+  console.log("Node in App:", filteredData.nodes)
+  console.log("Links in App:", filteredData.links)
   // Memoize the graph props to prevent unnecessary re-renders
   const graphProps = useMemo(
     () => ({

@@ -4,7 +4,6 @@
 import * as Icons from '@ant-design/icons';
 import usePopover from '../../hooks/usePopover.jsx';
 import ToolBarButton from './ToolBarButton.jsx';
-// import TagManager from '../../utils/TagManager.jsx';
 import TagFilter from '../Filters/TagFilter.jsx';
 import ListSearch from '../DropDown/ListSearch.jsx';
 import Legend from '../ColorLegend/ColorLegend.jsx';
@@ -167,8 +166,8 @@ const Toolbar = ({
               datasets={datasets}
               // processedDatasets={processedDatasets}
               currentDataset={currentDataset}
-              onCountryChange={handleCountryChange}
-              onCountrySelect={setFilterCountry}
+              onFilterChange={handleFilterChange}
+              onFilterSelect={setFilterTag}
               filterType='tag'
               showCounts={true}
             />
