@@ -18,7 +18,7 @@ export default function ToolBarButton({
   return (
     <div>
       <button
-        className = "toolelement"
+        className = {`toolelement ${popover.open ? "popover-open" : ""}`}
         aria-describedby = {popover.id}
         onClick = {popover.handleClick}
       >
@@ -38,6 +38,9 @@ export default function ToolBarButton({
         transformOrigin = {{
           vertical: 'top',
           horizontal: 'right',
+        }}
+        PaperProps = {{
+          onMouseLeave: popover.handleClose,
         }}
         keepMounted = {mounted}
       >

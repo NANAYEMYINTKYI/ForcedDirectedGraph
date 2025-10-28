@@ -6,10 +6,19 @@ import { Box, Slider, Button} from '@mui/material';
 import {CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
 
 // set marks
-const marks = [
-  { value: 1999, label: '1999' },
-  { value: 2023, label: '2023' },
-];
+// const marks = [
+//   { value: 1999, label: '1999' },
+//   { value: 2023, label: '2023' },
+// ];
+// const marks = [];
+
+// for (let year = 1999; year <= 2023; year += 1) {
+//   marks.push({
+//     value: year,
+//     label: String(year),
+//   });
+// }
+
 
 function valuetext(value) {
   return `${value}`;
@@ -17,19 +26,21 @@ function valuetext(value) {
 
 const RangeSlider = ({ 
   value, 
+  setIsPlaying,
+  isPlaying,
   onChange, 
   label, 
-  width = 300, 
-  OnPlayingChange 
+  width = 500, 
+  // OnPlayingChange 
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect (() => {
-    if(OnPlayingChange){
-      OnPlayingChange(isPlaying);
+    if(isPlaying){
+      setIsPlaying(isPlaying);
     }
-  }, [isPlaying, OnPlayingChange]);
+  }, [isPlaying, setIsPlaying]);
 
   useEffect(() => {
     if (isPlaying) {
@@ -68,13 +79,15 @@ const RangeSlider = ({
       style = {{ width }}
     >
       <Slider
-        size = "small"
+        className = "year-slider"
+        size = "medium"
         getAriaLabel = {() => label}
         value = {value}
         onChange = {onChange}
-        valueLabelDisplay = "auto"
+        valueLabelDisplay = "on"
         getAriaValueText = {valuetext}
-        marks = {marks}
+        // marks = {marks}
+        marks 
         min = {1999}
         max = {2023}
         style = {{
@@ -83,12 +96,12 @@ const RangeSlider = ({
         }}
       />
       <Button
+        className = "play-button"
         variant = "outlined"
         onClick = {togglePlay}
-        size = "small"
-        sx = {{ minWidth: 40 }}
+        size = "medium"
       >
-        {isPlaying ? <b><PauseOutlined /> </b>: <b><CaretRightOutlined /></b>}
+        {isPlaying ? <h3><b><PauseOutlined /> </b></h3>: <h3><b><CaretRightOutlined /></b></h3>}
       </Button>
     </div>
   );

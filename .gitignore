@@ -36,3 +36,5 @@ package.json
 
 src/NoUse/testgraph.jsx
 src/NoUse/ForcedDirectedGraph New.jsx
+src/components/testgraph.jsx
+src/DraftApp.jsx

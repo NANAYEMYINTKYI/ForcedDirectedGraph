@@ -6,7 +6,7 @@ import countryToContinent from 'country-json/src/country-by-continent.json' with
 // ----- Color -----
 export const graphcolor = {
   inactive: "rgba(135, 135, 135, 1)",
-  link: "#444d45ff",
+  link: "#ffffff62",
   stroke: 2.5,
   focuslink: "#FF5c00",
   focuscircle: "#FF5c00",

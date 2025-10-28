@@ -1,150 +1,58 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { CountryData}  from "./utils/TransformDataCountryFunction.jsx";
-import { PeopleData } from "./utils/TransformDataPeopleFunction.jsx";
+import * as Icons from "@ant-design/icons";
 import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";
-// import TagFilter from "./components/TagFilter";
-// import TagManager from "./components/TagManager";
-import TagFilter from "./components/Filters/TagFilter.jsx";
-import ListSearch from "./components/DropDown/ListSearch.jsx";
-import Timeline from './components/TimeLine/Timeline.jsx';
-import Toolbar from './components/ToolBar/ToolBar.jsx';
-import rawData from "./data/Data.json";
+import Timeline from "./components/TimeLine/Timeline.jsx";
+import Toolbar from "./components/ToolBar/ToolBar.jsx";
 import Description from "./components/Description/DrawerDescription.jsx";
-import Legend from './components/ColorLegend/ColorLegend.jsx';
-import {colorScale, contributorFields, continentList, contributergroup} from './utils/CustomData.jsx';
-import * as Icons from '@ant-design/icons';
-import * as d3 from 'd3';
-import './styles/App.css'
-import countrySelector from "./components/Filters/CountryFilter.jsx";
-const App = () => {
-  const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
-  const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
-  const [filterTag, setFilterTag] = useState("");
-  const [filterCountry, setFilterCountry] =useState("")
-  const [currentDataset, setCurrentDataset] = useState("people");
-  const [selectedTitle, setSelectedTitle] = useState(null);
-  const [selectedConnection, setselectedConnection] = useState(null);
-  const [selectedNode, setselectedNode] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [showNode, setShowNode] = useState(null);
-  const [selectedRoles, setSelectedRoles] = useState(colorScale.domain());
+import useAppState from "./hooks/useAppState.jsx";
+import "./styles/App.css";
 
-  // Filter data where Year is between start and end year
-  const FilterData = useMemo(() => {
-    const [startYear, endYear] = yearRange;
-    return rawData.filter((data) => {
-      let dataYear = parseInt(data.Year);
-      if (dataYear > 10000) {
-        dataYear = dataYear % 10000;
-      }
-      return dataYear >= startYear && dataYear <= endYear;
-    });
-  }, [yearRange]);
+export default function App() {
+  // ...existing code...
+  const {
+    // state
+    yearRange,
+    setYearRange,
+    filteredData,
+    setFilteredData,
+    filterTag,
+    setFilterTag,
+    filterCountry,
+    setFilterCountry,
+    currentDataset,
+    setCurrentDataset,
+    selectedTitle,
+    selectedConnection,
+    selectedNode,
+    isPlaying,
+    setIsPlaying,
+    isCollapsed,
+    toggleToolbar,
+    showNode,
+    setShowNode,
+    isClicked,
+    handleAction,
+    time,
+    selectedRoles,
+    setSelectedRoles,
+    // derived
+    FilterData,
+    datasets,
+    projects,
+    connection,
+    graphProps,
+    // handlers
+    handleRangeChange,
+    handleDatasetChange,
+    handleFilterChange,
+    handleTitleChange,
+    handleConnectionChange,
+    closeDescription,
+  } = useAppState();
 
-  // dataset
-  const datasets = useMemo(() => {
-    return {
-      country: {
-        ...CountryData(FilterData),
-        name: "Social Graph By Country",
-      },
-      people: {
-        ...PeopleData(FilterData),
-        name: "Social Graph By People",
-      },
-    };
-  }, [FilterData]);
-  
-  const handleRangeChange = (event, newValue) => {
-    setYearRange(newValue);
-    setShowNode(null);
-  };
-  
-  const toggleToolbar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  const handleDatasetChange = useCallback((key) => {
-    setCurrentDataset(key);
-    setSelectedTitle(null);
-    setselectedConnection(null);
-    setselectedNode(null);
-    setShowNode(null);
-    setSelectedRoles(colorScale.domain());
-  }, []);
-
-  // Handle filtered data from TagManager
-  const handleFilterChange = useCallback((data) => {
-    setFilteredData(data);
-    setselectedNode(null);
-  }, []);
-
-  const handleTitleChange = useCallback((data) => {
-    setSelectedTitle(data);
-    setselectedConnection(null);
-    setselectedNode(data);
-  }, []);
-
-  const handleConnectionChange = useCallback((data) => {
-    setselectedConnection(data);
-    setSelectedTitle(null);
-    setselectedNode(data);
-  }, []);
-
-  const closeDescription = useCallback(() => {
-    setselectedConnection(null);
-    setSelectedTitle(null);
-    setselectedNode(null);
-    setShowNode(null);
-  }, []);
-  
-
-    // Title list
-  let projects = filteredData.nodes 
-  .filter(d => d.group === 18)
-  .map(d => ({value: d.id, label: d.label}));
-
-  // non Title list
-  let connection = filteredData.nodes 
-  .filter(d => d.group !== 18)
-  .map(d => ({value: d.id, label: d.label}));
-  
-
-  // Memoize the graph props to prevent unnecessary re-renders
-  const graphProps = useMemo(
-    () => ({
-      datasets,
-      currentDataset,
-      handleDatasetChange,
-      nodes: filteredData.nodes,
-      links: filteredData.links,
-      selectnode: selectedNode,
-      filterTag: filterTag,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      onPlayingChange : isPlaying,
-      onNodeSelect: setShowNode,
-      nodeSelect: showNode,
-      selectedRoles: selectedRoles,
-      currentdataset: currentDataset
-    }),
-    [
-      isPlaying,
-      selectedNode,
-      setShowNode,
-      currentDataset,
-      filteredData.nodes,
-      filteredData.links,
-      filterTag,
-      selectedRoles,
-      showNode
-    ]
-  );
 
   // UI
   return (
-    <div className="app">
+    <div className="app" onClick={handleAction}>
       {/* Header */}
       <header className="header">
         <h1>MAB Social Graph</h1>
@@ -268,16 +176,17 @@ const App = () => {
           <p>Select Year Range:</p>
           <Timeline
             value={yearRange}
+            setIsPlaying={setIsPlaying}
+            isPlaying={isPlaying}
             onChange={handleRangeChange}
-            OnPlayingChange={isPlaying => {
-              setIsPlaying(isPlaying);
-            }}
+            // OnPlayingChange={isPlaying => {
+            //   setIsPlaying(isPlaying);
+            // }}
             label="Select year range"
-            width={Math.min(500, window.innerWidth - 100)} // Make responsive
+            width={Math.min(750, window.innerWidth - 100)} // Make responsive
           />
         </section>
       </div>
     </div>
   );
 };
-export default App;
