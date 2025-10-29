@@ -2,10 +2,10 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import {CountryData} from "../../utils/TransformDataCountryFunction";
 import Select from 'react-select';
 import ListSearch from "../DropDown/ListSearch";
+import FilterNodesAndLinks from "../../helper/FilterNodesAndLinks"
 
 const TagFilter=({
     datasets,
-    // datasets = {},
     currentDataset = {},
     onFilterChange,
     onCountryChange,
@@ -16,7 +16,6 @@ const TagFilter=({
     filterType = "both"
 })=>{
     const dataset = datasets && datasets[currentDataset];
-    // const nodes = (dataset && dataset.nodes) || [];
     const nodes = useMemo(() => {
         return (dataset && dataset.nodes) || [];
     }, [dataset]);
@@ -83,87 +82,13 @@ const TagFilter=({
     useEffect(() => {
         setFilterTag("");
         setFilterCountry("");
-    }, [currentDataset, setFilterTag, setFilterCountry]);
+    }, [setFilterTag, setFilterCountry]);
  
     useEffect(() => {
-        if (!datasets[currentDataset]) return;
+        // if (!datasets[currentDataset]) return;
         const { nodes = [], links = [] } = datasets[currentDataset];
-
-        // Normalize tags for all nodes
-        const normalizedNodes = nodes.map(node => {
-            let tagsArr = [];
-            if (Array.isArray(node.tags)) {
-                tagsArr = node.tags.map(tag => tag.toLowerCase());
-            } else if (typeof node.tag === 'string') {
-                tagsArr = node.tag
-                    .split(/[#,']/)
-                    .map(item => item.trim().toLowerCase())
-                    .filter(Boolean);
-            }
-            return { ...node, tags: tagsArr };
-        });
-
-        let visibleNodes = [];
-        let visibleLinks = [];
-
-        if (!filterTag && !filterCountry) {
-            visibleNodes = normalizedNodes.slice();
-            visibleLinks = links.slice();
-        } else if (filterTag) {
-            // Filter by tag
-            const primaryNodes = normalizedNodes.filter(node =>
-                node.tags && node.tags.some(tag => tag === filterTag.toLowerCase())
-            );
-            const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
-            const connectedNodeIds = new Set();
-
-            links.forEach(link => {
-                if (primaryNodeIds.has(link.source)) {
-                    connectedNodeIds.add(link.target);
-                }
-                if (primaryNodeIds.has(link.target)) {
-                    connectedNodeIds.add(link.source);
-                }
-            });
-
-            visibleNodes = normalizedNodes.filter(
-                node => primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
-            );
-            const visibleNodeIds = new Set(visibleNodes.map(n => n.id));
-            visibleLinks = (links || []).filter(
-                link => visibleNodeIds.has(link.source) && visibleNodeIds.has(link.target)
-            );
-        } else if (filterCountry) {
-            // Filter by country (similar logic, adapt as needed)
-            const primaryNodes = normalizedNodes.filter(node =>
-                node.id && node.id.toLowerCase() === filterCountry.toLowerCase()
-            );
-            const primaryNodeIds = new Set(primaryNodes.map(n => n.id));
-            const connectedNodeIds = new Set();
-
-            links.forEach(link => {
-                if (primaryNodeIds.has(link.source)) {
-                    connectedNodeIds.add(link.target);
-                }
-                if (primaryNodeIds.has(link.target)) {
-                    connectedNodeIds.add(link.source);
-                }
-            });
-
-            visibleNodes = normalizedNodes.filter(
-                node => primaryNodeIds.has(node.id) || connectedNodeIds.has(node.id)
-            );
-            const visibleNodeIds = new Set(visibleNodes.map(n => n.id));
-            visibleLinks = (links || []).filter(
-                link => visibleNodeIds.has(link.source) && visibleNodeIds.has(link.target)
-            );
-        }
-        const result = {
-            nodes: visibleNodes.map(node => ({ ...node })),
-            links: visibleLinks.map(link => ({ ...link, source: link.source, target: link.target }))
-        };
-
-       // emit according to which callbacks are present
+        const result = FilterNodesAndLinks(nodes, countryNodes, links, filterTag, filterCountry);
+       // Emit callbacks
         if (!filterTag && !filterCountry) {
             onFilterChange && onFilterChange(result);
             onCountryChange && onCountryChange(result);
@@ -171,7 +96,7 @@ const TagFilter=({
             if (filterTag) onFilterChange && onFilterChange(result);
             if (filterCountry) onCountryChange && onCountryChange(result);
         }
-    }, [datasets, currentDataset, filterTag ,filterCountry, onFilterChange, onCountryChange]);
+    }, [datasets, currentDataset, filterTag, filterCountry, onFilterChange, onCountryChange]);
 
 
     const options = [
@@ -185,10 +110,9 @@ const TagFilter=({
     ];
 
     const selectedOption = options.find((options) => options.value === filterTag) || options[0];
-    const selectedCountry = countryOptions.find((options) => options.value === filterTag) || countryOptions[0];
+    const selectedCountry = countryOptions.find((options) => options.value === filterCountry) || countryOptions[0];
 
 
-   
     const handleChange = (selectedOption)=>{
         const value = selectedOption ? selectedOption.value: "" ;
         console.log("TagChanged:",value)
@@ -218,9 +142,8 @@ const TagFilter=({
                     options={options}
                     title="Search by Tag"
                     placeholder="Input tag"
-                    // onFilterChange={(selected) => setFilterTag(selected?.value || "")}
                     onFilterChange={handleChange}
-                    value={filterTag}
+                    value={selectedOption}
                     clearable={false}
                 />
             )}

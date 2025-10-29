@@ -13,7 +13,7 @@ import {colorScale, contributorFields, continentList, contributergroup} from './
 import * as Icons from '@ant-design/icons';
 import * as d3 from 'd3';
 import './styles/App.css'
-import countrySelector from "./components/Filters/CountryFilter.jsx";
+
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
   const [filteredData, setFilteredData ] = useState({ nodes: [], links: [] });
