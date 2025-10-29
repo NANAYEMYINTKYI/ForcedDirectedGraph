@@ -48,7 +48,7 @@ const RangeSlider = ({
       intervalRef.current = setInterval(() => {
         onChange(null, (prev) => {
           let currentYear = Array.isArray(prev) ? prev[1] : 1999;
-          if (currentYear >= 2023) {
+          if (currentYear >= 2022) {
             // after reaching 2023, stop playing
             clearInterval(intervalRef.current);
             setIsPlaying(false);

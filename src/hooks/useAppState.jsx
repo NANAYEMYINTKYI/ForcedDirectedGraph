@@ -6,7 +6,7 @@ import { colorScale } from "../utils/CustomData.jsx";
 
 export default function useAppState() {
   // ...existing code...
-  const [yearRange, setYearRange] = useState([1999, 2024]);
+  const [yearRange, setYearRange] = useState([1999, 2023]);
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const [filterTag, setFilterTag] = useState("");
   const [filterCountry, setFilterCountry] = useState("");
