@@ -32,9 +32,6 @@ const TagFilter=({
    
     //-- This extract all the unique tag from nodes in the current Dataset--//
     const allTags = useMemo(() => {
-        // console.log("MergedNodes:", nodes)
-        // console.log("MergeLinks:",links)
-        // if (!nodes || nodes.length === 0) return [];
         if(!countryNodes|| countryNodes === 0){
             return {country:[], tags:[]};
         }
@@ -58,8 +55,6 @@ const TagFilter=({
         //--This is award type data--//
         countryNodes.forEach(node => {
             if (node.tag){
-            // console.log("type of nodetags:", typeof(node.tag))
-            // console.log("node tags:",node.tag)
             const tagtoArray =  node.tag
             .split(/[#,']/) // split #
             .map(function(item){return item.trim()}) //clean spaces
@@ -82,12 +77,7 @@ const TagFilter=({
             country: Array.from(tagCategories.country).sort(),
             tags: Array.from(tagCategories.tags).sort()
         };
-        // return Array.from(tagCategories.tags).sort();
     }, [nodes,links,countryNodes]);
-
-    // console.log("datasets nodes:", datasets)
-    // console.log("Nodes:",nodes)
-    // console.log("All Tags:", allTags)
 
     // Reset filter when dataset changes
     useEffect(() => {
@@ -168,22 +158,10 @@ const TagFilter=({
                 link => visibleNodeIds.has(link.source) && visibleNodeIds.has(link.target)
             );
         }
-
-        // ensure fallback to arrays
-        visibleNodes = Array.isArray(visibleNodes) ? visibleNodes : [];
-        visibleLinks = Array.isArray(visibleLinks) ? visibleLinks : [];
-
         const result = {
             nodes: visibleNodes.map(node => ({ ...node })),
             links: visibleLinks.map(link => ({ ...link, source: link.source, target: link.target }))
         };
-
-        console.log('TagFilter emitting result:', {
-          filterTag, filterCountry,
-          nodes: result.nodes.length,
-          links: result.links.length,
-          sampleNode: result.nodes[0]
-        });
 
        // emit according to which callbacks are present
         if (!filterTag && !filterCountry) {
@@ -195,52 +173,10 @@ const TagFilter=({
         }
     }, [datasets, currentDataset, filterTag ,filterCountry, onFilterChange, onCountryChange]);
 
-    // const options = [
-    //     {
-    //         value: "",
-    //         label: `All ${showCounts ? `($node.length) nodes, ${links.length} links)` : ""}`,
-    //     },
-    //     ...allTags.tags.map(function(tag) {return{value:tag, label:tag.toUpperCase()}})
-    // ]
 
-    // const countryOptions = [
-    //     {
-    //         value: "",
-    //         label: `All ${showCounts ? `($node.length) nodes, ${links.length} links)` : ""}`,
-    //     },
-    //     ...allTags.country.map(country=>({value: country, label:country.toUpperCase()}))
-    // ]
-
-    // useEffect(()=> {
-    //     if(onFilterChange){
-    //         onFilterChange(
-    //             {filterTag,nodes,links}
-    //         )
-    //     }
-    //     if(onCountryChange){
-    //         onCountryChange(
-    //             {filterCountry,nodes,links}
-    //         )
-    //     }
-    // }, [filterTag, filterCountry]);
-
-    // console.log("Rendering component")
-    // return <div>debug</div>
-//     return {
-//     nodes,
-//     links,
-//     countryNodes,
-//     options,
-//     countryOptions,
-//     filterTag,
-//     filterCountry,
-//     setFilterTag,
-//     setFilterCountry,
-//     };
-// }
     const options = [
         { value: '', 
-            label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
+         label: `All ${showCounts ? `(${(nodes || []).length} nodes, ${(links || []).length} links)` : ''}` },
         ...allTags.tags.map(tag => ({ value: tag, label: tag.toUpperCase()})),
     ];
     const countryOptions = [
@@ -250,7 +186,7 @@ const TagFilter=({
 
     const selectedOption = options.find((options) => options.value === filterTag) || options[0];
     const selectedCountry = countryOptions.find((options) => options.value === filterTag) || countryOptions[0];
-    // const selectedTags = tagsOptions.find((options) => options.value === filterTag) || tagsOptions[0];
+
 
    
     const handleChange = (selectedOption)=>{
@@ -278,69 +214,28 @@ const TagFilter=({
     return (
         <div style={{display:"flex", gap:"1rem", alignItems:"center" }}>
             {(filterType === "tag") && (
-                <label>
-                {/* <Select
-                    value={selectedOption}
-                    onChange={handleChange}
-                    options={options}
-                    menuIsOpen={true}
-                    isSearchable
-                    styles={{
-                        container: (base) => ({...base,width: `${width}px`,}),
-                        menu: (base) => ({...base, position: 'relative', zIndex: 1,})
-                    }}
-                /> */}
                 <ListSearch
                     options={options}
                     title="Search by Tag"
                     placeholder="Input tag"
                     // onFilterChange={(selected) => setFilterTag(selected?.value || "")}
-                    onFilterChange={(selected) => {
-                        const value = selected?.value || "";
-                        setFilterTag(value);
-                        if(onFilterSelect) {
-                            onFilterSelect(value);
-                        }
-                    }}
+                    onFilterChange={handleChange}
                     value={filterTag}
                     clearable={false}
                 />
-                </label>
             )}
             {(filterType === "country" ) && (
-                <label>
-                {/* Filter by Country */}
-                {/* <Select
-                    value={selectedCountry}
-                    onChange={handleCountryChange}
-                    options={countryOptions}
-                    menuIsOpen={true}
-                    isSearchable
-                    styles={{
-                        container: (base) => ({...base,width: `${width}px`,}),
-                        menu: (base) => ({...base, position: 'relative', zIndex: 1,})
-                    }}
-                /> */}
                 <ListSearch
                     value={selectedCountry}
                     options={countryOptions}
                     title="Search by Country"
                     placeholder="Input country"
-                    // onFilterChange={(selected) => setFilterCountry(selected?.value || "")}
-                    onFilterChange={(selectedCountry) => {
-                        const value = selectedCountry?.value || "";
-                        setFilterCountry(value);
-                        if(onCountrySelect) {
-                            onCountrySelect(value);
-                        }
-                    }}
+                    onFilterChange={handleCountryChange}
                     clearable={false}
                 />
-                </label>
             )}
         </div>
     );
 };
 
 export default TagFilter;
-// export default TagFilter;
