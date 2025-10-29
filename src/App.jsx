@@ -76,16 +76,38 @@ const App = () => {
 
   // Handle filtered data from TagFilter
   const handleFilterChange = useCallback((data) => {
-    console.log("handleFilterChange:", data)
-    setFilteredData(data)
-    setselectedNode(null)
-
+    console.log('handleFilterChange IN:', {
+      nodes: data?.nodes?.length ?? 0,
+      links: data?.links?.length ?? 0,
+      sampleNode: data?.nodes?.[0]
+    });
+    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
+      console.warn('handleFilterChange: invalid payload, ignoring');
+      return;
+    }
+    // defensive copy to ensure a new reference
+    setFilteredData({
+      nodes: data.nodes.map(n => ({ ...n })),
+      links: data.links.map(l => ({ ...l }))
+    });
+    setselectedNode(null);
   }, []);
-
-  const handleCountryChange = useCallback((data)=> {
-    console.log("handleCountryChnage:", data)
-    setFilteredData(data);
-    setselectedNode(null)
+  
+  const handleCountryChange = useCallback((data) => {
+    console.log('handleCountryChange IN:', {
+      nodes: data?.nodes?.length ?? 0,
+      links: data?.links?.length ?? 0,
+      sampleNode: data?.nodes?.[0]
+    });
+    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
+      console.warn('handleCountryChange: invalid payload, ignoring');
+      return;
+    }
+    setFilteredData({
+      nodes: data.nodes.map(n => ({ ...n })),
+      links: data.links.map(l => ({ ...l }))
+    });
+    setselectedNode(null);
   }, []);
 
   const handleTitleChange = useCallback((data) => {
@@ -117,8 +139,15 @@ const App = () => {
   .filter(d => d.group !== 18)
   .map(d => ({value: d.id, label: d.label}));
   
-  console.log("Node in App:", filteredData.nodes)
-  console.log("Links in App:", filteredData.links)
+ // ...existing code...
+  useEffect(() => {
+    console.log('filteredData updated (state):', {
+      nodes: filteredData.nodes?.length ?? 0,
+      links: filteredData.links?.length ?? 0,
+      sampleNode: filteredData.nodes?.[0]
+    });
+  }, [filteredData]);
+// ...existing code...
   // Memoize the graph props to prevent unnecessary re-renders
   const graphProps = useMemo(
     () => ({
