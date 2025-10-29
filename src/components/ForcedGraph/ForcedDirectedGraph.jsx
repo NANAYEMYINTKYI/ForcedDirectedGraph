@@ -294,6 +294,7 @@ const ForceDirectedGraph = ({
     // Create circle
     nodeEnter
       .append("circle")
+      .attr("class", "node-circle") 
       .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
       .attr("stroke", graphcolor.circlestroke)
       .attr("stroke-width", graphcolor.circlestrokesize)
@@ -351,6 +352,41 @@ const ForceDirectedGraph = ({
 
     const nodeMerge = nodeEnter.merge(node);
 
+    // Optimized node size updates
+    nodeMerge.each(function(d) {
+      const node = d3.select(this);
+
+      // Update visible circle
+      node.select(".node-circle")
+        .attr("r", d.size);
+
+      // Update clipPath radius
+      node.select("clipPath circle")
+        .attr("r", d.size);
+
+      // Update image dimensions if present
+      const img = node.select("image");
+      if (!img.empty()) {
+        img
+          .attr("x", -d.size * 1.5)
+          .attr("y", -d.size * 1.5)
+          .attr("width", d.size * 3)
+          .attr("height", d.size * 3);
+      }
+
+      // Update text box position & size
+      const textBox = node.select("foreignObject");
+      if (!textBox.empty()) {
+        textBox
+          .attr("x", -d.size)
+          .attr("width", d.size * 2)
+          .attr("y", d.file ? d.size + 5 : -50)
+          .select("div")
+          .style("font-size", d.file ? "12px" : `${d.size / 4}px`);
+      }
+    });
+
+    
 
 
 
