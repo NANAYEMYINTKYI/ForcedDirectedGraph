@@ -34,8 +34,35 @@ export default function useAppState() {
   }, []);
 
   // Use for handle when filter change
-  const handleFilterChange = useCallback((data) => {
-    setFilteredData(data);
+  // const handleFilterChange = useCallback((data) => {
+  //   setFilteredData(data);
+  //   setSelectedNode(null);
+  // }, []);
+
+    // Handle filtered data from TagFilter
+    const handleFilterChange = useCallback((data) => {
+      console.log('handleFilterChange IN:', {
+        nodes: data?.nodes?.length ?? 0,
+        links: data?.links?.length ?? 0,
+        sampleNode: data?.nodes?.[0]
+      });
+      if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
+        console.warn('handleFilterChange: invalid payload, ignoring');
+        return;
+      }
+      // defensive copy to ensure a new reference
+      setFilteredData({
+        nodes: data.nodes.map(n => ({ ...n })),
+        links: data.links.map(l => ({ ...l }))
+      });
+      setSelectedNode(null);
+    }, []);
+  
+    const handleCountryChange = useCallback((data) => {
+    setFilteredData({
+      nodes: data.nodes.map(n => ({ ...n })),
+      links: data.links.map(l => ({ ...l }))
+    });
     setSelectedNode(null);
   }, []);
 
@@ -113,6 +140,14 @@ export default function useAppState() {
         .map((d) => ({ value: d.id, label: d.label })),
     [filteredData.nodes]
   );
+  //Test
+  useEffect(() => {
+    console.log('filteredData updated (state):', {
+      nodes: filteredData.nodes?.length ?? 0,
+      links: filteredData.links?.length ?? 0,
+      sampleNode: filteredData.nodes?.[0]
+    });
+  }, [filteredData]);
 
   // Use for define data in graph
   const graphProps = useMemo(
@@ -218,6 +253,7 @@ export default function useAppState() {
     closeDescription,
     handleRangeChange,
     resetFilter,
+    handleCountryChange,
 
     // derived
     FilterData,
