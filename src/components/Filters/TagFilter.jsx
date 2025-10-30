@@ -41,8 +41,8 @@ const TagFilter=({
         if(!countryNodes|| countryNodes === 0){
             return {country:[], tags:[]};
         }
-        console.log("Node in AllTags:",nodes)
-        console.log("Links in AllTags:",links)
+        // console.log("Node in AllTags:",nodes)
+        // console.log("Links in AllTags:",links)
         // const tagSet = new Set();
         const tagCategories = {
             country: new Set(),
@@ -78,7 +78,7 @@ const TagFilter=({
             });
             } 
         })
-        console.log("country categories:", tagCategories.country)
+        // console.log("country categories:", tagCategories.country)
         return {
             country: Array.from(tagCategories.country).sort(),
             tags: Array.from(tagCategories.tags).sort()
@@ -127,7 +127,7 @@ const TagFilter=({
 
     const handleChange = (selectedOption)=>{
         const value = selectedOption ? selectedOption.value: "" ;
-        console.log("TagChanged:",value)
+        // console.log("TagChanged:",value)
         setFilterTag(value);
         if(onFilterSelect){
             console.log("calling tags with:", value)

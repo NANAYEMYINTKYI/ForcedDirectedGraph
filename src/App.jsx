@@ -1,181 +1,70 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { CountryData}  from "./utils/TransformDataCountryFunction.jsx";
-import { PeopleData } from "./utils/TransformDataPeopleFunction.jsx";
-import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";``
-import TagFilter from "./components/Filters/TagFilter.jsx";
-import ListSearch from "./components/DropDown/ListSearch.jsx";
-import Timeline from './components/TimeLine/Timeline.jsx';
-import Toolbar from './components/ToolBar/ToolBar.jsx';
-import rawData from "./data/Data.json";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import * as Icons from "@ant-design/icons";
+import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";
+import Timeline from "./components/TimeLine/Timeline.jsx";
+import Toolbar from "./components/ToolBar/ToolBar.jsx";
 import Description from "./components/Description/DrawerDescription.jsx";
-import Legend from './components/ColorLegend/ColorLegend.jsx';
-import {colorScale, contributorFields, continentList, contributergroup} from './utils/CustomData.jsx';
-import * as Icons from '@ant-design/icons';
-import * as d3 from 'd3';
-import './styles/App.css'
+import useAppState from "./hooks/useAppState.jsx";
+import UserActivityDetector from "./utils/UserAction.jsx"
+import TagFilter from "./components/Filters/TagFilter.jsx";
+import "./styles/App.css";
 
-const App = () => {
-  const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
-  const [filteredData, setFilteredData ] = useState({ nodes: [], links: [] });
-  const [filteredCountry, setFilteredCountry] = useState({nodes: [], links: []})
-  const [filterTag, setFilterTag] = useState("");
-  const [filterCountry, setFilterCountry] =useState("")
-  const [currentDataset, setCurrentDataset] = useState("people");
-  // const [selectedCountry, setselectedCountry] = useState(null);
-  const [selectedTitle, setSelectedTitle] = useState(null);
-  const [selectedConnection, setselectedConnection] = useState(null);
-  const [selectedNode, setselectedNode] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [showNode, setShowNode] = useState(null);
-  const [selectedRoles, setSelectedRoles] = useState(colorScale.domain());
+export default function App() {
+  const {
+    // state
+    currentDataset,
+    setCurrentDataset,
+    yearRange,
+    setYearRange,
+    filteredData,
+    setFilteredData,
+    filterTag,
+    setFilterTag,
+    filterCountry,
+    setFilterCountry,
+    selectedTitle,
+    setSelectedTitle,
+    selectedConnection,
+    setSelectedConnection,
+    selectedNode,
+    setSelectedNode,
+    isCollapsed,
+    setIsCollapsed,
+    selectedRoles,
+    setSelectedRoles,
+    showNode,
+    setShowNode,
+    isPlaying,
+    setIsPlaying,
+    isActive, 
+    setIsActive,
 
-  // Filter data where Year is between start and end year
-  const FilterData = useMemo(() => {
-    const [startYear, endYear] = yearRange;
-    return rawData.filter((data) => {
-      let dataYear = parseInt(data.Year);
-      if (dataYear > 10000) {
-        dataYear = dataYear % 10000;
-      }
-      return dataYear >= startYear && dataYear <= endYear;
-    });
-  }, [yearRange]);
+    // handlers
+    handleDatasetChange,
+    handleFilterChange,
+    handleTitleChange,
+    handleConnectionChange,
+    toggleToolbar,
+    closeDescription,
+    handleRangeChange,
+    resetFilter,
+    handleCountryChange,
 
-  // dataset
-  const datasets = useMemo(() => {
-    return {
-      country: {
-        ...CountryData(FilterData),
-        name: "Social Graph By Country",
-      },
-      people: {
-        ...PeopleData(FilterData),
-        name: "Social Graph By People",
-      },
-    };
-  }, [FilterData]);
-  
-  const handleRangeChange = (event, newValue) => {
-    setYearRange(newValue);
-    setShowNode(null);
-  };
-  
-  const toggleToolbar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  const handleDatasetChange = useCallback((key) => {
-    setCurrentDataset(key);
-    setSelectedTitle(null);
-    setselectedConnection(null);
-    setselectedNode(null);
-    setShowNode(null);
-    setSelectedRoles(colorScale.domain());
-  }, []);
-
-  // Handle filtered data from TagFilter
-  const handleFilterChange = useCallback((data) => {
-    console.log('handleFilterChange IN:', {
-      nodes: data?.nodes?.length ?? 0,
-      links: data?.links?.length ?? 0,
-      sampleNode: data?.nodes?.[0]
-    });
-    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
-      console.warn('handleFilterChange: invalid payload, ignoring');
-      return;
-    }
-    // defensive copy to ensure a new reference
-    setFilteredData({
-      nodes: data.nodes.map(n => ({ ...n })),
-      links: data.links.map(l => ({ ...l }))
-    });
-    setselectedNode(null);
-  }, []);
-  
-  const handleCountryChange = useCallback((data) => {
-    setFilteredData({
-      nodes: data.nodes.map(n => ({ ...n })),
-      links: data.links.map(l => ({ ...l }))
-    });
-    setselectedNode(null);
-  }, []);
-
-  const handleTitleChange = useCallback((data) => {
-    setSelectedTitle(data);
-    setselectedConnection(null);
-    setselectedNode(data);
-  }, []);
-
-  const handleConnectionChange = useCallback((data) => {
-    setselectedConnection(data);
-    setSelectedTitle(null);
-    setselectedNode(data);
-  }, []);
-
-  const closeDescription = useCallback(() => {
-    setselectedConnection(null);
-    setSelectedTitle(null);
-    setselectedNode(null);
-    setShowNode(null);
-  }, []);
-  
-  // Title list
-  let projects = filteredData.nodes 
-  .filter(d => d.group === 18)
-  .map(d => ({value: d.id, label: d.label}));
-
-  // non Title list
-  let connection = filteredData.nodes 
-  .filter(d => d.group !== 18)
-  .map(d => ({value: d.id, label: d.label}));
-  
- // ...existing code...
-  useEffect(() => {
-    console.log('filteredData updated (state):', {
-      nodes: filteredData.nodes?.length ?? 0,
-      links: filteredData.links?.length ?? 0,
-      sampleNode: filteredData.nodes?.[0]
-    });
-  }, [filteredData]);
-// ...existing code...
-  // Memoize the graph props to prevent unnecessary re-renders
-  const graphProps = useMemo(
-    () => ({
-      datasets,
-      currentDataset,
-      handleDatasetChange,
-      nodes: filteredData.nodes,
-      links: filteredData.links,
-      selectnode: selectedNode,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      onPlayingChange : isPlaying,
-      onNodeSelect: setShowNode,
-      nodeSelect: showNode,
-      selectedRoles: selectedRoles,
-      currentdataset: currentDataset
-    }),
-    [
-      isPlaying,
-      selectedNode,
-      setShowNode,
-      currentDataset,
-      filteredData.nodes,
-      filteredData.links,
-      selectedRoles,
-      showNode
-    ]
-  );
+    // derived
+    FilterData,
+    datasets,
+    projects,
+    connection,
+    graphProps,
+  } = useAppState();
 
   // UI
   return (
-    <div className="app">
-      {/* Header */}
-      <header className="header">
+    <div className = "app">
+      <header className = "header">
         <h1>MAB Social Graph</h1>
       </header>
-      <div className="toolbar">
+      <div className = "toolbar">
         <Toolbar 
           datasets={datasets}
           currentDataset={currentDataset}
@@ -198,42 +87,42 @@ const App = () => {
           isCollapsed = {isCollapsed}
           selectedRoles = {selectedRoles}
           setSelectedRoles = {setSelectedRoles} 
+          resetFilter = {resetFilter}
         />
       </div>
-        {showNode && (
-      <div className="description">
-            <div style={{display: 'inline-block' }}>
-              <button className={'closebutton'} onClick={closeDescription}>
-                <Icons.CloseOutlined /> 
-              </button>
-            </div>
-              <Description 
-                name = {showNode}
-                data = {FilterData}
-                nodelist = {datasets[currentDataset].nodes}
-                dataset = {currentDataset}
-              />
-              </div>)}
-      <div className="app-content">
+      {showNode && (
+        <div className = "description">
+          <div style = {{display: 'inline-block' }}>
+            <button className = {'closebutton'} onClick = {closeDescription}>
+              <Icons.CloseOutlined /> 
+            </button>
+          </div>
+            <Description 
+              name = {showNode}
+              data = {FilterData}
+              nodelist = {datasets[currentDataset].nodes}
+              dataset = {currentDataset}
+            />
+        </div>
+      )}
+      <div className = "app-content">
         {/* Force-directed graph component */}
         <ForceDirectedGraph {...graphProps} />
       </div>
-      <div className="buttom-controls">
+      <div className = "buttom-controls">
         {/* Timeline */}
-        <section className="timeline-section">
+        <section className = "timeline-section">
           <p>Select Year Range:</p>
           <Timeline
-            value={yearRange}
-            onChange={handleRangeChange}
-            OnPlayingChange={isPlaying => {
-              setIsPlaying(isPlaying);
-            }}
-            label="Select year range"
-            width={Math.min(500, window.innerWidth - 100)} // Make responsive
+            value = {yearRange}
+            setIsPlaying = {setIsPlaying}
+            isPlaying = {isPlaying}
+            onChange = {handleRangeChange}
+            label = "Select year range"
+            width = {Math.min(750, window.innerWidth - 100)}
           />
         </section>
       </div>
     </div>
   );
 };
-export default App;
