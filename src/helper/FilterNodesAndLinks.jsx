@@ -31,7 +31,7 @@ export default function FilterData (
 
         // If no filter, show everything
         if (!filterTag && !filterCountry) {
-            return{nodes: combinedNodes, links}
+            return{nodes, links}
         }
 
        // Identify primary nodes
