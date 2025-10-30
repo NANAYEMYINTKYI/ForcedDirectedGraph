@@ -22,8 +22,6 @@ export default function useAppState() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isActive, setIsActive] = useState(true);
 
-  console.log(isActive)
-
   // ----- HANDLERS -----
   // Use for handle when dataset change
   const handleDatasetChange = useCallback((key) => {
@@ -71,7 +69,6 @@ export default function useAppState() {
     setYearRange(newValue);
     setShowNode(null);
   };
-
 
   // ----- DERIVED -----
   // Use to filter data when change year
@@ -168,6 +165,20 @@ export default function useAppState() {
       setYearRange([1999,1999])
     }
   }, [isActive, isPlaying]);
+  
+  // Reset filter
+  const resetFilter = useCallback(() => {
+    setYearRange([1999, 2023]);
+    // setFilteredData({ nodes: datasets[currentDataset].nodes, links: datasets[currentDataset].links })
+    // setFilterTag([''])
+    // setFilterCountry([''])
+    setSelectedTitle(null)
+    setSelectedConnection(null)
+    setSelectedNode(null)
+    setSelectedRoles(colorScale.domain())
+    setShowNode(null)
+    setIsPlaying(false)
+  }, []);
 
   return {
     // state
@@ -206,6 +217,7 @@ export default function useAppState() {
     toggleToolbar,
     closeDescription,
     handleRangeChange,
+    resetFilter,
 
     // derived
     FilterData,

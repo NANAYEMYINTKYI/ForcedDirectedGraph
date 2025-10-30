@@ -54,7 +54,7 @@ const ForceDirectedGraph = ({
 
 
 
-  
+
   // DRAG FUNCTIONS
   const DRAG_THRESHOLD = 5;
 
@@ -450,7 +450,7 @@ const ForceDirectedGraph = ({
       .force("y", d3.forceY(height / 2).strength(0.1))  // Fix: y uses height
       .force("x", d3.forceX(width / 2).strength(0.1))   // Fix: x uses width
       .force("link", d3.forceLink(links).id((d) => d.id)
-      .distance(50)
+      .distance(100)
       .strength(0.5))
       .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2))

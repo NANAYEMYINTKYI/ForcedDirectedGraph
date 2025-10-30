@@ -28,7 +28,8 @@ const Toolbar = ({
   toggleToolbar,
   isCollapsed, 
   selectedRoles, 
-  setSelectedRoles
+  setSelectedRoles,
+  resetFilter
 }) => {
   const datasetPopover = usePopover();
   const titlePopover = usePopover();
@@ -220,6 +221,9 @@ const Toolbar = ({
           }
         />
       </div>
+      <button className = 'reset-button' onClick={resetFilter}>
+        Reset Filter
+      </button>
     </div>
   );
 };

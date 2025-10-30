@@ -46,6 +46,7 @@ export default function App() {
     toggleToolbar,
     closeDescription,
     handleRangeChange,
+    resetFilter,
 
     // derived
     FilterData,
@@ -80,6 +81,7 @@ export default function App() {
           isCollapsed = {isCollapsed}
           selectedRoles = {selectedRoles}
           setSelectedRoles = {setSelectedRoles} 
+          resetFilter = {resetFilter}
         />
       </div>
       {showNode && (
