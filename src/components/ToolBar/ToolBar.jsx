@@ -16,6 +16,7 @@ const Toolbar = ({
   currentDataset,
   handleDatasetChange,
   FilterData,
+  filteredData,
   handleFilterChange,
   handleCountryChange,
   setFilterTag,
@@ -153,15 +154,6 @@ const Toolbar = ({
           popover = {tagPopover}
           mounted = {true}
           popoverContent = {
-            // <TagManager 
-            //   datasets={datasets}
-            //   currentDataset={currentDataset}
-            //   mabData={FilterData}
-            //   onFilterChange={handleFilterChange}
-            //   onTagSelect={setFilterTag}
-            //   filterType='tag'
-            //   showCounts={true}
-            // />
             <TagFilter
               datasets={datasets}
               // processedDatasets={processedDatasets}
@@ -185,18 +177,10 @@ const Toolbar = ({
           popover = {countryTagPopover}
           mounted = {true}
           popoverContent = {
-            // <TagManager 
-            //   datasets={datasets}
-            //   currentDataset={currentDataset}
-            //   mabData={FilterData}
-            //   onCountryChange={handleCountryChange}
-            //   onCountrySelect={setFilterCountry}
-            //   filterType="country"
-            //   showCounts={true}
-            // />
             <TagFilter
               // processedDatasets={processedDatasets}
               datasets={datasets}
+              filteredNodes={filteredData.nodes}
               currentDataset={currentDataset}
               onCountryChange={handleCountryChange}
               onCountrySelect={setFilterCountry}

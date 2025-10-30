@@ -94,15 +94,6 @@ const App = () => {
   }, []);
   
   const handleCountryChange = useCallback((data) => {
-    console.log('handleCountryChange IN:', {
-      nodes: data?.nodes?.length ?? 0,
-      links: data?.links?.length ?? 0,
-      sampleNode: data?.nodes?.[0]
-    });
-    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
-      console.warn('handleCountryChange: invalid payload, ignoring');
-      return;
-    }
     setFilteredData({
       nodes: data.nodes.map(n => ({ ...n })),
       links: data.links.map(l => ({ ...l }))
@@ -189,11 +180,14 @@ const App = () => {
           datasets={datasets}
           currentDataset={currentDataset}
           handleDatasetChange={handleDatasetChange}
+
           FilterData={FilterData}
           handleFilterChange={handleFilterChange}
           handleCountryChange={handleCountryChange}
+          filteredData={setFilteredData}
           setFilterTag={setFilterTag}
           setFilterCountry={setFilterCountry}
+
           projects={projects}
           connection={connection}
           handleTitleChange={handleTitleChange}

@@ -6,6 +6,7 @@ import FilterNodesAndLinks from "../../helper/FilterNodesAndLinks"
 
 const TagFilter=({
     datasets,
+    filteredNodes = [],
     currentDataset = {},
     onFilterChange,
     onCountryChange,
@@ -15,13 +16,19 @@ const TagFilter=({
     width = 300,
     filterType = "both"
 })=>{
-    const dataset = datasets && datasets[currentDataset];
-    const nodes = useMemo(() => {
-        return (dataset && dataset.nodes) || [];
-    }, [dataset]);
-    const links = useMemo(() => {
-        return (dataset && dataset.links) || [];
-    }, [dataset]);
+    // const dataset = datasets && datasets[currentDataset];
+    // // const nodes = useMemo(() => {
+    //     return (dataset && dataset.nodes) || [];
+    // }, [dataset]);
+    const dataset = datasets?.[currentDataset] || { nodes: [], links: [] };
+    const nodes = filteredNodes.length ? filteredNodes : dataset.nodes;
+    const links = dataset.links;
+    // const nodes = useMemo(()=> {
+    //     return (filteredNodes.length ? filteredNodes: (dataset && dataset.nodes)) || []
+    // }, [dataset, filteredNodes])
+    // const links = useMemo(() => {
+    //     return (dataset && dataset.links) || [];
+    // }, [dataset]);
 
     const countryDataset = datasets['country'];
     const countryNodes = (countryDataset && countryDataset.nodes) || [];
@@ -85,9 +92,11 @@ const TagFilter=({
     }, [setFilterTag, setFilterCountry]);
  
     useEffect(() => {
-        const { nodes = [], links = [] } = datasets[currentDataset];
+        const dataset = datasets?.[currentDataset] || { nodes: [], links: [] };
+        const nodes = dataset.nodes || [];
+        const links = dataset.links || [];
         const result = FilterNodesAndLinks(nodes, countryNodes, links, filterTag, filterCountry);
-
+         // If no filter, show everything
         if (!filterTag && !filterCountry) {
             onFilterChange && onFilterChange(result);
             onCountryChange && onCountryChange(result);
