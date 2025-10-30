@@ -47,7 +47,7 @@ const ForceDirectedGraph = ({
 
 
   //This use to detect whether user active or not
-  const isActive = UserActivityDetector(30000);
+  const isActive = UserActivityDetector(1000000);
   useEffect(() => {
     setIsActive(isActive);
   }, [isActive]);
@@ -127,7 +127,14 @@ const ForceDirectedGraph = ({
       console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
       return;
     }
-    const scale = Math.min(width, height/800);
+    const connectedLinks = links.filter(l=> l.source === d || l.target === d);
+    const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
+    let scale;
+    if(connectedNodes.length<3){
+      scale = Math.min(width,height/400);
+    } else {
+      scale = Math.min(width, height/800); 
+    }
     const transform = d3.zoomIdentity
       .translate(width / 2, height / 2)
       .scale(scale)
