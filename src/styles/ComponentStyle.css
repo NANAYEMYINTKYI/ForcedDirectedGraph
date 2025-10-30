@@ -142,7 +142,7 @@
 .toolelement {
   background: transparent ;
   border: 0;
-  /* border-radius: 15px; */
+  border-radius: 4px;
   width: 100%;
   text-align: start !important;
   font-size: medium !important;
@@ -160,7 +160,7 @@
 }
 
 .popoverelement .MuiPaper-root{
-  border-radius: 0 !important;
+  border-radius: 4px !important;
   box-shadow: none !important;
   background-color: #f5f5f5;
   margin-left: -10px;
@@ -177,6 +177,7 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  border-radius: 4px;
 }
 
 .dataset-btn {
@@ -186,7 +187,7 @@
   border: 2px solid #dee2e6;
   color: #495057;
   padding: 10px 16px;
-  /* border-radius: 25px; */
+  border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -213,7 +214,7 @@
 .selectallbutton {
   background: rgba(0, 0, 0, 0.2) ;
   border: 0;
-  border-radius: 5px;
+  border-radius: 4px;
   color: black;
   padding: 5px 10px;
   margin-top: 5px;
@@ -241,6 +242,7 @@
   color: black;
   font-size: medium;
 }
+
 .legenditem {
   margin-left: 1rem;
   display: flex;
@@ -266,6 +268,7 @@
   margin-right: 5px;
   transition: 10ms;
 }
+
 .legenditem .Mui-checked .MuiSvgIcon-root {
   color: var(--checkbox-color);
   background-color: var(--checkbox-color);
@@ -281,6 +284,7 @@
   margin-right: 5px;
   transition: 10ms;
 }
+
 .legenditem .MuiSvgIcon-root {
   color: var(--unselected-color);
   background-color: var(--unselected-color);
@@ -288,7 +292,6 @@
   margin-right: 5px;
   transition: 10ms;
 }
-
 
 /* Checked state on hover: dimmed checkbox color */
 .legenditem .MuiCheckbox-root:hover {

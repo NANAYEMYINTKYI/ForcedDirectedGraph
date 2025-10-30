@@ -15,6 +15,7 @@
   position: relative;
   display: flex;
 }
+
 /* This is for SVG */
 .graph-svg {
   flex: 1;

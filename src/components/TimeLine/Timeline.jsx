@@ -31,9 +31,7 @@ const RangeSlider = ({
   onChange, 
   label, 
   width = 500, 
-  // OnPlayingChange 
 }) => {
-  // const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect (() => {

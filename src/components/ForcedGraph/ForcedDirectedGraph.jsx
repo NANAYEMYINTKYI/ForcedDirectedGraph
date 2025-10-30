@@ -7,6 +7,7 @@ import {LoadingOutlined} from '@ant-design/icons';
 import * as d3 from 'd3';
 import '../../styles/ForcedDirectedGraph.css'
 import {colorScale, graphcolor, getImages, continentList, contributorFields} from '../../utils/CustomData.jsx';
+import UserActivityDetector from "../../utils/UserAction.jsx"
 
 const image = getImages();
 
@@ -15,14 +16,14 @@ const ForceDirectedGraph = ({
   nodes,
   links,
   selectnode,
-  filterTag,
   width,
   height,
   onPlayingChange,
   nodeSelect,
   onNodeSelect,
   selectedRoles,
-  currentdataset
+  currentdataset,
+  setIsActive
 }) => {
   // Refs
   const svgRef = useRef();
@@ -45,7 +46,15 @@ const ForceDirectedGraph = ({
 
 
 
+  //This use to detect whether user active or not
+  const isActive = UserActivityDetector(30000);
+  useEffect(() => {
+    setIsActive(isActive);
+  }, [isActive]);
 
+
+
+  
   // DRAG FUNCTIONS
   const DRAG_THRESHOLD = 5;
 

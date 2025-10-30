@@ -1,3 +1,5 @@
+//--- This is where to collect all logic and useState for App.jsx ---//
+
 import { useState, useEffect, useMemo, useCallback } from "react";
 import rawData from "../data/Data.json";
 import { CountryData } from "../utils/TransformDataCountryFunction.jsx";
@@ -5,48 +7,74 @@ import { PeopleData } from "../utils/TransformDataPeopleFunction.jsx";
 import { colorScale } from "../utils/CustomData.jsx";
 
 export default function useAppState() {
-  // ...existing code...
+  // ----- STATE -----
+  const [currentDataset, setCurrentDataset] = useState("people");
   const [yearRange, setYearRange] = useState([1999, 2023]);
   const [filteredData, setFilteredData] = useState({ nodes: [], links: [] });
   const [filterTag, setFilterTag] = useState("");
   const [filterCountry, setFilterCountry] = useState("");
-  const [currentDataset, setCurrentDataset] = useState("people");
   const [selectedTitle, setSelectedTitle] = useState(null);
-  const [selectedConnection, setselectedConnection] = useState(null);
-  const [selectedNode, setselectedNode] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [selectedConnection, setSelectedConnection] = useState(null);
+  const [selectedNode, setSelectedNode] = useState(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [showNode, setShowNode] = useState(null);
-  const [isClicked, setIsClicked] = useState(false);
-  const [time, setTime] = useState(false);
   const [selectedRoles, setSelectedRoles] = useState(colorScale.domain());
+  const [showNode, setShowNode] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
-  // useEffect(() => {
-  //   if (isClicked) {
-  //     setTime(0);
-  //     setIsClicked(false)
-  //   }
+  console.log(isActive)
 
-  //   const intervalId = setInterval(() => {
-  //     setTime((prevTime) => {
-  //       console.log(prevTime)
-  //       console.log(isPlaying)
-  //       if (prevTime === 100) {
-  //           setIsPlaying(true);
-  //         if (!isPlaying) {
-  //           setYearRange([1999, 1999]);
-  //         } else if (yearRange == [2023, 2023]) {
-  //             setTime(0);
-  //         }
-  //         return prevTime;
-  //       }
-  //       return prevTime + 1;
-  //     });
-  //   }, 10);
+  // ----- HANDLERS -----
+  // Use for handle when dataset change
+  const handleDatasetChange = useCallback((key) => {
+    setCurrentDataset(key);
+    setSelectedTitle(null);
+    setSelectedConnection(null);
+    setSelectedNode(null);
+    setShowNode(null);
+    setSelectedRoles(colorScale.domain());
+  }, []);
 
-  //   return () => clearInterval(intervalId);
-  // }, [isClicked, isPlaying]);
+  // Use for handle when filter change
+  const handleFilterChange = useCallback((data) => {
+    setFilteredData(data);
+    setSelectedNode(null);
+  }, []);
 
+  // Use for handle when change the search title
+  const handleTitleChange = useCallback((data) => {
+    setSelectedTitle(data);
+    setSelectedConnection(null);
+    setSelectedNode(data);
+  }, []);
+  
+  // Use for handle when change the search connection
+  const handleConnectionChange = useCallback((data) => {
+    setSelectedConnection(data);
+    setSelectedTitle(null);
+    setSelectedNode(data);
+  }, []);
+
+  // Use for handle when toolbar toggle
+  const toggleToolbar = () => setIsCollapsed((s) => !s);
+  
+  // Use for closing Description
+  const closeDescription = useCallback(() => {
+    setSelectedConnection(null);
+    setSelectedTitle(null);
+    setSelectedNode(null);
+    setShowNode(null);
+  }, []);
+  
+  // Use for handle when change year range
+  const handleRangeChange = (event, newValue) => {
+    setYearRange(newValue);
+    setShowNode(null);
+  };
+
+
+  // ----- DERIVED -----
+  // Use to filter data when change year
   const FilterData = useMemo(() => {
     const [startYear, endYear] = yearRange;
     return rawData.filter((data) => {
@@ -56,14 +84,22 @@ export default function useAppState() {
     });
   }, [yearRange]);
 
-  const datasets = useMemo(
+  // Use for defining datasets
+  const datasets = useMemo (
     () => ({
-      country: { ...CountryData(FilterData), name: "Social Graph By Country" },
-      people: { ...PeopleData(FilterData), name: "Social Graph By People" },
+      country: { 
+        ...CountryData(FilterData), 
+        name: "Social Graph By Country" 
+      },
+      people: { 
+        ...PeopleData(FilterData), 
+        name: "Social Graph By People" 
+      },
     }),
     [FilterData]
   );
 
+  // Use for listing all project
   const projects = useMemo(
     () =>
       (filteredData.nodes || [])
@@ -72,6 +108,7 @@ export default function useAppState() {
     [filteredData.nodes]
   );
 
+  // Use for listing all connection
   const connection = useMemo(
     () =>
       (filteredData.nodes || [])
@@ -80,47 +117,7 @@ export default function useAppState() {
     [filteredData.nodes]
   );
 
-  const handleRangeChange = (event, newValue) => {
-    setYearRange(newValue);
-    setShowNode(null);
-  };
-
-  const handleAction = () => setIsClicked(true);
-  const toggleToolbar = () => setIsCollapsed((s) => !s);
-
-  const handleDatasetChange = useCallback((key) => {
-    setCurrentDataset(key);
-    setSelectedTitle(null);
-    setselectedConnection(null);
-    setselectedNode(null);
-    setShowNode(null);
-    setSelectedRoles(colorScale.domain());
-  }, []);
-
-  const handleFilterChange = useCallback((data) => {
-    setFilteredData(data);
-    setselectedNode(null);
-  }, []);
-
-  const handleTitleChange = useCallback((data) => {
-    setSelectedTitle(data);
-    setselectedConnection(null);
-    setselectedNode(data);
-  }, []);
-
-  const handleConnectionChange = useCallback((data) => {
-    setselectedConnection(data);
-    setSelectedTitle(null);
-    setselectedNode(data);
-  }, []);
-
-  const closeDescription = useCallback(() => {
-    setselectedConnection(null);
-    setSelectedTitle(null);
-    setselectedNode(null);
-    setShowNode(null);
-  }, []);
-
+  // Use for define data in graph
   const graphProps = useMemo(
     () => ({
       datasets,
@@ -129,7 +126,6 @@ export default function useAppState() {
       nodes: filteredData.nodes,
       links: filteredData.links,
       selectnode: selectedNode,
-      filterTag,
       width: window.innerWidth,
       height: window.innerHeight,
       onPlayingChange: isPlaying,
@@ -137,6 +133,7 @@ export default function useAppState() {
       nodeSelect: showNode,
       selectedRoles,
       currentdataset: currentDataset,
+      setIsActive: setIsActive,
     }),
     [
       datasets,
@@ -145,15 +142,37 @@ export default function useAppState() {
       filteredData.nodes,
       filteredData.links,
       selectedNode,
-      filterTag,
       isPlaying,
       showNode,
       selectedRoles,
     ]
   );
 
+  // Use to set action when not active
+  useEffect(() => {
+    if (isActive && isPlaying) {
+      setIsPlaying(true)
+      return;
+
+    } else if (isActive && !isPlaying) {
+      setIsPlaying(false)
+      return;
+    };
+
+    if (isPlaying) return;
+
+    setIsPlaying(true)
+    setShowNode(null)
+    
+    if(!isPlaying){
+      setYearRange([1999,1999])
+    }
+  }, [isActive, isPlaying]);
+
   return {
     // state
+    currentDataset,
+    setCurrentDataset,
     yearRange,
     setYearRange,
     filteredData,
@@ -162,35 +181,37 @@ export default function useAppState() {
     setFilterTag,
     filterCountry,
     setFilterCountry,
-    currentDataset,
-    setCurrentDataset,
     selectedTitle,
+    setSelectedTitle,
     selectedConnection,
+    setSelectedConnection,
     selectedNode,
-    isPlaying,
-    setIsPlaying,
+    setSelectedNode,
     isCollapsed,
-    toggleToolbar,
-    showNode,
-    setShowNode,
-    isClicked,
-    handleAction,
-    time,
+    setIsCollapsed,
     selectedRoles,
     setSelectedRoles,
+    showNode,
+    setShowNode,
+    isPlaying,
+    setIsPlaying,
+    isActive, 
+    setIsActive,
+
+    // handlers
+    handleDatasetChange,
+    handleFilterChange,
+    handleTitleChange,
+    handleConnectionChange,
+    toggleToolbar,
+    closeDescription,
+    handleRangeChange,
+
     // derived
     FilterData,
     datasets,
     projects,
     connection,
     graphProps,
-    // handlers
-    handleRangeChange,
-    handleDatasetChange,
-    handleFilterChange,
-    handleTitleChange,
-    handleConnectionChange,
-    closeDescription,
   };
-  // ...existing code...
 }
