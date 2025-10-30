@@ -16,8 +16,7 @@ import './styles/App.css'
 
 const App = () => {
   const [yearRange, setYearRange] = useState([1999, 2024]); // state to store selected year
-  const [filteredData, setFilteredData ] = useState({ nodes: [], links: [] });
-  const [filteredCountry, setFilteredCountry] = useState({nodes: [], links: []})
+  const [filteredData, setFilteredData ] = useState({ nodes: [], links: [] });  
   const [filterTag, setFilterTag] = useState("");
   const [filterCountry, setFilterCountry] =useState("")
   const [currentDataset, setCurrentDataset] = useState("people");
@@ -76,16 +75,6 @@ const App = () => {
 
   // Handle filtered data from TagFilter
   const handleFilterChange = useCallback((data) => {
-    console.log('handleFilterChange IN:', {
-      nodes: data?.nodes?.length ?? 0,
-      links: data?.links?.length ?? 0,
-      sampleNode: data?.nodes?.[0]
-    });
-    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
-      console.warn('handleFilterChange: invalid payload, ignoring');
-      return;
-    }
-    // defensive copy to ensure a new reference
     setFilteredData({
       nodes: data.nodes.map(n => ({ ...n })),
       links: data.links.map(l => ({ ...l }))
@@ -122,14 +111,14 @@ const App = () => {
   
   // Title list
   let projects = filteredData.nodes 
-  .filter(d => d.group === 18)
-  .map(d => ({value: d.id, label: d.label}));
+    .filter(d => d.group === 18)
+    .map(d => ({value: d.id, label: d.label}));
 
   // non Title list
   let connection = filteredData.nodes 
-  .filter(d => d.group !== 18)
-  .map(d => ({value: d.id, label: d.label}));
-  
+    .filter(d => d.group !== 18)
+    .map(d => ({value: d.id, label: d.label}));
+    
  // ...existing code...
   useEffect(() => {
     console.log('filteredData updated (state):', {
@@ -181,12 +170,11 @@ const App = () => {
           currentDataset={currentDataset}
           handleDatasetChange={handleDatasetChange}
 
-          FilterData={FilterData}
           handleFilterChange={handleFilterChange}
           handleCountryChange={handleCountryChange}
-          filteredData={setFilteredData}
-          setFilterTag={setFilterTag}
-          setFilterCountry={setFilterCountry}
+          filteredData={filteredData}
+          filterTagTag={setFilterTag}
+          filterCountry={setFilterCountry}
 
           projects={projects}
           connection={connection}

@@ -15,12 +15,13 @@ const Toolbar = ({
   datasets,
   currentDataset,
   handleDatasetChange,
-  FilterData,
+
   filteredData,
   handleFilterChange,
   handleCountryChange,
-  setFilterTag,
-  setFilterCountry,
+  filterTag,
+  filterCountry,
+
   projects,
   connection,
   handleTitleChange,
@@ -156,10 +157,9 @@ const Toolbar = ({
           popoverContent = {
             <TagFilter
               datasets={datasets}
-              // processedDatasets={processedDatasets}
               currentDataset={currentDataset}
               onFilterChange={handleFilterChange}
-              onFilterSelect={setFilterTag}
+              onFilterSelect={filterTag}
               filterType='tag'
               showCounts={true}
             />
@@ -178,12 +178,11 @@ const Toolbar = ({
           mounted = {true}
           popoverContent = {
             <TagFilter
-              // processedDatasets={processedDatasets}
               datasets={datasets}
-              filteredNodes={filteredData.nodes}
+              filteredData={filteredData}
               currentDataset={currentDataset}
               onCountryChange={handleCountryChange}
-              onCountrySelect={setFilterCountry}
+              onCountrySelect={filterCountry}
               filterType='country'
               showCounts={true}
             />

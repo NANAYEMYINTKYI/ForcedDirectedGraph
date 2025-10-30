@@ -6,30 +6,17 @@ import FilterNodesAndLinks from "../../helper/FilterNodesAndLinks"
 
 const TagFilter=({
     datasets,
-    filteredNodes = [],
+    filteredData = {},
     currentDataset = {},
     onFilterChange,
     onCountryChange,
-    onFilterSelect,
-    onCountrySelect,
     showCounts = true,
     width = 300,
     filterType = "both"
 })=>{
-    // const dataset = datasets && datasets[currentDataset];
-    // // const nodes = useMemo(() => {
-    //     return (dataset && dataset.nodes) || [];
-    // }, [dataset]);
     const dataset = datasets?.[currentDataset] || { nodes: [], links: [] };
-    const nodes = filteredNodes.length ? filteredNodes : dataset.nodes;
+    const nodes = filteredData.length ? filteredData.nodes : dataset.nodes;
     const links = dataset.links;
-    // const nodes = useMemo(()=> {
-    //     return (filteredNodes.length ? filteredNodes: (dataset && dataset.nodes)) || []
-    // }, [dataset, filteredNodes])
-    // const links = useMemo(() => {
-    //     return (dataset && dataset.links) || [];
-    // }, [dataset]);
-
     const countryDataset = datasets['country'];
     const countryNodes = (countryDataset && countryDataset.nodes) || [];
 
@@ -38,11 +25,6 @@ const TagFilter=({
    
     //-- This extract all the unique tag from nodes in the current Dataset--//
     const allTags = useMemo(() => {
-        if(!countryNodes|| countryNodes === 0){
-            return {country:[], tags:[]};
-        }
-        console.log("Node in AllTags:",nodes)
-        console.log("Links in AllTags:",links)
         // const tagSet = new Set();
         const tagCategories = {
             country: new Set(),
@@ -51,31 +33,28 @@ const TagFilter=({
         //--This is country tag date--//
         countryNodes.forEach(node => {
             if (node.group != 18) {
-                // console.log("node:", node)
                 if(node.id) {
-                    const cleanCountryId = node.id.replace(/^#/, "").trim().toLowerCase();
-                    tagCategories.country.add(cleanCountryId);
+                    tagCategories.country.add(node.id);
                 }
             }
         });
         //--This is award type data--//
         countryNodes.forEach(node => {
             if (node.tag){
-            const tagtoArray =  node.tag
-            .split(/[#,']/) // split #
-            .map(function(item){return item.trim()}) //clean spaces
-            .filter(Boolean); // remove an empty
-            console.log("type of typeofArray:", typeof(tagtoArray))
-            tagtoArray.forEach(tag => {
-                if (tag) {
-                    const cleanTag = tag.replace(/[\[\]#'"]/g,"").trim().toLowerCase();
-                    if(cleanTag &&!/^\d+$/.test(cleanTag)){
-                        if(!tagCategories.country.has(cleanTag)){
-                            tagCategories.tags.add(cleanTag);
+                const tagtoArray = node.tag
+                    .split(/[#,']/) // split #
+                    .map(function(item){return item.trim()}) //clean spaces
+                    .filter(Boolean); // remove an empty
+                tagtoArray.forEach(tag => {
+                    if (tag) {
+                        const cleanTag = tag.replace(/[\[\]#'"]/g,"").trim().toLowerCase();
+                        if(cleanTag &&!/^\d+$/.test(cleanTag)){
+                            if(!tagCategories.country.has(cleanTag)){
+                                tagCategories.tags.add(cleanTag);
+                            }
                         }
                     }
-                }
-            });
+                });
             } 
         })
         console.log("country categories:", tagCategories.country)
@@ -83,33 +62,29 @@ const TagFilter=({
             country: Array.from(tagCategories.country).sort(),
             tags: Array.from(tagCategories.tags).sort()
         };
-    }, [nodes,links,countryNodes]);
+    }, [countryNodes]);
 
     // Reset filter when dataset changes
     useEffect(() => {
         setFilterTag("");
         setFilterCountry("");
-    }, [setFilterTag, setFilterCountry]);
+    }, [currentDataset]);
  
     useEffect(() => {
-        const dataset = datasets?.[currentDataset] || { nodes: [], links: [] };
-        const nodes = dataset.nodes || [];
-        const links = dataset.links || [];
         const result = FilterNodesAndLinks(nodes, countryNodes, links, filterTag, filterCountry);
-         // If no filter, show everything
+
         if (!filterTag && !filterCountry) {
             onFilterChange && onFilterChange(result);
             onCountryChange && onCountryChange(result);
         } else {
             if (filterTag) {
-                onFilterChange && onFilterChange(result);
+                onFilterChange(result);
             }
             if (filterCountry) {
-                onCountryChange && onCountryChange(result);
+                onCountryChange(result);
             }
         }
     }, [datasets, currentDataset, filterTag, filterCountry, onFilterChange, onCountryChange]);
-
 
     const options = [
         { value: '', 
@@ -124,27 +99,18 @@ const TagFilter=({
     const selectedOption = options.find((options) => options.value === filterTag) || options[0];
     const selectedCountry = countryOptions.find((options) => options.value === filterCountry) || countryOptions[0];
 
-
     const handleChange = (selectedOption)=>{
         const value = selectedOption ? selectedOption.value: "" ;
         console.log("TagChanged:",value)
         setFilterTag(value);
-        if(onFilterSelect){
-            console.log("calling tags with:", value)
-            onFilterSelect(value);
-        }
+        // onFilterSelect(value);
     }
 
     const handleCountryChange = (selectedCountry)=>{
         const value = selectedCountry ? selectedCountry.value: "";
         console.log("country changed:", value)
         setFilterCountry(value);
-        if(onCountrySelect){
-            console.log("calling contry with:", value)
-            onCountrySelect(value);
-        } else {
-            console.log("Oncoutnry is not defined")
-        }
+        // onCountrySelect(value);
     }
 
     return (
@@ -152,17 +118,17 @@ const TagFilter=({
             {(filterType === "tag") && (
                 <ListSearch
                     options={options}
+                    value={selectedOption}
                     title="Search by Tag"
                     placeholder="Input tag"
                     onFilterChange={handleChange}
-                    value={selectedOption}
                     clearable={false}
                 />
             )}
             {(filterType === "country" ) && (
                 <ListSearch
-                    value={selectedCountry}
                     options={countryOptions}
+                    value={selectedCountry}
                     title="Search by Country"
                     placeholder="Input country"
                     onFilterChange={handleCountryChange}

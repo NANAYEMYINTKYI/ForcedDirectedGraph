@@ -43,8 +43,8 @@ const ForceDirectedGraph = ({
   const [isDragging, setIsDragging] = useState(false);
   const [groupsReady, setGroupsReady] = useState(false);
 
-  console.log("Node in graph:", nodes)
-  console.log("Links in graph", links)
+  // console.log("Node in graph:", nodes)
+  // console.log("Links in graph", links)
 
 
   // DRAG FUNCTIONS
