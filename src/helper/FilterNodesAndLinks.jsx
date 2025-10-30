@@ -8,9 +8,7 @@ export default function FilterData (
     // Normalize tags for people/project nodes
         const normalizedNodes = nodes.map(node => {
             let tagsArr = [];
-            if (Array.isArray(node.tags)) {
-                tagsArr = node.tags.map(tag => tag.toLowerCase());
-            } else if (typeof node.tag === 'string') {
+            if (node.tag) {
                 tagsArr = node.tag
                     .split(/[#,']/)
                     .map(item => item.trim().toLowerCase())
@@ -21,9 +19,14 @@ export default function FilterData (
 
         // Combine nodes and deduplicate by id
         const combinedNodesMap = new Map();
+        // Combining the countryNodes and the PeopleNodes together
         [...normalizedNodes, ...countryNodes].forEach(node => {
-            if (node.id) combinedNodesMap.set(node.id, node);
+            if (node.id) {
+                // If the ID hasn't been seen before, it will be added to the set
+                combinedNodesMap.set(node.id, node);
+            }
         });
+        // Turning combine node into Array
         const combinedNodes = Array.from(combinedNodesMap.values());
 
         // If no filter, show everything
@@ -31,7 +34,7 @@ export default function FilterData (
             return{nodes: combinedNodes, links}
         }
 
-       // Step 1: Identify primary nodes
+       // Identify primary nodes
         const primaryNodeIds = new Set();
 
         // --- Tag filter: add nodes with the tag ---
@@ -44,12 +47,11 @@ export default function FilterData (
             });
         }
 
-        // --- Country filter: add the country node + all connected project nodes ---
+        // --- Country filter: add the id node + all connected project nodes ---
        if (filterCountry) {
             const cleanCountry = filterCountry.toLowerCase().trim();
             normalizedNodes.forEach(node => {
-                // Assuming node has a property like node.country or a tag with country
-                if ((node.country && node.country.toLowerCase() === cleanCountry) ||
+                if ((node.id && node.id.toLowerCase() === cleanCountry) ||
                     (node.tags && node.tags.includes(cleanCountry))) {
                     primaryNodeIds.add(node.id);
                 }

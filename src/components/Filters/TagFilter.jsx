@@ -85,16 +85,19 @@ const TagFilter=({
     }, [setFilterTag, setFilterCountry]);
  
     useEffect(() => {
-        // if (!datasets[currentDataset]) return;
         const { nodes = [], links = [] } = datasets[currentDataset];
         const result = FilterNodesAndLinks(nodes, countryNodes, links, filterTag, filterCountry);
-       // Emit callbacks
+
         if (!filterTag && !filterCountry) {
             onFilterChange && onFilterChange(result);
             onCountryChange && onCountryChange(result);
         } else {
-            if (filterTag) onFilterChange && onFilterChange(result);
-            if (filterCountry) onCountryChange && onCountryChange(result);
+            if (filterTag) {
+                onFilterChange && onFilterChange(result);
+            }
+            if (filterCountry) {
+                onCountryChange && onCountryChange(result);
+            }
         }
     }, [datasets, currentDataset, filterTag, filterCountry, onFilterChange, onCountryChange]);
 
