@@ -65,6 +65,10 @@ const Description = ({
         ))}
       </div>
     )
+
+
+
+
   } else if (dataset === 'people'){
     // If select the people node 
     return (
@@ -107,6 +111,10 @@ const Description = ({
         </div>
       </div>
     );
+
+
+
+    
   } else {
     // If select the country node 
     return (

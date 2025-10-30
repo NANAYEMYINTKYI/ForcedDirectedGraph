@@ -14,8 +14,8 @@ export default function TagFilter ({
     width = 300,
     filterType = "both"
 }) {
-    console.log("OnTagSelect:", onTagSelect)
-    console.log("OnCountrySelect:", onCountrySelect)
+    // console.log("OnTagSelect:", onTagSelect)
+    // console.log("OnCountrySelect:", onCountrySelect)
     const dataset = processedDatasets && processedDatasets[currentDataset];
     const nodes = (dataset && dataset.nodes) || [];
     const links = (dataset && dataset.links) || [];
@@ -30,14 +30,14 @@ export default function TagFilter ({
 
     //-- This extract all the unique tag from nodes in the current Dataset--//
     const allTags = useMemo(() => {
-        console.log("MergedNodes:", nodes)
-        console.log("MergeLinks:",links)
+        // console.log("MergedNodes:", nodes)
+        // console.log("MergeLinks:",links)
         // if (!nodes || nodes.length === 0) return [];
         if(!countryNodes|| countryNodes === 0){
             return {country:[], tags:[]};
         }
-        console.log("Node in AllTags:",nodes)
-        console.log("Links in AllTags:",links)
+        // console.log("Node in AllTags:",nodes)
+        // console.log("Links in AllTags:",links)
         // const tagSet = new Set();
         const tagCategories = {
             country: new Set(),
@@ -69,7 +69,7 @@ export default function TagFilter ({
             });
             } 
         })
-        console.log("country categories:", tagCategories.country)
+        // console.log("country categories:", tagCategories.country)
         return {
             country: Array.from(tagCategories.country).sort(),
             tags: Array.from(tagCategories.tags).sort()
@@ -97,8 +97,8 @@ export default function TagFilter ({
             visibleNodes = nodes;
             visibleLinks = links;
         } else {
-            console.log("Node:",nodes)
-            console.log("Links:",links)
+            // console.log("Node:",nodes)
+            // console.log("Links:",links)
             // Find nodes that match the tag (primary nodes)
             const primaryNodes = nodes.filter(node => {
                 let tagMatch = !filterTag;
@@ -142,7 +142,7 @@ export default function TagFilter ({
                 target: link.target
             }))
         };
-        console.log("Current Filter:", {filterCountry, filterTag})
+        // console.log("Current Filter:", {filterCountry, filterTag})
         // setLocalFilteredData({nodes: visibleNodes, links: visibleLinks});
         if(onFilterChange){
             onFilterChange(result);
@@ -166,10 +166,10 @@ export default function TagFilter ({
    
     const handleChange = (selectedOption)=>{
         const value = selectedOption ? selectedOption.value: "" ;
-        console.log("TagChanged:",value)
+        // console.log("TagChanged:",value)
         setFilterTag(value);
         if(onTagSelect){
-            console.log("calling tags with:", value)
+            // console.log("calling tags with:", value)
             onTagSelect(value);
         }
     }

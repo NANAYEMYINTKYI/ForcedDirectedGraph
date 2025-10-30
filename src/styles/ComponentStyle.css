@@ -64,86 +64,167 @@
   display: flex;
   justify-content: center;
   gap: 25px;
+  background-color: transparent;
 }
+
+.play-button {
+  min-width: 40px !important; 
+  background-color: #f5f5f5 !important; 
+  color: #231f20 !important;
+  border: 1px solid #f5f5f5 !important; 
+  font-weight: 500 !important;    
+}
+
+/* Active track (filled part of slider) */
+.year-slider .MuiSlider-track {
+  color: #2684FF; /* selected part */
+  height: 6px;
+}
+
+/* Inactive track (unfilled part) */
+.year-slider .MuiSlider-rail {
+  color: #54585f; /* unselected */
+  opacity: 1;
+  height: 6px;
+}
+
+/* Base mark style (inactive) */
+.year-slider .MuiSlider-mark {
+  width: 10px;
+  height: 10px;
+  background-color: #54585f; /* unselected mark */
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+/* Active mark (selected/current) */
+.year-slider .MuiSlider-markActive {
+  background-color: #2684FF; /* selected mark */
+}
+
+/* Value label bubble */
+.year-slider .MuiSlider-valueLabel {
+  font-size: large;
+  font-weight: 1000;
+  background-color: #f5f5f5;
+  color: #231f20;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+/* Slider thumb (button) */
+.year-slider .MuiSlider-thumb {
+  height: 24px;
+  width: 24px;
+  background-color: #2684FF; /* main color */
+  border: 2px solid #2684FF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
 
 
 
 
 /* --- ToolBar --- */
+.togglebutton {
+  background: transparent ;
+  border: 0;
+  z-index: 100 ;
+  pointer-events: auto ;
+  font-size: medium;
+  position: relative;
+  line-height: normal;
+  padding: 20px 20px 20px 20px;
+  color: #f5f5f5;
+}
+
 .toolelement {
   background: transparent ;
   border: 0;
-  border-radius: 15px;
+  border-radius: 4px;
   width: 100%;
   text-align: start !important;
-  font-size: large !important;
-  color: black !important;
+  font-size: medium !important;
+  color: #f5f5f5 !important;
   pointer-events: auto ;
   padding: 20px 20px 20px 20px !important;
 }
 
-.toolelement:hover {
-  background: rgba(230, 230, 230, 0.8) ;
+.toolelement:hover, .toolelement.popover-open {
+  background: #f5f5f5 ;
   border: 0;
-  border-radius: 15px;
+  color: #231f20 !important;
+  /* border-radius: 15px; */
   width: 100%;
-  text-align: start;
-  font-size: large;
+}
+
+.popoverelement .MuiPaper-root {
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  background-color: #f5f5f5;
+  margin-left: -10px;
+}
+
+.reset-button {
+  background: #f5f5f5 ;
+  color: black;
+  border: 0;
+  border-radius: 4px;
+  width: calc(100% - 20px);
+  text-align: center !important;
+  font-size: medium !important;
   pointer-events: auto ;
-  padding: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px !important;
+  position: absolute;
+  margin: 10px;
+  bottom: 0;
+  left: 0;
 }
 
-.popoverelement .MuiPaper-root{
-  border-radius: 20px;
-}
-
-.dataset-buttons {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
+.reset-button:hover {
+  background: #dcdcdc;
 }
 
 
 
 
 /* --- Dataset --- */
-.togglebutton {
-  background: rgba(255, 255, 255, 0) ;
-  border: 0;
-  z-index: 100 ;
-  pointer-events: auto ;
-  font-size: large;
-  position: relative;
-  line-height: normal;
-  padding: 20px 20px 20px 20px;
+.dataset-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 4px;
 }
 
 .dataset-btn {
-  width: fit-content;
-  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  width: 100%;
+  background-color: #f8f9fa;
+  /* background: linear-gradient(45deg, #f8f9fa, #e9ecef); */
   border: 2px solid #dee2e6;
   color: #495057;
   padding: 10px 16px;
-  border-radius: 25px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  font-size: 14px;
+  font-size: small;
 }
 
 .dataset-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-color: #667eea;
+  border-color: #2684FF;
 }
 
 .dataset-btn.active {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background-color: #2684FF;
+  /* background: linear-gradient(45deg, #667eea, #764ba2); */
   color: white;
-  border-color: #667eea;
+  border-color: #2684FF;
 }
 
 
@@ -153,7 +234,7 @@
 .selectallbutton {
   background: rgba(0, 0, 0, 0.2) ;
   border: 0;
-  border-radius: 5px;
+  border-radius: 4px;
   color: black;
   padding: 5px 10px;
   margin-top: 5px;
@@ -166,7 +247,11 @@
   flex-direction: column; 
   flex-wrap: wrap;
   gap: 0.5rem; 
-  margin: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
 }
 
 .legendparent {
@@ -177,6 +262,7 @@
   color: black;
   font-size: medium;
 }
+
 .legenditem {
   margin-left: 1rem;
   display: flex;
@@ -202,6 +288,7 @@
   margin-right: 5px;
   transition: 10ms;
 }
+
 .legenditem .Mui-checked .MuiSvgIcon-root {
   color: var(--checkbox-color);
   background-color: var(--checkbox-color);
@@ -217,6 +304,7 @@
   margin-right: 5px;
   transition: 10ms;
 }
+
 .legenditem .MuiSvgIcon-root {
   color: var(--unselected-color);
   background-color: var(--unselected-color);
@@ -224,7 +312,6 @@
   margin-right: 5px;
   transition: 10ms;
 }
-
 
 /* Checked state on hover: dimmed checkbox color */
 .legenditem .MuiCheckbox-root:hover {
