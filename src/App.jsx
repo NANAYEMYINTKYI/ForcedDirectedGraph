@@ -41,14 +41,12 @@ export default function App() {
 
     // handlers
     handleDatasetChange,
-    handleFilterChange,
     handleTitleChange,
     handleConnectionChange,
     toggleToolbar,
     closeDescription,
     handleRangeChange,
     resetFilter,
-    handleCountryChange,
 
     // derived
     FilterData,
@@ -69,12 +67,11 @@ export default function App() {
           datasets={datasets}
           currentDataset={currentDataset}
           handleDatasetChange={handleDatasetChange}
+          filteredData={filteredData}
 
-          FilterData={FilterData}
-          handleFilterChange={handleFilterChange}
-          handleCountryChange={handleCountryChange}
-          filteredData={setFilteredData}
+          filterTag={filterTag}
           setFilterTag={setFilterTag}
+          filterCountry={filterCountry}
           setFilterCountry={setFilterCountry}
 
           projects={projects}

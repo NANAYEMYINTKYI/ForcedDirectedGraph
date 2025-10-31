@@ -44,11 +44,8 @@ const ForceDirectedGraph = ({
   const [isVisible, setIsVisible] = useState(true);
   const [groupsReady, setGroupsReady] = useState(false);
 
-  console.log("Node in graph:", nodes)
-  console.log("Links in graph", links)
-
   //This use to detect whether user active or not
-  const isActive = UserActivityDetector(30000);
+  const isActive = UserActivityDetector(120000);
   useEffect(() => {
     setIsActive(isActive);
   }, [isActive]);
@@ -198,7 +195,7 @@ const ForceDirectedGraph = ({
     // set scale size from svg
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
-      setIsVisible(true); // Hide during zoom
+      setIsVisible(true);
     };
 
     // call zoom function from D3
@@ -211,7 +208,6 @@ const ForceDirectedGraph = ({
     if(!onPlayingChange){
       setIsVisible(false);
     }
-    // console.log("Graph initialized");
     // Save references
     zoomRef.current = zoom;
     groupsRef.current = { svg, g, linkGroup, nodeGroup };
@@ -456,7 +452,6 @@ const ForceDirectedGraph = ({
       .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("collision", d3.forceCollide().radius((d) => (d.size * 4) / 3))
-      // .alpha(2)
       .alpha(onPlayingChange? 1.5 : 3)
       .alphaDecay(0.05)   
       .velocityDecay(0.4);
@@ -487,11 +482,8 @@ const ForceDirectedGraph = ({
             (width / contentBounds.width) * 0.9,
             (height / contentBounds.height) * 0.9
           );
-          // console.log("Finishes scale calculated")
-          // console.log("Calculated scale")
           const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
           const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
-          // console.log("Finished Translate")
           // Create the desired zoom transform
           const transform = d3.zoomIdentity
             .translate(translateX, translateY)
@@ -579,7 +571,6 @@ const ForceDirectedGraph = ({
         const select = nodes.find(
           (n) =>
             n.id.toLowerCase().replace(/\s+/g, "_") ===
-            // selectnode.value.toLowerCase().replace(/\s+/g, "_")
             selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
         if (select) {

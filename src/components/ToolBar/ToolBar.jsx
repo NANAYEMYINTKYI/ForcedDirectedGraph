@@ -15,11 +15,10 @@ const Toolbar = ({
   datasets,
   currentDataset,
   handleDatasetChange,
-  FilterData,
   filteredData,
-  handleFilterChange,
-  handleCountryChange,
+  filterTag,
   setFilterTag,
+  filterCountry,
   setFilterCountry,
   projects,
   connection,
@@ -144,8 +143,8 @@ const Toolbar = ({
           }
         />
       </div>
-      <div>
 
+      <div>
         {/* Tag Filter */}
         <ToolBarButton
           icon = {<Icons.FilterOutlined />}
@@ -156,13 +155,14 @@ const Toolbar = ({
           mounted = {true}
           popoverContent = {
             <TagFilter
-              datasets={datasets}
-              // processedDatasets={processedDatasets}
-              currentDataset={currentDataset}
-              onFilterChange={handleFilterChange}
-              onFilterSelect={setFilterTag}
-              filterType='tag'
-              showCounts={true}
+              datasets = {filteredData}
+              countryDataset={datasets['country']}
+              tag = {filterTag}
+              setTag = {setFilterTag}
+              title = "Search by Tag"
+              placeholder = "Input Tag"
+              showCounts = {true}
+              filterType = "tag"
             />
           }
         />
@@ -179,18 +179,19 @@ const Toolbar = ({
           mounted = {true}
           popoverContent = {
             <TagFilter
-              // processedDatasets={processedDatasets}
-              datasets={datasets}
-              filteredNodes={filteredData.nodes}
-              currentDataset={currentDataset}
-              onCountryChange={handleCountryChange}
-              onCountrySelect={setFilterCountry}
-              filterType='country'
-              showCounts={true}
+              datasets = {filteredData}
+              countryDataset={datasets['country']}  
+              tag = {filterCountry}
+              setTag = {setFilterCountry}
+              title = "Search by Country"
+              placeholder = "Input Country"
+              showCounts = {true}
+              filterType = "country"
             />
           }
         />
       </div>
+
       <div>
         {/* Legend */}
         <ToolBarButton
