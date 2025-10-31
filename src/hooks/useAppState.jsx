@@ -5,6 +5,7 @@ import rawData from "../data/Data.json";
 import { CountryData } from "../utils/TransformDataCountryFunction.jsx";
 import { PeopleData } from "../utils/TransformDataPeopleFunction.jsx";
 import { colorScale } from "../utils/CustomData.jsx";
+import FilterNodesAndLinks from "../helper/FilterNodesAndLinks"
 
 export default function useAppState() {
   // ----- STATE -----
@@ -22,21 +23,18 @@ export default function useAppState() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isActive, setIsActive] = useState(true);
 
+
   // ----- HANDLERS -----
   // Use for handle when dataset change
   const handleDatasetChange = useCallback((key) => {
     setCurrentDataset(key);
+    setFilterTag("")
+    setFilterCountry("")
     setSelectedTitle(null);
     setSelectedConnection(null);
     setSelectedNode(null);
     setShowNode(null);
     setSelectedRoles(colorScale.domain());
-  }, []);
-
-  // Use for handle when filter change
-  const handleFilterChange = useCallback((data) => {
-    setFilteredData(data);
-    setSelectedNode(null);
   }, []);
 
   // Use for handle when change the search title
@@ -117,9 +115,6 @@ export default function useAppState() {
   // Use for define data in graph
   const graphProps = useMemo(
     () => ({
-      datasets,
-      currentDataset,
-      handleDatasetChange,
       nodes: filteredData.nodes,
       links: filteredData.links,
       selectnode: selectedNode,
@@ -133,14 +128,11 @@ export default function useAppState() {
       setIsActive: setIsActive,
     }),
     [
-      datasets,
       currentDataset,
-      handleDatasetChange,
       filteredData.nodes,
       filteredData.links,
       selectedNode,
       isPlaying,
-      showNode,
       selectedRoles,
     ]
   );
@@ -158,20 +150,25 @@ export default function useAppState() {
 
     if (isPlaying) return;
 
-    setIsPlaying(true)
+    setFilterTag("")
+    setFilterCountry("")
+    setSelectedTitle(null)
+    setSelectedConnection(null)
+    setSelectedNode(null)
+    setSelectedRoles(colorScale.domain())
     setShowNode(null)
+    setIsPlaying(true)
     
     if(!isPlaying){
       setYearRange([1999,1999])
     }
   }, [isActive, isPlaying]);
-  
+
   // Reset filter
   const resetFilter = useCallback(() => {
     setYearRange([1999, 2023]);
-    // setFilteredData({ nodes: datasets[currentDataset].nodes, links: datasets[currentDataset].links })
-    // setFilterTag([''])
-    // setFilterCountry([''])
+    setFilterTag("")
+    setFilterCountry("")
     setSelectedTitle(null)
     setSelectedConnection(null)
     setSelectedNode(null)
@@ -179,6 +176,31 @@ export default function useAppState() {
     setShowNode(null)
     setIsPlaying(false)
   }, []);
+
+  // Use to filter graph nodes and links
+  useEffect(() => {
+    if (!datasets || !datasets[currentDataset]) return;
+
+    const base = JSON.parse(JSON.stringify(datasets[currentDataset]));
+    const nodes = base.nodes || [];
+    const links = base.links || [];
+    const countryNodes = datasets["country"]?.nodes || [];
+
+    let filtered = { nodes, links };
+
+    // Apply tag filter
+    if (filterTag) {
+      filtered = FilterNodesAndLinks(filtered.nodes, countryNodes, filtered.links, filterTag);
+    }
+
+    // Apply country filter (AND condition)
+    if (filterCountry) {
+      filtered = FilterNodesAndLinks(filtered.nodes, countryNodes, filtered.links, filterCountry);
+    }
+
+    setFilteredData(filtered);
+    setSelectedNode(null);
+  }, [filterTag, filterCountry, datasets, currentDataset]);
 
   return {
     // state
@@ -211,7 +233,6 @@ export default function useAppState() {
 
     // handlers
     handleDatasetChange,
-    handleFilterChange,
     handleTitleChange,
     handleConnectionChange,
     toggleToolbar,

@@ -39,9 +39,9 @@ export default function ToolBarButton({
           vertical: 'top',
           horizontal: 'right',
         }}
-        PaperProps = {{
-          onMouseLeave: popover.handleClose,
-        }}
+        // PaperProps = {{
+        //   onMouseLeave: popover.handleClose,
+        // }}
         keepMounted = {mounted}
       >
         <div style = {{ margin: '20px' }}>

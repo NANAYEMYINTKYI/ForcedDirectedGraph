@@ -31,8 +31,6 @@ export function CountryData(rawData) {
     return { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
   }
   
-
-
   
   const seenLinks = new Set();
 

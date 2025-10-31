@@ -4,20 +4,21 @@
 import * as Icons from '@ant-design/icons';
 import usePopover from '../../hooks/usePopover.jsx';
 import ToolBarButton from './ToolBarButton.jsx';
-import TagManager from '../../utils/TagManager.jsx';
+import TagFilter from '../Filters/TagFilter.jsx';
 import ListSearch from '../DropDown/ListSearch.jsx';
 import Legend from '../ColorLegend/ColorLegend.jsx';
 import {contributorFields, continentList, contributergroup} from '../../utils/CustomData.jsx';
-import '../../styles/ComponentStyle.css'
-import TagFilter from '../Filters/TagFilter.jsx';
+import '../../styles/ComponentStyle.css';
+
 
 const Toolbar = ({
   datasets,
   currentDataset,
   handleDatasetChange,
-  FilterData,
-  handleFilterChange,
+  filteredData,
+  filterTag,
   setFilterTag,
+  filterCountry,
   setFilterCountry,
   projects,
   connection,
@@ -142,8 +143,8 @@ const Toolbar = ({
           }
         />
       </div>
-      <div>
 
+      <div>
         {/* Tag Filter */}
         <ToolBarButton
           icon = {<Icons.FilterOutlined />}
@@ -153,14 +154,15 @@ const Toolbar = ({
           popover = {tagPopover}
           mounted = {true}
           popoverContent = {
-            <TagManager 
-              datasets={datasets}
-              currentDataset={currentDataset}
-              mabData={FilterData}
-              onFilterChange={handleFilterChange}
-              onTagSelect={setFilterTag}
-              filterType='tag'
-              showCounts={true}
+            <TagFilter
+              datasets = {filteredData}
+              countryDataset={datasets['country']}
+              tag = {filterTag}
+              setTag = {setFilterTag}
+              title = "Search by Tag"
+              placeholder = "Input Tag"
+              showCounts = {true}
+              filterType = "tag"
             />
           }
         />
@@ -176,18 +178,20 @@ const Toolbar = ({
           popover = {countryTagPopover}
           mounted = {true}
           popoverContent = {
-            <TagManager 
-              datasets={datasets}
-              currentDataset={currentDataset}
-              mabData={FilterData}
-              onFilterChange={handleFilterChange}
-              onCountrySelect={setFilterCountry}
-              filterType="country"
-              showCounts={true}
+            <TagFilter
+              datasets = {filteredData}
+              countryDataset={datasets['country']}  
+              tag = {filterCountry}
+              setTag = {setFilterCountry}
+              title = "Search by Country"
+              placeholder = "Input Country"
+              showCounts = {true}
+              filterType = "country"
             />
           }
         />
       </div>
+
       <div>
         {/* Legend */}
         <ToolBarButton

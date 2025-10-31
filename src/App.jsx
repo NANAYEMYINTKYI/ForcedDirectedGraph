@@ -6,6 +6,7 @@ import Toolbar from "./components/ToolBar/ToolBar.jsx";
 import Description from "./components/Description/DrawerDescription.jsx";
 import useAppState from "./hooks/useAppState.jsx";
 import UserActivityDetector from "./utils/UserAction.jsx"
+import TagFilter from "./components/Filters/TagFilter.jsx";
 import "./styles/App.css";
 
 export default function App() {
@@ -40,7 +41,6 @@ export default function App() {
 
     // handlers
     handleDatasetChange,
-    handleFilterChange,
     handleTitleChange,
     handleConnectionChange,
     toggleToolbar,
@@ -64,19 +64,22 @@ export default function App() {
       </header>
       <div className = "toolbar">
         <Toolbar 
-          datasets = {datasets}
-          currentDataset = {currentDataset}
-          handleDatasetChange = {handleDatasetChange}
-          FilterData = {FilterData}
-          handleFilterChange = {handleFilterChange}
-          setFilterTag = {setFilterTag}
-          setFilterCountry = {setFilterCountry}
-          projects = {projects}
-          connection = {connection}
-          handleTitleChange = {handleTitleChange}
-          handleConnectionChange = {handleConnectionChange}
-          selectedTitle = {selectedTitle}
-          selectedConnection = {selectedConnection}
+          datasets={datasets}
+          currentDataset={currentDataset}
+          handleDatasetChange={handleDatasetChange}
+          filteredData={filteredData}
+
+          filterTag={filterTag}
+          setFilterTag={setFilterTag}
+          filterCountry={filterCountry}
+          setFilterCountry={setFilterCountry}
+
+          projects={projects}
+          connection={connection}
+          handleTitleChange={handleTitleChange}
+          handleConnectionChange={handleConnectionChange}
+          selectedTitle={selectedTitle}
+          selectedConnection={selectedConnection}
           toggleToolbar = {toggleToolbar}
           isCollapsed = {isCollapsed}
           selectedRoles = {selectedRoles}
