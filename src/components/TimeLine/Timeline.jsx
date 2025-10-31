@@ -55,7 +55,7 @@ const RangeSlider = ({
           // set next year
           return [1999, currentYear + 1];
         });
-      }, 2000);
+      }, 3000);
     } else {
       // set not playing
       clearInterval(intervalRef.current);

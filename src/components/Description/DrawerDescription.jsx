@@ -18,6 +18,9 @@ const Description = ({
   const listselectedTitle = data.filter(d => d.Title.toLowerCase() === name.toLowerCase());
 
   const selectedNode = listselectedNode[0]
+  if(!selectedNode){
+    return;
+  }
 
 
 

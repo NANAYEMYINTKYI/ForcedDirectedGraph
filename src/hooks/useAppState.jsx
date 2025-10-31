@@ -134,6 +134,7 @@ export default function useAppState() {
       selectedNode,
       isPlaying,
       selectedRoles,
+      showNode
     ]
   );
 
@@ -158,9 +159,14 @@ export default function useAppState() {
     setSelectedRoles(colorScale.domain())
     setShowNode(null)
     setIsPlaying(true)
-    
+
     if(!isPlaying){
-      setYearRange([1999,1999])
+      setIsPlaying(false)
+      const timer = setTimeout(() => {
+        setIsPlaying(true)
+        setYearRange([1999,1999])
+      }, 10000);
+    return () => clearTimeout(timer);
     }
   }, [isActive, isPlaying]);
 

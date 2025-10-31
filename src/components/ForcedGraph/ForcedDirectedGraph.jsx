@@ -459,8 +459,8 @@ const ForceDirectedGraph = ({
       .force("charge", d3.forceManyBody().strength(-chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("collision", d3.forceCollide().radius((d) => (d.size * 4) / 3))
-      .alpha(onPlayingChange? 1.5 : 3)
-      .alphaDecay(0.05)   
+      .alpha(onPlayingChange? 2 : 3)
+      .alphaDecay(onPlayingChange? 0.07 : 0.05)   
       .velocityDecay(0.4);
     
     
@@ -476,7 +476,7 @@ const ForceDirectedGraph = ({
           .attr("transform", (d) => `translate(${d.x},${d.y})`);
 
         const alpha = simulation.alpha()
-        const ALPHA_THRESHOLD = 0.25
+        const ALPHA_THRESHOLD = 0.5
         if(ALPHA_THRESHOLD > alpha && !iszoom && !nodeSelect){
           if(zoomRef.current === true){
             return;
