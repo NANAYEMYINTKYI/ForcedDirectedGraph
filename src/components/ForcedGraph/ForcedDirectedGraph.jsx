@@ -202,7 +202,7 @@ const ForceDirectedGraph = ({
     // set scale size from svg
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
-      setIsVisible(true);
+      // setIsVisible(true);
     };
 
     // call zoom function from D3
