@@ -47,6 +47,7 @@ export default function App() {
     closeDescription,
     handleRangeChange,
     resetFilter,
+    handleClick,
 
     // derived
     FilterData,
@@ -58,7 +59,7 @@ export default function App() {
 
   // UI
   return (
-    <div className = "app">
+    <div className = "app" onClick={handleClick}>
       <header className = "header">
         <h1>MAB Social Graph</h1>
       </header>

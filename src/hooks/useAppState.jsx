@@ -68,6 +68,13 @@ export default function useAppState() {
     setShowNode(null);
   };
 
+  // Use for handle when change year range
+  const handleClick = () => {
+    if(isPlaying === true) {
+      setIsPlaying(false)
+    }
+  };
+  
   // ----- DERIVED -----
   // Use to filter data when change year
   const FilterData = useMemo(() => {
@@ -245,6 +252,7 @@ export default function useAppState() {
     closeDescription,
     handleRangeChange,
     resetFilter,
+    handleClick,
 
     // derived
     FilterData,
