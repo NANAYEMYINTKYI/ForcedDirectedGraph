@@ -477,7 +477,8 @@ const ForceDirectedGraph = ({
 
         const alpha = simulation.alpha()
         const ALPHA_THRESHOLD = 0.5
-        if(ALPHA_THRESHOLD > alpha && !iszoom && !nodeSelect){
+        console.log("I am ticking", alpha)
+        if(ALPHA_THRESHOLD > alpha && !iszoom){
           if(zoomRef.current === true){
             return;
           }       
@@ -511,6 +512,7 @@ const ForceDirectedGraph = ({
       })
 
       .on("end", () => {
+        console.log("stop!!!!!")
         simulation.stop();
       });
 
