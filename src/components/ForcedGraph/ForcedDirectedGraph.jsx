@@ -140,7 +140,27 @@ const ForceDirectedGraph = ({
     svg.transition().duration(750).call(zoom.transform, transform);
   }
   
-    
+  //ZOOM BY RESOLUTION
+  const zoomResolution = ()=>{
+    useEffect (() => {
+      const zoomBehaviour = d3.zoom()
+        .scaleExtent([0.1, 10])
+        .on("zoom", (zoomHandler) => {
+          const {k} = zoomHandler.transform;
+          svg.select("g").atte("tranforms", zoomHandler.transform);
+
+          if(k<1){
+            setResolution("Low")
+          } else if( k>=1 && k<3){
+            setResolution("Medium")
+          } else {
+            setResolution("High");
+          }
+        });
+      svg.call(zoomBehaviour)
+        
+    })
+  } 
 
 
   // HIGHLIGHT NODE FUNCTION

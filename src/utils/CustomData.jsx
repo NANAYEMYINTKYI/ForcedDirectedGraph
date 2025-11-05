@@ -26,9 +26,6 @@ export const colorScale = d3.scaleOrdinal()
      "","","",
      "","","#000000ff"]);
 
-
-
-
 // ----- Data -----
 export const continentList = [
   { groupid: 4, name: "Africa" },
@@ -79,8 +76,6 @@ export function updatedCountriesToContinent() {
 }
 
 
-
-     
 // ----- Image Assets -----
 export function getImages() {
   const imageslist = import.meta.glob("../asset/image/*.{png,jpg,jpeg,svg}", {
