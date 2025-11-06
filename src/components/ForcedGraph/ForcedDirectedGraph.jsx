@@ -482,7 +482,6 @@ const ForceDirectedGraph = ({
           if(zoomRef.current === true){
             return;
           }       
-          console.log("zoooooooooom!")
           const contentBounds = g.node().getBBox();
           if (contentBounds.width === 0 || contentBounds.height === 0) return;
           
