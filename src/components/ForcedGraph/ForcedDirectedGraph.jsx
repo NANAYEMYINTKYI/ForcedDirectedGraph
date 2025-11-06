@@ -39,10 +39,11 @@ const ForceDirectedGraph = ({
 
   // State
   const [chargeStrength, setChargeStrength] = useState(1000);
-  const [linkStrength, setLinkStrength] = useState(0.1);
-  const [centerStrength, setCenterStrength] = useState(0.3);
   const [isVisible, setIsVisible] = useState(true);
   const [groupsReady, setGroupsReady] = useState(false);
+
+  const [currentZoom, setCurrentZoom] = useState(0);
+  const [currentResolution, setCurrentResolution] = useState('low')
 
   //This use to detect whether user active or not
   const isActive = UserActivityDetector(300000);
@@ -116,8 +117,21 @@ const ForceDirectedGraph = ({
     delete d._isRealDrag;
   }, []);
 
-
-
+  // ZOOM SCALE
+  function zoomScale(d){
+    console.log("Links in zoomScale:", links)
+    const connectedLinks = links.filter(l => l.source === d ||  l.target === d);
+    const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
+    let scale;
+    if(connectedNodes.length<3){
+      scale = Math.min(width, height/400);
+      console.log("scale:",scale)
+    } else {
+      scale = Math.min(width, height/800);
+      console.log("scale:",scale)
+    }
+    return scale;
+  }
 
   // ZOOM TO NODE FUNCTION
   function zoomToNode(d, svg, zoom) {
@@ -125,14 +139,8 @@ const ForceDirectedGraph = ({
       console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
       return;
     }
-    const connectedLinks = links.filter(l=> l.source === d || l.target === d);
-    const connectedNodes = connectedLinks.map(l => l.source === d ? l.target : l.source);
-    let scale;
-    if(connectedNodes.length<3){
-      scale = Math.min(width,height/400);
-    } else {
-      scale = Math.min(width, height/800); 
-    }
+    const scale = zoomScale(d); 
+    console.log("Zoomscale:", scale)
     const transform = d3.zoomIdentity
       .translate(width / 2, height / 2)
       .scale(scale)
@@ -140,28 +148,6 @@ const ForceDirectedGraph = ({
     svg.transition().duration(750).call(zoom.transform, transform);
   }
   
-  //ZOOM BY RESOLUTION
-  const zoomResolution = ()=>{
-    useEffect (() => {
-      const zoomBehaviour = d3.zoom()
-        .scaleExtent([0.1, 10])
-        .on("zoom", (zoomHandler) => {
-          const {k} = zoomHandler.transform;
-          svg.select("g").atte("tranforms", zoomHandler.transform);
-
-          if(k<1){
-            setResolution("Low")
-          } else if( k>=1 && k<3){
-            setResolution("Medium")
-          } else {
-            setResolution("High");
-          }
-        });
-      svg.call(zoomBehaviour)
-        
-    })
-  } 
-
 
   // HIGHLIGHT NODE FUNCTION
   function highlightNode(selectedNode, nodeGroup, linkGroup) {
@@ -188,8 +174,72 @@ const ForceDirectedGraph = ({
     }  
   }
 
+  // GET RESOLUTION
+  function getResolution(zoomScale, width, height, totalNodes){    
+    // calculate viewport
+    const viewportWidth = width/zoomScale;
+    const viewportHeight = height/zoomScale;
+    const viewportArea = viewportWidth * viewportHeight;
 
+    // Calculate Radius + area
+    const radius = Math.min(width, height/3)
+    const nodeArea = Math.PI * radius * radius; 
+    const totalNodesArea = nodeArea * totalNodes;
 
+    const densityRatio = totalNodesArea/viewportArea;
+    const pixelperNodes = (radius*2*zoomScale)
+
+    //Scale Factor increases with node count ti require more zoom
+    const scaleFactor = Math.log10(totalNodes+1);
+    //Calculate dynamic zoom threshoulds
+    const lowToMediumZoom = scaleFactor*0.5;
+    const mediumToHighZoom = scaleFactor*1.2;
+
+    let resolution;
+    if(zoomScale<lowToMediumZoom){
+      resolution = 'low';
+    } else if(zoomScale < mediumToHighZoom){
+      resolution = 'medium';
+    } else {
+      resolution = 'high';
+    }
+
+    //Override if the density is extreme, force to low resolution
+    if(densityRatio > 0.8 && zoomScale<2){
+      resolution = 'low';
+    }
+
+    // Override if nodes are tiny on screen, no point in high res
+    if(pixelperNodes < 40){
+      resolution = 'low'
+    } else if (pixelperNodes < 80 && resolution === 'high'){
+      resolution = 'high'
+    }
+
+    return resolution;
+
+  }
+
+  // GET RENDERING SIZE BASED ON RESOLUTION
+  function getImageRenderSize (resolution){
+    const sizes = {
+      low: 32,
+      medium: 64,
+      high: 128
+    };
+    return sizes[resolution]
+  }
+
+  // Update node iamges based on resolution
+  function updateNodesImage (newResolution){
+    if(!groupsRef.current?.nodeGroup){
+      return ;
+    }
+
+    groupsRef.current.nodeGroup
+      .selectAll()
+
+  }
 
   // SET COLOR FUNCTION
   function setcolor(d) {
@@ -205,7 +255,7 @@ const ForceDirectedGraph = ({
       : null;
     return color;
   }
-
+ 
 
 
 
@@ -213,16 +263,38 @@ const ForceDirectedGraph = ({
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg
     svg.selectAll("*").remove(); // Clear previous content
+    console.log("nodes:",nodes)
+    // Calculate totalNodes
+    const totalNodes  = nodes.length;
+    console.log("NodeCount:", totalNodes)
+    
+    // Calculate initial resolution
+    const resolution = getResolution(0, width, height, totalNodes);
+    setCurrentResolution(resolution);
 
     // create groups
     const g = svg.append("g").attr("class", "graph-group");
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
 
+    // Store last resolution to detect changes
+    let lastResolution = resolution;
+
     // set scale size from svg
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
       setIsVisible(true);
+      
+      //Get current zoom scale
+      const zoomScale = event.transform.k;
+      // Recalculate resolution based on zoom
+      const newResolution = getResolution(zoomScale, width, height, totalNodes)
+      if(newResolution !== lastResolution){
+        setCurrentResolution(newResolution);
+        lastResolution=newResolution;
+        updateNodesImage(newResolution)
+      }
+      
     };
 
     // call zoom function from D3
@@ -301,7 +373,26 @@ const ForceDirectedGraph = ({
     const node = nodeGroup
       .selectAll("g")
       .data(nodes, d => d.id);
-  
+    
+    // APPEND DEFS ONCE
+    const defs  = svg.select("defs").empty() ? svg.append("defs") : svg.select("defs");
+
+    // CREATE PATTERN FOR NODE IMAGE
+    nodes.forEach((d,i)=> {
+      if(!defs.select(`pattern-${i}`).size()){
+        defs.append("pattern")
+          .attr("id", `pattern-${i}`)
+          .attr("patternUnits", "objectBoundingBox")
+          .attr("width",1)
+          .attr("height",1)
+          .append("image")
+            .attr("href", d.file)
+            .attr("presercedAspectRatio","xMudYMid slice") // xMudYMid make the image centers and slice make the image fill full size
+            .attr("width",1)
+            .attr("height",1)
+            .style("image-rendering",currentResolution === 'low' ? 'auto':'pixelated');    
+        }
+    })
     // EXIT nodes
     node.exit().remove();
 
@@ -317,40 +408,43 @@ const ForceDirectedGraph = ({
           .on("end", dragended)
       );
 
-    // Set up clipPath
-    nodeEnter
-      .append("clipPath")
-      .attr("id", (d) => `circle-clip-${d.size}`) // unique id per node
-      .append("circle")
-      .attr("r", (d) => d.size);
+    // // Set up clipPath
+    // nodeEnter
+    //   .append("clipPath")
+    //   .attr("id", (d) => `circle-clip-${d.size}`) // unique id per node
+    //   .append("circle")
+    //   .attr("r", (d) => d.size);
 
     // Create circle
     nodeEnter
       .append("circle")
       .attr("class", "node-circle") 
-      .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
+      // .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
+      .attr("fill", (d,i)=> d.file ? `url(#pattern-${i})`: (setcolor(d) ? colorScale(setcolor(d)):graphcolor.inactive))
       .attr("stroke", graphcolor.circlestroke)
       .attr("stroke-width", graphcolor.circlestrokesize)
       .style("cursor", "pointer")
       .attr("r", (d) => d.size);
     
-    // Style circle
-    nodeEnter
-      .each(function (d) {
-        const current = d3.select(this);
-        if (d.file) {
-          // If image exists, append image
-          current
-            .append("image")
-            .attr("href", (d) => image[d.file])
-            .attr("x", (d) => -d.size * 1.5)
-            .attr("y", (d) => -d.size * 1.5)
-            .attr("width", (d) => d.size * 3)
-            .attr("height", (d) => d.size * 3)
-            .attr("clip-path", (d) => `url(#circle-clip-${d.size})`)
-            .style("cursor", "pointer");
-        }
-      })
+    // // Style circle
+    // nodeEnter
+    //   .each(function (d) {
+    //     const current = d3.select(this);
+    //     if (d.file) {
+    //       // If image exists, append image
+    //       current
+    //         .append("image")
+    //         // .attr("href", (d) => image[d.file])
+    //         .attr("href", (d) => d.file)
+    //         .attr("x", (d) => -d.size * 1.5)
+    //         .attr("y", (d) => -d.size * 1.5)
+    //         .attr("width", (d) => d.size * 3)
+    //         .attr("height", (d) => d.size * 3)
+    //         .attr("clip-path", (d) => `url(#circle-clip-${d.size})`)
+    //         .style("cursor", "pointer")
+    //         // .style("image-rendering", currentResolution === 'low' ? 'auto':'crisp-edges');
+    //     }
+    //   })
 
     // Aligh text in node to be center
     nodeEnter.append("foreignObject")
