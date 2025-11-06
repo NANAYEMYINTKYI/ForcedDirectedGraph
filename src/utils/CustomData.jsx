@@ -88,10 +88,17 @@ export function getImages() {
   });
 
   const image = {};
-  
+
   Object.keys(imageslist).forEach((path) => {
     const fileName = path.split("/").pop();
-    image[fileName] = imageslist[path].default || imageslist[path];
+    const src = imageslist[path].default || imageslist[path];
+
+    // Store reference
+    image[fileName] = src;
+
+    // Preload 
+    const img = new Image();
+    img.src = src;
   });
 
   return image;

@@ -19,16 +19,6 @@ export default function UserActivityDetector(inactivityTimeout = 5000) {
         }
     }, [isActive]);
   
-    const registerZoom = useCallback(
-        (zoomBehavior) => {
-            if (!zoomBehavior || !zoomBehavior.on) return;
-            zoomBehavior
-                .on("start.activity", updateActivity)
-                .on("zoom.activity", updateActivity)
-                .on("end.activity", updateActivity);
-        },[updateActivity]
-    );
-  
     useEffect(() => {
         let isPointerDown = false;
     
