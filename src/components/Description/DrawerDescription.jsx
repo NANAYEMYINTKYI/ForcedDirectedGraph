@@ -39,12 +39,12 @@ const Description = ({
           <h3>Description </h3>
           {project.Description}<br />
           <Tags tagString = {project.Tag} />
-          <a
+          {/* <a
             href = {project.URL}
             style = {{ display: 'block', textAlign: 'right' }}
           >
             More about {project.Title}...
-          </a>
+          </a> */}
           <hr className = "section-line" />
           <h3>Contributer </h3>
           <ul style = {{ listStyle: 'none' }}>
@@ -96,12 +96,12 @@ const Description = ({
                 }}
               >
                 <h3 style = {{ textAlign: 'center', marginBottom: '2.5px' }}>
-                  <a
+                  {/* <a
                     href = {matched.url}
                     style = {{ color: 'black' }}
-                  >
-                    {projectTitle}
-                  </a>
+                  > */}
+                    <u>{projectTitle}</u>
+                  {/* </a> */}
                 </h3>
                 <img
                   src = {image[matched.file]}
@@ -145,12 +145,12 @@ const Description = ({
               >
                 {/* Project Title with Link */}
                 <h3 style = {{ textAlign: 'center', marginBottom: '5px' }}>
-                  <a
+                  {/* <a
                     href = {projectTitle.url}
                     style = {{ color: 'black' }}
-                  >
-                    {projectTitle.label}
-                  </a>
+                  > */}
+                    <u>{projectTitle.label}</u>
+                  {/* </a> */}
                 </h3>
                 {/* Project Location */}
                 <p style = {{ textAlign: 'center', marginBottom: '5px', fontStyle: 'italic' }}>
