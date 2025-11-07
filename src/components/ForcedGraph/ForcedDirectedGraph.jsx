@@ -43,7 +43,7 @@ const ForceDirectedGraph = ({
   const [groupsReady, setGroupsReady] = useState(false);
 
   const [currentZoom, setCurrentZoom] = useState(0);
-  const [currentResolution, setCurrentResolution] = useState('low')
+  const [currentResolution, setCurrentResolution] = useState('medium')
 
   //This use to detect whether user active or not
   const isActive = UserActivityDetector(300000);
@@ -189,9 +189,9 @@ const ForceDirectedGraph = ({
     const densityRatio = totalNodesArea/viewportArea;
     const pixelperNodes = (radius*2*zoomScale)
 
-    //Scale Factor increases with node count ti require more zoom
+    //Scale Factor increases with node count to require more zoom
     const scaleFactor = Math.log10(totalNodes+1);
-    //Calculate dynamic zoom threshoulds
+    //Calculate dynamic zoom thresholds
     const lowToMediumZoom = scaleFactor*0.5;
     const mediumToHighZoom = scaleFactor*1.2;
 
@@ -216,6 +216,16 @@ const ForceDirectedGraph = ({
       resolution = 'high'
     }
 
+      // 🔍 Debug logging
+    console.log(
+      `%c[Resolution Check]`,
+      "color: #4CAF50; font-weight: bold;",
+      `Zoom: ${zoomScale.toFixed(2)},`,
+      `Nodes: ${totalNodes},`,
+      `Density: ${densityRatio.toFixed(3)},`,
+      `Pixel/Node: ${pixelperNodes.toFixed(1)},`,
+      `→ Resolution: ${resolution.toUpperCase()}`
+    );
     return resolution;
 
   }
@@ -230,15 +240,20 @@ const ForceDirectedGraph = ({
     return sizes[resolution]
   }
 
-  // Update node iamges based on resolution
-  function updateNodesImage (newResolution){
-    if(!groupsRef.current?.nodeGroup){
-      return ;
-    }
+  // 3️⃣ UPDATE NODE IMAGES (REUSE DOM, NO REAPPEND)
+  function updateNodeImage(currentResolution, zoomScale) {
+    const nodeGroup = groupsRef.current?.nodeGroup;
+    if (!nodeGroup) return;
 
-    groupsRef.current.nodeGroup
-      .selectAll()
+    const renderSize = getImageRenderSize(currentResolution);
 
+    nodeGroup
+      .selectAll("image")
+      .attr("width", d => renderSize)
+      .attr("height", d => renderSize)
+      .attr("x", d => -renderSize / 2)
+      .attr("y", d => -renderSize / 2)
+      .style("image-rendering", currentResolution === "low" ? "auto" : "crisp-edges");
   }
 
   // SET COLOR FUNCTION
@@ -292,7 +307,7 @@ const ForceDirectedGraph = ({
       if(newResolution !== lastResolution){
         setCurrentResolution(newResolution);
         lastResolution=newResolution;
-        updateNodesImage(newResolution)
+        updateNodeImage(newResolution)
       }
       
     };
@@ -373,32 +388,14 @@ const ForceDirectedGraph = ({
     const node = nodeGroup
       .selectAll("g")
       .data(nodes, d => d.id);
-    
-    // APPEND DEFS ONCE
-    const defs  = svg.select("defs").empty() ? svg.append("defs") : svg.select("defs");
-
-    // CREATE PATTERN FOR NODE IMAGE
-    nodes.forEach((d,i)=> {
-      if(!defs.select(`pattern-${i}`).size()){
-        defs.append("pattern")
-          .attr("id", `pattern-${i}`)
-          .attr("patternUnits", "objectBoundingBox")
-          .attr("width",1)
-          .attr("height",1)
-          .append("image")
-            .attr("href", d.file)
-            .attr("presercedAspectRatio","xMudYMid slice") // xMudYMid make the image centers and slice make the image fill full size
-            .attr("width",1)
-            .attr("height",1)
-            .style("image-rendering",currentResolution === 'low' ? 'auto':'pixelated');    
-        }
-    })
+  
     // EXIT nodes
     node.exit().remove();
 
     // ENTER nodes
     const nodeEnter = node.enter()
       .append("g")
+      .attr("class", "node")
       .attr("opacity", 0)
       .attr("transform", d => `translate(${d.x || width/2},${d.y || height/2})`)
       .call(
@@ -419,32 +416,32 @@ const ForceDirectedGraph = ({
     nodeEnter
       .append("circle")
       .attr("class", "node-circle") 
-      // .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
-      .attr("fill", (d,i)=> d.file ? `url(#pattern-${i})`: (setcolor(d) ? colorScale(setcolor(d)):graphcolor.inactive))
+      .attr("fill", (d) => {return setcolor(d) ? colorScale(setcolor(d)) : graphcolor.inactive})
       .attr("stroke", graphcolor.circlestroke)
       .attr("stroke-width", graphcolor.circlestrokesize)
       .style("cursor", "pointer")
       .attr("r", (d) => d.size);
+
     
-    // // Style circle
-    // nodeEnter
-    //   .each(function (d) {
-    //     const current = d3.select(this);
-    //     if (d.file) {
-    //       // If image exists, append image
-    //       current
-    //         .append("image")
-    //         // .attr("href", (d) => image[d.file])
-    //         .attr("href", (d) => d.file)
-    //         .attr("x", (d) => -d.size * 1.5)
-    //         .attr("y", (d) => -d.size * 1.5)
-    //         .attr("width", (d) => d.size * 3)
-    //         .attr("height", (d) => d.size * 3)
-    //         .attr("clip-path", (d) => `url(#circle-clip-${d.size})`)
-    //         .style("cursor", "pointer")
-    //         // .style("image-rendering", currentResolution === 'low' ? 'auto':'crisp-edges');
-    //     }
-    //   })
+    // Style circle
+    nodeEnter
+      .each(function (d) {
+        const current = d3.select(this);
+        if (d.file) {
+          // If image exists, append image
+          current
+            .append("image")
+            // .attr("href", (d) => image[d.file])
+            .attr("href", (d) => d.file)
+            .attr("x", (d) => -d.size * 1.5)
+            .attr("y", (d) => -d.size * 1.5)
+            .attr("width", (d) => d.size * 3)
+            .attr("height", (d) => d.size * 3)
+            .attr("clip-path", (d) => `url(#circle-clip-${d.size})`)
+            .style("cursor", "pointer")
+            // .style("image-rendering", currentResolution === 'low' ? 'auto':'crisp-edges');
+        }
+      })
 
     // Aligh text in node to be center
     nodeEnter.append("foreignObject")
