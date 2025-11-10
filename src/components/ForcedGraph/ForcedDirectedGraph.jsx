@@ -182,87 +182,6 @@ const ForceDirectedGraph = ({
     }  
   }
 
-  // GET RESOLUTION
-  // function getResolution(zoomScale, width, height, totalNodes){
-  //   // // calculate viewport
-  //   // const viewportWidth = width/zoomScale;
-  //   // const viewportHeight = height/zoomScale;
-  //   // const viewportArea = viewportWidth * viewportHeight;
-
-  //   // // Calculate Radius + area
-  //   // const radius = Math.min(width, height/3)
-  //   // const nodeArea = Math.PI * radius * radius; 
-  //   // const totalNodesArea = nodeArea * totalNodes;
-
-  //   // const densityRatio = totalNodesArea/viewportArea;
-  //   // const pixelperNodes = (radius*2*zoomScale)
-
-  //   //Scale Factor increases with node count to require more zoom
-  //   const scaleFactor = Math.log10(totalNodes+1);
-
-  //   //Calculate dynamic zoom thresholds
-  //   const lowToMediumZoom = scaleFactor*0.5;
-  //   const mediumToHighZoom = scaleFactor*1.2;
-
-  //   let resolution;
-  //   if(zoomScale<lowToMediumZoom){
-  //     resolution = 'low';
-  //   } else if(zoomScale < mediumToHighZoom){
-  //     resolution = 'medium';
-  //   } else {
-  //     resolution = 'high';
-  //   }
-
-  //   //Override if the density is extreme, force to low resolution
-  //   if(densityRatio > 0.8 && zoomScale<2){
-  //     resolution = 'low';
-  //   }
-
-  //   // Override if nodes are tiny on screen, no point in high res
-  //   if(pixelperNodes < 40){
-  //     resolution = 'low'
-  //   } else if (pixelperNodes < 80 && resolution === 'high'){
-  //     resolution = 'high'
-  //   }
-
-  //   console.log(
-  //     `%c[Resolution Check]`,
-  //     "color: #4CAF50; font-weight: bold;",
-  //     `Zoom: ${zoomScale.toFixed(2)},`,
-  //     `Nodes: ${totalNodes},`,
-  //     `Density: ${densityRatio.toFixed(3)},`,
-  //     `Pixel/Node: ${pixelperNodes.toFixed(1)},`,
-  //     `→ Resolution: ${resolution.toUpperCase()}`
-  //   );
-  //   return resolution;
-  // }
-
-  // GET RENDERING SIZE BASED ON RESOLUTION
-  // function getImageRenderSize (resolution){
-  //   const sizes = {
-  //     low: 64,
-  //     medium: 128,
-  //     high: 256
-  //   };
-  //   return sizes[resolution]
-  // }
-
-  // UPDATE NODE IMAGES (REUSE DOM, NO REAPPEND)
-  // function updateNodeImage(currentResolution) {
-  //   const nodeGroup = groupsRef.current?.nodeGroup;
-  //   if (!nodeGroup) return;
-
-  //   const renderSize = getImageRenderSize(currentResolution);
-
-  //   nodeGroup
-  //     .selectAll("image")
-  //     .attr("width", d => renderSize)
-  //     .attr("height", d => renderSize)
-  //     .attr("x", d => -renderSize / 2)
-  //     .attr("y", d => -renderSize / 2)
-  //     .style("image-rendering", currentResolution === "low" ? "auto" : "crisp-edges");
-  // }
-
   // SET COLOR FUNCTION
   function setcolor(d) {
     if(d.group === 18){
@@ -286,31 +205,18 @@ const ForceDirectedGraph = ({
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
     
-    // Calculate initial resolution
-    // const resolution = getResolution(1, width, height, totalNodes);
-    // setCurrentResolution(resolution);
 
     // create groups
     const g = svg.append("g").attr("class", "graph-group");
     const linkGroup = g.append("g").attr("class", "links");
     const nodeGroup = g.append("g").attr("class", "nodes");
 
-    // Store last resolution to detect changes
-    // let lastResolution = resolution;
 
     // Zoom handler
     const zoomHandler = (event) => {
       g.attr("transform", event.transform);
       setIsVisible(true);
       
-      // const zoomScale = event.transform.k;
-      // const newResolution = getResolution(zoomScale, width, height, totalNodes)
-      
-      // if(newResolution !== lastResolution){
-      //   setCurrentResolution(newResolution);
-      //   lastResolution = newResolution;
-      //   updateNodeImage(newResolution)
-      // }
     };
 
     // Create zoom behavior
@@ -395,12 +301,12 @@ const ForceDirectedGraph = ({
           .on("end", dragended)
       );
     
-    // Set up clipPath
-    // nodeEnter
-    //   .append("clipPath")
-    //   .attr("id", (d) => `circle-clip-${d.size}`) // unique id per node
-    //   .append("circle")
-    //   .attr("r", (d) => d.size);
+    //Set up clipPath
+    nodeEnter
+      .append("clipPath")
+      .attr("id", (d) => `circle-clip-${d.size}`) // unique id per node
+      .append("circle")
+      .attr("r", (d) => d.size);
 
 
     // Create circle (only for new nodes)
