@@ -199,11 +199,9 @@ const ForceDirectedGraph = ({
       if (!label) return;
 
       const words = label.split(/\s+/);
-
       const width = d.size * 2;
       const fontSize = parseFloat(text.style("font-size"));
       const lineHeightPx = fontSize * 1.5;
-
       const yBase = d.file ? 9 * d.size / 8 + 10 : d.size / 8;
 
       const lines = [];

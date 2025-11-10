@@ -136,8 +136,7 @@ export default function useAppState() {
     }),
     [
       currentDataset,
-      filteredData.nodes,
-      filteredData.links,
+      filteredData,
       selectedNode,
       isPlaying,
       selectedRoles,
