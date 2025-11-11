@@ -89,7 +89,7 @@ export function getImages() {
 
   const image = {};
 
-  Object.keys(imageslist).forEach((path) => {
+  for (const path in imageslist) {
     const fileName = path.split("/").pop();
     const src = imageslist[path].default || imageslist[path];
 
@@ -99,7 +99,7 @@ export function getImages() {
     // Preload 
     const img = new Image();
     img.src = src;
-  });
+  };
 
   return image;
 }

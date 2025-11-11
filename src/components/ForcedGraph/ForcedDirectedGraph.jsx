@@ -44,7 +44,10 @@ const ForceDirectedGraph = ({
   const [isVisible, setIsVisible] = useState(true);
   const [groupsReady, setGroupsReady] = useState(false);
 
-  //This use to detect whether user active or not
+
+
+
+  // This use to detect whether user active or not
   const isActive = UserActivityDetector(300000);
   useEffect(() => {
     setIsActive(isActive);
@@ -189,6 +192,55 @@ const ForceDirectedGraph = ({
 
 
 
+  function wrapText(selection) {
+    selection.each(function(d) {
+      const text = d3.select(this);
+      const label = (d.label || "").trim();
+      if (!label) return;
+
+      const words = label.split(/\s+/);
+      const width = d.size * 2;
+      const fontSize = parseFloat(text.style("font-size"));
+      const lineHeightPx = fontSize * 1.5;
+      const yBase = d.file ? 9 * d.size / 8 + 10 : d.size / 8;
+
+      const lines = [];
+      let line = [];
+
+      text.text(null);
+      let tspan = text.append("tspan").attr("x", 0).text("");
+
+      for (let i = 0; i < words.length; i++) {
+        line.push(words[i]);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > width && line.length > 1) {
+          line.pop();
+          tspan.text(line.join(" "));
+          lines.push(line.join(" "));
+          line = [words[i]];
+          tspan = text.append("tspan").attr("x", 0).text(words[i]);
+        } else if (i === words.length - 1) {
+          lines.push(line.join(" "));
+        }
+      }
+
+      const numLines = lines.length;
+      text.text(null);
+
+      const offsetY = d.file ? yBase : yBase - ((numLines - 1) / 2) * lineHeightPx;
+      
+        lines.forEach((l, i) => {
+          text.append("tspan")
+            .attr("x", 0)
+            .attr("y", offsetY + i * lineHeightPx)
+            .text(l);
+        });
+    });
+  }
+
+
+
+
   // INITIALIZE GRAPH
   useEffect(() => {
     const svg = d3.select(svgRef.current); // select the current node and link into svg
@@ -200,18 +252,35 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
 
     // set scale size from svg
-    const zoomHandler = (event) => {
-      g.attr("transform", event.transform);
-      // setIsVisible(true);
-    };
+    let ticking = false;
+    let lastCall = 0;
+    let currentTransform = d3.zoomIdentity;
+
+    function zoomHandler(event) {
+      // g.attr("transform", event.transform);
+      currentTransform = event.transform;
+
+      // Throttle updates (every 30ms max)
+      const now = Date.now();
+      if (now - lastCall < 30) return;
+      lastCall = now;
+
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          g.attr("transform", currentTransform);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
 
     // call zoom function from D3
     const zoom = d3
       .zoom()
-      .scaleExtent([0.01, 20]) 
+      .scaleExtent([0.1, 10]) 
       .on("zoom", zoomHandler);
     svg.call(zoom);
-
+    
     if(!onPlayingChange){
       setIsVisible(false);
     }
@@ -229,9 +298,6 @@ const ForceDirectedGraph = ({
   // CREATE AND UPDATE GRAPH WITH FORCE
   useEffect(() => {
     if (!groupsReady) return;
-
-
-
 
     let iszoom = false;
     const zoom = zoomRef.current;
@@ -333,31 +399,28 @@ const ForceDirectedGraph = ({
       })
 
     // Aligh text in node to be center
-    nodeEnter.append("foreignObject")
+    nodeEnter.append("text")
       .each(function(d) {
-        const current = d3.select(this);
+        const current = d3.select(this)
+          .attr("text-anchor", "middle")
+          .attr("alignment-baseline", "middle")
+          .style("user-select", "none");
+
         if (d.file) {
-          current.attr("y", d.size + 5)
-          .style("font-size", "12px")
-          .style("color", graphcolor.nodetext)
+          current
+            .style("font-size", "12px")
+            .style("fill", graphcolor.nodetext);
         } else {
-          current.attr("y", -50)
-          .style("font-size", d => d.size/4)
-          .style("color", graphcolor.connectiontext)
-        }})
-      .attr("x", d => -d.size*1)
-      .attr("width", d => d.size*2) 
-      .attr("height", 100) 
-      .append("xhtml:div")
-      .style("display", "flex")
-      .style("flex-direction", "column")
-      .style("justify-content", d => d.file ? "flex-start" : "center")
-      .style("width", "100%")
-      .style("height", "100%")
-      .style("text-align", "center")
-      .style("word-wrap", "break-word")
-      .style("user-select", "none")
+          current
+            .style("font-size", d.size / 4)
+            .style("fill", graphcolor.connectiontext);
+        }
+      })
       .text(d => d.label)
+      .call(wrapText);
+
+
+
 
     nodeEnter.transition()
       .duration(500)
@@ -388,15 +451,11 @@ const ForceDirectedGraph = ({
       }
 
       // Update text box position & size
-      const textBox = node.select("foreignObject");
-      if (!textBox.empty()) {
-        textBox
-          .attr("x", -d.size)
-          .attr("width", d.size * 2)
-          .attr("y", d.file ? d.size + 5 : -50)
-          .select("div")
-          .style("font-size", d.file ? "12px" : `${d.size / 4}px`);
-      }
+      const textBox = node.select("text");
+      textBox
+        .style("font-size", d => d.file ? "12px" : `${d.size / 4}px`)
+        .text(d => d.label)
+        .call(wrapText);
     });
 
     
@@ -485,11 +544,11 @@ const ForceDirectedGraph = ({
           if (contentBounds.width === 0 || contentBounds.height === 0) return;
           
           const scale = Math.min(
-            (width / contentBounds.width) * 0.9,
-            (height / contentBounds.height) * 0.9
+            (width / contentBounds.width) * 0.8,
+            (height / contentBounds.height) * 0.8
           );
-          const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
-          const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
+          const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale ;
+          const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale - 75 ;
           // Create the desired zoom transform
           const transform = d3.zoomIdentity
             .translate(translateX, translateY)
