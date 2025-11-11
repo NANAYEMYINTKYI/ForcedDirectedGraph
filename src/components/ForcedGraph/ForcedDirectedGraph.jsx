@@ -252,14 +252,32 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
 
     // set scale size from svg
-    const zoomHandler = (event) => {
-      g.attr("transform", event.transform);
-    };
+    let ticking = false;
+    let lastCall = 0;
+    let currentTransform = d3.zoomIdentity;
+
+    function zoomHandler(event) {
+      // g.attr("transform", event.transform);
+      currentTransform = event.transform;
+
+      // Throttle updates (every 30ms max)
+      const now = Date.now();
+      if (now - lastCall < 30) return;
+      lastCall = now;
+
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          g.attr("transform", currentTransform);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
 
     // call zoom function from D3
     const zoom = d3
       .zoom()
-      .scaleExtent([0.01, 20]) 
+      .scaleExtent([0.1, 10]) 
       .on("zoom", zoomHandler);
     svg.call(zoom);
     
@@ -526,11 +544,11 @@ const ForceDirectedGraph = ({
           if (contentBounds.width === 0 || contentBounds.height === 0) return;
           
           const scale = Math.min(
-            (width / contentBounds.width) * 0.9,
-            (height / contentBounds.height) * 0.9
+            (width / contentBounds.width) * 0.8,
+            (height / contentBounds.height) * 0.8
           );
-          const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale;
-          const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale;
+          const translateX = (width - contentBounds.width * scale) / 2 - contentBounds.x * scale ;
+          const translateY = (height - contentBounds.height * scale) / 2 - contentBounds.y * scale - 75 ;
           // Create the desired zoom transform
           const transform = d3.zoomIdentity
             .translate(translateX, translateY)

@@ -22,3 +22,9 @@
   background: #231f20;
   cursor: grab;
 }
+
+line, circle, rect, path {
+  vector-effect: none;
+}
+
+
