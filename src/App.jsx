@@ -62,6 +62,9 @@ export default function App() {
       <header className = "header">
         <h1>MAB Social Graph</h1>
       </header>
+      <div className = "filter-container" >
+        <h3>Filter</h3>
+      </div>
       <div className = "toolbar">
         <Toolbar 
           datasets={datasets}

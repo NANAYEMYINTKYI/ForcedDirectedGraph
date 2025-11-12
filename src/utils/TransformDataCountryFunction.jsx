@@ -10,26 +10,51 @@ import {defaultContinent, continentList, updatedCountriesToContinent} from './Cu
 export function CountryData(rawData) {
   const countryToContinent = updatedCountriesToContinent()
 
+  const groupCache = new Map();
   // DEFINE GROUP AND CONTINENT
   function setGroup(location, isproject = false) {
     if (isproject) return { groupid: 18, name: "Project", idx: 18 };
     if (!location) return { groupid: 8, name: "Unknown", idx: 8 };
 
-    const entry = countryToContinent.find(
-      (c) => c.country.toLowerCase() === location.toLowerCase()
-    );
+    const key = location.toLowerCase();
+    if (groupCache.has(key)) return groupCache.get(key);
     
-    if (!entry) return { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
+    const entry = countryToContinent.find(
+      (c) => c.country.toLowerCase() === key
+    );
+    let result;
 
-    const foundIndex = continentList.findIndex(c => c.name === entry.continent);
-    const found = continentList[foundIndex];
-
-    if (found) {
-      return { ...found, idx: foundIndex + 1 };
+    if (!entry) {
+      result = { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
+    } else {
+      const foundIndex = continentList.findIndex(c => c.name === entry.continent);
+      result = foundIndex >= 0 ? { ...continentList[foundIndex], idx: foundIndex + 1 } : { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
     }
 
-    return { ...defaultContinent, idx: defaultContinent.groupid ?? 8 };
+    groupCache.set(key, result);
+    return result;
   }
+
+  // GET TYPE TAGS
+  function getType(tag, location) {
+
+    // Clean and split tags
+    const tags = tag
+      .replace(/[\[\]#']/g, '')
+      .split(',')
+      .map(t => t.trim())
+      .filter(Boolean);
+
+    // Clean and split location
+    const loclist = (location || "")
+      .split(",")
+      .map(s => s.trim())
+      .filter(Boolean);
+
+    return tags.filter(t => !/^\d{4}$/.test(t) && !loclist.some(l => l.toLowerCase() === t.toLowerCase()));
+  }
+
+
   
   
   const seenLinks = new Set();
@@ -77,6 +102,9 @@ export function CountryData(rawData) {
         group: 18
       };
     }
+      // Having this to handle image of same title but different projects
+      item.file = item.URL.split("/")[5] + ".jpg";
+      item.type = getType(item.Tag, item.Location).join(", ")
   });
 
   // CREATE NODES FOR CONTRIBUTORS (CONNECTION NODE)
@@ -103,12 +131,12 @@ export function CountryData(rawData) {
   });
 
   // Count occurrences to adjust node size
-  links.forEach((link) => {
-    if (nodeMap[link.source]) {
-      nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 4, 100);
+  links.forEach(({ source, target }) => {
+    if (nodeMap[source]) {
+      nodeMap[source].size = Math.min(nodeMap[source].size + 4, 100);
     }
-    if (nodeMap[link.target]) {
-      nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 4, 100);
+    if (nodeMap[target]) {
+      nodeMap[target].size = Math.min(nodeMap[target].size + 4, 100);
     }
   });
 

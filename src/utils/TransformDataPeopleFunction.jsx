@@ -15,7 +15,6 @@ export function PeopleData(rawData) {
 
     contributorFields.forEach((field, idx) => {
       let value = title[field.oldname];
-      // let value = title[field];
 
       if (
         // Ignore empty or invalid values
@@ -24,7 +23,8 @@ export function PeopleData(rawData) {
         !["n/a", "none", "na", "/"].includes(String(value).trim().toLowerCase())
       ) {
         // Clean parentheses
-        let cleaned = String(value).trim().replace(/\s*\([^)]*\)/g, "");
+        let cleaned = String(value).trim()
+          .replace(/\s*\([^)]*\)/g, "");
 
         // Normalize to all lower case
         const lowerCleaned = cleaned.toLowerCase();
@@ -33,14 +33,12 @@ export function PeopleData(rawData) {
         if (lowerCleaned.includes(".com") || lowerCleaned.includes(".net")) return;
 
         // Remove &amp and AV&C (case-insensitive)
-        cleaned = cleaned.replace(/amp/gi, "");
-        cleaned = cleaned.replace(/AV&C/gi, "");
-
         // Replace comma unless followed by exact suffixes (case-insensitive)
-        cleaned = cleaned.replace(/, (?!(inc\b|ltd\b|llc\b|corp\b|co\b))/gi, "|");
-
         // Replace /, \, &, ; with |
-        cleaned = cleaned.replace(/[\\\/&;] /g, "|");
+        cleaned = cleaned.replace(/amp/gi, "")
+          .replace(/AV&C/gi, "")
+          .replace(/, (?!(inc\b|ltd\b|llc\b|corp\b|co\b))/gi, "|")
+          .replace(/[\\\/&;] /g, "|");
 
         // Create contributer fields in rawData
         cleaned
@@ -109,52 +107,47 @@ export function PeopleData(rawData) {
           group: 18
         };
       }
-      // Having this to handle image of same title but different projects
-      item.file = item.URL.split("/")[5] + ".jpg";
     });
 
     // CREATE NODES FOR CONTRIBUTORS (CONNECTION NODE)
     rawData.forEach((item) => {
       if (!item.contributors) return;
       item.contributors
-        .forEach(contributor => {
-          const name = contributor.name;
-          const position = contributor.position;
-          const normalized = contributor.normalized;
-          const g = contributor.group;
+        .forEach(({ name, position, normalized, group }) => {
+          const node = nodeMap[normalized];
 
-          if (!nodeMap[normalized]) {
+          if (!node) {
             // New node
             nodeMap[normalized] = {
               id: normalized,
               label: name,
               size: 34,
-              group: [g],
+              group: [group],
               positions: [position],
               projects: [item.Title]
             };
           } else {
             // Existing node - update positions, projects, group
-            if (!nodeMap[normalized].positions.includes(position)) {
-              nodeMap[normalized].positions.push(position);
+            if (!node.positions.includes(position)) {
+              node.positions.push(position);
             }
-            if (!nodeMap[normalized].projects.includes(item.Title)) {
-              nodeMap[normalized].projects.push(item.Title);
+            if (!node.projects.includes(item.Title)) {
+              node.projects.push(item.Title);
             }
-            if (!nodeMap[normalized].group.includes(g)) {
-              nodeMap[normalized].group.push(g);
+            if (!node.group.includes(group)) {
+              node.group.push(group);
             }
           }
         });
     });
 
     // Count occurrences to adjust node size
-    links.forEach((link) => {
-      if (nodeMap[link.source]) {
-        nodeMap[link.source].size = Math.min(nodeMap[link.source].size + 5, 100);
+    links.forEach(({ source, target })  => {
+      if (nodeMap[source]) {
+        nodeMap[source].size = Math.min(nodeMap[source].size + 5, 100);
       }
-      if (nodeMap[link.target]) {
-        nodeMap[link.target].size = Math.min(nodeMap[link.target].size + 5, 100);
+      if (nodeMap[target]) {
+        nodeMap[target].size = Math.min(nodeMap[target].size + 5, 100);
       }
     });
 

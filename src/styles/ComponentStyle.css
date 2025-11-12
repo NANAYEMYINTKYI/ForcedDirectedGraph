@@ -60,15 +60,16 @@
 
 /* --- Timeline --- */
 .timeline-container {
-  height: 35px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 25px;
   background-color: transparent;
 }
 
 .play-button {
-  min-width: 40px !important; 
+  height: 35px;
+  min-width: 30px !important; 
   background-color: #f5f5f5 !important; 
   color: #231f20 !important;
   border: 1px solid #f5f5f5 !important; 
@@ -104,8 +105,7 @@
 
 /* Value label bubble */
 .year-slider .MuiSlider-valueLabel {
-  font-size: large;
-  font-weight: 1000;
+  font-size: medium;
   background-color: #f5f5f5;
   color: #231f20;
   border-radius: 6px;
@@ -114,8 +114,8 @@
 
 /* Slider thumb (button) */
 .year-slider .MuiSlider-thumb {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   background-color: #2684FF; /* main color */
   border: 2px solid #2684FF;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);

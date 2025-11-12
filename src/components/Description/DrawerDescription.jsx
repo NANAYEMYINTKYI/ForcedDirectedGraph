@@ -14,10 +14,9 @@ const Description = ({
   dataset
 }) => {
 
-  const listselectedNode = nodelist.filter(d => d.id.toLowerCase() === name.toLowerCase());
+  const selectedNode = nodelist.find(d => d.id.toLowerCase() === name.toLowerCase());
   const listselectedTitle = data.filter(d => d.Title.toLowerCase() === name.toLowerCase());
 
-  const selectedNode = listselectedNode[0]
   if(!selectedNode){
     return;
   }
@@ -34,17 +33,19 @@ const Description = ({
           <h2 style = {{ textAlign: 'center' }}> {project.Title} </h2><br />
           <img src = {image[project.file]} alt = {project.Title} className = "descriptionimage" /><br />
           <b>Year: </b>{project.Year}<br />
-          <b>Location: </b>{project.Location}
+          <b>Location: </b>{project.Location}<br />
+          <b>Type: </b>{project.type}
           <hr className = "section-line" />
           <h3>Description </h3>
           {project.Description}<br />
-          <Tags tagString = {project.Tag} />
-          {/* <a
+          {/* <Tags tagString = {project.Tag} /> */}
+          <a
             href = {project.URL}
-            style = {{ display: 'block', textAlign: 'right' }}
+            target = "_blank"
+            style = {{ display: 'block', textAlign: 'left' }}
           >
             More about {project.Title}...
-          </a> */}
+          </a>
           <hr className = "section-line" />
           <h3>Contributer </h3>
           <ul style = {{ listStyle: 'none' }}>
@@ -96,12 +97,13 @@ const Description = ({
                 }}
               >
                 <h3 style = {{ textAlign: 'center', marginBottom: '2.5px' }}>
-                  {/* <a
+                  <a
                     href = {matched.url}
+                    target = "_blank"
                     style = {{ color: 'black' }}
-                  > */}
+                  >
                     <u>{projectTitle}</u>
-                  {/* </a> */}
+                  </a>
                 </h3>
                 <img
                   src = {image[matched.file]}
@@ -145,12 +147,13 @@ const Description = ({
               >
                 {/* Project Title with Link */}
                 <h3 style = {{ textAlign: 'center', marginBottom: '5px' }}>
-                  {/* <a
+                  <a
                     href = {projectTitle.url}
+                    target = "_blank"
                     style = {{ color: 'black' }}
-                  > */}
+                  >
                     <u>{projectTitle.label}</u>
-                  {/* </a> */}
+                  </a>
                 </h3>
                 {/* Project Location */}
                 <p style = {{ textAlign: 'center', marginBottom: '5px', fontStyle: 'italic' }}>
