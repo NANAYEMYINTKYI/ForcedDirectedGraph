@@ -152,7 +152,7 @@ const Toolbar = ({
 
       <div>
         {/* Country Search */}
-        {currentDataset === 'people' && (
+        {currentDataset === 'country' && (
           <ToolBarButton
           icon = {<Icons.GlobalOutlined />}
           label = "Search by Country"
