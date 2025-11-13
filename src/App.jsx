@@ -68,7 +68,7 @@ export default function App() {
           <div className = "filter-container" >
             <h3>Filter: </h3>
             <ShowFilter 
-              type = "Tag" 
+              type = "Type" 
               tag = {filterTag}
               setTag = {setFilterTag}
             />
