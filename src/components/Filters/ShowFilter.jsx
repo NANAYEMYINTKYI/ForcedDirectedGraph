@@ -2,7 +2,7 @@
 // CSS SECTION: ShowFilter
 
 import {CloseOutlined} from '@ant-design/icons'
-import {contributorFields, contributergroup} from '../../utils/CustomData'
+import {contributorFields, contributergroup, continentList} from '../../utils/CustomData'
 
 export default function ShowFilter({ type, tag, setTag }) {
   if (type === "Role") {
@@ -33,20 +33,60 @@ export default function ShowFilter({ type, tag, setTag }) {
       <>
       {tag.length === 0 ? (
           <div className="show-filter" onClick={SelectAll}>
-              <b>Roles:</b> None
+              <b>{type}:</b> None
               <CloseOutlined 
               />
           </div>
         ) : (
           selectedGroups.map((groupName, i) => (
             <div className="show-filter" key={i} onClick={() => cancel(groupName)}>
-              <b>Roles:</b> {groupName}
+              <b>{type}:</b> {groupName}
               <CloseOutlined/>
             </div>
           ))
         )}
       </>
     );
+  } else if (type === "Continents"){
+    if (tag.length >= continentList.length) return;
+
+    // Map selected tags to continent names
+    const selectedContinents = continentList
+      .filter((_, index) => tag.includes(index + 1))
+      .map(field => continentList.find(c => c.name === field.name)?.name);
+
+    const cancel = (continentName) => {
+      // Filter out all tags that match this continent name
+      const updatedTag = tag.filter(
+        index => continentList[index - 1].name !== continentName
+      );
+      setTag(updatedTag);
+    };
+
+    // Toggle select all when None is clicked
+    const SelectAll = () => {
+      const allIndices = contributorFields.map((_, i) => i + 1);
+      setTag(allIndices);
+    };
+
+    return (
+      <>
+        {tag.length === 0 ? (
+          <div className="show-filter" onClick={SelectAll}>
+            <b>{type}:</b> None
+            <CloseOutlined />
+          </div>
+        ) : (
+          selectedContinents.map((continentName, i) => (
+            <div className="show-filter" key={i} onClick={() => cancel(continentName)}>
+              <b>{type}:</b> {continentName}
+              <CloseOutlined />
+            </div>
+          ))
+        )}
+      </>
+    );
+
   }
   if (!tag) return;
 

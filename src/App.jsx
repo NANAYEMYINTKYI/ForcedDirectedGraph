@@ -7,7 +7,7 @@ import Description from "./components/Description/DrawerDescription.jsx";
 import useAppState from "./hooks/useAppState.jsx";
 import UserActivityDetector from "./utils/UserAction.jsx"
 import TagFilter from "./components/Filters/TagFilter.jsx";
-import {contributorFields} from './utils/CustomData'
+import {contributorFields, continentList} from './utils/CustomData'
 import "./styles/App.css";
 
 export default function App() {
@@ -64,7 +64,7 @@ export default function App() {
       <header className = "header">
         <h1>The Unseen Connection</h1>
       </header>
-      {(filterTag || filterCountry || selectedRoles.length < contributorFields.length ) && (
+      {(filterTag || filterCountry || currentDataset === 'people' && (selectedRoles.length < contributorFields.length) || currentDataset === 'country' && (selectedRoles.length < continentList.length)) && (
           <div className = "filter-container" >
             <h3>Filter: </h3>
             <ShowFilter 
@@ -77,11 +77,16 @@ export default function App() {
               tag = {filterCountry}
               setTag = {setFilterCountry}
             />
-            <ShowFilter 
+            {(currentDataset === 'people') && (<ShowFilter 
               type = "Role" 
               tag = {selectedRoles}
               setTag = {setSelectedRoles}
-            />
+            />)}
+            {(currentDataset === 'country') && (<ShowFilter 
+              type = "Continents" 
+              tag = {selectedRoles}
+              setTag = {setSelectedRoles}
+            />)}
           </div>
       )}
       <div className = "toolbar">
