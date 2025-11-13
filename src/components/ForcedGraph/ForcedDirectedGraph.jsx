@@ -13,6 +13,7 @@ const image = getImages();
 
 // this is forced-directed graph component
 const ForceDirectedGraph = ({
+  currentDataset,
   nodes,
   links,
   selectnode,
@@ -200,7 +201,7 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
 
     // set scale size from svg
-        let ticking = false;
+    let ticking = false;
     let lastCall = 0;
     let currentTransform = d3.zoomIdentity;
 
@@ -450,9 +451,7 @@ const ForceDirectedGraph = ({
           zoomToNode(tempSelectedNodes[0], svg, zoom);
           onNodeSelect(tempSelectedNodes[0].id);
           highlightNode(tempSelectedNodes[0].id, nodeGroup, linkGroup);
-        } else if (tempSelectedNodes.length > 1) {
-          zoomToNode(tempSelectedNodes, svg, zoom);
-        }
+        } 
         // Clear selection array
         tempSelectedNodes = [];
         
@@ -521,7 +520,14 @@ const ForceDirectedGraph = ({
           zoomRef.current = zoom;
           iszoom = true;
         }
-        if(alpha < 0.2){
+        // if(alpha < 0.2){
+        //   setIsVisible(true)
+        // }
+        console.log("Current Dataset:", currentDataset)
+        if(currentDataset == "people" && alpha<0.2){
+          setIsVisible(true)
+        } else if(currentDataset == "country" && alpha < 0.025){
+          console.log("Alpha:",alpha)
           setIsVisible(true)
         }
       })
