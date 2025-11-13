@@ -90,7 +90,7 @@ const RangeSlider = ({
         max = {2023}
         style = {{
           flexGrow: 1,
-          height: 5,
+          height: 1,
         }}
       />
       <Button

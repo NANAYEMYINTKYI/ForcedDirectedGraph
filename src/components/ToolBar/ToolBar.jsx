@@ -205,7 +205,7 @@ const Toolbar = ({
           icon = {<Icons.GlobalOutlined />}
           label = "Filter by Country"
           showLabel = {!isCollapsed}
-          visible = {true}
+          visible = {currentDataset === 'people'}
           popover = {countryTagPopover}
           mounted = {true}
           popoverContent = {
