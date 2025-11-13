@@ -53,34 +53,6 @@ const Toolbar = ({
       </div>
 
       <div>
-        {/*About*/}
-        <ToolBarButton
-          label = "About"
-          showLabel = {!isCollapsed}
-          visible = {true}
-          popover = {aboutPopover}
-          mounted = {false}
-          popoverContent={
-            <div className='about'> 
-              <h1>Lorem Ipsum</h1> 
-              <p>is simply dummy text of the printing and typesetting industry. 
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-            
-              <h1>Lorem Ipsum</h1> 
-              <p>is simply dummy text of the printing and typesetting industry. 
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-            </div>
-          }
-        />
-      </div>
-
-      <div>
         {/* Dataset Selector */}
         <ToolBarButton
           icon = {<Icons.DatabaseOutlined />}
@@ -268,6 +240,35 @@ const Toolbar = ({
           }
         />
       </div>
+      <div>
+        {/*About*/}
+        <ToolBarButton
+          icon = {<Icons.InfoCircleOutlined />}
+          label = "About this project"
+          showLabel = {!isCollapsed}
+          visible = {true}
+          popover = {aboutPopover}
+          mounted = {false}
+          popoverContent={
+            <div className='about'> 
+              <h1>The Unseen Connection</h1> 
+              <p>
+              The Unseen Connection visualizes the global landscape of Media Architecture through an interactive social graph. By mapping projects and designers across regions using data from Media Architecture Catalog of Media Architecture Institute (MAI), it reveals how ideas, collaborations, and practices interconnect across cities and cultures. Visitors can filter and search by designer, location, or project name to explore these dynamic relationships.
+              </p> <br/>
+              <p>
+                By tracing shared links and overlapping networks, the work transforms data into an experiential cartography of the discipline. It invites audiences to see Media Architecture as a way of connecting the ongoing growth and transformation of cities around the world.
+              </p> <br/>
+              <h2>ESIC LAB:</h2>
+              <h3>EDUTAINMENT & SOCIO-INTERACTION COMPUTING LAB</h3>
+              <p>
+                ESIC Lab is a research group at the Computer Engineering Department of King Mongkut's University of Technology Thonburi (KMUTT) in Thailand. The lab is dedicated to enhancing the interaction between digital media and human beings. Their research encompasses data platforms, immersive technology, and interactive installations.
+              </p>
+
+            </div>
+          }
+        />
+      </div>
+
       <button className = 'reset-button' onClick={resetFilter}>
         Reset Filter
       </button>
