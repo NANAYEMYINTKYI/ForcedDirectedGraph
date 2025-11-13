@@ -123,7 +123,7 @@ const ForceDirectedGraph = ({
   // ZOOM TO NODE FUNCTION
   function zoomToNode(d, svg, zoom) {
     if (!svg || !zoom || !zoom.transform) {
-      console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
+      // console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
       return;
     }
     const connectedLinks = links.filter(l=> l.source === d || l.target === d);
@@ -441,7 +441,7 @@ const ForceDirectedGraph = ({
       })
       
       .on("click", function (event, d) {
-        console.log("Clicking!!!")
+        // console.log("Clicking!!!")
         // Track selected node(s) temporarily
         let tempSelectedNodes = [d];
         // Zoom to selection
@@ -523,11 +523,10 @@ const ForceDirectedGraph = ({
         // if(alpha < 0.2){
         //   setIsVisible(true)
         // }
-        console.log("Current Dataset:", currentDataset)
         if(currentDataset == "people" && alpha<0.2){
           setIsVisible(true)
         } else if(currentDataset == "country" && alpha < 0.025){
-          console.log("Alpha:",alpha)
+          // console.log("Alpha:",alpha)
           setIsVisible(true)
         }
       })
@@ -603,7 +602,7 @@ const ForceDirectedGraph = ({
             selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
         if (select) {
-          console.log(select);     
+          // console.log(select);     
           highlightNode(select.id, nodeGroup, linkGroup);
 
           setTimeout(() => {
