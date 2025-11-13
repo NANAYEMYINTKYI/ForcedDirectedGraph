@@ -13,6 +13,7 @@ const image = getImages();
 
 // this is forced-directed graph component
 const ForceDirectedGraph = ({
+  currentDataset,
   nodes,
   links,
   selectnode,
@@ -122,7 +123,7 @@ const ForceDirectedGraph = ({
   // ZOOM TO NODE FUNCTION
   function zoomToNode(d, svg, zoom) {
     if (!svg || !zoom || !zoom.transform) {
-      console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
+      // console.error("Missing zoom or svg in zoomToNode:", { svg, zoom });
       return;
     }
     const connectedLinks = links.filter(l=> l.source === d || l.target === d);
@@ -200,7 +201,7 @@ const ForceDirectedGraph = ({
     const nodeGroup = g.append("g").attr("class", "nodes");
 
     // set scale size from svg
-        let ticking = false;
+    let ticking = false;
     let lastCall = 0;
     let currentTransform = d3.zoomIdentity;
 
@@ -440,7 +441,7 @@ const ForceDirectedGraph = ({
       })
       
       .on("click", function (event, d) {
-        console.log("Clicking!!!")
+        // console.log("Clicking!!!")
         // Track selected node(s) temporarily
         let tempSelectedNodes = [d];
         // Zoom to selection
@@ -450,9 +451,7 @@ const ForceDirectedGraph = ({
           zoomToNode(tempSelectedNodes[0], svg, zoom);
           onNodeSelect(tempSelectedNodes[0].id);
           highlightNode(tempSelectedNodes[0].id, nodeGroup, linkGroup);
-        } else if (tempSelectedNodes.length > 1) {
-          zoomToNode(tempSelectedNodes, svg, zoom);
-        }
+        } 
         // Clear selection array
         tempSelectedNodes = [];
         
@@ -521,7 +520,13 @@ const ForceDirectedGraph = ({
           zoomRef.current = zoom;
           iszoom = true;
         }
-        if(alpha < 0.2){
+        // if(alpha < 0.2){
+        //   setIsVisible(true)
+        // }
+        if(currentDataset == "people" && alpha<0.2){
+          setIsVisible(true)
+        } else if(currentDataset == "country" && alpha < 0.025){
+          // console.log("Alpha:",alpha)
           setIsVisible(true)
         }
       })
@@ -597,7 +602,7 @@ const ForceDirectedGraph = ({
             selectnode.value.toLowerCase().replace(/\s+/g, "_")
         );
         if (select) {
-          console.log(select);     
+          // console.log(select);     
           highlightNode(select.id, nodeGroup, linkGroup);
 
           setTimeout(() => {

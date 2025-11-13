@@ -122,6 +122,7 @@ export default function useAppState() {
   // Use for define data in graph
   const graphProps = useMemo(
     () => ({
+      currentDataset: currentDataset,
       nodes: filteredData.nodes,
       links: filteredData.links,
       selectnode: selectedNode,
