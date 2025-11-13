@@ -32,6 +32,7 @@ const Toolbar = ({
   setSelectedRoles,
   resetFilter
 }) => {
+  const aboutPopover = usePopover()
   const datasetPopover = usePopover();
   const titlePopover = usePopover();
   const contributerPopover = usePopover();
@@ -49,6 +50,34 @@ const Toolbar = ({
         >
           {isCollapsed ? <Icons.LeftOutlined /> : <Icons.RightOutlined /> } 
         </button>
+      </div>
+
+      <div>
+        {/*About*/}
+        <ToolBarButton
+          label = "About"
+          showLabel = {!isCollapsed}
+          visible = {true}
+          popover = {aboutPopover}
+          mounted = {false}
+          popoverContent={
+            <div className='about'> 
+              <h1>Lorem Ipsum</h1> 
+              <p>is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+            
+              <h1>Lorem Ipsum</h1> 
+              <p>is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+            </div>
+          }
+        />
       </div>
 
       <div>
@@ -102,7 +131,7 @@ const Toolbar = ({
         {/* People Search */}
         <ToolBarButton
           icon = {<Icons.UserOutlined />}
-          label = "Search by Contributer"
+          label = "Search by Name"
           showLabel = {!isCollapsed}
           visible = {currentDataset === 'people'}
           popover = {contributerPopover}
@@ -123,7 +152,8 @@ const Toolbar = ({
 
       <div>
         {/* Country Search */}
-        <ToolBarButton
+        {currentDataset === 'people' && (
+          <ToolBarButton
           icon = {<Icons.GlobalOutlined />}
           label = "Search by Country"
           showLabel = {!isCollapsed}
@@ -142,13 +172,14 @@ const Toolbar = ({
             />
           }
         />
+        )}
       </div>
 
       <div>
         {/* Tag Filter */}
         <ToolBarButton
           icon = {<Icons.FilterOutlined />}
-          label = "Filter by Tag"
+          label = "Filter by Type"
           showLabel = {!isCollapsed}
           visible = {true}
           popover = {tagPopover}
@@ -171,7 +202,7 @@ const Toolbar = ({
       <div>
       {/* Country Tag Filter */}
         <ToolBarButton
-          icon = {<Icons.FilterOutlined />}
+          icon = {<Icons.GlobalOutlined />}
           label = "Filter by Country"
           showLabel = {!isCollapsed}
           visible = {true}
@@ -195,8 +226,20 @@ const Toolbar = ({
       <div>
         {/* Legend */}
         <ToolBarButton
-          icon = {<Icons.BarsOutlined />}
-          label = "Meaning of Color"
+          icon = {
+            currentDataset === 'people' ? (
+              <Icons.SettingOutlined />
+            ) : (
+              <Icons.EnvironmentOutlined />
+            )
+          }
+          label = {
+            currentDataset === 'people'? (
+              "Filter by Role"
+            ) : (
+              "Filter by Continents"
+            )
+          }
           showLabel = {!isCollapsed}
           visible = {true}
           popover = {colorPopover}

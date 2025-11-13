@@ -23,7 +23,6 @@
 
 
 
-
 /* --- Description --- */
 .description-container {
   height: 100%;
@@ -45,7 +44,12 @@
   margin: 10px 0; 
 }
 
-
+/* About*/
+.about {
+  color: #231f20;
+  padding: 10px;
+  max-width: 500px;
+}
 
 
 /* --- Dropdown --- */

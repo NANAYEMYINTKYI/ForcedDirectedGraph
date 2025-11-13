@@ -35,7 +35,7 @@ const ListSearch = ({
   return (
     <div className = "dropdown-container">
       <label>
-        {title}:{" "}
+        {/* {title}:{" "} */}
         <Select
           value = {value}
           onChange = {handleChange}

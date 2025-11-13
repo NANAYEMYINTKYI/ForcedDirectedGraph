@@ -60,7 +60,7 @@ export default function App() {
   return (
     <div className = "app" onClick={handleClick}>
       <header className = "header">
-        <h1>MAB Social Graph</h1>
+        <h1>The Unseen Connection</h1>
       </header>
       <div className = "toolbar">
         <Toolbar 
