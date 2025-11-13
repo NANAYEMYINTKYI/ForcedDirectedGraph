@@ -61,10 +61,20 @@ const Toolbar = ({
           popover = {aboutPopover}
           mounted = {false}
           popoverContent={
-            <div className='about'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            <div className='about'> 
+              <h1>Lorem Ipsum</h1> 
+              <p>is simply dummy text of the printing and typesetting industry. 
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
               It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
               and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+            
+              <h1>Lorem Ipsum</h1> 
+              <p>is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
             </div>
           }
         />
@@ -142,7 +152,8 @@ const Toolbar = ({
 
       <div>
         {/* Country Search */}
-        <ToolBarButton
+        {currentDataset === 'people' && (
+          <ToolBarButton
           icon = {<Icons.GlobalOutlined />}
           label = "Search by Country"
           showLabel = {!isCollapsed}
@@ -161,6 +172,7 @@ const Toolbar = ({
             />
           }
         />
+        )}
       </div>
 
       <div>
@@ -190,7 +202,7 @@ const Toolbar = ({
       <div>
       {/* Country Tag Filter */}
         <ToolBarButton
-          icon = {<Icons.FilterOutlined />}
+          icon = {<Icons.GlobalOutlined />}
           label = "Filter by Country"
           showLabel = {!isCollapsed}
           visible = {true}
@@ -214,7 +226,13 @@ const Toolbar = ({
       <div>
         {/* Legend */}
         <ToolBarButton
-          icon = {<Icons.BarsOutlined />}
+          icon = {
+            currentDataset === 'people' ? (
+              <Icons.SettingOutlined />
+            ) : (
+              <Icons.EnvironmentOutlined />
+            )
+          }
           label = {
             currentDataset === 'people'? (
               "Filter by Role"
