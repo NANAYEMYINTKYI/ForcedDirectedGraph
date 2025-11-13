@@ -319,3 +319,19 @@
   transition: 10ms;
 }
 
+
+
+
+/* --- ShowFilter --- */
+.show-filter {
+  display: inline-flex;
+  align-items: center; 
+  padding: 6px 6px;
+  margin: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #2c2c2cff;
+  border-radius: 4px; 
+  font-size: 14px;
+  gap: 5px; 
+}

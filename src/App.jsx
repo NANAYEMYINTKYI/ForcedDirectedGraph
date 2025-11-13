@@ -2,10 +2,12 @@ import * as Icons from "@ant-design/icons";
 import ForceDirectedGraph from "./components/ForcedGraph/ForcedDirectedGraph.jsx";
 import Timeline from "./components/TimeLine/Timeline.jsx";
 import Toolbar from "./components/ToolBar/ToolBar.jsx";
+import ShowFilter from "./components/Filters/ShowFilter.jsx";
 import Description from "./components/Description/DrawerDescription.jsx";
 import useAppState from "./hooks/useAppState.jsx";
 import UserActivityDetector from "./utils/UserAction.jsx"
 import TagFilter from "./components/Filters/TagFilter.jsx";
+import {contributorFields} from './utils/CustomData'
 import "./styles/App.css";
 
 export default function App() {
@@ -62,9 +64,26 @@ export default function App() {
       <header className = "header">
         <h1>MAB Social Graph</h1>
       </header>
-      <div className = "filter-container" >
-        <h3>Filter</h3>
-      </div>
+      {(filterTag || filterCountry || selectedRoles.length < contributorFields.length ) && (
+          <div className = "filter-container" >
+            <h3>Filter: </h3>
+            <ShowFilter 
+              type = "Tag" 
+              tag = {filterTag}
+              setTag = {setFilterTag}
+            />
+            <ShowFilter 
+              type = "Country" 
+              tag = {filterCountry}
+              setTag = {setFilterCountry}
+            />
+            <ShowFilter 
+              type = "Role" 
+              tag = {selectedRoles}
+              setTag = {setSelectedRoles}
+            />
+          </div>
+      )}
       <div className = "toolbar">
         <Toolbar 
           datasets={datasets}
