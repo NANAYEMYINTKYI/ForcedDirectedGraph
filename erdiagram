@@ -1,0 +1,324 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+// MEMBER SYSTEM
+Table users {
+  user_id integer [primary key]
+  username varchar [unique]
+  passwordHash varchar
+  email varchar [unique]
+  role_id integer
+  last_login timestamp
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table talents {
+  talent_id integer [primary key]
+  user_id integer [unique]
+  nickname_TH varchar
+  nickname_EN varchar
+  firstname varchar
+  middlename varchar
+  lastname varchar
+  firstname_EN varchar
+  middlename_EN varchar
+  lastname_EN varchar
+  location_id integer
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table companies {
+  company_id integer [primary key]
+  user_id integer [unique]
+  companyName_TH varchar 
+  companyName_EN varchar
+  details text
+  telephone varchar [unique]
+  website varchar
+  instagram varchar
+  facebook varchar
+  location_id integer 
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table locations {
+  location_id integer [primary key]
+  city varchar
+  district varchar
+  latitude decimal(10,8)
+  longitude decimal(11,8)
+  createdAt timestamp 
+}
+
+Table companyMember {
+  company_id integer
+  talent_id integer
+  createdAt timestamp
+  updatedAt timestamp
+  
+  indexes {
+    (company_id, talent_id) [unique]
+  }
+}
+
+Table invitation {
+  invitation_id integer [primary key]
+  sender_id integer
+  receiver_id integer
+  status varchar(20) // pending, accepted, rejected, cancelled
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table contents {
+  contents_id integer [primary key, increment]
+  title varchar
+  year integer
+  content_type varchar
+  status varchar(20) // submitted, approved, rejected, published 
+  location_id integer
+  createdAt timestamp
+  updatedAt timestamp
+  
+  indexes {
+    status
+  }
+}
+
+Table industry {
+  industry_id integer [primary key]
+  industry_name varchar [unique]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table expertise {
+  expertise_id integer [primary key]
+  expertise_name varchar [unique]
+  industry_id integer
+  indexes {
+    (expertise_id, industry_id) [unique]
+   }
+  createdAt timestamp
+}
+
+// RELATIONSHIP TABLES
+
+// talent Relationships
+Table talent_expertise {
+  talent_id integer
+  expertise_id integer
+  createdAt timestamp  
+  indexes {
+    (talent_id, expertise_id) [unique]
+  }
+}
+
+Table talent_industries {
+  talent_id integer
+  industry_id integer
+  createdAt timestamp
+
+  indexes {
+    (talent_id, industry_id) [unique]
+  }
+}
+
+Table talent_content {
+  content_id integer
+  talent_id integer
+  
+  indexes {
+    (content_id, talent_id) [unique]
+  }
+}
+
+// Company Relationships
+Table company_expertise {
+  company_id integer
+  expertise_id integer
+  createdAt timestamp
+  
+  indexes {
+    (company_id, expertise_id) [unique]
+  }
+}
+
+Table company_industries {
+  company_id integer
+  industry_id integer
+  createdAt timestamp
+
+  indexes {
+    (company_id, industry_id) [unique]
+  }
+}
+
+Table company_content {
+  company_id integer
+  content_id integer
+  
+  indexes {
+    (company_id, content_id) [unique]
+  }
+}
+
+// Content Relationships
+Table content_industries {
+  content_id integer
+  industry_id integer
+  createdAt timestamp
+
+  indexes {
+    (content_id, industry_id) [unique]
+  }
+}
+
+Table content_expertise {
+  content_id integer
+  expertise_id integer
+  createdAt timestamp
+
+  indexes {
+    (content_id, expertise_id) [unique]
+  }
+}
+
+// ROLES
+Table roles {
+  role_id integer [primary key]
+  role_name varchar [unique] // talent, company, temp
+  is_active boolean [default: true]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+// MANAGEMENT SYSTEM
+Table management {
+  management_id integer [primary key]
+  username varchar [unique]
+  email varchar [unique]
+  passwordHash varchar
+  role varchar(20) // admin, content_manager
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table support_articles {
+  article_id integer [primary key]
+  title varchar
+  description text
+  is_published boolean [default: false]
+  written_by integer
+  createdAt timestamp
+  updatedAt timestamp
+} 
+
+Table ticket {
+  ticket_id integer [primary key]
+  email varchar
+  firstname varchar
+  lastname varchar
+  title varchar
+  description text
+  status varchar(20) // open, in_progress, resolved, closed
+  priority varchar(20) // low, medium, high, urgent
+  assigned_to integer
+  feedback text
+  createdAt timestamp
+  updatedAt timestamp
+  resolvedAt timestamp
+  
+  indexes {
+    status
+    priority
+  }
+}
+
+Table contentManage {
+  contentManage_id integer [primary key]
+  content_id integer
+  status varchar(20) // pending, approved, rejected
+  manageBy integer
+  feedback text
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table accountManage {
+  accountManage_id integer [primary key]
+  user_id integer
+  accounttype accounttype
+  // varchar(20) // talent, company
+  actiontype varchar(20) // suspend, activate, delete, edit
+  manageBy integer
+  reason text
+  createdAt timestamp
+}
+
+// Table memberLog {
+//   log_id integer [primary key]
+//   manage_id integer
+//   timestamp timestamp
+//   actiontype varchar(50) // content_approved, account_suspended
+//   accountManage_id integer
+//   contentManage_id integer
+// }
+
+// ENUM
+Enum accounttype {
+  talent
+  company
+}
+// RELATIONSHIPS
+
+// User relationships
+Ref: users.role_id > roles.role_id
+Ref: talents.user_id - users.user_id
+Ref: companies.user_id - users.user_id
+
+// Location relationships
+Ref: companies.location_id > locations.location_id
+Ref: talents.location_id > locations.location_id
+
+// Company-talent relationships
+Ref: companyMember.company_id - companies.company_id
+Ref: companyMember.talent_id > talents.talent_id
+Ref: invitation.sender_id > companies.company_id
+Ref: invitation.receiver_id > talents.talent_id
+
+// talent relationships
+Ref: talent_expertise.talent_id > talents.talent_id
+Ref: talent_expertise.expertise_id > expertise.expertise_id
+Ref: talent_industries.talent_id > talents.talent_id
+Ref: talent_industries.industry_id > industry.industry_id
+Ref: talent_content.content_id > contents.contents_id
+Ref: talent_content.talent_id > talents.talent_id
+
+// Company relationships
+Ref: company_expertise.company_id > companies.company_id
+Ref: company_expertise.expertise_id > expertise.expertise_id
+Ref: company_industries.company_id > companies.company_id
+Ref: company_industries.industry_id > industry.industry_id
+Ref: company_content.company_id > companies.company_id
+Ref: company_content.content_id > contents.contents_id
+
+// Content relationships
+Ref: content_industries.content_id > contents.contents_id
+Ref: content_industries.industry_id > industry.industry_id
+Ref: content_expertise.content_id > contents.contents_id
+Ref: content_expertise.expertise_id > expertise.expertise_id
+
+// Management relationships
+Ref: support_articles.written_by > management.management_id
+Ref: ticket.assigned_to > management.management_id
+Ref: contentManage.content_id > contents.contents_id
+Ref: contentManage.manageBy > management.management_id
+Ref: accountManage.user_id > users.user_id
+Ref: accountManage.manageBy > management.management_id
+// Ref: memberLog.manage_id > management.management_id
+// Ref: memberLog.accountManage_id > accountManage.accountManage_id
+// Ref: memberLog.contentManage_id > contentManage.contentManage_id
